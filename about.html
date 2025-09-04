@@ -95,6 +95,7 @@
             width: 100vw;
             height: 100vh;
             overflow: hidden;
+            pointer-events: none;
         }
 
         .initial-snow > * {
@@ -102,6 +103,8 @@
             color: white;
             position: absolute;
             top: -5vh;
+            pointer-events: none;
+            z-index: 0;
         }
 
         @keyframes snowfall {
@@ -118,28 +121,38 @@
         .snow:nth-child(1) { --size: 0.8vw; --left-ini: 0vw; --left-end: -1vw; left: 70vw; animation: snowfall 9s linear infinite; animation-delay: -1s; }
         .snow:nth-child(2) { --size: 0.2vw; --left-ini: -7vw; --left-end: 10vw; left: 65vw; animation: snowfall 15s linear infinite; animation-delay: -8s; }
         .snow:nth-child(3) { --size: 1vw; --left-ini: 6vw; --left-end: 6vw; left: 1vw; animation: snowfall 9s linear infinite; animation-delay: -7s; }
-        .snow:nth-child(4) { --size: 0.2vw; --left-ini: -3vw; --left-end: 9vw; left: 88vw; animation: snowfall 14s linear infinite; animation-delay: -5s; }
+        .snow:nth-child(4) { --size: 0.2vw; --left-ini: -3vw; --left-end: 9vw; left: 80vw; animation: snowfall 14s linear infinite; animation-delay: -5s; }
         .snow:nth-child(5) { --size: 0.4vw; --left-ini: -2vw; --left-end: -9vw; left: 74vw; animation: snowfall 6s linear infinite; animation-delay: -4s; }
         .snow:nth-child(6) { --size: 0.6vw; --left-ini: 4vw; --left-end: 2vw; left: 15vw; animation: snowfall 12s linear infinite; animation-delay: -3s; }
         .snow:nth-child(7) { --size: 0.3vw; --left-ini: -5vw; --left-end: 7vw; left: 45vw; animation: snowfall 8s linear infinite; animation-delay: -6s; }
         .snow:nth-child(8) { --size: 0.9vw; --left-ini: 3vw; --left-end: -4vw; left: 25vw; animation: snowfall 11s linear infinite; animation-delay: -2s; }
-        .snow:nth-child(9) { --size: 0.1vw; --left-ini: -8vw; --left-end: 5vw; left: 85vw; animation: snowfall 16s linear infinite; animation-delay: -9s; }
+        .snow:nth-child(9) { --size: 0.1vw; --left-ini: -8vw; --left-end: 5vw; left: 75vw; animation: snowfall 16s linear infinite; animation-delay: -9s; }
         .snow:nth-child(10) { --size: 0.7vw; --left-ini: 2vw; --left-end: -6vw; left: 35vw; animation: snowfall 10s linear infinite; animation-delay: -1.5s; }
         .snow:nth-child(11) { --size: 0.5vw; --left-ini: -4vw; --left-end: 8vw; left: 55vw; animation: snowfall 13s linear infinite; animation-delay: -7.5s; }
         .snow:nth-child(12) { --size: 0.8vw; --left-ini: 7vw; --left-end: -3vw; left: 5vw; animation: snowfall 9s linear infinite; animation-delay: -4.5s; }
-        .snow:nth-child(13) { --size: 0.2vw; --left-ini: -6vw; --left-end: 6vw; left: 75vw; animation: snowfall 15s linear infinite; animation-delay: -8.5s; }
-        .snow:nth-child(14) { --size: 0.4vw; --left-ini: 1vw; --left-end: -7vw; left: 95vw; animation: snowfall 7s linear infinite; animation-delay: -3.5s; }
+        .snow:nth-child(13) { --size: 0.2vw; --left-ini: -6vw; --left-end: 6vw; left: 60vw; animation: snowfall 15s linear infinite; animation-delay: -8.5s; }
+        .snow:nth-child(14) { --size: 0.4vw; --left-ini: 1vw; --left-end: -7vw; left: 85vw; animation: snowfall 7s linear infinite; animation-delay: -3.5s; }
         .snow:nth-child(15) { --size: 0.6vw; --left-ini: -2vw; --left-end: 9vw; left: 40vw; animation: snowfall 12s linear infinite; animation-delay: -6.5s; }
         .snow:nth-child(16) { --size: 0.3vw; --left-ini: 8vw; --left-end: -5vw; left: 20vw; animation: snowfall 8s linear infinite; animation-delay: -2.5s; }
-        .snow:nth-child(17) { --size: 0.9vw; --left-ini: -1vw; --left-end: 4vw; left: 60vw; animation: snowfall 11s linear infinite; animation-delay: -7.8s; }
-        .snow:nth-child(18) { --size: 0.1vw; --left-ini: 5vw; --left-end: -8vw; left: 80vw; animation: snowfall 16s linear infinite; animation-delay: -4.2s; }
-        .snow:nth-child(19) { --size: 0.7vw; --left-ini: -3vw; --left-end: 7vw; left: 30vw; animation: snowfall 10s linear infinite; animation-delay: -9.1s; }
-        .snow:nth-child(20) { --size: 0.5vw; --left-ini: 6vw; --left-end: -2vw; left: 50vw; animation: snowfall 13s linear infinite; animation-delay: -5.7s; }
+        .snow:nth-child(17) { --size: 0.9vw; --left-ini: -1vw; --left-end: 4vw; left: 50vw; animation: snowfall 11s linear infinite; animation-delay: -7.8s; }
+        .snow:nth-child(18) { --size: 0.1vw; --left-ini: 5vw; --left-end: -8vw; left: 30vw; animation: snowfall 16s linear infinite; animation-delay: -4.2s; }
+        .snow:nth-child(19) { --size: 0.7vw; --left-ini: -3vw; --left-end: 7vw; left: 10vw; animation: snowfall 10s linear infinite; animation-delay: -9.1s; }
+        .snow:nth-child(20) { --size: 0.5vw; --left-ini: 6vw; --left-end: -2vw; left: 90vw; animation: snowfall 13s linear infinite; animation-delay: -5.7s; }
 
         /* Ensure page content appears above snow animation */
         .header, .hero, .features, .services-preview, .gallery, .cta, .footer, main, section {
             position: relative;
             z-index: 1001;
+        }
+
+        /* Ensure snow animation stays behind content and doesn't interfere with text */
+        .loader, .main {
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .loader *, .main * {
+            pointer-events: none;
         }
 
         /* Make navigation bar sticky */
@@ -172,6 +185,17 @@
             background-color: transparent !important;
         }
 
+        /* Make all cards have frosted glass effect */
+        .feature-card, .service-card, .product-card, .about-card, .contact-info, .hours {
+            background: rgba(255, 255, 255, 0.2) !important;
+            backdrop-filter: blur(15px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+            border-radius: 12px !important;
+            padding: 2rem !important;
+            text-align: center !important;
+        }
+
         /* Make sure text is readable against snow background */
         .hero-title, .hero-subtitle, .section-title, .section-subtitle,
         h1, h2, h3, h4, h5, h6, p, span, label {
@@ -194,22 +218,184 @@
         .about-hero {
             background: transparent !important;
             text-align: center;
-            padding: 4rem 0;
+            padding: 4rem 2rem;
+            color: white;
         }
 
         .about-hero h1 {
-            color: white;
+            color: white !important;
             margin-bottom: 1rem;
             font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
         }
 
         .about-hero p {
             font-size: 1.2rem;
             opacity: 0.9;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
         }
 
-        .about-content {
+        .about-hero-title {
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .about-hero-subtitle {
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        /* Contact Cards Styling */
+        .contact-cards {
             padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.2) !important;
+            backdrop-filter: blur(15px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+            border-radius: 12px !important;
+            padding: 2rem !important;
+            text-align: center !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .contact-card h3 {
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .contact-card p {
+            color: white !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7) !important;
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .contact-card a {
+            color: #60a5fa !important;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #93c5fd !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
+        }
+
+        .contact-note {
+            font-size: 0.9rem !important;
+            opacity: 0.8 !important;
+            font-style: italic;
+            margin-top: 0.5rem !important;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            justify-content: center;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1.2rem;
+        }
+
+        /* Services Cards Styling */
+        .services-cards {
+            padding: 4rem 0;
+        }
+
+        .what-we-do-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .what-we-do-section h2 {
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .what-we-do-section p {
+            color: white !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7) !important;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.2) !important;
+            backdrop-filter: blur(15px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+            border-radius: 12px !important;
+            padding: 2rem !important;
+            text-align: center !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .service-card p {
+            color: white !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7) !important;
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
         .about-content .container .about-content {
@@ -230,11 +416,12 @@
             padding: 0 20px;
         }
 
-        .contact-info h2 {
-            color: white;
+        .contact-cards .section-title {
+            color: white !important;
             margin-bottom: 2rem;
             font-size: 2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+            text-align: center;
         }
 
         .about-card h2, .contact-info h3, .hours h3 {
@@ -333,6 +520,45 @@
             .about-hero h1 {
                 font-size: 2rem;
             }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem !important;
+            }
+
+            .contact-icon {
+                font-size: 2.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.5rem !important;
+            }
+
+            .service-icon {
+                font-size: 2.5rem;
+            }
+
+            .what-we-do-section {
+                margin-bottom: 2rem;
+            }
+
+            .what-we-do-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .services-card {
+                padding: 1.5rem !important;
+                margin-bottom: 2rem;
+            }
         }
     </style>
 </head>
@@ -341,8 +567,10 @@
         <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <img src="images/mainLogo.jpg" alt="Imagine PPTP Prints Logo" class="logo-image">
-                    <h1>Imagine PPTP Prints</h1>
+                    <a href="index.html" class="logo-link">
+                        <img src="images/mainLogo.jpg" alt="Imagine PPTP Prints Logo" class="logo-image">
+                        <h1>Imagine PPTP Prints</h1>
+                    </a>
                 </div>
                 <ul class="nav-menu">
                     <li class="nav-item">
@@ -361,6 +589,31 @@
                         <a href="contact.html" class="nav-link">Contact</a>
                     </li>
                 </ul>
+
+                <div class="nav-actions">
+                    <div class="search-container">
+                        <button class="search-toggle" aria-label="Toggle search">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </button>
+                        <div class="search-dropdown">
+                            <form class="search-form" role="search">
+                                <input type="search" class="search-input" placeholder="Search services..." aria-label="Search">
+                                <button type="submit" class="search-submit" aria-label="Submit search">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <path d="m21 21-4.35-4.35"></path>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <a href="contact.html" class="btn btn-quote">Get Quote</a>
+                </div>
+
                 <div class="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -386,47 +639,103 @@
                     <p>Our mission is to provide exceptional printing services with a focus on quality, customer satisfaction, and timely delivery. Whether you need custom shirts for your business, hoodies for your team, or hats for your special event, we've got you covered.</p>
                 </div>
 
-                <div class="about-card">
+                <div class="what-we-do-section">
                     <h2>What We Do</h2>
-                    <p>We specialize in custom printing services including:</p>
-                    <ul>
-                        <li>Custom shirts and t-shirts</li>
-                        <li>Personalized hoodies</li>
-                        <li>Custom hats and caps</li>
-                        <li>Business cards</li>
-                        <li>Banners and signage</li>
-                        <li>Stickers and decals</li>
-                    </ul>
-                    <p><strong>Hablamos español</strong> - We're proud to serve our Spanish-speaking community!</p>
+                    <p>We specialize in custom printing services! <strong>Hablamos español</strong> - We're proud to serve our Spanish-speaking community!</p>
                 </div>
             </div>
         </section>
 
-        <section class="contact-info">
+        <section class="services-cards">
             <div class="container">
-                <h2>Contact Information</h2>
-                <div class="about-content">
-                    <div>
-                        <h3>📍 Address</h3>
-                        <p>840 N State St, Northeast Elgin, IL, United States, 60123</p>
-                        
-                        <h3>📞 Phone</h3>
-                        <p><a href="tel:+13312555330">(331) 255-5330</a></p>
-                        
-                        <h3>📧 Email</h3>
-                        <p><a href="mailto:imaginepttp@gmail.com">imaginepttp@gmail.com</a></p>
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">👕</div>
+                        <h3>Custom Shirts & T-Shirts</h3>
+                        <p>High-quality custom printed apparel for businesses, teams, and events. Screen printing and heat transfer options available.</p>
                     </div>
-                    
-                    <div>
-                        <h3>🌐 Online Presence</h3>
-                        <p><a href="https://68da1e-18.myshopify.com/" target="_blank">Shopify Store</a></p>
-                        <p><a href="https://www.tiktok.com/t/ZP8kGeyLB/" target="_blank">TikTok</a></p>
-                        
-                        <h3>⭐ Customer Rating</h3>
+
+                    <div class="service-card">
+                        <div class="service-icon">🧥</div>
+                        <h3>Personalized Hoodies</h3>
+                        <p>Custom hoodies perfect for teams, events, and branding. Available in various styles, colors, and sizes.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🎩</div>
+                        <h3>Custom Hats & Caps</h3>
+                        <p>Professional embroidered caps for business branding and promotional events. Multiple styles available.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">💼</div>
+                        <h3>Business Cards</h3>
+                        <p>High-quality business cards with custom designs. Various finishes including foil stamping and embossing.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🏷️</div>
+                        <h3>Banners & Signage</h3>
+                        <p>Large format banners and signs for events and business promotion. Weather-resistant vinyl options.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🏷️</div>
+                        <h3>Stickers & Decals</h3>
+                        <p>Custom vinyl stickers and decals for branding, vehicles, and promotional materials.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="contact-cards">
+            <div class="container">
+                <h2 class="section-title">Contact Information</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <h3>Address</h3>
+                        <p>840 N State St<br>Northeast Elgin, IL<br>United States, 60123</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">📞</div>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+13312555330">(331) 255-5330</a></p>
+                        <p class="contact-note">Call anytime!</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:imaginepttp@gmail.com">imaginepttp@gmail.com</a></p>
+                        <p class="contact-note">We respond quickly!</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">🌐</div>
+                        <h3>Online Store</h3>
+                        <p><a href="https://68da1e-18.myshopify.com/" target="_blank">Visit Our Shopify Store</a></p>
+                        <p class="contact-note">Shop 24/7</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">📱</div>
+                        <h3>Social Media</h3>
+                        <p><a href="https://www.tiktok.com/t/ZP8kGeyLB/" target="_blank">Follow us on TikTok</a></p>
+                        <p class="contact-note">See our latest work!</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">⭐</div>
+                        <h3>Customer Rating</h3>
                         <div class="rating">
                             <div class="stars">★★★★★</div>
                             <span>Not yet rated (4 Reviews)</span>
                         </div>
+                        <p class="contact-note">Building trust daily</p>
                     </div>
                 </div>
             </div>
@@ -460,7 +769,7 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="products.html">Products</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -473,7 +782,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Imagine PPTP Prints. All rights reserved.</p>
+                <p>&copy; 2025 Imagine PPTP Prints. All rights reserved.</p>
             </div>
         </div>
     </footer>

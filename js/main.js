@@ -484,7 +484,67 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize Image Rotators
     initializeImageRotators();
+
+    // Portfolio Filtering Functionality
+    initializePortfolioFilters();
 });
+
+function initializePortfolioFilters() {
+    const filterButtons = document.querySelectorAll('.category-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    if (filterButtons.length === 0 || portfolioItems.length === 0) {
+        return; // Not on portfolio page
+    }
+
+    // Initialize with "All Projects" filter active
+    const allButton = document.querySelector('.category-btn[data-category="all"]');
+    if (allButton) {
+        allButton.classList.add('active');
+    }
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+
+            // Don't do anything if already active
+            if (this.classList.contains('active')) {
+                return;
+            }
+
+            // Update active button state
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            // Filter portfolio items with smooth animation
+            portfolioItems.forEach((item, index) => {
+                const itemCategory = item.getAttribute('data-category');
+
+                if (category === 'all' || itemCategory === category) {
+                    // Show item with staggered animation
+                    item.style.display = 'block';
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+
+                    setTimeout(() => {
+                        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 50); // Staggered animation
+                } else {
+                    // Hide item with fade out
+                    item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(-10px)';
+
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+}
 
 // Image Rotator System
 function initializeImageRotators() {
