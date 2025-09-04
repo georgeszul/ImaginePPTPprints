@@ -882,7 +882,7 @@ p {
 /* How It Works Section */
 .how-it-works {
     padding: 5rem 0;
-    background-color: #f0f9ff;
+    background-color: transparent;
 }
 
 .process-steps {
@@ -982,7 +982,7 @@ p {
 /* FAQ Section */
 .faq-section {
     padding: 5rem 0;
-    background-color: #f0f9ff;
+    background-color: transparent;
 }
 
 .faq-grid {
@@ -1132,7 +1132,7 @@ p {
 /* Pricing Calculator */
 .pricing-calculator-section {
     padding: 5rem 0;
-    background-color: #f8fafc;
+    background-color: transparent;
 }
 
 .calculator-container {
@@ -1201,7 +1201,7 @@ p {
 /* Testimonials */
 .testimonials-section {
     padding: 5rem 0;
-    background-color: #f0f9ff;
+    background-color: transparent;
 }
 
 .testimonials-grid {
@@ -1250,6 +1250,7 @@ p {
 /* Materials & Sizing */
 .materials-sizing-section {
     padding: 5rem 0;
+    background-color: transparent;
 }
 
 .materials-sizing-grid {
