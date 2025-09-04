@@ -568,6 +568,10 @@ p {
 .service-item {
     margin-bottom: 4rem;
     padding: 2rem 0;
+    min-height: 450px; /* Ensure consistent height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .service-item:nth-child(even) {
@@ -1673,6 +1677,78 @@ p {
     }
 }
 
+/* --- THEME OVERRIDES FOR SNOW ANIMATION --- */
+
+/* Apply frosted glass effect to all direct section children of main */
+main > section {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 3rem 2rem !important;
+    margin-bottom: 2rem !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Make section backgrounds transparent so cards are visible */
+main > section {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Apply frosted glass effect to all individual content cards */
+.service-item,
+.process-step,
+.pricing-card,
+.faq-item,
+.testimonial-card,
+.material-swatch,
+.size-chart,
+.upload-area,
+.preview-container,
+.calculator-form,
+.result-card {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 2rem !important;
+    margin-bottom: 2rem !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure text inside the new frosted cards is white with a shadow */
+.service-item h2, .service-item h3, .service-item p, .service-item li,
+.process-step h3, .process-step p,
+.pricing-card h3, .pricing-card li, .price,
+.faq-item h3, .faq-item p,
+.testimonial-card p, .testimonial-author strong, .testimonial-author span,
+.material-swatch span, .material-swatch small,
+.size-chart h3, .size-table th, .size-table td,
+.upload-area h3, .upload-area p, .upload-area small,
+.preview-container h3, .preview-item h4,
+.calculator-form label,
+.result-card h3, .result-card span, .turnaround-info p {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* General section titles should also be white */
+.section-title, .section-subtitle {
+     color: white !important;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Override for specific elements that should not have white text */
+.btn-primary,
+.btn-secondary,
+.feature-tag,
+.swatch-color {
+     color: #1f2937 !important;
+     text-shadow: none !important;
+}
+
 /* --- Snow Animation Theme --- */
 .loader {
     position: fixed;
@@ -2292,12 +2368,21 @@ p {
     background-color: transparent !important;
 }
 
-/* Make sure text is readable against snow background */
-.hero-title, .hero-subtitle, .section-title, .section-subtitle,
-h1, h2, h3, h4, h5, h6, p, span, label {
-    color: white !important;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
-}
+        /* Make sure text is readable against snow background */
+        .hero-title, .hero-subtitle, .section-title, .section-subtitle,
+        h1, h2, h3, h4, h5, h6, p, span, label, .service-item h3, 
+        .service-item p, .service-item li, .faq-item h3, .faq-item p,
+        .pricing-calculator-section h2, .pricing-calculator-section p,
+        .testimonials-section h2, .testimonials-section p,
+        .materials-sizing-section h2, .materials-sizing-section p,
+        .materials-section h2, .materials-section p, .materials-section li,
+        .sizing-section h2, .sizing-section p, .sizing-section table,
+        .sizing-section th, .sizing-section td, .how-it-works h2, .how-it-works h3,
+        .how-it-works p, .pricing-info h2, .pricing-info h3, .pricing-info p,
+        .pricing-info li, .pricing-info .price {
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+        }
 
 /* Make cards semi-transparent with white text */
 .feature-card, .service-card, .product-card {
@@ -2333,24 +2418,6 @@ h1, h2, h3, h4, h5, h6, p, span, label {
     border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Make all cards have frosted glass effect (except footer) */
-.feature-card, .service-card, .product-card {
-    background: rgba(255, 255, 255, 0.2) !important;
-    backdrop-filter: blur(15px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
-    border-radius: 12px !important;
-}
-
-/* Footer sections - no boxes, just text on page */
-.footer-section {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-}
-
 /* Make all card text white and bold */
 .feature-card h3, .service-card h3, .product-card h3,
 .feature-card p, .service-card p, .product-card p {
@@ -2369,6 +2436,29 @@ h1, h2, h3, h4, h5, h6, p, span, label {
     color: white !important;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
     font-weight: 600 !important;
+}
+
+/* Additional service section styling to ensure frosted glass */
+.service-content, .service-text, .service-image {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+}
+
+/* Ensure all service items get proper spacing and frosted glass */
+.services-detailed section,
+.services-detailed .service-item,
+.services-detailed .how-it-works,
+.services-detailed .pricing-info {
+    margin-bottom: 3rem !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 2rem !important;
 }
 
 .footer-section a:hover {
@@ -2390,4 +2480,26 @@ h1, h2, h3, h4, h5, h6, p, span, label {
 
 .footer a:hover {
     color: #60a5fa !important;
+}
+
+/* Form elements styling for frosted glass sections */
+.service-item input, .service-item select, .service-item textarea,
+.pricing-calculator-section input, .pricing-calculator-section select,
+.faq-section input, .testimonials-section input,
+.materials-sizing-section input, .file-upload-section input,
+.materials-section input, .sizing-section input {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    color: white !important;
+    border-radius: 8px !important;
+    padding: 0.8rem !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.service-item input::placeholder, .service-item select::placeholder, .service-item textarea::placeholder,
+.pricing-calculator-section input::placeholder, .pricing-calculator-section select::placeholder,
+.faq-section input::placeholder, .testimonials-section input::placeholder,
+.materials-sizing-section input::placeholder, .file-upload-section input::placeholder,
+.materials-section input::placeholder, .sizing-section input::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
 }

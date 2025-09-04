@@ -26,9 +26,6 @@
                         <a href="services.html" class="nav-link active">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a href="products.html" class="nav-link">Products</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="portfolio.html" class="nav-link">Portfolio</a>
                     </li>
                     <li class="nav-item">
@@ -209,59 +206,59 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Custom Mugs -->
-        <section class="service-item">
-            <div class="container">
-                <div class="service-content">
-                    <div class="service-text">
-                        <h2>Custom Mugs & Drinkware</h2>
-                        <p>Personalized mugs and drinkware perfect for gifts, promotions, and branding:</p>
-                        <ul>
-                            <li><strong>Ceramic Mugs:</strong> High-quality ceramic with full-wrap printing</li>
-                            <li><strong>Travel Mugs:</strong> Durable stainless steel with custom designs</li>
-                            <li><strong>Microwave Safe:</strong> All our mugs are microwave and dishwasher safe</li>
-                            <li><strong>Bulk Pricing:</strong> Special rates for large orders</li>
-                        </ul>
-                        <div class="service-features">
-                            <span class="feature-tag">Microwave Safe</span>
-                            <span class="feature-tag">Dishwasher Safe</span>
-                            <span class="feature-tag">Full-Wrap Printing</span>
+                <div class="service-item" id="custom-mugs">
+                    <div class="service-content">
+                        <div class="service-text">
+                            <h2>Custom Mugs & Drinkware</h2>
+                            <p>Personalized mugs and drinkware for gifts, promotions, and branding. Our options include:</p>
+                            <ul>
+                                <li>High-quality ceramic mugs with full-wrap printing</li>
+                                <li>Durable stainless steel travel mugs</li>
+                                <li>Microwave and dishwasher safe options</li>
+                                <li>Special bulk pricing for large orders</li>
+                                <li>Various sizes and styles available</li>
+                                <li>Perfect for corporate gifts and events</li>
+                            </ul>
+                            <div class="service-features">
+                                <span class="feature-tag">Microwave Safe</span>
+                                <span class="feature-tag">Dishwasher Safe</span>
+                                <span class="feature-tag">Full-Wrap Printing</span>
+                                <span class="feature-tag">Starting at $8</span>
+                            </div>
                         </div>
-                    </div>
-                                            <div class="service-image">
+                        <div class="service-image">
                             <div class="image-rotator" data-category="mugs">
                                 <!-- Images will be loaded dynamically -->
                             </div>
                         </div>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Custom Banners -->
-        <section class="service-item">
-            <div class="container">
-                <div class="service-content reverse">
-                                            <div class="service-image">
+                <div class="service-item" id="custom-banners">
+                    <div class="service-content reverse">
+                        <div class="service-image">
                             <div class="image-rotator" data-category="banners">
                                 <!-- Images will be loaded dynamically -->
                             </div>
                         </div>
-                    <div class="service-text">
-                        <h2>Custom Banners & Large Format</h2>
-                        <p>Professional banners and large format printing for events and businesses:</p>
-                        <ul>
-                            <li><strong>Vinyl Banners:</strong> Weather-resistant outdoor banners</li>
-                            <li><strong>Fabric Banners:</strong> Premium indoor display options</li>
-                            <li><strong>Large Format:</strong> Up to 10ft wide printing capabilities</li>
-                            <li><strong>Installation:</strong> Professional installation services available</li>
-                        </ul>
-                        <div class="service-features">
-                            <span class="feature-tag">Weather Resistant</span>
-                            <span class="feature-tag">Large Format</span>
-                            <span class="feature-tag">Professional Installation</span>
+                        <div class="service-text">
+                            <h2>Custom Banners & Large Format</h2>
+                            <p>Professional banners and large format printing for events and businesses. We offer:</p>
+                            <ul>
+                                <li>Weather-resistant vinyl banners for outdoor use</li>
+                                <li>Premium fabric banners for indoor displays</li>
+                                <li>Large format printing up to 10ft wide</li>
+                                <li>Professional installation services</li>
+                                <li>Custom sizing and material options</li>
+                                <li>Fast turnaround for event deadlines</li>
+                            </ul>
+                            <div class="service-features">
+                                <span class="feature-tag">Weather Resistant</span>
+                                <span class="feature-tag">Large Format</span>
+                                <span class="feature-tag">Professional Installation</span>
+                                <span class="feature-tag">Starting at $45</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -346,9 +343,52 @@
         <!-- Interactive Pricing Calculator -->
         <section class="pricing-calculator-section">
             <div class="container">
-                <h2 class="section-title">Get Your Custom Quote</h2>
-                <p class="section-subtitle">Calculate pricing for your specific order</p>
+                <h2 class="section-title">Upload Your Design & Get a Quote</h2>
+                <p class="section-subtitle">See a preview and calculate pricing for your specific order</p>
                 
+                <div class="upload-container">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <span class="upload-icon">📁</span>
+                            <h3>Drop your design here</h3>
+                            <p>or click to browse files</p>
+                            <small>Supports: AI, EPS, PNG, JPG (Max: 10MB)</small>
+                        </div>
+                        <input type="file" id="fileInput" accept=".ai,.eps,.png,.jpg,.jpeg" style="display: none;">
+                    </div>
+                    
+                    <div class="preview-container" id="previewContainer" style="display: none;">
+                        <h3>Design Preview</h3>
+                        <div class="preview-grid">
+                            <div class="preview-item">
+                                <h4>On Shirt</h4>
+                                <div class="preview-image" id="shirtPreview">
+                                    <img src="images/PPTPRints/539738239_122202396998293236_2183067847999368314_n.jpg" alt="Shirt Preview" class="preview-bg">
+                                    <div class="design-overlay" id="shirtDesign"></div>
+                                </div>
+                            </div>
+                            <div class="preview-item">
+                                <h4>On Hoodie</h4>
+                                <div class="preview-image" id="hoodiePreview">
+                                    <img src="images/PPTPRints/539634838_122202397106293236_2065046746168162236_n.jpg" alt="Hoodie Preview" class="preview-bg">
+                                    <div class="design-overlay" id="hoodieDesign"></div>
+                                </div>
+                            </div>
+                            <div class="preview-item">
+                                <h4>On Hat</h4>
+                                <div class="preview-image" id="hatPreview">
+                                    <img src="images/PPTPRints/539586768_122202396788293236_2819796790172946060_n.jpg" alt="Hat Preview" class="preview-bg">
+                                    <div class="design-overlay" id="hatDesign"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview-controls">
+                            <button type="button" id="resetDesign" class="btn btn-outline">Reset Design</button>
+                            <a href="contact.html" class="btn btn-primary">Get Quote for This Design</a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="calculator-container">
                     <div class="calculator-form">
                         <div class="form-group">
@@ -579,56 +619,6 @@
             </div>
         </section>
 
-        <!-- File Upload Preview -->
-        <section class="file-upload-section">
-            <div class="container">
-                <h2 class="section-title">See Your Design in Action</h2>
-                <p class="section-subtitle">Upload your design to preview how it will look on our products</p>
-                
-                <div class="upload-container">
-                    <div class="upload-area" id="uploadArea">
-                        <div class="upload-content">
-                            <span class="upload-icon">📁</span>
-                            <h3>Drop your design here</h3>
-                            <p>or click to browse files</p>
-                            <small>Supports: AI, EPS, PNG, JPG (Max: 10MB)</small>
-                        </div>
-                        <input type="file" id="fileInput" accept=".ai,.eps,.png,.jpg,.jpeg" style="display: none;">
-                    </div>
-                    
-                    <div class="preview-container" id="previewContainer" style="display: none;">
-                        <h3>Design Preview</h3>
-                        <div class="preview-grid">
-                            <div class="preview-item">
-                                <h4>On Shirt</h4>
-                                <div class="preview-image" id="shirtPreview">
-                                    <img src="images/PPTPRints/539738239_122202396998293236_2183067847999368314_n.jpg" alt="Shirt Preview" class="preview-bg">
-                                    <div class="design-overlay" id="shirtDesign"></div>
-                                </div>
-                            </div>
-                            <div class="preview-item">
-                                <h4>On Hoodie</h4>
-                                <div class="preview-image" id="hoodiePreview">
-                                    <img src="images/PPTPRints/539634838_122202397106293236_2065046746168162236_n.jpg" alt="Hoodie Preview" class="preview-bg">
-                                    <div class="design-overlay" id="hoodieDesign"></div>
-                                </div>
-                            </div>
-                            <div class="preview-item">
-                                <h4>On Hat</h4>
-                                <div class="preview-image" id="hatPreview">
-                                    <img src="images/PPTPRints/539586768_122202396788293236_2819796790172946060_n.jpg" alt="Hat Preview" class="preview-bg">
-                                    <div class="design-overlay" id="hatDesign"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview-controls">
-                            <button type="button" id="resetDesign" class="btn btn-outline">Reset Design</button>
-                            <a href="contact.html" class="btn btn-primary">Get Quote for This Design</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <section class="cta">
             <div class="container">
@@ -678,6 +668,12 @@
     </div>
     <div class="main">
         <div class="initial-snow">
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
         <div class="snow">&#10052;</div>
         <div class="snow">&#10052;</div>
         <div class="snow">&#10052;</div>
