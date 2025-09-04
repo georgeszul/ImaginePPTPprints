@@ -1679,24 +1679,6 @@ p {
 
 /* --- THEME OVERRIDES FOR SNOW ANIMATION --- */
 
-/* Apply frosted glass effect to all direct section children of main */
-main > section {
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 12px !important;
-    padding: 3rem 2rem !important;
-    margin-bottom: 2rem !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-/* Make section backgrounds transparent so cards are visible */
-main > section {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
 /* Apply frosted glass effect to all individual content cards */
 .service-item,
 .process-step,
@@ -2436,29 +2418,6 @@ main > section {
     color: white !important;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
     font-weight: 600 !important;
-}
-
-/* Additional service section styling to ensure frosted glass */
-.service-content, .service-text, .service-image {
-    background: rgba(255, 255, 255, 0.2) !important;
-    backdrop-filter: blur(15px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    border-radius: 12px !important;
-    padding: 1.5rem !important;
-}
-
-/* Ensure all service items get proper spacing and frosted glass */
-.services-detailed section,
-.services-detailed .service-item,
-.services-detailed .how-it-works,
-.services-detailed .pricing-info {
-    margin-bottom: 3rem !important;
-    background: rgba(255, 255, 255, 0.2) !important;
-    backdrop-filter: blur(15px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
-    border-radius: 12px !important;
-    padding: 2rem !important;
 }
 
 .footer-section a:hover {
