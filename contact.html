@@ -4,9 +4,452 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Imagine PPTP Prints</title>
-    <meta name="description" content="Get in touch with Imagine PPTP Prints for quotes, consultations, and printing services.">
+    <meta name="description" content="Contact Imagine PPTP Prints for custom printing services. High quality shirts, hoodies, hats, banners, and business cards. Located in Elgin, IL.">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <style>
+        /* Snow Animation Styles */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 0;
+            background: radial-gradient(
+                circle,
+                rgb(126, 223, 255) 0%,
+                rgba(71, 196, 255, 1) 68%,
+                rgba(0, 110, 239, 1) 100%
+            );
+        }
+
+        .loader-icon-1 {
+            font-size: 80px;
+            color: rgb(200, 241, 255, 0.8);
+            text-shadow: 1px 1px 1px rgba(71, 196, 255, 1), -1px -1px 1px white;
+            animation: snow-loader 0.5s 9 linear alternate-reverse forwards,
+                snow-loader-zoom 5s forwards;
+            animation-delay: 0s, 0.5s;
+        }
+
+        @keyframes snow-loader {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(90deg); }
+        }
+
+        @keyframes snow-loader-zoom {
+            from {
+                transform: scale(1, 1) rotateZ(0deg);
+                color: rgb(200, 241, 255, 0.8);
+            }
+            to {
+                color: #123;
+                transform: scale(200, 200) rotateZ(360deg);
+            }
+        }
+
+        .loader-text {
+            font-size: 25px;
+            color: rgb(200, 241, 255);
+        }
+
+        .main {
+            z-index: 1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(#123, #111);
+            opacity: 0;
+            animation: main-loadup 1s forwards linear, main-loadup-bg 10s forwards linear;
+            animation-delay: 1s, 8s;
+        }
+
+        @keyframes main-loadup {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes main-loadup-bg {
+            from {
+                background-size: 100% 100%;
+                background-position: 0% 0%;
+            }
+            to {
+                background-size: 400% 400%;
+                background-position: 0% 100%;
+            }
+        }
+
+        .initial-snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .initial-snow > * {
+            font-size: 50px;
+            color: white;
+            position: absolute;
+            top: -5vh;
+        }
+
+        @keyframes snowfall {
+            0% { transform: translate3d(var(--left-ini), 0, 0); }
+            100% { transform: translate3d(var(--left-end), 100vh, 0); }
+        }
+
+        /* Snow elements */
+        .snow:nth-child(2n) { filter: blur(1px); font-size: 40px; }
+        .snow:nth-child(6n) { filter: blur(2px); font-size: 30px; }
+        .snow:nth-child(10n) { filter: blur(5px); font-size: 30px; }
+
+        /* Individual snow animations */
+        .snow:nth-child(1) { --size: 0.8vw; --left-ini: 0vw; --left-end: -1vw; left: 70vw; animation: snowfall 9s linear infinite; animation-delay: -1s; }
+        .snow:nth-child(2) { --size: 0.2vw; --left-ini: -7vw; --left-end: 10vw; left: 65vw; animation: snowfall 15s linear infinite; animation-delay: -8s; }
+        .snow:nth-child(3) { --size: 1vw; --left-ini: 6vw; --left-end: 6vw; left: 1vw; animation: snowfall 9s linear infinite; animation-delay: -7s; }
+        .snow:nth-child(4) { --size: 0.2vw; --left-ini: -3vw; --left-end: 9vw; left: 88vw; animation: snowfall 14s linear infinite; animation-delay: -5s; }
+        .snow:nth-child(5) { --size: 0.4vw; --left-ini: -2vw; --left-end: -9vw; left: 74vw; animation: snowfall 6s linear infinite; animation-delay: -4s; }
+        .snow:nth-child(6) { --size: 0.6vw; --left-ini: 4vw; --left-end: 2vw; left: 15vw; animation: snowfall 12s linear infinite; animation-delay: -3s; }
+        .snow:nth-child(7) { --size: 0.3vw; --left-ini: -5vw; --left-end: 7vw; left: 45vw; animation: snowfall 8s linear infinite; animation-delay: -6s; }
+        .snow:nth-child(8) { --size: 0.9vw; --left-ini: 3vw; --left-end: -4vw; left: 25vw; animation: snowfall 11s linear infinite; animation-delay: -2s; }
+        .snow:nth-child(9) { --size: 0.1vw; --left-ini: -8vw; --left-end: 5vw; left: 85vw; animation: snowfall 16s linear infinite; animation-delay: -9s; }
+        .snow:nth-child(10) { --size: 0.7vw; --left-ini: 2vw; --left-end: -6vw; left: 35vw; animation: snowfall 10s linear infinite; animation-delay: -1.5s; }
+        .snow:nth-child(11) { --size: 0.5vw; --left-ini: -4vw; --left-end: 8vw; left: 55vw; animation: snowfall 13s linear infinite; animation-delay: -7.5s; }
+        .snow:nth-child(12) { --size: 0.8vw; --left-ini: 7vw; --left-end: -3vw; left: 5vw; animation: snowfall 9s linear infinite; animation-delay: -4.5s; }
+        .snow:nth-child(13) { --size: 0.2vw; --left-ini: -6vw; --left-end: 6vw; left: 75vw; animation: snowfall 15s linear infinite; animation-delay: -8.5s; }
+        .snow:nth-child(14) { --size: 0.4vw; --left-ini: 1vw; --left-end: -7vw; left: 95vw; animation: snowfall 7s linear infinite; animation-delay: -3.5s; }
+        .snow:nth-child(15) { --size: 0.6vw; --left-ini: -2vw; --left-end: 9vw; left: 40vw; animation: snowfall 12s linear infinite; animation-delay: -6.5s; }
+        .snow:nth-child(16) { --size: 0.3vw; --left-ini: 8vw; --left-end: -5vw; left: 20vw; animation: snowfall 8s linear infinite; animation-delay: -2.5s; }
+        .snow:nth-child(17) { --size: 0.9vw; --left-ini: -1vw; --left-end: 4vw; left: 60vw; animation: snowfall 11s linear infinite; animation-delay: -7.8s; }
+        .snow:nth-child(18) { --size: 0.1vw; --left-ini: 5vw; --left-end: -8vw; left: 80vw; animation: snowfall 16s linear infinite; animation-delay: -4.2s; }
+        .snow:nth-child(19) { --size: 0.7vw; --left-ini: -3vw; --left-end: 7vw; left: 30vw; animation: snowfall 10s linear infinite; animation-delay: -9.1s; }
+        .snow:nth-child(20) { --size: 0.5vw; --left-ini: 6vw; --left-end: -2vw; left: 50vw; animation: snowfall 13s linear infinite; animation-delay: -5.7s; }
+
+        /* Ensure page content appears above snow animation */
+        .header, .hero, .features, .services-preview, .gallery, .cta, .footer, main, section {
+            position: relative;
+            z-index: 1001;
+        }
+
+        /* Make navigation bar sticky */
+        .header {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1002 !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        /* Ensure nav text is readable on sticky background */
+        .nav-logo h1, .nav-link {
+            color: #1f2937 !important;
+            text-shadow: none !important;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #2563eb !important;
+        }
+
+        /* Make sure text is readable against snow background */
+        .hero-title, .hero-subtitle, .section-title, .section-subtitle,
+        h1, h2, h3, h4, h5, h6, p, span, label {
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        /* Make buttons stand out */
+        .btn-primary, .btn-secondary {
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: #1f2937 !important;
+            text-shadow: none !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        }
+
+        /* Add semi-transparent backgrounds to CTA and footer sections */
+        .cta {
+            background: rgba(31, 41, 55, 0.8) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .footer {
+            background: rgba(31, 41, 55, 0.9) !important;
+            backdrop-filter: blur(10px) !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+
+        /* Contact Page Specific Styles */
+        .contact-hero {
+            background: transparent !important;
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .contact-hero h1 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .contact-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .contact-content {
+            padding: 4rem 0;
+            background: transparent;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-form-section h2,
+        .contact-info-section h2 {
+            color: white;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            color: #1f2937;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-item h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.25rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .contact-item a {
+            color: #60a5fa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #93c5fd;
+        }
+
+        .business-hours {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 2rem;
+        }
+
+        .business-hours h4 {
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-links h4 {
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .rating-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .rating-section h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .rating-text {
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .delivery-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 2rem;
+        }
+
+        .delivery-info h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .delivery-info p {
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .spanish-note {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .spanish-note p {
+            color: white;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -70,112 +513,115 @@
     </header>
 
     <main>
-        <section class="page-header">
+        <section class="contact-hero">
             <div class="container">
                 <h1>Contact Us</h1>
-                <p>Get in touch for quotes, consultations, and printing services</p>
+                <p>High Quality printed shirts, hoodies, hats, for businesses, special occasions you name it.</p>
+                <p>Send us your design we will make the rest. Any questions feel free to text, call or send an email.</p>
+                <div class="spanish-note">
+                    <p>¡Hablamos español!</p>
+                </div>
             </div>
         </section>
 
         <section class="contact-content">
-            <div class="container">
-                <div class="contact-grid">
-                    <div class="contact-form-section">
-                        <h2>Send us a Message</h2>
-                        <form class="contact-form" action="#" method="POST">
-                            <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="company">Company Name</label>
-                                <input type="text" id="company" name="company">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="service">Product Interest</label>
-                                <select id="service" name="service">
-                                    <option value="">Select a product</option>
-                                    <option value="custom-shirts">Custom Shirts</option>
-                                    <option value="custom-hoodies">Custom Hoodies</option>
-                                    <option value="custom-hats">Custom Hats</option>
-                                    <option value="design-services">Design Services</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message">Project Details *</label>
-                                <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project, quantity needed, timeline, and any specific requirements..."></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
-                    </div>
-                    
-                    <div class="contact-info-section">
-                        <h2>Get in Touch</h2>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="contact-icon">📧</div>
-                                <div>
-                                    <h4>Email</h4>
-                                    <p>info@imaginepptp.com</p>
-                                    <p>quotes@imaginepptp.com</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">📞</div>
-                                <div>
-                                    <h4>Phone</h4>
-                                    <p>Main: (555) 123-4567</p>
-                                    <p>Sales: (555) 123-4568</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">📍</div>
-                                <div>
-                                    <h4>Address</h4>
-                                    <p>123 Print Street</p>
-                                    <p>City, State 12345</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">🕒</div>
-                                <div>
-                                    <h4>Business Hours</h4>
-                                    <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                                    <p>Saturday: 9:00 AM - 3:00 PM</p>
-                                    <p>Sunday: Closed</p>
-                                </div>
+            <div class="contact-grid">
+                <div class="contact-form-section">
+                    <h2>Get In Touch</h2>
+                    <form class="contact-form" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="custom-shirts">Custom Shirts</option>
+                                <option value="custom-hoodies">Custom Hoodies</option>
+                                <option value="custom-hats">Custom Hats</option>
+                                <option value="custom-banners">Custom Banners</option>
+                                <option value="business-cards">Business Cards</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity Needed</label>
+                            <input type="number" id="quantity" name="quantity" min="1" placeholder="e.g., 50">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Project Details *</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, design requirements, timeline, etc." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info-section">
+                    <h2>Contact Information</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <h4>📍 Address</h4>
+                            <p>840 N State St</p>
+                            <p>Northeast Elgin, IL</p>
+                            <p>United States, Illinois</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h4>📞 Phone</h4>
+                            <p><a href="tel:+13312555330">(331) 255-5330</a></p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h4>📧 Email</h4>
+                            <p><a href="mailto:imaginepttp@gmail.com">imaginepttp@gmail.com</a></p>
+                        </div>
+
+                        <div class="business-hours">
+                            <h4>🕒 Business Hours</h4>
+                            <div class="hours-item">
+                                <span>Monday - Sunday</span>
+                                <span>Always Open</span>
                             </div>
                         </div>
-                        
+
+                        <div class="delivery-info">
+                            <h4>🚚 Delivery</h4>
+                            <p>Contactless delivery available</p>
+                        </div>
+
+                        <div class="rating-section">
+                            <h4>⭐ Reviews</h4>
+                            <p class="rating-text">Not yet rated (4 Reviews)</p>
+                        </div>
+
                         <div class="social-links">
-                            <h4>Follow Us</h4>
+                            <h4>📱 Follow Us</h4>
                             <div class="social-icons">
-                                <a href="#" class="social-icon">📘 Facebook</a>
-                                <a href="#" class="social-icon">📷 Instagram</a>
-                                <a href="#" class="social-icon">🐦 Twitter</a>
-                                <a href="#" class="social-icon">💼 LinkedIn</a>
+                                <a href="https://www.tiktok.com/@https%3A%2F%2Fwww.tiktok.com%2Ft%2FZP8kGeyLB%2F" class="social-icon" target="_blank">TikTok</a>
+                                <a href="https://68da1e-18.myshopify.com" class="social-icon" target="_blank">Shop</a>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Any questions? Feel free to text, call, or send an email. We're here to help!</p>
+                <p>¡Hablamos español!</p>
+                <a href="tel:+13312555330" class="btn btn-primary">Call Now</a>
+                <a href="mailto:imaginepttp@gmail.com" class="btn btn-secondary">Send Email</a>
             </div>
         </section>
     </main>
@@ -198,9 +644,9 @@
                 </div>
                 <div class="footer-section">
                     <h4>Contact Info</h4>
-                    <p>📧 info@imaginepptp.com</p>
-                    <p>📞 (555) 123-4567</p>
-                    <p>📍 123 Print Street, City, State 12345</p>
+                    <p>📧 imaginepttp@gmail.com</p>
+                    <p>📞 (331) 255-5330</p>
+                    <p>📍 840 N State St, Northeast Elgin, IL</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -217,6 +663,30 @@
     </div>
     <div class="main">
         <div class="initial-snow">
+<<<<<<< HEAD
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+            <div class="snow">&#10052;</div>
+        </div>
+    </div>
+=======
         <div class="snow">&#10052;</div>
         <div class="snow">&#10052;</div>
         <div class="snow">&#10052;</div>
@@ -269,5 +739,6 @@
         <div class="snow">&#10052;</div>
     </div>
 </div>
+>>>>>>> 06e114767fc347705c636dcb1d4499497a57621c
 </body>
 </html>
