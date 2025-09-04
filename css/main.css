@@ -13,7 +13,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #fff;
+    background-color: transparent;
 }
 
 .container {
@@ -53,40 +53,53 @@ p {
 }
 
 .btn-primary {
-    background-color: #00b4d8;
-    color: white;
+    background-color: white;
+    color: #1e40af;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: none;
+    text-shadow: none;
+    font-weight: 700;
 }
 
 .btn-primary:hover {
-    background-color: #0099c2;
+    background-color: #f8fafc;
     transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.7);
 }
 
 .btn-secondary {
-    background-color: #ff6b35;
-    color: white;
+    background-color: white;
+    color: #374151;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: none;
+    text-shadow: none;
+    font-weight: 700;
 }
 
 .btn-secondary:hover {
-    background-color: #e55a2b;
+    background-color: #f8fafc;
     transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.7);
 }
 
 .btn-outline {
-    background-color: transparent;
-    color: #00b4d8;
-    border: 2px solid #00b4d8;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #f1f5f9;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 .btn-outline:hover {
-    background-color: #00b4d8;
-    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #f8fafc;
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Header and Navigation */
 .header {
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 180, 216, 0.1);
+    background-color: transparent;
+    box-shadow: none;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -335,26 +348,37 @@ p {
 .section-title {
     text-align: center;
     margin-bottom: 1rem;
-    color: #000000;
+    color: white;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 2.5rem;
 }
 
 .section-subtitle {
     text-align: center;
     margin-bottom: 3rem;
-    color: #00b4d8;
-    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
     font-style: italic;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 .features {
-    padding: 5rem 0;
-    background-color: #f0f9ff;
+    padding: 8rem 0 5rem 0;
+    background-color: transparent;
+}
+
+.features .container {
+    padding-top: 3rem;
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .feature-card {
@@ -362,12 +386,28 @@ p {
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    color: #1f2937;
+    text-shadow: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: none;
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
+}
+
+.feature-card h3 {
+    color: #1e40af;
+    text-shadow: none;
+    font-weight: 700;
+}
+
+.feature-card p {
+    color: #374151;
+    text-shadow: none;
+    font-weight: 500;
 }
 
 .feature-icon {
@@ -381,16 +421,22 @@ p {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .service-card {
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    color: #1f2937;
+    text-shadow: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: none;
 }
 
 .service-card:hover {
@@ -406,6 +452,14 @@ p {
 .service-card h3,
 .service-card p {
     padding: 0 1.5rem;
+    color: #1e40af;
+    text-shadow: none;
+    font-weight: 700;
+}
+
+.service-card p {
+    color: #374151;
+    font-weight: 500;
 }
 
 .service-card .btn {
@@ -700,6 +754,39 @@ p {
     transform: translateY(-2px);
 }
 
+/* Gallery Section */
+.gallery {
+    padding: 4rem 0;
+    background-color: transparent;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    background: transparent;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
@@ -739,6 +826,11 @@ p {
     .features-grid,
     .services-grid {
         grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .footer-content {
@@ -1579,4 +1671,723 @@ p {
         flex-direction: column;
         align-items: center;
     }
+}
+
+/* --- Snow Animation Theme --- */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 0;
+    background: radial-gradient(
+        circle,
+        rgb(126, 223, 255) 0%,
+        rgba(71, 196, 255, 1) 68%,
+        rgba(0, 110, 239, 1) 100%
+    );
+}
+
+.loader-icon-1 {
+    font-size: 80px;
+    color: rgb(200, 241, 255, 0.8);
+    text-shadow: 1px 1px 1px rgba(71, 196, 255, 1), -1px -1px 1px white;
+    animation: snow-loader 0.5s 9 linear alternate-reverse forwards,
+        snow-loader-zoom 5s forwards;
+    animation-delay: 0s, 0.5s;
+}
+
+@keyframes snow-loader {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(90deg);
+    }
+}
+
+@keyframes snow-loader-zoom {
+    from {
+        transform: scale(1, 1) rotateZ(0deg);
+        color: rgb(200, 241, 255, 0.8);
+    }
+    to {
+        color: #123;
+        transform: scale(200, 200) rotateZ(360deg);
+    }
+}
+
+.loader-text {
+    font-size: 25px;
+    color: rgb(200, 241, 255);
+}
+
+.main {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(#123, #111);
+    opacity: 0;
+    animation: main-loadup 1s forwards linear, main-loadup-bg 10s forwards linear;
+    animation-delay: 1s, 8s;
+}
+
+@keyframes main-loadup {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes main-loadup-bg {
+    from {
+        background-size: 100% 100%;
+        background-position: 0% 0%;
+    }
+    to {
+        background-size: 400% 400%;
+        background-position: 0% 100%;
+    }
+}
+
+.initial-snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.initial-snow > * {
+    font-size: 50px;
+    color: white;
+    position: absolute;
+    top: -5vh;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translate3d(var(--left-ini), 0, 0);
+    }
+    100% {
+        transform: translate3d(var(--left-end), 100vh, 0);
+    }
+}
+
+.snow:nth-child(2n) {
+    filter: blur(1px);
+    font-size: 40px;
+}
+
+.snow:nth-child(6n) {
+    filter: blur(2px);
+    font-size: 30px;
+}
+
+.snow:nth-child(10n) {
+    filter: blur(5px);
+    font-size: 30px;
+}
+
+.snow:nth-child(1) {
+    --size: 0.8vw;
+    --left-ini: 0vw;
+    --left-end: -1vw;
+    left: 70vw;
+    animation: snowfall 9s linear infinite;
+    animation-delay: -1s;
+}
+
+.snow:nth-child(2) {
+    --size: 0.2vw;
+    --left-ini: -7vw;
+    --left-end: 10vw;
+    left: 65vw;
+    animation: snowfall 15s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(3) {
+    --size: 1vw;
+    --left-ini: 6vw;
+    --left-end: 6vw;
+    left: 1vw;
+    animation: snowfall 9s linear infinite;
+    animation-delay: -7s;
+}
+
+.snow:nth-child(4) {
+    --size: 0.2vw;
+    --left-ini: -3vw;
+    --left-end: 9vw;
+    left: 88vw;
+    animation: snowfall 14s linear infinite;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(5) {
+    --size: 0.4vw;
+    --left-ini: -2vw;
+    --left-end: -9vw;
+    left: 74vw;
+    animation: snowfall 6s linear infinite;
+    animation-delay: -4s;
+}
+
+.snow:nth-child(6) {
+    --size: 0.2vw;
+    --left-ini: 5vw;
+    --left-end: 1vw;
+    left: 35vw;
+    animation: snowfall 6s linear infinite;
+    animation-delay: -7s;
+}
+
+.snow:nth-child(7) {
+    --size: 0.4vw;
+    --left-ini: -2vw;
+    --left-end: -1vw;
+    left: 27vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(8) {
+    --size: 1vw;
+    --left-ini: -9vw;
+    --left-end: -2vw;
+    left: 69vw;
+    animation: snowfall 8s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(9) {
+    --size: 0.2vw;
+    --left-ini: -1vw;
+    --left-end: -5vw;
+    left: 84vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -6s;
+}
+
+.snow:nth-child(10) {
+    --size: 0.2vw;
+    --left-ini: 7vw;
+    --left-end: -9vw;
+    left: 82vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -3s;
+}
+
+.snow:nth-child(11) {
+    --size: 0.6vw;
+    --left-ini: -2vw;
+    --left-end: -1vw;
+    left: 48vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -1s;
+}
+
+.snow:nth-child(12) {
+    --size: 0.2vw;
+    --left-ini: 5vw;
+    --left-end: 6vw;
+    left: 39vw;
+    animation: snowfall 15s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(13) {
+    --size: 0.2vw;
+    --left-ini: 6vw;
+    --left-end: 5vw;
+    left: 3vw;
+    animation: snowfall 9s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(14) {
+    --size: 0.8vw;
+    --left-ini: -5vw;
+    --left-end: -2vw;
+    left: 49vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(15) {
+    --size: 0.6vw;
+    --left-ini: 10vw;
+    --left-end: 4vw;
+    left: 77vw;
+    animation: snowfall 7s linear infinite;
+    animation-delay: -4s;
+}
+
+.snow:nth-child(16) {
+    --size: 0.8vw;
+    --left-ini: -3vw;
+    --left-end: 1vw;
+    left: 86vw;
+    animation: snowfall 14s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(17) {
+    --size: 1vw;
+    --left-ini: 6vw;
+    --left-end: -7vw;
+    left: 18vw;
+    animation: snowfall 9s linear infinite;
+    animation-delay: -6s;
+}
+
+.snow:nth-child(18) {
+    --size: 1vw;
+    --left-ini: -9vw;
+    --left-end: 4vw;
+    left: 64vw;
+    animation: snowfall 13s linear infinite;
+    animation-delay: -7s;
+}
+
+.snow:nth-child(19) {
+    --size: 1vw;
+    --left-ini: 2vw;
+    --left-end: -7vw;
+    left: 52vw;
+    animation: snowfall 15s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(20) {
+    --size: 0.4vw;
+    --left-ini: 0vw;
+    --left-end: 8vw;
+    left: 5vw;
+    animation: snowfall 8s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(21) {
+    --size: 0.6vw;
+    --left-ini: -9vw;
+    --left-end: -2vw;
+    left: 10vw;
+    animation: snowfall 12s linear infinite;
+    animation-delay: -3s;
+}
+
+.snow:nth-child(22) {
+    --size: 0.8vw;
+    --left-ini: -3vw;
+    --left-end: -8vw;
+    left: 54vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(23) {
+    --size: 0.6vw;
+    --left-ini: -7vw;
+    --left-end: -8vw;
+    left: 20vw;
+    animation: snowfall 6s linear infinite;
+    animation-delay: -3s;
+}
+
+.snow:nth-child(24) {
+    --size: 0.4vw;
+    --left-ini: 10vw;
+    --left-end: -4vw;
+    left: 68vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(25) {
+    --size: 1vw;
+    --left-ini: 3vw;
+    --left-end: 5vw;
+    left: 90vw;
+    animation: snowfall 7s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(26) {
+    --size: 1vw;
+    --left-ini: -7vw;
+    --left-end: 5vw;
+    left: 71vw;
+    animation: snowfall 13s linear infinite;
+    animation-delay: -2s;
+}
+
+.snow:nth-child(27) {
+    --size: 0.6vw;
+    --left-ini: 9vw;
+    --left-end: 4vw;
+    left: 2vw;
+    animation: snowfall 15s linear infinite;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(28) {
+    --size: 1vw;
+    --left-ini: -5vw;
+    --left-end: 3vw;
+    left: 23vw;
+    animation: snowfall 12s linear infinite;
+    animation-delay: -1s;
+}
+
+.snow:nth-child(29) {
+    --size: 0.4vw;
+    --left-ini: -2vw;
+    --left-end: -1vw;
+    left: 39vw;
+    animation: snowfall 14s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(30) {
+    --size: 0.6vw;
+    --left-ini: -9vw;
+    --left-end: -5vw;
+    left: 76vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(31) {
+    --size: 0.4vw;
+    --left-ini: -5vw;
+    --left-end: 3vw;
+    left: 14vw;
+    animation: snowfall 8s linear infinite;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(32) {
+    --size: 0.2vw;
+    --left-ini: 5vw;
+    --left-end: -1vw;
+    left: 86vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(33) {
+    --size: 0.4vw;
+    --left-ini: -3vw;
+    --left-end: 10vw;
+    left: 66vw;
+    animation: snowfall 6s linear infinite;
+    animation-delay: -6s;
+}
+
+.snow:nth-child(34) {
+    --size: 1vw;
+    --left-ini: -3vw;
+    --left-end: 6vw;
+    left: 75vw;
+    animation: snowfall 14s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(35) {
+    --size: 1vw;
+    --left-ini: -6vw;
+    --left-end: 7vw;
+    left: 22vw;
+    animation: snowfall 7s linear infinite;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(36) {
+    --size: 1vw;
+    --left-ini: 3vw;
+    --left-end: 4vw;
+    left: 10vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -10s;
+}
+
+.snow:nth-child(37) {
+    --size: 0.6vw;
+    --left-ini: 2vw;
+    --left-end: 10vw;
+    left: 95vw;
+    animation: snowfall 13s linear infinite;
+    animation-delay: -6s;
+}
+
+.snow:nth-child(38) {
+    --size: 0.8vw;
+    --left-ini: 5vw;
+    --left-end: 8vw;
+    left: 34vw;
+    animation: snowfall 9s linear infinite;
+    animation-delay: -10s;
+}
+
+.snow:nth-child(39) {
+    --size: 0.8vw;
+    --left-ini: 4vw;
+    --left-end: 0vw;
+    left: 80vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -2s;
+}
+
+.snow:nth-child(40) {
+    --size: 0.8vw;
+    --left-ini: 1vw;
+    --left-end: -7vw;
+    left: 45vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -4s;
+}
+
+.snow:nth-child(41) {
+    --size: 0.2vw;
+    --left-ini: 9vw;
+    --left-end: 10vw;
+    left: 82vw;
+    animation: snowfall 8s linear infinite;
+    animation-delay: -2s;
+}
+
+.snow:nth-child(42) {
+    --size: 1vw;
+    --left-ini: 9vw;
+    --left-end: -9vw;
+    left: 22vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -6s;
+}
+
+.snow:nth-child(43) {
+    --size: 0.6vw;
+    --left-ini: 5vw;
+    --left-end: 8vw;
+    left: 66vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -1s;
+}
+
+.snow:nth-child(44) {
+    --size: 0.6vw;
+    --left-ini: -5vw;
+    --left-end: -2vw;
+    left: 75vw;
+    animation: snowfall 12s linear infinite;
+    animation-delay: -4s;
+}
+
+.snow:nth-child(45) {
+    --size: 0.2vw;
+    --left-ini: 0vw;
+    --left-end: 3vw;
+    left: 2vw;
+    animation: snowfall 7s linear infinite;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(46) {
+    --size: 0.2vw;
+    --left-ini: 8vw;
+    --left-end: -3vw;
+    left: 94vw;
+    animation: snowfall 8s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(47) {
+    --size: 0.6vw;
+    --left-ini: -6vw;
+    --left-end: -9vw;
+    left: 95vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -4s;
+}
+
+.snow:nth-child(48) {
+    --size: 0.2vw;
+    --left-ini: -5vw;
+    --left-end: 6vw;
+    left: 34vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -6s;
+}
+
+.snow:nth-child(49) {
+    --size: 0.8vw;
+    --left-ini: 4vw;
+    --left-end: 8vw;
+    left: 22vw;
+    animation: snowfall 12s linear infinite;
+    animation-delay: -10s;
+}
+
+.snow:nth-child(50) {
+    --size: 0.2vw;
+    --left-ini: -4vw;
+    --left-end: 4vw;
+    left: 100vw;
+    animation: snowfall 14s linear infinite;
+    animation-delay: -9s;
+}
+
+/* Ensure page content appears above snow animation */
+.header, .hero, .features, .services-preview, .gallery, .cta, .footer, main, section {
+    position: relative;
+    z-index: 1001;
+}
+
+/* Make navigation bar sticky */
+.header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1002 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure nav text is readable on sticky background */
+.nav-logo h1, .nav-link {
+    color: #1f2937 !important;
+    text-shadow: none !important;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #2563eb !important;
+}
+
+/* Make sure all text content is visible */
+.hero-title, .hero-subtitle, .section-title, .section-subtitle, h1, h2, h3, h4, h5, h6, p, span, div {
+    position: relative;
+    z-index: 1001;
+}
+
+/* Make all sections transparent to show snow animation */
+.hero, .features, .services-preview, .gallery, .cta, .footer, 
+.page-header, .contact-content, .contact-grid, .contact-form-section,
+.feature-card, .service-card, .gallery-item, .product-card {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Make sure text is readable against snow background */
+.hero-title, .hero-subtitle, .section-title, .section-subtitle,
+h1, h2, h3, h4, h5, h6, p, span, label {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Make cards semi-transparent with white text */
+.feature-card, .service-card, .product-card {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.feature-card h3, .service-card h3, .product-card h3,
+.feature-card p, .service-card p, .product-card p {
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Make buttons stand out */
+.btn-primary, .btn-secondary {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #1f2937 !important;
+    text-shadow: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Add semi-transparent backgrounds to CTA and footer sections */
+.cta {
+    background: rgba(31, 41, 55, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.footer {
+    background: rgba(31, 41, 55, 0.9) !important;
+    backdrop-filter: blur(10px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Make all cards have frosted glass effect (except footer) */
+.feature-card, .service-card, .product-card {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 12px !important;
+}
+
+/* Footer sections - no boxes, just text on page */
+.footer-section {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/* Make all card text white and bold */
+.feature-card h3, .service-card h3, .product-card h3,
+.feature-card p, .service-card p, .product-card p {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+.feature-card a:hover, .service-card a:hover, .product-card a:hover {
+    color: #60a5fa !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Footer text - white with shadow */
+.footer-section h3, .footer-section h4, .footer-section p, .footer-section a {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 600 !important;
+}
+
+.footer-section a:hover {
+    color: #60a5fa !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
+}
+
+.footer-bottom {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border-top: none !important;
+}
+
+/* Ensure footer text is readable */
+.footer h3, .footer h4, .footer p, .footer a {
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+
+.footer a:hover {
+    color: #60a5fa !important;
 }
