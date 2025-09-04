@@ -95,6 +95,7 @@
             width: 100vw;
             height: 100vh;
             overflow: hidden;
+            pointer-events: none;
         }
 
         .initial-snow > * {
@@ -102,6 +103,8 @@
             color: white;
             position: absolute;
             top: -5vh;
+            pointer-events: none;
+            z-index: 0;
         }
 
         @keyframes snowfall {
@@ -118,28 +121,38 @@
         .snow:nth-child(1) { --size: 0.8vw; --left-ini: 0vw; --left-end: -1vw; left: 70vw; animation: snowfall 9s linear infinite; animation-delay: -1s; }
         .snow:nth-child(2) { --size: 0.2vw; --left-ini: -7vw; --left-end: 10vw; left: 65vw; animation: snowfall 15s linear infinite; animation-delay: -8s; }
         .snow:nth-child(3) { --size: 1vw; --left-ini: 6vw; --left-end: 6vw; left: 1vw; animation: snowfall 9s linear infinite; animation-delay: -7s; }
-        .snow:nth-child(4) { --size: 0.2vw; --left-ini: -3vw; --left-end: 9vw; left: 88vw; animation: snowfall 14s linear infinite; animation-delay: -5s; }
+        .snow:nth-child(4) { --size: 0.2vw; --left-ini: -3vw; --left-end: 9vw; left: 80vw; animation: snowfall 14s linear infinite; animation-delay: -5s; }
         .snow:nth-child(5) { --size: 0.4vw; --left-ini: -2vw; --left-end: -9vw; left: 74vw; animation: snowfall 6s linear infinite; animation-delay: -4s; }
         .snow:nth-child(6) { --size: 0.6vw; --left-ini: 4vw; --left-end: 2vw; left: 15vw; animation: snowfall 12s linear infinite; animation-delay: -3s; }
         .snow:nth-child(7) { --size: 0.3vw; --left-ini: -5vw; --left-end: 7vw; left: 45vw; animation: snowfall 8s linear infinite; animation-delay: -6s; }
         .snow:nth-child(8) { --size: 0.9vw; --left-ini: 3vw; --left-end: -4vw; left: 25vw; animation: snowfall 11s linear infinite; animation-delay: -2s; }
-        .snow:nth-child(9) { --size: 0.1vw; --left-ini: -8vw; --left-end: 5vw; left: 85vw; animation: snowfall 16s linear infinite; animation-delay: -9s; }
+        .snow:nth-child(9) { --size: 0.1vw; --left-ini: -8vw; --left-end: 5vw; left: 75vw; animation: snowfall 16s linear infinite; animation-delay: -9s; }
         .snow:nth-child(10) { --size: 0.7vw; --left-ini: 2vw; --left-end: -6vw; left: 35vw; animation: snowfall 10s linear infinite; animation-delay: -1.5s; }
         .snow:nth-child(11) { --size: 0.5vw; --left-ini: -4vw; --left-end: 8vw; left: 55vw; animation: snowfall 13s linear infinite; animation-delay: -7.5s; }
         .snow:nth-child(12) { --size: 0.8vw; --left-ini: 7vw; --left-end: -3vw; left: 5vw; animation: snowfall 9s linear infinite; animation-delay: -4.5s; }
-        .snow:nth-child(13) { --size: 0.2vw; --left-ini: -6vw; --left-end: 6vw; left: 75vw; animation: snowfall 15s linear infinite; animation-delay: -8.5s; }
-        .snow:nth-child(14) { --size: 0.4vw; --left-ini: 1vw; --left-end: -7vw; left: 95vw; animation: snowfall 7s linear infinite; animation-delay: -3.5s; }
+        .snow:nth-child(13) { --size: 0.2vw; --left-ini: -6vw; --left-end: 6vw; left: 60vw; animation: snowfall 15s linear infinite; animation-delay: -8.5s; }
+        .snow:nth-child(14) { --size: 0.4vw; --left-ini: 1vw; --left-end: -7vw; left: 85vw; animation: snowfall 7s linear infinite; animation-delay: -3.5s; }
         .snow:nth-child(15) { --size: 0.6vw; --left-ini: -2vw; --left-end: 9vw; left: 40vw; animation: snowfall 12s linear infinite; animation-delay: -6.5s; }
         .snow:nth-child(16) { --size: 0.3vw; --left-ini: 8vw; --left-end: -5vw; left: 20vw; animation: snowfall 8s linear infinite; animation-delay: -2.5s; }
-        .snow:nth-child(17) { --size: 0.9vw; --left-ini: -1vw; --left-end: 4vw; left: 60vw; animation: snowfall 11s linear infinite; animation-delay: -7.8s; }
-        .snow:nth-child(18) { --size: 0.1vw; --left-ini: 5vw; --left-end: -8vw; left: 80vw; animation: snowfall 16s linear infinite; animation-delay: -4.2s; }
-        .snow:nth-child(19) { --size: 0.7vw; --left-ini: -3vw; --left-end: 7vw; left: 30vw; animation: snowfall 10s linear infinite; animation-delay: -9.1s; }
-        .snow:nth-child(20) { --size: 0.5vw; --left-ini: 6vw; --left-end: -2vw; left: 50vw; animation: snowfall 13s linear infinite; animation-delay: -5.7s; }
+        .snow:nth-child(17) { --size: 0.9vw; --left-ini: -1vw; --left-end: 4vw; left: 50vw; animation: snowfall 11s linear infinite; animation-delay: -7.8s; }
+        .snow:nth-child(18) { --size: 0.1vw; --left-ini: 5vw; --left-end: -8vw; left: 30vw; animation: snowfall 16s linear infinite; animation-delay: -4.2s; }
+        .snow:nth-child(19) { --size: 0.7vw; --left-ini: -3vw; --left-end: 7vw; left: 10vw; animation: snowfall 10s linear infinite; animation-delay: -9.1s; }
+        .snow:nth-child(20) { --size: 0.5vw; --left-ini: 6vw; --left-end: -2vw; left: 90vw; animation: snowfall 13s linear infinite; animation-delay: -5.7s; }
 
         /* Ensure page content appears above snow animation */
         .header, .hero, .features, .services-preview, .gallery, .cta, .footer, main, section {
             position: relative;
             z-index: 1001;
+        }
+
+        /* Ensure snow animation stays behind content and doesn't interfere with text */
+        .loader, .main {
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .loader *, .main * {
+            pointer-events: none;
         }
 
         /* Make navigation bar sticky */
@@ -663,7 +676,6 @@
     </div>
     <div class="main">
         <div class="initial-snow">
-<<<<<<< HEAD
             <div class="snow">&#10052;</div>
             <div class="snow">&#10052;</div>
             <div class="snow">&#10052;</div>
@@ -686,59 +698,5 @@
             <div class="snow">&#10052;</div>
         </div>
     </div>
-=======
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-    </div>
-</div>
->>>>>>> 06e114767fc347705c636dcb1d4499497a57621c
 </body>
 </html>

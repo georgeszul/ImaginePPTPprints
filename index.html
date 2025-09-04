@@ -726,6 +726,238 @@
         .footer a:hover {
             color: #60a5fa !important;
         }
+
+        /* Image Slider Styles */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+            z-index: 1003 !important;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 1s ease-in-out;
+            z-index: 1004 !important;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1005 !important;
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1006 !important;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .slide-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 1007 !important;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: white;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+            z-index: 1007 !important;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .slider-arrow.prev {
+            left: 20px;
+        }
+
+        .slider-arrow.next {
+            right: 20px;
+        }
+
+        /* Product Cards Slider Styles */
+        .services-grid {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .service-card {
+            min-width: 100%;
+            margin: 0;
+            transition: transform 0.5s ease-in-out;
+            flex-shrink: 0;
+            flex: 0 0 100%;
+        }
+
+        .services-slider-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 600%; /* 6 items * 100% each */
+        }
+
+        .services-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .services-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .services-dot.active {
+            background: white;
+        }
+
+        .services-arrow {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .services-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Gallery Slider Styles */
+        .gallery-grid {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .gallery-item {
+            min-width: 100%;
+            margin: 0;
+            transition: transform 0.5s ease-in-out;
+            flex-shrink: 0;
+            flex: 0 0 100%;
+        }
+
+        .gallery-slider-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 600%; /* 6 items * 100% each */
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background: white;
+        }
+
+        .gallery-arrow {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .gallery-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .service-card, .gallery-item {
+                min-width: calc(33.333% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-card, .gallery-item {
+                min-width: calc(100% - 20px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -790,11 +1022,11 @@
     </header>
 
     <main>
-        <section class="hero">
+                <section class="hero">
             <div class="hero-content">
                 <h2 class="hero-title">Custom Printed Apparel & Accessories</h2>
                 <p class="hero-subtitle">High Quality printed shirts, hoodies, hats, for businesses, special occasions you name it. Send us your design we will make the rest.</p>
-                <p class="hero-subtitle">Any questions fell free to text call or send a email.</p>
+                <p class="hero-subtitle">Any questions feel free to text call or send a email.</p>
                 <div class="hero-buttons">
                     <a href="services.html" class="btn btn-primary">Our Services</a>
                     <a href="contact.html" class="btn btn-secondary">Get Quote</a>
@@ -845,42 +1077,54 @@
             <div class="container">
                 <h2 class="section-title">Our Products</h2>
                 <div class="services-grid">
-                    <div class="service-card">
-                        <img src="images/shirts/539738239_122202396998293236_2183067847999368314_n.jpg" alt="Custom Shirts" class="service-image">
-                        <h3>Custom Shirts</h3>
-                        <p>High quality printed shirts for businesses, teams, and special occasions</p>
-                        <a href="services.html#custom-shirts" class="btn btn-outline">Learn More</a>
+                    <div class="services-slider-container">
+                        <div class="service-card">
+                            <img src="images/shirts/539738239_122202396998293236_2183067847999368314_n.jpg" alt="Custom Shirts" class="service-image">
+                            <h3>Custom Shirts</h3>
+                            <p>High quality printed shirts for businesses, teams, and special occasions</p>
+                            <a href="services.html#custom-shirts" class="btn btn-outline">Learn More</a>
+                        </div>
+                        <div class="service-card">
+                            <img src="images/shirts/539634838_122202397106293236_2065046746168162236_n.jpg" alt="Custom Hoodies" class="service-image">
+                            <h3>Custom Hoodies</h3>
+                            <p>Personalized hoodies perfect for teams, events, and branding</p>
+                            <a href="services.html#custom-hoodies" class="btn btn-outline">Learn More</a>
+                        </div>
+                        <div class="service-card">
+                            <img src="images/shirts/539586768_122202396788293236_2819796790172946060_n.jpg" alt="Custom Hats" class="service-image">
+                            <h3>Custom Hats</h3>
+                            <p>Professional hats and caps with your custom design or branding</p>
+                            <a href="services.html#custom-hats" class="btn btn-outline">Learn More</a>
+                        </div>
+                        <div class="service-card">
+                            <img src="images/banner/526524609_122198365964293236_9110283145285838337_n.jpg" alt="Custom Banners" class="service-image">
+                            <h3>Custom Banners</h3>
+                            <p>Professional banners and signage for events, businesses, and promotions</p>
+                            <a href="services.html#custom-banners" class="btn btn-outline">Learn More</a>
+                        </div>
+                        <div class="service-card">
+                            <img src="images/business cards/529861076_122199178064293236_630406596597416380_n.jpg" alt="Business Cards" class="service-image">
+                            <h3>Business Cards</h3>
+                            <p>High-quality business cards to make your first impression count</p>
+                            <a href="services.html#business-cards" class="btn btn-outline">Learn More</a>
+                        </div>
+                        <div class="service-card">
+                            <img src="images/business cards/529234045_122199178148293236_8808661976772103967_n.jpg" alt="More Business Cards" class="service-image">
+                            <h3>Professional Printing</h3>
+                            <p>Premium business cards and professional printing services</p>
+                            <a href="services.html#professional-printing" class="btn btn-outline">Learn More</a>
+                        </div>
                     </div>
-                    <div class="service-card">
-                        <img src="images/shirts/539634838_122202397106293236_2065046746168162236_n.jpg" alt="Custom Hoodies" class="service-image">
-                        <h3>Custom Hoodies</h3>
-                        <p>Personalized hoodies perfect for teams, events, and branding</p>
-                        <a href="services.html#custom-hoodies" class="btn btn-outline">Learn More</a>
-                    </div>
-                    <div class="service-card">
-                        <img src="images/shirts/539586768_122202396788293236_2819796790172946060_n.jpg" alt="Custom Hats" class="service-image">
-                        <h3>Custom Hats</h3>
-                        <p>Professional hats and caps with your custom design or branding</p>
-                        <a href="services.html#custom-hats" class="btn btn-outline">Learn More</a>
-                    </div>
-                    <div class="service-card">
-                        <img src="images/banner/526524609_122198365964293236_9110283145285838337_n.jpg" alt="Custom Banners" class="service-image">
-                        <h3>Custom Banners</h3>
-                        <p>Professional banners and signage for events, businesses, and promotions</p>
-                        <a href="services.html#custom-banners" class="btn btn-outline">Learn More</a>
-                    </div>
-                    <div class="service-card">
-                        <img src="images/business cards/529861076_122199178064293236_630406596597416380_n.jpg" alt="Business Cards" class="service-image">
-                        <h3>Business Cards</h3>
-                        <p>High-quality business cards to make your first impression count</p>
-                        <a href="services.html#business-cards" class="btn btn-outline">Learn More</a>
-                    </div>
-                    <div class="service-card">
-                        <img src="images/business cards/529234045_122199178148293236_8808661976772103967_n.jpg" alt="More Business Cards" class="service-image">
-                        <h3>Professional Printing</h3>
-                        <p>Premium business cards and professional printing services</p>
-                        <a href="services.html#professional-printing" class="btn btn-outline">Learn More</a>
-                    </div>
+                </div>
+                <div class="services-nav">
+                    <button class="services-arrow prev" onclick="changeServicesSlide(-1)">‹</button>
+                    <div class="services-dot active" onclick="goToServicesSlide(0)"></div>
+                    <div class="services-dot" onclick="goToServicesSlide(1)"></div>
+                    <div class="services-dot" onclick="goToServicesSlide(2)"></div>
+                    <div class="services-dot" onclick="goToServicesSlide(3)"></div>
+                    <div class="services-dot" onclick="goToServicesSlide(4)"></div>
+                    <div class="services-dot" onclick="goToServicesSlide(5)"></div>
+                    <button class="services-arrow next" onclick="changeServicesSlide(1)">›</button>
                 </div>
             </div>
         </section>
@@ -890,24 +1134,36 @@
                 <h2 class="section-title">Our Work Gallery</h2>
                 <p class="section-subtitle">Check out some of our recent projects</p>
                 <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="images/shirts/540748072_122202402434293236_537020029792240004_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                    <div class="gallery-slider-container">
+                        <div class="gallery-item">
+                            <img src="images/shirts/540748072_122202402434293236_537020029792240004_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/shirts/539786646_122202402428293236_5026657620272618721_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/shirts/539565489_122202397124293236_5997368702485755997_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/business cards/528687307_122199178244293236_2834460709636963266_n.jpg" alt="Business Card Design" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/shirts/539482495_122202397040293236_152716096225770613_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/business cards/527979919_122199178190293236_5235865814956008456_n.jpg" alt="Business Card Design" class="gallery-image">
+                        </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="images/shirts/539786646_122202402428293236_5026657620272618721_n.jpg" alt="Custom Shirt Design" class="gallery-image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/shirts/539565489_122202397124293236_5997368702485755997_n.jpg" alt="Custom Shirt Design" class="gallery-image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/business cards/528687307_122199178244293236_2834460709636963266_n.jpg" alt="Business Card Design" class="gallery-image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/shirts/539482495_122202397040293236_152716096225770613_n.jpg" alt="Custom Shirt Design" class="gallery-image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/business cards/527979919_122199178190293236_5235865814956008456_n.jpg" alt="Business Card Design" class="gallery-image">
-                    </div>
+                </div>
+                <div class="gallery-nav">
+                    <button class="gallery-arrow prev" onclick="changeGallerySlide(-1)">‹</button>
+                    <div class="gallery-dot active" onclick="goToGallerySlide(0)"></div>
+                    <div class="gallery-dot" onclick="goToGallerySlide(1)"></div>
+                    <div class="gallery-dot" onclick="goToGallerySlide(2)"></div>
+                    <div class="gallery-dot" onclick="goToGallerySlide(3)"></div>
+                    <div class="gallery-dot" onclick="goToGallerySlide(4)"></div>
+                    <div class="gallery-dot" onclick="goToGallerySlide(5)"></div>
+                    <button class="gallery-arrow next" onclick="changeGallerySlide(1)">›</button>
                 </div>
             </div>
         </section>
@@ -951,6 +1207,168 @@
     </footer>
 
     <script src="js/main.js"></script>
+
+    <!-- Image Slider JavaScript -->
+    <script>
+        let currentSlide = 0;
+        let slides, dots, sliderContainer, totalSlides;
+        let autoSlideInterval;
+
+        // Services slider variables
+        let currentServicesSlide = 0;
+        let servicesCards, servicesDots, servicesContainer, totalServicesSlides;
+        let servicesAutoSlideInterval;
+
+        // Gallery slider variables
+        let currentGallerySlide = 0;
+        let galleryItems, galleryDots, galleryContainer, totalGallerySlides;
+        let galleryAutoSlideInterval;
+
+        function showSlide(n) {
+            if (!sliderContainer || !dots) return;
+            
+            currentSlide = (n * totalSlides) % totalSlides;
+            sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update active dot
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        function goToSlide(n) {
+            showSlide(n);
+        }
+
+        // Services slider functions
+        function showServicesSlide(n) {
+            if (!servicesContainer || !servicesDots) return;
+            
+            currentServicesSlide = n;
+            const translateX = currentServicesSlide * 100; // Move by 100% for each slide
+            servicesContainer.style.transform = `translateX(-${translateX}%)`;
+            
+            // Update active dot
+            servicesDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentServicesSlide);
+            });
+        }
+
+        function changeServicesSlide(direction) {
+            const newSlide = currentServicesSlide + direction;
+            if (newSlide >= 0 && newSlide < totalServicesSlides) {
+                showServicesSlide(newSlide);
+            }
+        }
+
+        function goToServicesSlide(n) {
+            showServicesSlide(n);
+        }
+
+        // Gallery slider functions
+        function showGallerySlide(n) {
+            if (!galleryContainer || !galleryDots) return;
+            
+            currentGallerySlide = n;
+            const translateX = currentGallerySlide * 100; // Move by 100% for each slide
+            galleryContainer.style.transform = `translateX(-${translateX}%)`;
+            
+            // Update active dot
+            galleryDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentGallerySlide);
+            });
+        }
+
+        function changeGallerySlide(direction) {
+            const newSlide = currentGallerySlide + direction;
+            if (newSlide >= 0 && newSlide < totalGallerySlides) {
+                showGallerySlide(newSlide);
+            }
+        }
+
+        function goToGallerySlide(n) {
+            showGallerySlide(n);
+        }
+
+        function startAutoSlide() {
+            // Clear any existing interval
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+            }
+            
+            // Auto-advance slides every 5 seconds
+            autoSlideInterval = setInterval(() => {
+                changeSlide(1);
+            }, 5000);
+        }
+
+        function startServicesAutoSlide() {
+            if (servicesAutoSlideInterval) {
+                clearInterval(servicesAutoSlideInterval);
+            }
+            
+            servicesAutoSlideInterval = setInterval(() => {
+                const nextSlide = (currentServicesSlide + 1) % totalServicesSlides;
+                showServicesSlide(nextSlide);
+            }, 4000);
+        }
+
+        function startGalleryAutoSlide() {
+            if (galleryAutoSlideInterval) {
+                clearInterval(galleryAutoSlideInterval);
+            }
+            
+            galleryAutoSlideInterval = setInterval(() => {
+                const nextSlide = (currentGallerySlide + 1) % totalGallerySlides;
+                showGallerySlide(nextSlide);
+            }, 3500);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait a bit to ensure all elements are loaded
+            setTimeout(() => {
+                // Hero slider initialization
+                slides = document.querySelectorAll('.slide');
+                dots = document.querySelectorAll('.slider-dot');
+                sliderContainer = document.querySelector('.slider-container');
+                
+                if (slides && dots && sliderContainer) {
+                    totalSlides = slides.length;
+                    console.log('Hero slider initialized with', totalSlides, 'slides');
+                    showSlide(0);
+                    startAutoSlide();
+                }
+
+                // Services slider initialization
+                servicesCards = document.querySelectorAll('.service-card');
+                servicesDots = document.querySelectorAll('.services-dot');
+                servicesContainer = document.querySelector('.services-slider-container');
+                
+                if (servicesCards && servicesDots && servicesContainer) {
+                    totalServicesSlides = 6; // We have 6 cards, showing 1 at a time
+                    console.log('Services slider initialized with', totalServicesSlides, 'slides');
+                    showServicesSlide(0);
+                    startServicesAutoSlide();
+                }
+
+                // Gallery slider initialization
+                galleryItems = document.querySelectorAll('.gallery-item');
+                galleryDots = document.querySelectorAll('.gallery-dot');
+                galleryContainer = document.querySelector('.gallery-slider-container');
+                
+                if (galleryItems && galleryDots && galleryContainer) {
+                    totalGallerySlides = 6; // We have 6 images, showing 1 at a time
+                    console.log('Gallery slider initialized with', totalGallerySlides, 'slides');
+                    showGallerySlide(0);
+                    startGalleryAutoSlide();
+                }
+            }, 100);
+        });
+    </script>
 
     <!-- Snow Animation Elements -->
     <div class="loader">
