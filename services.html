@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - Imagine PPTP Prints</title>
-    <meta name="description" content="Explore our comprehensive printing services including business cards, brochures, large format printing, and more.">
+    <meta name="description" content="Custom printed shirts, hoodies, and hats for businesses and special occasions. Professional quality, fast turnaround, competitive pricing.">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 </head>
@@ -13,8 +13,10 @@
         <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <img src="images/mainLogo.jpg" alt="Imagine PPTP Prints Logo" class="logo-image">
-                    <h1>Imagine PPTP Prints</h1>
+                    <a href="index.html" class="logo-link">
+                        <img src="images/mainLogo.jpg" alt="Imagine PPTP Prints Logo" class="logo-image">
+                        <h1>Imagine PPTP Prints</h1>
+                    </a>
                 </div>
                 <ul class="nav-menu">
                     <li class="nav-item">
@@ -22,9 +24,6 @@
                     </li>
                     <li class="nav-item">
                         <a href="services.html" class="nav-link active">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="products.html" class="nav-link">Products</a>
                     </li>
                     <li class="nav-item">
                         <a href="portfolio.html" class="nav-link">Portfolio</a>
@@ -36,6 +35,31 @@
                         <a href="contact.html" class="nav-link">Contact</a>
                     </li>
                 </ul>
+                
+                <div class="nav-actions">
+                    <div class="search-container">
+                        <button class="search-toggle" aria-label="Toggle search">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </button>
+                        <div class="search-dropdown">
+                            <form class="search-form" role="search">
+                                <input type="search" class="search-input" placeholder="Search services..." aria-label="Search">
+                                <button type="submit" class="search-submit" aria-label="Submit search">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <path d="m21 21-4.35-4.35"></path>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="btn btn-quote">Get Quote</a>
+                </div>
+                
                 <div class="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -50,6 +74,22 @@
             <div class="container">
                 <h1>Our Services</h1>
                 <p>Custom printed apparel and accessories for businesses and special occasions</p>
+                
+                <!-- Urgency Elements -->
+                <div class="urgency-banner">
+                    <div class="urgency-item">
+                        <span class="urgency-icon">⚡</span>
+                        <span>Fastest Turnaround: 3-5 Business Days</span>
+                    </div>
+                    <div class="urgency-item">
+                        <span class="urgency-icon">🎯</span>
+                        <span>Bulk Orders: Up to 15% Off</span>
+                    </div>
+                    <div class="urgency-item">
+                        <span class="urgency-icon">💎</span>
+                        <span>Premium Quality Guaranteed</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -61,43 +101,51 @@
                             <h2>Custom Shirts</h2>
                             <p>High quality printed shirts perfect for businesses, teams, and special occasions. We offer:</p>
                             <ul>
-                                <li>Custom t-shirt printing</li>
-                                <li>Business logo shirts</li>
+                                <li>Custom t-shirt printing with premium materials</li>
+                                <li>Business logo shirts for company branding</li>
                                 <li>Team uniforms and sports shirts</li>
                                 <li>Event and celebration shirts</li>
-                                <li>High-quality materials and printing</li>
+                                <li>Screen printing, embroidery, and heat transfer options</li>
+                                <li>Various styles: crew neck, v-neck, long sleeve</li>
                             </ul>
                             <div class="service-features">
                                 <span class="feature-tag">High Quality</span>
                                 <span class="feature-tag">Custom Designs</span>
                                 <span class="feature-tag">Fast Turnaround</span>
+                                <span class="feature-tag">Starting at $15</span>
                             </div>
                         </div>
-                        <div class="service-image-placeholder">
-                            <div class="placeholder-text">Custom Shirts</div>
+                        <div class="service-image">
+                            <div class="image-rotator" data-category="tshirts">
+                                <!-- Images will be loaded dynamically -->
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="service-item" id="custom-hoodies">
                     <div class="service-content reverse">
-                        <div class="service-image-placeholder">
-                            <div class="placeholder-text">Custom Hoodies</div>
+                        <div class="service-image">
+                            <div class="image-rotator" data-category="hoodies">
+                                <!-- Images will be loaded dynamically -->
+                            </div>
                         </div>
                         <div class="service-text">
                             <h2>Custom Hoodies</h2>
                             <p>Personalized hoodies perfect for teams, events, and branding. We offer:</p>
                             <ul>
-                                <li>Custom hoodie printing</li>
-                                <li>Team and company hoodies</li>
+                                <li>Custom hoodie printing with premium fabrics</li>
+                                <li>Team and company hoodies for branding</li>
                                 <li>Event and celebration hoodies</li>
-                                <li>High-quality materials and printing</li>
-                                <li>Various styles and colors</li>
+                                <li>Pullover and zip-up hoodie styles</li>
+                                <li>Screen printing, embroidery, and heat transfer</li>
+                                <li>Available in various colors and sizes</li>
                             </ul>
                             <div class="service-features">
                                 <span class="feature-tag">Custom Designs</span>
                                 <span class="feature-tag">High Quality</span>
                                 <span class="feature-tag">Team Orders</span>
+                                <span class="feature-tag">Starting at $25</span>
                             </div>
                         </div>
                     </div>
@@ -110,48 +158,467 @@
                             <p>Professional hats and caps with your custom design or branding. We offer:</p>
                             <ul>
                                 <li>Custom hat embroidery and printing</li>
-                                <li>Business logo hats</li>
+                                <li>Business logo hats for company branding</li>
                                 <li>Team and sports hats</li>
                                 <li>Event and promotional hats</li>
-                                <li>Various hat styles and materials</li>
+                                <li>Baseball caps, trucker hats, beanies</li>
+                                <li>High-quality embroidery and screen printing</li>
                             </ul>
                             <div class="service-features">
                                 <span class="feature-tag">Custom Designs</span>
                                 <span class="feature-tag">Professional Quality</span>
                                 <span class="feature-tag">Multiple Styles</span>
+                                <span class="feature-tag">Starting at $12</span>
                             </div>
                         </div>
-                        <div class="service-image-placeholder">
-                            <div class="placeholder-text">Custom Hats</div>
+                        <div class="service-image">
+                            <div class="image-rotator" data-category="business-cards">
+                                <!-- Images will be loaded dynamically -->
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="service-item">
                     <div class="service-content reverse">
-                        <div class="service-image-placeholder">
-                            <div class="placeholder-text">Design Services</div>
+                        <div class="service-image">
+                            <div class="image-rotator" data-category="stickers">
+                                <!-- Images will be loaded dynamically -->
+                            </div>
                         </div>
                         <div class="service-text">
                             <h2>Design to Print</h2>
                             <p>Send us your design, we'll make the rest! Our simple process includes:</p>
                             <ul>
-                                <li>Submit your design or logo</li>
-                                <li>Choose your apparel and quantities</li>
+                                <li>Submit your design or logo (AI, EPS, PNG, JPG accepted)</li>
+                                <li>Choose your apparel, colors, and quantities</li>
                                 <li>We handle the printing and quality control</li>
-                                <li>Fast turnaround times</li>
+                                <li>Fast turnaround times (3-7 business days)</li>
                                 <li>Professional results guaranteed</li>
+                                <li>Free design consultation available</li>
                             </ul>
                             <div class="service-features">
                                 <span class="feature-tag">Simple Process</span>
                                 <span class="feature-tag">Quality Guaranteed</span>
                                 <span class="feature-tag">Fast Delivery</span>
+                                <span class="feature-tag">Free Consultation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-item" id="custom-mugs">
+                    <div class="service-content">
+                        <div class="service-text">
+                            <h2>Custom Mugs & Drinkware</h2>
+                            <p>Personalized mugs and drinkware for gifts, promotions, and branding. Our options include:</p>
+                            <ul>
+                                <li>High-quality ceramic mugs with full-wrap printing</li>
+                                <li>Durable stainless steel travel mugs</li>
+                                <li>Microwave and dishwasher safe options</li>
+                                <li>Special bulk pricing for large orders</li>
+                                <li>Various sizes and styles available</li>
+                                <li>Perfect for corporate gifts and events</li>
+                            </ul>
+                            <div class="service-features">
+                                <span class="feature-tag">Microwave Safe</span>
+                                <span class="feature-tag">Dishwasher Safe</span>
+                                <span class="feature-tag">Full-Wrap Printing</span>
+                                <span class="feature-tag">Starting at $8</span>
+                            </div>
+                        </div>
+                        <div class="service-image">
+                            <div class="image-rotator" data-category="mugs">
+                                <!-- Images will be loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-item" id="custom-banners">
+                    <div class="service-content reverse">
+                        <div class="service-image">
+                            <div class="image-rotator" data-category="banners">
+                                <!-- Images will be loaded dynamically -->
+                            </div>
+                        </div>
+                        <div class="service-text">
+                            <h2>Custom Banners & Large Format</h2>
+                            <p>Professional banners and large format printing for events and businesses. We offer:</p>
+                            <ul>
+                                <li>Weather-resistant vinyl banners for outdoor use</li>
+                                <li>Premium fabric banners for indoor displays</li>
+                                <li>Large format printing up to 10ft wide</li>
+                                <li>Professional installation services</li>
+                                <li>Custom sizing and material options</li>
+                                <li>Fast turnaround for event deadlines</li>
+                            </ul>
+                            <div class="service-features">
+                                <span class="feature-tag">Weather Resistant</span>
+                                <span class="feature-tag">Large Format</span>
+                                <span class="feature-tag">Professional Installation</span>
+                                <span class="feature-tag">Starting at $45</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">From design to delivery in 4 simple steps</p>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Submit Your Design</h3>
+                            <p>Send us your logo, artwork, or design concept. We accept AI, EPS, PNG, and JPG files.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Choose Your Products</h3>
+                            <p>Select from our range of shirts, hoodies, and hats. Pick colors, sizes, and quantities.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>We Print & Quality Check</h3>
+                            <p>Our expert team handles the printing process and performs quality control checks.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Fast Delivery</h3>
+                            <p>Your custom apparel is delivered to your door in 3-7 business days.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-info">
+            <div class="container">
+                <h2 class="section-title">Pricing & Turnaround</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Custom Shirts</h3>
+                        <div class="price">Starting at $15</div>
+                        <ul>
+                            <li>Screen printing included</li>
+                            <li>Premium cotton materials</li>
+                            <li>3-5 business days</li>
+                            <li>Bulk discounts available</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Custom Hoodies</h3>
+                        <div class="price">Starting at $25</div>
+                        <ul>
+                            <li>Screen printing included</li>
+                            <li>Premium fabric options</li>
+                            <li>5-7 business days</li>
+                            <li>Team order pricing</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Custom Hats</h3>
+                        <div class="price">Starting at $12</div>
+                        <ul>
+                            <li>Embroidery included</li>
+                            <li>Professional quality</li>
+                            <li>3-5 business days</li>
+                            <li>Multiple style options</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Pricing Calculator -->
+        <section class="pricing-calculator-section">
+            <div class="container">
+                <h2 class="section-title">Upload Your Design & Get a Quote</h2>
+                <p class="section-subtitle">See a preview and calculate pricing for your specific order</p>
+                
+                <div class="upload-container">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <span class="upload-icon">📁</span>
+                            <h3>Drop your design here</h3>
+                            <p>or click to browse files</p>
+                            <small>Supports: AI, EPS, PNG, JPG (Max: 10MB)</small>
+                        </div>
+                        <input type="file" id="fileInput" accept=".ai,.eps,.png,.jpg,.jpeg" style="display: none;">
+                    </div>
+                    
+                    <div class="preview-container" id="previewContainer" style="display: none;">
+                        <h3>Design Preview</h3>
+                        <div class="preview-grid">
+                            <div class="preview-item">
+                                <h4>On Shirt</h4>
+                                <div class="preview-image" id="shirtPreview">
+                                    <img src="images/PPTPRints/539738239_122202396998293236_2183067847999368314_n.jpg" alt="Shirt Preview" class="preview-bg">
+                                    <div class="design-overlay" id="shirtDesign"></div>
+                                </div>
+                            </div>
+                            <div class="preview-item">
+                                <h4>On Hoodie</h4>
+                                <div class="preview-image" id="hoodiePreview">
+                                    <img src="images/PPTPRints/539634838_122202397106293236_2065046746168162236_n.jpg" alt="Hoodie Preview" class="preview-bg">
+                                    <div class="design-overlay" id="hoodieDesign"></div>
+                                </div>
+                            </div>
+                            <div class="preview-item">
+                                <h4>On Hat</h4>
+                                <div class="preview-image" id="hatPreview">
+                                    <img src="images/PPTPRints/539586768_122202396788293236_2819796790172946060_n.jpg" alt="Hat Preview" class="preview-bg">
+                                    <div class="design-overlay" id="hatDesign"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview-controls">
+                            <button type="button" id="resetDesign" class="btn btn-outline">Reset Design</button>
+                            <a href="contact.html" class="btn btn-primary">Get Quote for This Design</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calculator-container">
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="productType">Product Type</label>
+                            <select id="productType" required>
+                                <option value="">Select Product</option>
+                                <option value="shirts">Custom Shirts</option>
+                                <option value="hoodies">Custom Hoodies</option>
+                                <option value="hats">Custom Hats</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" min="1" max="1000" value="25" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="printType">Print Type</label>
+                            <select id="printType" required>
+                                <option value="screen">Screen Printing</option>
+                                <option value="embroidery">Embroidery</option>
+                                <option value="heat">Heat Transfer</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="colors">Number of Colors</label>
+                            <input type="number" id="colors" min="1" max="8" value="1" required>
+                        </div>
+                        
+                        <button type="button" id="calculateBtn" class="btn btn-primary">Calculate Price</button>
+                    </div>
+                    
+                    <div class="calculator-result">
+                        <div class="result-card">
+                            <h3>Your Quote</h3>
+                            <div class="price-breakdown">
+                                <div class="price-item">
+                                    <span>Base Price:</span>
+                                    <span id="basePrice">$0.00</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Printing Cost:</span>
+                                    <span id="printingCost">$0.00</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Setup Fee:</span>
+                                    <span id="setupFee">$0.00</span>
+                                </div>
+                                <div class="price-item total">
+                                    <span>Total Per Item:</span>
+                                    <span id="totalPerItem">$0.00</span>
+                                </div>
+                                <div class="price-item total">
+                                    <span>Order Total:</span>
+                                    <span id="orderTotal">$0.00</span>
+                                </div>
+                            </div>
+                            <div class="turnaround-info">
+                                <p><strong>Estimated Turnaround:</strong> <span id="turnaround">3-5 business days</span></p>
+                                <p><strong>Bulk Discount:</strong> <span id="bulkDiscount">0%</span></p>
+                            </div>
+                            <a href="contact.html" class="btn btn-secondary">Get Full Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>What file formats do you accept for designs?</h3>
+                        <p>We accept AI, EPS, PNG, and JPG files. For best quality, we recommend vector files (AI, EPS) or high-resolution PNG files (300 DPI or higher).</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How long does it take to complete an order?</h3>
+                        <p>Standard orders take 3-7 business days. Rush orders are available for an additional fee. Contact us for specific timeline requirements.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Do you offer bulk discounts?</h3>
+                        <p>Yes! We offer volume discounts for orders of 25+ pieces. The more you order, the better the price per item.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What materials do you use?</h3>
+                        <p>We use premium cotton, cotton-polyester blends, and high-quality fabrics. All materials are carefully selected for comfort and durability.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Can you help with design if I don't have artwork?</h3>
+                        <p>Absolutely! We offer free design consultation and can help create or modify designs to meet your needs.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What sizes do you offer?</h3>
+                        <p>We offer sizes from XS to 5XL for most products. Custom sizing is available for special orders.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Testimonials -->
+        <section class="testimonials-section">
+            <div class="container">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real feedback from satisfied clients</p>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+                        <p class="testimonial-text">"Amazing quality! Our team shirts look professional and the turnaround time was incredible. Highly recommend!"</p>
+                        <div class="testimonial-author">
+                            <strong>Sarah Johnson</strong>
+                            <span>Marketing Manager, TechCorp</span>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+                        <p class="testimonial-text">"The custom hoodies for our event were perfect. Great communication throughout the process and excellent results."</p>
+                        <div class="testimonial-author">
+                            <strong>Mike Rodriguez</strong>
+                            <span>Event Coordinator, Sports League</span>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+                        <p class="testimonial-text">"Professional service from start to finish. Our company hats look great and the embroidery quality is outstanding."</p>
+                        <div class="testimonial-author">
+                            <strong>Lisa Chen</strong>
+                            <span>CEO, StartupXYZ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Materials & Sizing -->
+        <section class="materials-sizing-section">
+            <div class="container">
+                <div class="materials-sizing-grid">
+                    <!-- Material Swatches -->
+                    <div class="materials-section">
+                        <h2 class="section-title">Material Options</h2>
+                        <div class="material-swatches">
+                            <div class="material-swatch">
+                                <div class="swatch-color" style="background-color: #ffffff; border: 1px solid #ddd;"></div>
+                                <span>Premium Cotton</span>
+                                <small>100% Cotton, 180 GSM</small>
+                            </div>
+                            <div class="material-swatch">
+                                <div class="swatch-color" style="background-color: #f5f5f5;"></div>
+                                <span>Cotton Blend</span>
+                                <small>50/50 Cotton-Polyester</small>
+                            </div>
+                            <div class="material-swatch">
+                                <div class="swatch-color" style="background-color: #e8e8e8;"></div>
+                                <span>Performance Fabric</span>
+                                <small>Moisture Wicking</small>
+                            </div>
+                            <div class="material-swatch">
+                                <div class="swatch-color" style="background-color: #2c2c2c;"></div>
+                                <span>Heavyweight</span>
+                                <small>300 GSM Fleece</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Size Charts -->
+                    <div class="sizing-section">
+                        <h2 class="section-title">Size Charts</h2>
+                        <div class="size-charts">
+                            <div class="size-chart">
+                                <h3>Shirts & Hoodies</h3>
+                                <div class="size-table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Size</th>
+                                                <th>Chest (in)</th>
+                                                <th>Length (in)</th>
+                                                <th>Shoulder (in)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>XS</td><td>32-34</td><td>26</td><td>14</td></tr>
+                                            <tr><td>S</td><td>34-36</td><td>27</td><td>15</td></tr>
+                                            <tr><td>M</td><td>38-40</td><td>28</td><td>16</td></tr>
+                                            <tr><td>L</td><td>42-44</td><td>29</td><td>17</td></tr>
+                                            <tr><td>XL</td><td>46-48</td><td>30</td><td>18</td></tr>
+                                            <tr><td>2XL</td><td>50-52</td><td>31</td><td>19</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="size-chart">
+                                <h3>Hats</h3>
+                                <div class="size-table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Size</th>
+                                                <th>Circumference (in)</th>
+                                                <th>Fits</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>S/M</td><td>21-22</td><td>6 7/8 - 7</td></tr>
+                                            <tr><td>M/L</td><td>22-23</td><td>7 - 7 1/4</td></tr>
+                                            <tr><td>L/XL</td><td>23-24</td><td>7 1/4 - 7 5/8</td></tr>
+                                            <tr><td>XL/XXL</td><td>24-25</td><td>7 5/8 - 8</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <section class="cta">
             <div class="container">
@@ -191,6 +658,73 @@
         </div>
     </footer>
 
+
+
     <script src="js/main.js"></script>
+
+    <!-- Snow Animation Elements -->
+    <div class="loader">
+        <div class="loader-icon-1">&#10052;</div>
+    </div>
+    <div class="main">
+        <div class="initial-snow">
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+    </div>
+</div>
 </body>
 </html>

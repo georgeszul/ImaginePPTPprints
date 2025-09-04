@@ -103,6 +103,13 @@ p {
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 180, 216, 0.15);
 }
 
 .navbar {
@@ -124,6 +131,18 @@ p {
     gap: 1rem;
 }
 
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.02);
+}
+
 .logo-image {
     width: 50px;
     height: 50px;
@@ -132,7 +151,7 @@ p {
 }
 
 .nav-logo h1 {
-    color: #2563eb;
+    color: #00b4d8;
     font-size: 1.8rem;
     margin: 0;
 }
@@ -141,6 +160,130 @@ p {
     display: flex;
     list-style: none;
     gap: 2rem;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Search Container */
+.search-container {
+    position: relative;
+}
+
+.search-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-toggle:hover {
+    background-color: #f3f4f6;
+    transform: scale(1.1);
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    color: #6b7280;
+    transition: color 0.3s ease;
+}
+
+.search-toggle:hover .search-icon {
+    color: #00b4d8;
+}
+
+/* Search Dropdown */
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    min-width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    border: 1px solid #e5e7eb;
+}
+
+.search-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.search-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #00b4d8;
+}
+
+.search-submit {
+    background: #00b4d8;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-submit:hover {
+    background: #0099c2;
+    transform: translateY(-1px);
+}
+
+.search-submit svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Quote Button */
+.btn-quote {
+    background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.btn-quote:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+    background: linear-gradient(135deg, #e55a2b 0%, #cc4a1f 100%);
 }
 
 .nav-link {
@@ -152,7 +295,7 @@ p {
 
 .nav-link:hover,
 .nav-link.active {
-    color: #2563eb;
+    color: #00b4d8;
 }
 
 .hamburger {
@@ -171,7 +314,7 @@ p {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    background: linear-gradient(135deg, #00b4d8 0%, #0099c2 100%);
     color: white;
     text-align: center;
     padding: 6rem 2rem;
@@ -300,7 +443,7 @@ p {
     transform: translateY(-5px);
 }
 
-.service-image {
+.service-card .service-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -325,7 +468,7 @@ p {
 
 /* CTA Section */
 .cta {
-    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
     color: white;
     text-align: center;
     padding: 4rem 2rem;
@@ -343,7 +486,7 @@ p {
 
 /* Footer */
 .footer {
-    background-color: #1f2937;
+    background-color: #000000;
     color: white;
     padding: 3rem 0 1rem;
 }
@@ -388,7 +531,7 @@ p {
 
 /* Page Header */
 .page-header {
-    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    background: linear-gradient(135deg, #00b4d8 0%, #0099c2 100%);
     color: white;
     text-align: center;
     padding: 4rem 2rem;
@@ -404,8 +547,39 @@ p {
     padding: 4rem 0;
 }
 
+.service-item .service-image {
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.service-image-real {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.service-image-real:hover {
+    transform: scale(1.05);
+}
+
 .service-item {
     margin-bottom: 4rem;
+    padding: 2rem 0;
+    min-height: 450px; /* Ensure consistent height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.service-item:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.service-item:nth-child(even) .container {
+    padding: 2rem 0;
 }
 
 .service-content {
@@ -424,7 +598,7 @@ p {
 }
 
 .service-text h2 {
-    color: #1f2937;
+    color: #000000;
     margin-bottom: 1.5rem;
 }
 
@@ -446,12 +620,13 @@ p {
 }
 
 .feature-tag {
-    background-color: #e5e7eb;
-    color: #374151;
+    background-color: #f0f9ff;
+    color: #00b4d8;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
     font-size: 0.875rem;
     font-weight: 500;
+    border: 1px solid #00b4d8;
 }
 
 .service-image-placeholder {
@@ -483,7 +658,7 @@ p {
 
 .contact-form-section h2,
 .contact-info-section h2 {
-    color: #1f2937;
+    color: #000000;
     margin-bottom: 2rem;
 }
 
@@ -520,7 +695,7 @@ p {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #2563eb;
+    border-color: #00b4d8;
 }
 
 .contact-info {
@@ -541,7 +716,7 @@ p {
 }
 
 .contact-item h4 {
-    color: #1f2937;
+    color: #000000;
     margin-bottom: 0.5rem;
 }
 
@@ -557,7 +732,7 @@ p {
 }
 
 .social-links h4 {
-    color: #1f2937;
+    color: #000000;
     margin-bottom: 1rem;
 }
 
@@ -578,7 +753,7 @@ p {
 }
 
 .social-icon:hover {
-    background-color: #2563eb;
+    background-color: #00b4d8;
     color: white;
     transform: translateY(-2px);
 }
@@ -639,6 +814,10 @@ p {
         display: flex;
     }
 
+    .nav-actions {
+        display: none;
+    }
+
     .hero-title {
         font-size: 2rem;
     }
@@ -668,6 +847,10 @@ p {
         gap: 2rem;
     }
 
+    .service-item .service-image {
+        height: 250px;
+    }
+
     .service-content.reverse {
         direction: ltr;
     }
@@ -694,4 +877,1629 @@ p {
     .hero-subtitle {
         font-size: 1.1rem;
     }
+}
+
+/* How It Works Section */
+.how-it-works {
+    padding: 5rem 0;
+    background-color: #f0f9ff;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.process-step {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #00b4d8 0%, #0099c2 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 1.5rem;
+}
+
+.process-step h3 {
+    color: #000000;
+    margin-bottom: 1rem;
+}
+
+.process-step p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* Pricing Section */
+.pricing-info {
+    padding: 5rem 0;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.pricing-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+    border-color: #00b4d8;
+    transform: translateY(-5px);
+}
+
+.pricing-card h3 {
+    color: #000000;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00b4d8;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pricing-card li {
+    padding: 0.5rem 0;
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.pricing-card li:last-child {
+    border-bottom: none;
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 5rem 0;
+    background-color: #f0f9ff;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.faq-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.faq-item h3 {
+    color: #000000;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.faq-item p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments for new sections */
+@media (max-width: 768px) {
+    .process-steps,
+    .pricing-grid,
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Enhanced Image Hover Effects */
+.image-rotator img {
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    filter: brightness(0.95);
+}
+
+.image-rotator img:hover {
+    transform: scale(1.15) rotate(3deg);
+    box-shadow: 0 25px 50px rgba(0, 180, 216, 0.4);
+    z-index: 10;
+    filter: brightness(1.1);
+}
+
+.image-rotator img.active {
+    filter: brightness(1);
+}
+
+/* Add a subtle glow effect on hover */
+.image-rotator img:hover::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, #00b4d8, #ff6b35);
+    border-radius: 15px;
+    z-index: -1;
+    opacity: 0.3;
+    filter: blur(10px);
+}
+
+/* Bounce animation for extra interactivity */
+@keyframes imageBounce {
+    0%, 100% { transform: scale(1.15) rotate(3deg); }
+    50% { transform: scale(1.2) rotate(4deg); }
+}
+
+/* Add a subtle pulse effect to active images */
+.image-rotator img.active {
+    animation: subtlePulse 3s ease-in-out infinite;
+}
+
+@keyframes subtlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+/* Image Rotator */
+.image-rotator {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-rotator img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    transform: scale(1.02);
+}
+
+.image-rotator img.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.image-rotator img.active {
+    opacity: 1;
+}
+
+.image-rotator img:first-child {
+    opacity: 1;
+}
+
+.placeholder-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    color: #00b4d8;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Removed rotation progress indicator for cleaner look */
+
+/* Enhanced Service Image Styling */
+.service-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Pricing Calculator */
+.pricing-calculator-section {
+    padding: 5rem 0;
+    background-color: #f8fafc;
+}
+
+.calculator-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.calculator-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.calculator-result {
+    display: flex;
+    align-items: center;
+}
+
+.result-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    border: 2px solid #00b4d8;
+}
+
+.result-card h3 {
+    color: #000000;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.price-breakdown {
+    margin-bottom: 1.5rem;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.price-item.total {
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #00b4d8;
+}
+
+.turnaround-info {
+    background-color: #f0f9ff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.turnaround-info p {
+    margin-bottom: 0.5rem;
+    color: #374151;
+}
+
+/* Testimonials */
+.testimonials-section {
+    padding: 5rem 0;
+    background-color: #f0f9ff;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-rating {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.testimonial-author strong {
+    color: #000000;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.testimonial-author span {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* Materials & Sizing */
+.materials-sizing-section {
+    padding: 5rem 0;
+}
+
+.materials-sizing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+}
+
+.material-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.material-swatch {
+    text-align: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.swatch-color {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 0.5rem;
+    border: 2px solid #e5e7eb;
+}
+
+.material-swatch span {
+    display: block;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 0.25rem;
+}
+
+.material-swatch small {
+    color: #6b7280;
+    font-size: 0.8rem;
+}
+
+.size-charts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.size-chart h3 {
+    color: #000000;
+    margin-bottom: 1rem;
+}
+
+.size-table {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.size-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.size-table th,
+.size-table td {
+    padding: 0.75rem;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.size-table th {
+    background-color: #f0f9ff;
+    color: #000000;
+    font-weight: 600;
+}
+
+.size-table td {
+    color: #4b5563;
+}
+
+/* Responsive adjustments for new sections */
+@media (max-width: 768px) {
+    .calculator-container,
+    .materials-sizing-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .material-swatches {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Urgency Banner */
+.urgency-banner {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.urgency-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.urgency-icon {
+    font-size: 1.2rem;
+}
+
+/* File Upload Section */
+.file-upload-section {
+    padding: 5rem 0;
+    background-color: #f8fafc;
+}
+
+.upload-container {
+    max-width: 800px;
+    margin: 3rem auto 0;
+}
+
+.upload-area {
+    border: 3px dashed #00b4d8;
+    border-radius: 15px;
+    padding: 3rem;
+    text-align: center;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.upload-area:hover {
+    border-color: #0099c2;
+    background-color: #f0f9ff;
+    transform: translateY(-2px);
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: #00b4d8;
+}
+
+.upload-content h3 {
+    color: #000000;
+    margin: 0;
+}
+
+.upload-content p {
+    color: #6b7280;
+    margin: 0;
+}
+
+.upload-content small {
+    color: #9ca3af;
+    font-size: 0.875rem;
+}
+
+.preview-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.preview-container h3 {
+    color: #000000;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.preview-item h4 {
+    color: #000000;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.preview-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.preview-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.design-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.9;
+}
+
+.preview-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Drag and Drop States */
+.upload-area.dragover {
+    border-color: #ff6b35;
+    background-color: #fff5f5;
+    transform: scale(1.02);
+}
+
+.upload-area.uploading {
+    border-color: #00b4d8;
+    background-color: #f0f9ff;
+}
+
+.upload-area.uploading .upload-content {
+    opacity: 0.7;
+}
+
+/* Product Categories */
+.product-categories {
+    padding: 5rem 0;
+    background-color: #f8fafc;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.category-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    border-color: #00b4d8;
+    box-shadow: 0 10px 25px rgba(0, 180, 216, 0.15);
+}
+
+.category-image {
+    height: 200px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.placeholder-image {
+    text-align: center;
+    color: #00b4d8;
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.placeholder-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+.category-content {
+    padding: 2rem;
+}
+
+.category-content h3 {
+    color: #000000;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.category-content p {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.category-content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.category-content li {
+    padding: 0.5rem 0;
+    color: #4b5563;
+    border-bottom: 1px solid #f3f4f6;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.category-content li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #00b4d8;
+    font-weight: bold;
+}
+
+.category-content li:last-child {
+    border-bottom: none;
+}
+
+/* Product Showcase */
+.product-showcase {
+    padding: 5rem 0;
+}
+
+.product-showcase:nth-child(even) {
+    background-color: #f0f9ff;
+}
+
+.gallery-placeholder {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 2px dashed #00b4d8;
+}
+
+.gallery-placeholder .placeholder-icon {
+    font-size: 5rem;
+    color: #00b4d8;
+    margin-bottom: 2rem;
+}
+
+.gallery-placeholder h3 {
+    color: #000000;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+}
+
+.gallery-placeholder p {
+    color: #6b7280;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.placeholder-features {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.placeholder-features span {
+    background-color: #f0f9ff;
+    color: #00b4d8;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid #00b4d8;
+}
+
+/* Responsive adjustments for products page */
+@media (max-width: 768px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .category-card {
+        margin-bottom: 1rem;
+    }
+    
+    .placeholder-features {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* --- THEME OVERRIDES FOR SNOW ANIMATION --- */
+
+/* Apply frosted glass effect to all direct section children of main */
+main > section {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 3rem 2rem !important;
+    margin-bottom: 2rem !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Make section backgrounds transparent so cards are visible */
+main > section {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Apply frosted glass effect to all individual content cards */
+.service-item,
+.process-step,
+.pricing-card,
+.faq-item,
+.testimonial-card,
+.material-swatch,
+.size-chart,
+.upload-area,
+.preview-container,
+.calculator-form,
+.result-card {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 2rem !important;
+    margin-bottom: 2rem !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure text inside the new frosted cards is white with a shadow */
+.service-item h2, .service-item h3, .service-item p, .service-item li,
+.process-step h3, .process-step p,
+.pricing-card h3, .pricing-card li, .price,
+.faq-item h3, .faq-item p,
+.testimonial-card p, .testimonial-author strong, .testimonial-author span,
+.material-swatch span, .material-swatch small,
+.size-chart h3, .size-table th, .size-table td,
+.upload-area h3, .upload-area p, .upload-area small,
+.preview-container h3, .preview-item h4,
+.calculator-form label,
+.result-card h3, .result-card span, .turnaround-info p {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* General section titles should also be white */
+.section-title, .section-subtitle {
+     color: white !important;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Override for specific elements that should not have white text */
+.btn-primary,
+.btn-secondary,
+.feature-tag,
+.swatch-color {
+     color: #1f2937 !important;
+     text-shadow: none !important;
+}
+
+/* --- Snow Animation Theme --- */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 0;
+    background: radial-gradient(
+        circle,
+        rgb(126, 223, 255) 0%,
+        rgba(71, 196, 255, 1) 68%,
+        rgba(0, 110, 239, 1) 100%
+    );
+}
+
+.loader-icon-1 {
+    font-size: 80px;
+    color: rgb(200, 241, 255, 0.8);
+    text-shadow: 1px 1px 1px rgba(71, 196, 255, 1), -1px -1px 1px white;
+    animation: snow-loader 0.5s 9 linear alternate-reverse forwards,
+        snow-loader-zoom 5s forwards;
+    animation-delay: 0s, 0.5s;
+}
+
+@keyframes snow-loader {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(90deg);
+    }
+}
+
+@keyframes snow-loader-zoom {
+    from {
+        transform: scale(1, 1) rotateZ(0deg);
+        color: rgb(200, 241, 255, 0.8);
+    }
+    to {
+        color: #123;
+        transform: scale(200, 200) rotateZ(360deg);
+    }
+}
+
+.loader-text {
+    font-size: 25px;
+    color: rgb(200, 241, 255);
+}
+
+.main {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(#123, #111);
+    opacity: 0;
+    animation: main-loadup 1s forwards linear, main-loadup-bg 10s forwards linear;
+    animation-delay: 1s, 8s;
+}
+
+@keyframes main-loadup {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes main-loadup-bg {
+    from {
+        background-size: 100% 100%;
+        background-position: 0% 0%;
+    }
+    to {
+        background-size: 400% 400%;
+        background-position: 0% 100%;
+    }
+}
+
+.initial-snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.initial-snow > * {
+    font-size: 50px;
+    color: white;
+    position: absolute;
+    top: -5vh;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translate3d(var(--left-ini), 0, 0);
+    }
+    100% {
+        transform: translate3d(var(--left-end), 100vh, 0);
+    }
+}
+
+.snow:nth-child(2n) {
+    filter: blur(1px);
+    font-size: 40px;
+}
+
+.snow:nth-child(6n) {
+    filter: blur(2px);
+    font-size: 30px;
+}
+
+.snow:nth-child(10n) {
+    filter: blur(5px);
+    font-size: 30px;
+}
+
+.snow:nth-child(1) {
+    --size: 0.8vw;
+    --left-ini: 0vw;
+    --left-end: -1vw;
+    left: 70vw;
+    animation: snowfall 9s linear infinite;
+    animation-delay: -1s;
+}
+
+.snow:nth-child(2) {
+    --size: 0.2vw;
+    --left-ini: -7vw;
+    --left-end: 10vw;
+    left: 65vw;
+    animation: snowfall 15s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(3) {
+    --size: 1vw;
+    --left-ini: 6vw;
+    --left-end: 6vw;
+    left: 1vw;
+    animation: snowfall 9s linear infinite;
+    animation-delay: -7s;
+}
+
+.snow:nth-child(4) {
+    --size: 0.2vw;
+    --left-ini: -3vw;
+    --left-end: 9vw;
+    left: 88vw;
+    animation: snowfall 14s linear infinite;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(5) {
+    --size: 0.4vw;
+    --left-ini: -2vw;
+    --left-end: -9vw;
+    left: 74vw;
+    animation: snowfall 6s linear infinite;
+    animation-delay: -4s;
+}
+
+.snow:nth-child(6) {
+    --size: 0.2vw;
+    --left-ini: 5vw;
+    --left-end: 1vw;
+    left: 35vw;
+    animation: snowfall 6s linear infinite;
+    animation-delay: -7s;
+}
+
+.snow:nth-child(7) {
+    --size: 0.4vw;
+    --left-ini: -2vw;
+    --left-end: -1vw;
+    left: 27vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(8) {
+    --size: 1vw;
+    --left-ini: -9vw;
+    --left-end: -2vw;
+    left: 69vw;
+    animation: snowfall 8s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(9) {
+    --size: 0.2vw;
+    --left-ini: -1vw;
+    --left-end: -5vw;
+    left: 84vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -6s;
+}
+
+.snow:nth-child(10) {
+    --size: 0.2vw;
+    --left-ini: 7vw;
+    --left-end: -9vw;
+    left: 82vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -3s;
+}
+
+.snow:nth-child(11) {
+    --size: 0.6vw;
+    --left-ini: -2vw;
+    --left-end: -1vw;
+    left: 48vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -1s;
+}
+
+.snow:nth-child(12) {
+    --size: 0.2vw;
+    --left-ini: 5vw;
+    --left-end: 6vw;
+    left: 39vw;
+    animation: snowfall 15s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(13) {
+    --size: 0.2vw;
+    --left-ini: 6vw;
+    --left-end: 5vw;
+    left: 3vw;
+    animation: snowfall 9s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(14) {
+    --size: 0.8vw;
+    --left-ini: -5vw;
+    --left-end: -2vw;
+    left: 49vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(15) {
+    --size: 0.6vw;
+    --left-ini: 10vw;
+    --left-end: 4vw;
+    left: 77vw;
+    animation: snowfall 7s linear infinite;
+    animation-delay: -4s;
+}
+
+.snow:nth-child(16) {
+    --size: 0.8vw;
+    --left-ini: -3vw;
+    --left-end: 1vw;
+    left: 86vw;
+    animation: snowfall 14s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(17) {
+    --size: 1vw;
+    --left-ini: 6vw;
+    --left-end: -7vw;
+    left: 18vw;
+    animation: snowfall 9s linear infinite;
+    animation-delay: -6s;
+}
+
+.snow:nth-child(18) {
+    --size: 1vw;
+    --left-ini: -9vw;
+    --left-end: 4vw;
+    left: 64vw;
+    animation: snowfall 13s linear infinite;
+    animation-delay: -7s;
+}
+
+.snow:nth-child(19) {
+    --size: 1vw;
+    --left-ini: 2vw;
+    --left-end: -7vw;
+    left: 52vw;
+    animation: snowfall 15s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(20) {
+    --size: 0.4vw;
+    --left-ini: 0vw;
+    --left-end: 8vw;
+    left: 5vw;
+    animation: snowfall 8s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(21) {
+    --size: 0.6vw;
+    --left-ini: -9vw;
+    --left-end: -2vw;
+    left: 10vw;
+    animation: snowfall 12s linear infinite;
+    animation-delay: -3s;
+}
+
+.snow:nth-child(22) {
+    --size: 0.8vw;
+    --left-ini: -3vw;
+    --left-end: -8vw;
+    left: 54vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(23) {
+    --size: 0.6vw;
+    --left-ini: -7vw;
+    --left-end: -8vw;
+    left: 20vw;
+    animation: snowfall 6s linear infinite;
+    animation-delay: -3s;
+}
+
+.snow:nth-child(24) {
+    --size: 0.4vw;
+    --left-ini: 10vw;
+    --left-end: -4vw;
+    left: 68vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -8s;
+}
+
+.snow:nth-child(25) {
+    --size: 1vw;
+    --left-ini: 3vw;
+    --left-end: 5vw;
+    left: 90vw;
+    animation: snowfall 7s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(26) {
+    --size: 1vw;
+    --left-ini: -7vw;
+    --left-end: 5vw;
+    left: 71vw;
+    animation: snowfall 13s linear infinite;
+    animation-delay: -2s;
+}
+
+.snow:nth-child(27) {
+    --size: 0.6vw;
+    --left-ini: 9vw;
+    --left-end: 4vw;
+    left: 2vw;
+    animation: snowfall 15s linear infinite;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(28) {
+    --size: 1vw;
+    --left-ini: -5vw;
+    --left-end: 3vw;
+    left: 23vw;
+    animation: snowfall 12s linear infinite;
+    animation-delay: -1s;
+}
+
+.snow:nth-child(29) {
+    --size: 0.4vw;
+    --left-ini: -2vw;
+    --left-end: -1vw;
+    left: 39vw;
+    animation: snowfall 14s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(30) {
+    --size: 0.6vw;
+    --left-ini: -9vw;
+    --left-end: -5vw;
+    left: 76vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(31) {
+    --size: 0.4vw;
+    --left-ini: -5vw;
+    --left-end: 3vw;
+    left: 14vw;
+    animation: snowfall 8s linear infinite;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(32) {
+    --size: 0.2vw;
+    --left-ini: 5vw;
+    --left-end: -1vw;
+    left: 86vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(33) {
+    --size: 0.4vw;
+    --left-ini: -3vw;
+    --left-end: 10vw;
+    left: 66vw;
+    animation: snowfall 6s linear infinite;
+    animation-delay: -6s;
+}
+
+.snow:nth-child(34) {
+    --size: 1vw;
+    --left-ini: -3vw;
+    --left-end: 6vw;
+    left: 75vw;
+    animation: snowfall 14s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(35) {
+    --size: 1vw;
+    --left-ini: -6vw;
+    --left-end: 7vw;
+    left: 22vw;
+    animation: snowfall 7s linear infinite;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(36) {
+    --size: 1vw;
+    --left-ini: 3vw;
+    --left-end: 4vw;
+    left: 10vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -10s;
+}
+
+.snow:nth-child(37) {
+    --size: 0.6vw;
+    --left-ini: 2vw;
+    --left-end: 10vw;
+    left: 95vw;
+    animation: snowfall 13s linear infinite;
+    animation-delay: -6s;
+}
+
+.snow:nth-child(38) {
+    --size: 0.8vw;
+    --left-ini: 5vw;
+    --left-end: 8vw;
+    left: 34vw;
+    animation: snowfall 9s linear infinite;
+    animation-delay: -10s;
+}
+
+.snow:nth-child(39) {
+    --size: 0.8vw;
+    --left-ini: 4vw;
+    --left-end: 0vw;
+    left: 80vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -2s;
+}
+
+.snow:nth-child(40) {
+    --size: 0.8vw;
+    --left-ini: 1vw;
+    --left-end: -7vw;
+    left: 45vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -4s;
+}
+
+.snow:nth-child(41) {
+    --size: 0.2vw;
+    --left-ini: 9vw;
+    --left-end: 10vw;
+    left: 82vw;
+    animation: snowfall 8s linear infinite;
+    animation-delay: -2s;
+}
+
+.snow:nth-child(42) {
+    --size: 1vw;
+    --left-ini: 9vw;
+    --left-end: -9vw;
+    left: 22vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -6s;
+}
+
+.snow:nth-child(43) {
+    --size: 0.6vw;
+    --left-ini: 5vw;
+    --left-end: 8vw;
+    left: 66vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -1s;
+}
+
+.snow:nth-child(44) {
+    --size: 0.6vw;
+    --left-ini: -5vw;
+    --left-end: -2vw;
+    left: 75vw;
+    animation: snowfall 12s linear infinite;
+    animation-delay: -4s;
+}
+
+.snow:nth-child(45) {
+    --size: 0.2vw;
+    --left-ini: 0vw;
+    --left-end: 3vw;
+    left: 2vw;
+    animation: snowfall 7s linear infinite;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(46) {
+    --size: 0.2vw;
+    --left-ini: 8vw;
+    --left-end: -3vw;
+    left: 94vw;
+    animation: snowfall 8s linear infinite;
+    animation-delay: -9s;
+}
+
+.snow:nth-child(47) {
+    --size: 0.6vw;
+    --left-ini: -6vw;
+    --left-end: -9vw;
+    left: 95vw;
+    animation: snowfall 11s linear infinite;
+    animation-delay: -4s;
+}
+
+.snow:nth-child(48) {
+    --size: 0.2vw;
+    --left-ini: -5vw;
+    --left-end: 6vw;
+    left: 34vw;
+    animation: snowfall 10s linear infinite;
+    animation-delay: -6s;
+}
+
+.snow:nth-child(49) {
+    --size: 0.8vw;
+    --left-ini: 4vw;
+    --left-end: 8vw;
+    left: 22vw;
+    animation: snowfall 12s linear infinite;
+    animation-delay: -10s;
+}
+
+.snow:nth-child(50) {
+    --size: 0.2vw;
+    --left-ini: -4vw;
+    --left-end: 4vw;
+    left: 100vw;
+    animation: snowfall 14s linear infinite;
+    animation-delay: -9s;
+}
+
+/* Ensure page content appears above snow animation */
+.header, .hero, .features, .services-preview, .gallery, .cta, .footer, main, section {
+    position: relative;
+    z-index: 1001;
+}
+
+/* Make navigation bar sticky */
+.header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1002 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure nav text is readable on sticky background */
+.nav-logo h1, .nav-link {
+    color: #1f2937 !important;
+    text-shadow: none !important;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #2563eb !important;
+}
+
+/* Make sure all text content is visible */
+.hero-title, .hero-subtitle, .section-title, .section-subtitle, h1, h2, h3, h4, h5, h6, p, span, div {
+    position: relative;
+    z-index: 1001;
+}
+
+/* Make all sections transparent to show snow animation */
+.hero, .features, .services-preview, .gallery, .cta, .footer, 
+.page-header, .contact-content, .contact-grid, .contact-form-section,
+.feature-card, .service-card, .gallery-item, .product-card {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+        /* Make sure text is readable against snow background */
+        .hero-title, .hero-subtitle, .section-title, .section-subtitle,
+        h1, h2, h3, h4, h5, h6, p, span, label, .service-item h3, 
+        .service-item p, .service-item li, .faq-item h3, .faq-item p,
+        .pricing-calculator-section h2, .pricing-calculator-section p,
+        .testimonials-section h2, .testimonials-section p,
+        .materials-sizing-section h2, .materials-sizing-section p,
+        .materials-section h2, .materials-section p, .materials-section li,
+        .sizing-section h2, .sizing-section p, .sizing-section table,
+        .sizing-section th, .sizing-section td, .how-it-works h2, .how-it-works h3,
+        .how-it-works p, .pricing-info h2, .pricing-info h3, .pricing-info p,
+        .pricing-info li, .pricing-info .price {
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+        }
+
+/* Make cards semi-transparent with white text */
+.feature-card, .service-card, .product-card {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.feature-card h3, .service-card h3, .product-card h3,
+.feature-card p, .service-card p, .product-card p {
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Make buttons stand out */
+.btn-primary, .btn-secondary {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #1f2937 !important;
+    text-shadow: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Add semi-transparent backgrounds to CTA and footer sections */
+.cta {
+    background: rgba(31, 41, 55, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.footer {
+    background: rgba(31, 41, 55, 0.9) !important;
+    backdrop-filter: blur(10px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Make all card text white and bold */
+.feature-card h3, .service-card h3, .product-card h3,
+.feature-card p, .service-card p, .product-card p {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+.feature-card a:hover, .service-card a:hover, .product-card a:hover {
+    color: #60a5fa !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Footer text - white with shadow */
+.footer-section h3, .footer-section h4, .footer-section p, .footer-section a {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 600 !important;
+}
+
+/* Additional service section styling to ensure frosted glass */
+.service-content, .service-text, .service-image {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+}
+
+/* Ensure all service items get proper spacing and frosted glass */
+.services-detailed section,
+.services-detailed .service-item,
+.services-detailed .how-it-works,
+.services-detailed .pricing-info {
+    margin-bottom: 3rem !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 2rem !important;
+}
+
+.footer-section a:hover {
+    color: #60a5fa !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
+}
+
+.footer-bottom {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border-top: none !important;
+}
+
+/* Ensure footer text is readable */
+.footer h3, .footer h4, .footer p, .footer a {
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+
+.footer a:hover {
+    color: #60a5fa !important;
+}
+
+/* Form elements styling for frosted glass sections */
+.service-item input, .service-item select, .service-item textarea,
+.pricing-calculator-section input, .pricing-calculator-section select,
+.faq-section input, .testimonials-section input,
+.materials-sizing-section input, .file-upload-section input,
+.materials-section input, .sizing-section input {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    color: white !important;
+    border-radius: 8px !important;
+    padding: 0.8rem !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.service-item input::placeholder, .service-item select::placeholder, .service-item textarea::placeholder,
+.pricing-calculator-section input::placeholder, .pricing-calculator-section select::placeholder,
+.faq-section input::placeholder, .testimonials-section input::placeholder,
+.materials-sizing-section input::placeholder, .file-upload-section input::placeholder,
+.materials-section input::placeholder, .sizing-section input::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
 }
