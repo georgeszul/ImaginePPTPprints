@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Background</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            z-index: -1;
+            transition: filter 0.8s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted playsinline id="bg-video">
+        <source src="../4508057-uhd_3840_2160_25fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        const video = document.getElementById('bg-video');
+        let colorInterval;
+        
+        // Color cycling function - Red, Yellow, Blue (ends on blue)
+        function cycleColors() {
+            const colors = [
+                'hue-rotate(120deg)',     // Red (from blue)
+                'hue-rotate(180deg)',     // Yellow (from blue)
+                'hue-rotate(0deg)'        // Blue (original) - ends here
+            ];
+            let colorIndex = 0;
+            
+            colorInterval = setInterval(() => {
+                video.style.filter = colors[colorIndex];
+                colorIndex = (colorIndex + 1) % colors.length;
+            }, 1000); // Change color every 1 second
+        }
+        
+        video.addEventListener('loadeddata', () => {
+            cycleColors(); // Start color cycling
+            setTimeout(() => {
+                video.pause();
+                clearInterval(colorInterval); // Stop color cycling
+                // Ensure it ends on blue
+                video.style.filter = 'hue-rotate(0deg)';
+            }, 10000);
+        });
+    </script>
+</body>
+</html>

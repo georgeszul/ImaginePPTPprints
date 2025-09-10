@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <style>
+        /* Paint Splat Background Video */
+        #paint-splat-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: filter 0.8s ease-in-out;
+        }
+
         /* Snow Animation Styles */
         .loader {
             position: fixed;
@@ -60,7 +72,7 @@
         }
 
         .main {
-            z-index: 1;
+            z-index: 0;
             position: fixed;
             top: 0;
             left: 0;
@@ -347,6 +359,12 @@
     </style>
 </head>
 <body>
+    <!-- Paint Splat Background Video -->
+    <video autoplay muted playsinline loop id="paint-splat-bg">
+        <source src="../4508057-uhd_3840_2160_25fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <header class="header">
         <nav class="navbar">
             <div class="nav-container">
@@ -554,5 +572,50 @@
             <div class="snow">&#10052;</div>
         </div>
     </div>
+
+    <!-- Paint Splat Color Cycling Script -->
+    <script>
+        const paintVideo = document.getElementById('paint-splat-bg');
+        let colorInterval;
+        
+        // Color cycling function - Blue → Red → Yellow → Red → Blue
+        function cyclePaintColors() {
+            const colors = [
+                'hue-rotate(0deg)',        // Blue (original, no change)
+                'hue-rotate(120deg)',      // Red
+                'hue-rotate(180deg)',      // Yellow
+                'hue-rotate(120deg)'       // Red (again)
+            ];
+            const timings = [3000, 3000, 3000, 3000]; // All transitions 3 seconds
+            let colorIndex = 0;
+            
+            function nextColor() {
+                paintVideo.style.filter = colors[colorIndex];
+                colorIndex = (colorIndex + 1) % colors.length;
+                
+                // Schedule next transition with appropriate timing
+                setTimeout(nextColor, timings[colorIndex === 0 ? 3 : colorIndex - 1]);
+            }
+            
+            // Start the cycle
+            nextColor();
+        }
+        
+        paintVideo.addEventListener('loadeddata', () => {
+            cyclePaintColors(); // Start color cycling
+            
+            // Pause video after 10 seconds but keep color cycling
+            setTimeout(() => {
+                paintVideo.pause();
+                console.log('Paint splat video paused after 10 seconds, color cycling continues');
+            }, 10000);
+        });
+        
+        // Ensure video plays initially
+        paintVideo.addEventListener('ended', () => {
+            paintVideo.currentTime = 0;
+            paintVideo.play();
+        });
+    </script>
 </body>
 </html>

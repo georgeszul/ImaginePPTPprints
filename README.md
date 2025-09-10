@@ -23,12 +23,21 @@ ImaginePPTPprints/
 ├── index.html          # Homepage
 ├── services.html       # Services page
 ├── contact.html        # Contact page
+├── about.html          # About page
+├── portfolio.html      # Portfolio page
+├── paint_splat_anim.html # Paint splat animation test page
+├── package.json        # npm configuration and scripts
+├── .gitignore         # Git ignore rules
 ├── css/
 │   └── main.css       # Main stylesheet
 ├── js/
 │   └── main.js        # Main JavaScript file
-├── images/
-│   └── favicon.svg    # Website favicon
+├── images/            # Image assets
+│   ├── favicon.svg    # Website favicon
+│   ├── mainLogo.jpg   # Main logo
+│   └── [various product images]
+├── sort_images.py     # Python script for image sorting
+├── sort_images.ps1    # PowerShell script for image sorting
 └── README.md          # This file
 ```
 
@@ -37,14 +46,41 @@ ImaginePPTPprints/
 - **HTML5**: Semantic markup
 - **CSS3**: Modern styling with CSS Grid, Flexbox, and animations
 - **JavaScript**: Interactive functionality and mobile navigation
+- **Node.js/npm**: Development server and package management
+- **http-server**: Lightweight static file server for development
 - **Responsive Design**: Mobile-first approach
 
 ## Getting Started
 
-1. Open `index.html` in your web browser
-2. Navigate through the different pages using the navigation menu
-3. Test the responsive design by resizing your browser window
-4. Try the contact form (note: form submission is currently for display only)
+### Development Server Setup
+
+This project now includes an npm-based development server for easier testing and development.
+
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Start Development Server**:
+   ```bash
+   npm run dev
+   ```
+   This will start the server on `http://localhost:8080` and automatically open your browser.
+
+3. **Alternative Commands**:
+   - `npm start` - Start server without auto-opening browser
+   - `npm run serve` - Basic server without cache control
+
+### Manual Testing
+
+Alternatively, you can still open `index.html` directly in your web browser, but the development server provides better functionality for testing features like the video background.
+
+### Testing the Website
+
+1. Navigate through the different pages using the navigation menu
+2. Test the responsive design by resizing your browser window
+3. Try the contact form (note: form submission is currently for display only)
+4. Test the paint splat animation page with video background
 
 ## Customization
 
