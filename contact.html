@@ -66,11 +66,6 @@
             }
         }
 
-        .loader-text {
-            font-size: 25px;
-            color: rgb(200, 241, 255);
-        }
-
         .main {
             z-index: 1;
             position: fixed;
@@ -140,16 +135,6 @@
         .snow:nth-child(8) { --size: 0.9vw; --left-ini: 3vw; --left-end: -4vw; left: 25vw; animation: snowfall 11s linear infinite; animation-delay: -2s; }
         .snow:nth-child(9) { --size: 0.1vw; --left-ini: -8vw; --left-end: 5vw; left: 75vw; animation: snowfall 16s linear infinite; animation-delay: -9s; }
         .snow:nth-child(10) { --size: 0.7vw; --left-ini: 2vw; --left-end: -6vw; left: 35vw; animation: snowfall 10s linear infinite; animation-delay: -1.5s; }
-        .snow:nth-child(11) { --size: 0.5vw; --left-ini: -4vw; --left-end: 8vw; left: 55vw; animation: snowfall 13s linear infinite; animation-delay: -7.5s; }
-        .snow:nth-child(12) { --size: 0.8vw; --left-ini: 7vw; --left-end: -3vw; left: 5vw; animation: snowfall 9s linear infinite; animation-delay: -4.5s; }
-        .snow:nth-child(13) { --size: 0.2vw; --left-ini: -6vw; --left-end: 6vw; left: 60vw; animation: snowfall 15s linear infinite; animation-delay: -8.5s; }
-        .snow:nth-child(14) { --size: 0.4vw; --left-ini: 1vw; --left-end: -7vw; left: 85vw; animation: snowfall 7s linear infinite; animation-delay: -3.5s; }
-        .snow:nth-child(15) { --size: 0.6vw; --left-ini: -2vw; --left-end: 9vw; left: 40vw; animation: snowfall 12s linear infinite; animation-delay: -6.5s; }
-        .snow:nth-child(16) { --size: 0.3vw; --left-ini: 8vw; --left-end: -5vw; left: 20vw; animation: snowfall 8s linear infinite; animation-delay: -2.5s; }
-        .snow:nth-child(17) { --size: 0.9vw; --left-ini: -1vw; --left-end: 4vw; left: 50vw; animation: snowfall 11s linear infinite; animation-delay: -7.8s; }
-        .snow:nth-child(18) { --size: 0.1vw; --left-ini: 5vw; --left-end: -8vw; left: 30vw; animation: snowfall 16s linear infinite; animation-delay: -4.2s; }
-        .snow:nth-child(19) { --size: 0.7vw; --left-ini: -3vw; --left-end: 7vw; left: 10vw; animation: snowfall 10s linear infinite; animation-delay: -9.1s; }
-        .snow:nth-child(20) { --size: 0.5vw; --left-ini: 6vw; --left-end: -2vw; left: 90vw; animation: snowfall 13s linear infinite; animation-delay: -5.7s; }
 
         /* Ensure page content appears above snow animation */
         .header, .hero, .features, .services-preview, .gallery, .cta, .footer, main, section {
@@ -203,19 +188,6 @@
             border: 1px solid rgba(255, 255, 255, 0.3) !important;
         }
 
-        /* Add semi-transparent backgrounds to CTA and footer sections */
-        .cta {
-            background: rgba(31, 41, 55, 0.8) !important;
-            backdrop-filter: blur(10px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        }
-
-        .footer {
-            background: rgba(31, 41, 55, 0.9) !important;
-            backdrop-filter: blur(10px) !important;
-            border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
-        }
-
         /* Contact Page Specific Styles */
         .contact-hero {
             background: transparent !important;
@@ -265,10 +237,29 @@
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8, #3b82f6);
+            border-radius: 12px 12px 0 0;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         .form-group {
             margin-bottom: 1.5rem;
+            position: relative;
         }
 
         .form-group label {
@@ -285,11 +276,11 @@
             width: 100%;
             padding: 0.75rem;
             border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
+            border-radius: 12px;
             font-size: 1rem;
             transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.9);
-            color: #1f2937;
+            background: rgba(255, 255, 255, 0.95);
+            color: #000000 !important;
         }
 
         .form-group input:focus,
@@ -299,150 +290,479 @@
             border-color: #2563eb;
             background: white;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
-        .contact-info {
+        /* Service-specific details container */
+        .service-details {
+            display: none;
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-details.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-details label {
+            color: white;
+            font-weight: 500;
+        }
+
+        /* File Upload Styles */
+        .file-upload-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .file-upload-container:hover {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .file-upload-container input[type="file"] {
+            display: none;
+        }
+
+        .file-upload-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .file-upload-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .file-upload-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .file-help {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            display: block;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Language Preference Toggle Switch */
+        .language-preference {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+
+        .language-preference .lang-text {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
         }
 
-        .contact-item {
+        .language-preference label {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .language-preference small {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Toggle Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #4b5563;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2563eb;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .slider.round {
+            border-radius: 24px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        /* Send Quote Button */
+        .send-quote-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: none;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .send-quote-btn:hover {
+            background: linear-gradient(45deg, #1d4ed8, #1e40af);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Info Panel Styles */
+        .info-panel {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
             padding: 1.5rem;
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .contact-item:hover {
+        .info-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            border-radius: 12px 12px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .info-panel:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .contact-item h4 {
+        .info-panel:hover::before {
+            opacity: 1;
+        }
+
+        .info-panel h4 {
             color: white;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             font-size: 1.2rem;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
         }
 
-        .contact-item p {
+        .info-panel p {
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
         }
 
-        .contact-item a {
-            color: #60a5fa;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .info-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .contact-item a:hover {
-            color: #93c5fd;
+        .info-panel li {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            position: relative;
+            padding-left: 1rem;
         }
 
-        .business-hours {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            margin-top: 2rem;
+        .info-panel li:before {
+            content: "•";
+            color: #ff6b35;
+            position: absolute;
+            left: 0;
         }
 
-        .business-hours h4 {
+        /* Contact Details Grid */
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .contact-detail svg {
+            width: 24px;
+            height: 24px;
+            color: #ff6b35;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-detail h5 {
             color: white;
-            margin-bottom: 1rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
-        .hours-item {
+        .contact-detail p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .faq-item {
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(37, 99, 235, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .faq-item.active {
+            border-color: rgba(37, 99, 235, 0.7);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
+        }
+
+        .faq-question {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            align-items: center;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0;
+        }
+
+        .faq-arrow {
+            width: 24px;
+            height: 24px;
+            fill: #9ca3af;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
+            fill: #3b82f6;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding-top: 0;
             color: rgba(255, 255, 255, 0.9);
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            transition: max-height 0.3s ease-out, padding-top 0.3s ease-out;
         }
 
-        .social-links {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-top: 1rem;
         }
 
-        .social-links h4 {
-            color: white;
-            margin-bottom: 1rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .social-icon {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-        }
-
-        .social-icon:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            color: white;
-        }
-
-        .rating-section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            margin-top: 2rem;
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            padding: 4rem 0;
             text-align: center;
         }
 
-        .rating-section h4 {
+        .cta h2 {
             color: white;
-            margin-bottom: 0.5rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
         }
 
-        .rating-text {
+        .cta p {
             color: rgba(255, 255, 255, 0.9);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
         }
 
-        .delivery-info {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            padding: 1.5rem;
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-primary {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
             border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta-primary:hover,
+        .btn-cta-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: rgba(31, 41, 55, 0.9);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             margin-top: 2rem;
         }
 
-        .delivery-info h4 {
-            color: white;
-            margin-bottom: 0.5rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
         }
 
-        .delivery-info p {
-            color: rgba(255, 255, 255, 0.9);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-        }
-
+        /* Spanish Note */
         .spanish-note {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(15px);
@@ -460,6 +780,48 @@
             margin: 0;
         }
 
+        /* New styles for contact info list */
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem; /* Increased gap */
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start; /* Align to the top */
+            gap: 1rem;
+        }
+
+        .info-icon {
+            font-size: 1.5rem; /* Adjusted icon size */
+            color: #9ca3af; /* A neutral gray color */
+            margin-top: 2px;
+        }
+
+        .contact-info-item h5 {
+            margin: 0 0 0.25rem 0;
+            color: white;
+            font-weight: 600;
+        }
+
+        .contact-info-item p,
+        .contact-info-item a {
+            margin: 0;
+            color: #d1d5db; /* Lighter gray for text */
+            text-decoration: none;
+            line-height: 1.4;
+        }
+
+        .contact-info-item a:hover {
+            color: #60a5fa;
+        }
+
+        .info-panel ul {
+            margin-top: 1rem;
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -470,9 +832,45 @@
                 font-size: 2rem;
             }
 
-            .social-icons {
-                justify-content: center;
+            .contact-details {
+                grid-template-columns: 1fr;
             }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .social-btn {
+            background-color: #4b5563;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            border: 1px solid #6b7280;
+        }
+
+        .social-btn:hover {
+            background-color: #6b7280;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -557,102 +955,414 @@
 
         <section class="contact-content">
             <div class="contact-grid">
+                <!-- Contact Form Section -->
                 <div class="contact-form-section">
                     <h2>Get In Touch</h2>
                     <form class="contact-form" action="#" method="POST">
                         <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Full Name">
                         </div>
+                        
                         <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="Email Address">
                         </div>
+                        
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="phone" placeholder="Phone Number">
                         </div>
+
+                        <div class="form-group">
+                            <label for="contact-method">Preferred Contact Method</label>
+                            <select id="contact-method" name="contact-method">
+                                <option value="">Select preferred method</option>
+                                <option value="phone">Phone</option>
+                                <option value="email">Email</option>
+                                <option value="text">Text Message</option>
+                                <option value="whatsapp">WhatsApp</option>
+                            </select>
+                        </div>
+                        
                         <div class="form-group">
                             <label for="service">Service Interested In</label>
-                            <select id="service" name="service">
+                            <select id="service" name="service" onchange="showServiceDetails(this.value)">
                                 <option value="">Select a service</option>
                                 <option value="custom-shirts">Custom Shirts</option>
                                 <option value="custom-hoodies">Custom Hoodies</option>
                                 <option value="custom-hats">Custom Hats</option>
                                 <option value="custom-banners">Custom Banners</option>
                                 <option value="business-cards">Business Cards</option>
+                                <option value="stickers">Stickers</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="quantity">Quantity Needed</label>
-                            <input type="number" id="quantity" name="quantity" min="1" placeholder="e.g., 50">
+
+                        <!-- Service-Specific Details -->
+                        <div id="custom-shirts-details" class="service-details">
+                            <div class="form-group">
+                                <label for="shirt-type">Shirt Type</label>
+                                <select id="shirt-type" name="shirt-type">
+                                    <option value="">Select shirt type</option>
+                                    <option value="t-shirt">T-Shirt</option>
+                                    <option value="polo">Polo Shirt</option>
+                                    <option value="long-sleeve">Long Sleeve</option>
+                                    <option value="tank-top">Tank Top</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="shirt-sizes">Sizes Needed (e.g., S:10, M:15)</label>
+                                <input type="text" id="shirt-sizes" name="shirt-sizes" placeholder="Sizes Needed (e.g., S:10, M:15)">
+                            </div>
+                            <div class="form-group">
+                                <label for="shirt-quantity">Quantity Needed</label>
+                                <input type="number" id="shirt-quantity" name="shirt-quantity" min="1" placeholder="Quantity Needed">
+                            </div>
+                            <div class="form-group">
+                                <label for="shirt-design-colors">Design Colors (e.g., 3 colors)</label>
+                                <input type="text" id="shirt-design-colors" name="shirt-design-colors" placeholder="Design Colors (e.g., 3 colors)">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Project Details *</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, design requirements, timeline, etc." required></textarea>
+
+                        <div id="custom-hoodies-details" class="service-details">
+                            <div class="form-group">
+                                <label for="hoodie-type">Hoodie Type</label>
+                                <select id="hoodie-type" name="hoodie-type">
+                                    <option value="">Select hoodie type</option>
+                                    <option value="pullover">Pullover Hoodie</option>
+                                    <option value="zip-up">Zip-up Hoodie</option>
+                                    <option value="sweatshirt">Sweatshirt</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="hoodie-sizes">Sizes Needed (e.g., S:5, M:10)</label>
+                                <input type="text" id="hoodie-sizes" name="hoodie-sizes" placeholder="Sizes Needed (e.g., S:5, M:10)">
+                            </div>
+                            <div class="form-group">
+                                <label for="hoodie-quantity">Quantity Needed</label>
+                                <input type="number" id="hoodie-quantity" name="hoodie-quantity" min="1" placeholder="Quantity Needed">
+                            </div>
+                            <div class="form-group">
+                                <label for="hoodie-design-colors">Design Colors (e.g., 3 colors)</label>
+                                <input type="text" id="hoodie-design-colors" name="hoodie-design-colors" placeholder="Design Colors (e.g., 3 colors)">
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+
+                        <div id="hats-details" class="service-details">
+                            <div class="form-group">
+                                <label for="hat-type">Hat Type</label>
+                                <select id="hat-type" name="hat-type">
+                                    <option value="">Select hat type</option>
+                                    <option value="baseball-cap">Baseball Cap</option>
+                                    <option value="snapback">Snapback</option>
+                                    <option value="beanie">Beanie</option>
+                                    <option value="trucker-hat">Trucker Hat</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="banners-details" class="service-details">
+                            <div class="form-group">
+                                <label for="banner-size">Banner Size (e.g., 3ft x 6ft)</label>
+                                <input type="text" id="banner-size" name="banner-size" placeholder="Banner Size (e.g., 3ft x 6ft)">
+                            </div>
+                            <div class="form-group">
+                                <label for="banner-material">Material Preference</label>
+                                <select id="banner-material" name="banner-material">
+                                    <option value="">Select material</option>
+                                    <option value="vinyl">Vinyl</option>
+                                    <option value="fabric">Fabric</option>
+                                    <option value="mesh">Mesh</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="business-cards-details" class="service-details">
+                            <div class="form-group">
+                                <label for="card-size">Card Size</label>
+                                <select id="card-size" name="card-size">
+                                    <option value="">Select size</option>
+                                    <option value="standard">Standard (3.5" x 2")</option>
+                                    <option value="square">Square (2.5" x 2.5")</option>
+                                    <option value="mini">Mini (3" x 1.75")</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-finish">Finish Preference</label>
+                                <select id="card-finish" name="card-finish">
+                                    <option value="">Select finish</option>
+                                    <option value="matte">Matte</option>
+                                    <option value="glossy">Glossy</option>
+                                    <option value="semi-gloss">Semi-Gloss</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-quantity">Quantity Needed</label>
+                                <input type="number" id="card-quantity" name="card-quantity" min="1" placeholder="Quantity Needed">
+                            </div>
+                            <div class="form-group">
+                                <label for="card-design-colors">Design Colors (e.g., 3 colors)</label>
+                                <input type="text" id="card-design-colors" name="card-design-colors" placeholder="Design Colors (e.g., 3 colors)">
+                            </div>
+                        </div>
+
+                        <div id="stickers-details" class="service-details">
+                            <div class="form-group">
+                                <label for="sticker-quantity">Quantity Needed</label>
+                                <input type="number" id="sticker-quantity" name="sticker-quantity" placeholder="Quantity Needed">
+                            </div>
+                            <div class="form-group">
+                                <label for="sticker-colors">Design Colors (e.g., 3 colors)</label>
+                                <input type="text" id="sticker-colors" name="sticker-colors" placeholder="Design Colors (e.g., 3 colors)">
+                            </div>
+                        </div>
+                        
+                        <!-- Service-specific fields - only show when a service is selected -->
+                        <div id="service-specific-fields" class="service-details">
+                            <div class="form-group">
+                                <label for="quantity">Quantity Needed</label>
+                                <input type="number" id="quantity" name="quantity" min="1" placeholder="Quantity Needed">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="design-colors">Design Colors (e.g., 3 colors)</label>
+                                <input type="text" id="design-colors" name="design-colors" placeholder="Design Colors (e.g., 3 colors)">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deadline">Needed By (Deadline)</label>
+                            <input type="date" id="deadline" name="deadline">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="design-files">Upload Design Files</label>
+                            <div class="file-upload-container">
+                                <input type="file" id="design-files" name="design-files" multiple accept=".jpg,.jpeg,.png,.pdf,.ai,.psd,.svg">
+                                <label for="design-files" class="file-upload-btn">Choose Files</label>
+                                <span class="file-upload-text">No file chosen</span>
+                            </div>
+                            <small class="file-help">Accepted formats: JPG, PNG, PDF, AI, PSD, SVG</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reference-images">Reference Images</label>
+                            <div class="file-upload-container">
+                                <input type="file" id="reference-images" name="reference-images" multiple accept=".jpg,.jpeg,.png">
+                                <label for="reference-images" class="file-upload-btn">Choose Files</label>
+                                <span class="file-upload-text">No file chosen</span>
+                            </div>
+                            <small class="file-help">Upload any reference images or inspiration</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Project Details"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="language-preference">
+                                <div class="lang-text">
+                                    <label for="spanish-preference">I prefer to communicate in Spanish</label>
+                                    <small>Prefiero comunicarme en español</small>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="spanish-preference" name="spanish-preference">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="send-quote-btn">
+                            Send Quote Request
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                                <path d="M2 2l7.586 7.586"></path>
+                                <circle cx="11" cy="11" r="2"></circle>
+                            </svg>
+                        </button>
                     </form>
                 </div>
 
+                <!-- Contact Info Section -->
                 <div class="contact-info-section">
                     <h2>Contact Information</h2>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <h4>📍 Address</h4>
-                            <p>840 N State St</p>
-                            <p>Northeast Elgin, IL</p>
-                            <p>United States, Illinois</p>
-                        </div>
-
-                        <div class="contact-item">
-                            <h4>📞 Phone</h4>
-                            <p><a href="tel:+13312555330">(331) 255-5330</a></p>
-                        </div>
-
-                        <div class="contact-item">
-                            <h4>📧 Email</h4>
-                            <p><a href="mailto:imaginepttp@gmail.com">imaginepttp@gmail.com</a></p>
-                        </div>
-
-                        <div class="business-hours">
-                            <h4>🕒 Business Hours</h4>
-                            <div class="hours-item">
-                                <span>Monday - Sunday</span>
-                                <span>Always Open</span>
+                    <!-- Contact Details -->
+                    <div class="info-panel">
+                        <div class="contact-info-list">
+                            <div class="contact-info-item">
+                                <span class="info-icon">📍</span>
+                                <div>
+                                    <h5>Address</h5>
+                                    <p>840 N State St<br>Northeast Elgin, IL</p>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <span class="info-icon">📞</span>
+                                <div>
+                                    <h5>Phone</h5>
+                                    <p><a href="tel:3312555330">(331) 255-5330</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <span class="info-icon">📧</span>
+                                <div>
+                                    <h5>Email</h5>
+                                    <p><a href="mailto:imaginepttp@gmail.com">imaginepttp@gmail.com</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <span class="info-icon">🕒</span>
+                                <div>
+                                    <h5>Business Hours</h5>
+                                    <p>Monday - Sunday<br>Always Open</p>
+                                </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="delivery-info">
-                            <h4>🚚 Delivery</h4>
-                            <p>Contactless delivery available</p>
-                        </div>
+                    <!-- Delivery & Pickup -->
+                    <div class="info-panel">
+                        <h4>🚚 Delivery & Pickup</h4>
+                        <ul>
+                            <li>Contactless delivery available</li>
+                            <li>Local pickup at our Elgin location</li>
+                            <li>Shipping available nationwide</li>
+                        </ul>
+                    </div>
 
-                        <div class="rating-section">
-                            <h4>⭐ Reviews</h4>
-                            <p class="rating-text">Not yet rated (4 Reviews)</p>
-                        </div>
+                    <!-- Turnaround Times -->
+                    <div class="info-panel">
+                         <h4>⏰ Turnaround Times</h4>
+                        <ul>
+                            <li>Standard: 3-5 business days</li>
+                            <li>Rush: 1-2 business days</li>
+                            <li>Large Orders: 5-7 business days</li>
+                            <li>Rush orders may include additional fees</li>
+                        </ul>
+                    </div>
 
-                        <div class="social-links">
-                            <h4>📱 Follow Us</h4>
-                            <div class="social-icons">
-                                <a href="https://www.tiktok.com/@https%3A%2F%2Fwww.tiktok.com%2Ft%2FZP8kGeyLB%2F" class="social-icon" target="_blank">TikTok</a>
-                                <a href="https://68da1e-18.myshopify.com" class="social-icon" target="_blank">Shop</a>
-                            </div>
+                    <!-- Reviews -->
+                    <div class="info-panel">
+                        <h4>⭐ Reviews</h4>
+                        <p>Not yet rated (4 Reviews)</p>
+                    </div>
+
+                    <!-- Follow Us -->
+                    <div class="info-panel">
+                        <h4>📱 Follow Us</h4>
+                        <div class="social-buttons">
+                            <a href="https://www.tiktok.com/@https%3A%2F%2Fwww.tiktok.com%2Ft%2FZP8kGeyLB%2F" class="social-btn" target="_blank">TikTok</a>
+                            <a href="https://68da1e-18.myshopify.com" class="social-btn" target="_blank">Shop</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="cta">
+        <!-- FAQ Section -->
+        <section class="faq-section">
             <div class="container">
-                <h2>Ready to Start Your Project?</h2>
-                <p>Any questions? Feel free to text, call, or send an email. We're here to help!</p>
-                <p>¡Hablamos español!</p>
-                <a href="tel:+13312555330" class="btn btn-primary">Call Now</a>
-                <a href="mailto:imaginepttp@gmail.com" class="btn btn-secondary">Send Email</a>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>What file formats do you accept for designs?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept JPG, PNG, PDF, AI (Adobe Illustrator), PSD (Adobe Photoshop), and SVG files. For best results, we recommend vector files (AI, SVG, PDF) or high-resolution images (300 DPI).</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>Do you provide design services?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! If you don't have a design, we can help create one for you. Just let us know your ideas and we'll work with you to bring your vision to life.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>What's the minimum order quantity?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Minimum orders vary by product: Shirts (12 pieces), Hoodies (6 pieces), Hats (12 pieces), Business Cards (100 pieces). Banners have no minimum. Contact us for custom requirements.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>Do you offer rush orders?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer rush orders with 1-2 business day turnaround. Rush orders may include additional fees. Contact us to check availability for your specific timeline.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>Can I see a proof before printing?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! We provide digital proofs for approval before production begins. We want to ensure you're completely satisfied with the design before we print.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>Do you ship nationwide?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we ship nationwide! We also offer local pickup at our Elgin location and contactless delivery for local customers.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>What payment methods do you accept?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept cash, credit cards, PayPal, Venmo, and Zelle. Payment is typically required before production begins, with payment plans available for large orders.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>¿Hablan español?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>¡Sí! Hablamos español y podemos ayudarte en tu idioma preferido. / Yes! We speak Spanish and can help you in your preferred language.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -687,6 +1397,100 @@
     </footer>
 
     <script src="js/main.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // File upload functionality
+            const designFilesInput = document.getElementById('design-files');
+            const referenceImagesInput = document.getElementById('reference-images');
+            const designFilesText = designFilesInput.nextElementSibling.nextElementSibling;
+            const referenceImagesText = referenceImagesInput.nextElementSibling.nextElementSibling;
+
+            designFilesInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    designFilesText.textContent = `${this.files.length} file(s) selected`;
+                } else {
+                    designFilesText.textContent = 'No file chosen';
+                }
+            });
+
+            referenceImagesInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    referenceImagesText.textContent = `${this.files.length} file(s) selected`;
+                } else {
+                    referenceImagesText.textContent = 'No file chosen';
+                }
+            });
+
+            // Form submission
+            const contactForm = document.querySelector('.contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Show success message
+                alert('Thank you for your quote request! We will contact you soon.');
+                // Reset form
+                this.reset();
+                // Hide all service details
+                document.querySelectorAll('.service-details').forEach(detail => {
+                    detail.classList.remove('show');
+                });
+                // Reset file upload texts
+                designFilesText.textContent = 'No file chosen';
+                referenceImagesText.textContent = 'No file chosen';
+            });
+        });
+
+        // Show/hide service-specific details
+        function showServiceDetails(service) {
+            // Hide all service details first
+            document.querySelectorAll('.service-details').forEach(detail => {
+                detail.classList.remove('show');
+            });
+
+            // Show the selected service details
+            if (service) {
+                const detailsId = service + '-details';
+                const detailsElement = document.getElementById(detailsId);
+                if (detailsElement) {
+                    detailsElement.classList.add('show');
+                }
+                
+                // Show the general service-specific fields (quantity and design colors) 
+                // only for services that don't have their own specific fields
+                const servicesWithSpecificFields = ['custom-shirts', 'custom-hoodies', 'business-cards', 'stickers'];
+                const serviceSpecificFields = document.getElementById('service-specific-fields');
+                
+                if (serviceSpecificFields) {
+                    if (servicesWithSpecificFields.includes(service)) {
+                        // Hide general fields for services that have their own specific fields
+                        serviceSpecificFields.classList.remove('show');
+                    } else {
+                        // Show general fields for other services
+                        serviceSpecificFields.classList.add('show');
+                    }
+                }
+            } else {
+                // Hide the general service-specific fields if no service is selected
+                const serviceSpecificFields = document.getElementById('service-specific-fields');
+                if (serviceSpecificFields) {
+                    serviceSpecificFields.classList.remove('show');
+                }
+            }
+        }
+
+        // FAQ toggle functionality
+        function toggleFAQ(element) {
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Toggle the clicked item
+            element.classList.toggle('active');
+        }
+    </script>
 
     <!-- Snow Animation Elements -->
     <div class="loader">
@@ -694,21 +1498,6 @@
     </div>
     <div class="main">
         <div class="initial-snow">
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
             <div class="snow">&#10052;</div>
             <div class="snow">&#10052;</div>
             <div class="snow">&#10052;</div>
@@ -722,7 +1511,7 @@
         const paintVideo = document.getElementById('paint-splat-bg');
         let colorInterval;
         
-        // Color cycling function - Blue → Red → Yellow → Red → Blue
+        // Optimized color cycling function
         function cyclePaintColors() {
             const colors = [
                 'hue-rotate(0deg)',        // Blue (original, no change)
@@ -730,14 +1519,17 @@
                 'hue-rotate(180deg)',      // Yellow
                 'hue-rotate(120deg)'       // Red (again)
             ];
-            const timings = [3000, 3000, 3000, 3000]; // All transitions 3 seconds
+            const timings = [4000, 4000, 4000, 4000]; // Slower transitions for better performance
             let colorIndex = 0;
             
             function nextColor() {
-                paintVideo.style.filter = colors[colorIndex];
+                // Use requestAnimationFrame for smoother transitions
+                requestAnimationFrame(() => {
+                    paintVideo.style.filter = colors[colorIndex];
+                });
                 colorIndex = (colorIndex + 1) % colors.length;
                 
-                // Schedule next transition with appropriate timing
+                // Schedule next transition
                 setTimeout(nextColor, timings[colorIndex === 0 ? 3 : colorIndex - 1]);
             }
             
@@ -746,19 +1538,31 @@
         }
         
         paintVideo.addEventListener('loadeddata', () => {
-            cyclePaintColors(); // Start color cycling
-            
-            // Pause video after 10 seconds but keep color cycling
+            // Add a small delay to ensure video is fully loaded
             setTimeout(() => {
-                paintVideo.pause();
-                console.log('Paint splat video paused after 10 seconds, color cycling continues');
-            }, 10000);
+                cyclePaintColors();
+                
+                // Pause video after 8 seconds for better performance
+                setTimeout(() => {
+                    paintVideo.pause();
+                    console.log('Paint splat video paused after 8 seconds, color cycling continues');
+                }, 8000);
+            }, 500);
         });
         
-        // Ensure video plays initially
+        // Optimized video loop
         paintVideo.addEventListener('ended', () => {
             paintVideo.currentTime = 0;
             paintVideo.play();
+        });
+        
+        // Pause video when page is not visible to save resources
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                paintVideo.pause();
+            } else {
+                paintVideo.play();
+            }
         });
     </script>
 </body>
