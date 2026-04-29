@@ -7,6 +7,51 @@
     <meta name="description" content="Contact Imagine PPTP Prints for custom printing services. High quality shirts, hoodies, hats, banners, and business cards. Located in Elgin, IL.">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="canonical" href="https://georgeszul.github.io/ImaginePPTPprints/contact.html">
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact Us — Imagine PPTP Prints">
+    <meta property="og:description" content="Contact Imagine PPTP Prints for custom printing services. High quality shirts, hoodies, hats, banners, and business cards. Located in Elgin, IL.">
+    <meta property="og:url" content="https://georgeszul.github.io/ImaginePPTPprints/contact.html">
+    <meta property="og:image" content="https://georgeszul.github.io/ImaginePPTPprints/images/mainLogo.jpg">
+    <meta property="og:site_name" content="Imagine PPTP Prints">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Us — Imagine PPTP Prints">
+    <meta name="twitter:description" content="Contact Imagine PPTP Prints for custom printing services. High quality shirts, hoodies, hats, banners, and business cards. Located in Elgin, IL.">
+    <meta name="twitter:image" content="https://georgeszul.github.io/ImaginePPTPprints/images/mainLogo.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Imagine PPTP Prints",
+      "image": "https://georgeszul.github.io/ImaginePPTPprints/images/mainLogo.jpg",
+      "url": "https://georgeszul.github.io/ImaginePPTPprints/",
+      "telephone": "+1-331-255-5330",
+      "email": "imaginepttp@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "840 N State St",
+        "addressLocality": "Elgin",
+        "addressRegion": "IL",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "sameAs": [
+        "https://www.tiktok.com/t/ZP8kGeyLB/",
+        "https://68da1e-18.myshopify.com/"
+      ]
+    }
+    </script>
+
     <style>
         /* Paint Splat Background Video */
         #paint-splat-bg {
@@ -20,136 +65,10 @@
             transition: filter 0.8s ease-in-out;
         }
 
-        /* Snow Animation Styles */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            overflow: hidden;
-            z-index: 0;
-            background: radial-gradient(
-                circle,
-                rgb(126, 223, 255) 0%,
-                rgba(71, 196, 255, 1) 68%,
-                rgba(0, 110, 239, 1) 100%
-            );
-        }
-
-        .loader-icon-1 {
-            font-size: 80px;
-            color: rgb(200, 241, 255, 0.8);
-            text-shadow: 1px 1px 1px rgba(71, 196, 255, 1), -1px -1px 1px white;
-            animation: snow-loader 0.5s 9 linear alternate-reverse forwards,
-                snow-loader-zoom 5s forwards;
-            animation-delay: 0s, 0.5s;
-        }
-
-        @keyframes snow-loader {
-            from { transform: rotateY(0deg); }
-            to { transform: rotateY(90deg); }
-        }
-
-        @keyframes snow-loader-zoom {
-            from {
-                transform: scale(1, 1) rotateZ(0deg);
-                color: rgb(200, 241, 255, 0.8);
-            }
-            to {
-                color: #123;
-                transform: scale(200, 200) rotateZ(360deg);
-            }
-        }
-
-        .main {
-            z-index: 1;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(#123, #111);
-            opacity: 0;
-            animation: main-loadup 1s forwards linear, main-loadup-bg 10s forwards linear;
-            animation-delay: 1s, 8s;
-        }
-
-        @keyframes main-loadup {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes main-loadup-bg {
-            from {
-                background-size: 100% 100%;
-                background-position: 0% 0%;
-            }
-            to {
-                background-size: 400% 400%;
-                background-position: 0% 100%;
-            }
-        }
-
-        .initial-snow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .initial-snow > * {
-            font-size: 50px;
-            color: white;
-            position: absolute;
-            top: -5vh;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes snowfall {
-            0% { transform: translate3d(var(--left-ini), 0, 0); }
-            100% { transform: translate3d(var(--left-end), 100vh, 0); }
-        }
-
-        /* Snow elements */
-        .snow:nth-child(2n) { filter: blur(1px); font-size: 40px; }
-        .snow:nth-child(6n) { filter: blur(2px); font-size: 30px; }
-        .snow:nth-child(10n) { filter: blur(5px); font-size: 30px; }
-
-        /* Individual snow animations */
-        .snow:nth-child(1) { --size: 0.8vw; --left-ini: 0vw; --left-end: -1vw; left: 70vw; animation: snowfall 9s linear infinite; animation-delay: -1s; }
-        .snow:nth-child(2) { --size: 0.2vw; --left-ini: -7vw; --left-end: 10vw; left: 65vw; animation: snowfall 15s linear infinite; animation-delay: -8s; }
-        .snow:nth-child(3) { --size: 1vw; --left-ini: 6vw; --left-end: 6vw; left: 1vw; animation: snowfall 9s linear infinite; animation-delay: -7s; }
-        .snow:nth-child(4) { --size: 0.2vw; --left-ini: -3vw; --left-end: 9vw; left: 80vw; animation: snowfall 14s linear infinite; animation-delay: -5s; }
-        .snow:nth-child(5) { --size: 0.4vw; --left-ini: -2vw; --left-end: -9vw; left: 74vw; animation: snowfall 6s linear infinite; animation-delay: -4s; }
-        .snow:nth-child(6) { --size: 0.6vw; --left-ini: 4vw; --left-end: 2vw; left: 15vw; animation: snowfall 12s linear infinite; animation-delay: -3s; }
-        .snow:nth-child(7) { --size: 0.3vw; --left-ini: -5vw; --left-end: 7vw; left: 45vw; animation: snowfall 8s linear infinite; animation-delay: -6s; }
-        .snow:nth-child(8) { --size: 0.9vw; --left-ini: 3vw; --left-end: -4vw; left: 25vw; animation: snowfall 11s linear infinite; animation-delay: -2s; }
-        .snow:nth-child(9) { --size: 0.1vw; --left-ini: -8vw; --left-end: 5vw; left: 75vw; animation: snowfall 16s linear infinite; animation-delay: -9s; }
-        .snow:nth-child(10) { --size: 0.7vw; --left-ini: 2vw; --left-end: -6vw; left: 35vw; animation: snowfall 10s linear infinite; animation-delay: -1.5s; }
-
-        /* Ensure page content appears above snow animation */
+        /* Ensure page content appears above paint-splat video */
         .header, .hero, .features, .services-preview, .gallery, .cta, .footer, main, section {
             position: relative;
             z-index: 1001;
-        }
-
-        /* Ensure snow animation stays behind content and doesn't interfere with text */
-        .loader, .main {
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .loader *, .main * {
-            pointer-events: none;
         }
 
         /* Make navigation bar sticky */
@@ -158,13 +77,14 @@
             top: 0 !important;
             z-index: 1002 !important;
             background: rgba(255, 255, 255, 0.95) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
             backdrop-filter: blur(10px) !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
         }
 
         /* Ensure nav text is readable on sticky background */
-        .nav-logo h1, .nav-link {
+        .nav-logo .brand-name, .nav-link {
             color: #1f2937 !important;
             text-shadow: none !important;
         }
@@ -173,7 +93,7 @@
             color: #2563eb !important;
         }
 
-        /* Make sure text is readable against snow background */
+        /* Make sure text is readable against paint-splat video */
         .hero-title, .hero-subtitle, .section-title, .section-subtitle,
         h1, h2, h3, h4, h5, h6, p, span, label {
             color: white !important;
@@ -232,6 +152,7 @@
 
         .contact-form {
             background: rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(15px);
             backdrop-filter: blur(15px);
             padding: 2rem;
             border-radius: 12px;
@@ -293,31 +214,48 @@
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
-        /* Service-specific details container */
-        .service-details {
+        /* Deadline date error message */
+        .form-group .deadline-error {
             display: none;
+            color: #fca5a5;
+            font-size: 0.875rem;
+            margin-top: 0.4rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+        .form-group .deadline-error.show {
+            display: block;
+        }
+
+        /* Slot that reserves a fixed area for the dynamic service-detail
+           panels. The reservation height is computed once on page load
+           (max of all panel heights). All panels stack on top of each
+           other (position: absolute) inside this slot; switching between
+           them is a pure opacity fade — nothing else on the page moves. */
+        .service-details-slot {
+            position: relative;
+            margin-top: 1rem;
+            min-height: 0; /* JS sets this on load */
+        }
+
+        .service-details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
             background: rgba(31, 41, 55, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 1.5rem;
             border-radius: 12px;
-            margin-top: 1rem;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
         }
 
         .service-details.show {
-            display: block;
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .service-details label {
@@ -486,6 +424,7 @@
         /* Info Panel Styles */
         .info-panel {
             background: rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(15px);
             backdrop-filter: blur(15px);
             padding: 1.5rem;
             border-radius: 12px;
@@ -599,42 +538,51 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            /* Don't stretch siblings to match the tallest opened card. */
+            align-items: start;
         }
 
         .faq-item {
+            display: block;
+            width: 100%;
+            text-align: left;
+            font: inherit;
+            color: inherit;
             background: rgba(31, 41, 55, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 1.25rem 1.5rem;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
             cursor: pointer;
         }
 
         .faq-item:hover {
-            transform: translateY(-3px);
             border-color: rgba(37, 99, 235, 0.5);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         .faq-item.active {
+            background: rgba(31, 41, 55, 0.95);
             border-color: rgba(37, 99, 235, 0.7);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.18);
         }
 
         .faq-question {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
             font-weight: 600;
             color: white;
-            margin-bottom: 0;
+            margin: 0;
         }
 
         .faq-arrow {
-            width: 24px;
-            height: 24px;
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
             fill: #9ca3af;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), fill 0.25s ease;
         }
 
         .faq-item.active .faq-arrow {
@@ -642,18 +590,35 @@
             fill: #3b82f6;
         }
 
+        /* Inline expanding answer: grid-template-rows 0fr -> 1fr animates
+           height smoothly without hardcoding a max-height. Card grows
+           naturally; grid `align-items: start` keeps siblings unaffected. */
         .faq-answer {
-            max-height: 0;
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-answer > p {
             overflow: hidden;
-            padding-top: 0;
-            color: rgba(255, 255, 255, 0.9);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-            transition: max-height 0.3s ease-out, padding-top 0.3s ease-out;
+            min-height: 0;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
         }
 
         .faq-item.active .faq-answer {
-            max-height: 200px;
+            grid-template-rows: 1fr;
+        }
+
+        .faq-item.active .faq-answer > p {
+            margin-top: 1rem;
             padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .faq-answer { transition: none; }
         }
 
         /* CTA Section */
@@ -714,6 +679,7 @@
         /* Footer Styles */
         .footer {
             background: rgba(31, 41, 55, 0.9);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding: 2rem 0;
@@ -765,6 +731,7 @@
         /* Spanish Note */
         .spanish-note {
             background: rgba(255, 255, 255, 0.15);
+            -webkit-backdrop-filter: blur(15px);
             backdrop-filter: blur(15px);
             padding: 1rem;
             border-radius: 8px;
@@ -875,9 +842,10 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Paint Splat Background Video -->
-    <video autoplay muted playsinline loop id="paint-splat-bg">
-        <source src="4508057-uhd_3840_2160_25fps.mp4" type="video/mp4">
+    <video autoplay muted playsinline loop preload="metadata" poster="images/paint-splat-poster.jpg" id="paint-splat-bg">
+        <source src="paint-splat-1080p.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
@@ -887,7 +855,7 @@
                 <div class="nav-logo">
                     <a href="index.html" class="logo-link">
                         <img src="images/mainLogo.jpg" alt="Imagine PPTP Prints Logo" class="logo-image">
-                        <h1>Imagine PPTP Prints</h1>
+                        <span class="brand-name">Imagine PPTP Prints</span>
                     </a>
                 </div>
                 <ul class="nav-menu">
@@ -904,7 +872,7 @@
                         <a href="about.html" class="nav-link">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="contact.html" class="nav-link active">Contact</a>
+                        <a href="contact.html" class="nav-link active" aria-current="page">Contact</a>
                     </li>
                 </ul>
                 
@@ -941,14 +909,14 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="contact-hero">
             <div class="container">
                 <h1>Contact Us</h1>
                 <p>High Quality printed shirts, hoodies, hats, for businesses, special occasions you name it.</p>
                 <p>Send us your design we will make the rest. Any questions feel free to text, call or send an email.</p>
                 <div class="spanish-note">
-                    <p>¡Hablamos español!</p>
+                    <p>¡<span lang="es">Hablamos español!</span></p>
                 </div>
             </div>
         </section>
@@ -961,17 +929,17 @@
                     <form class="contact-form" action="#" method="POST">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Full Name">
+                            <input type="text" id="name" name="name" required placeholder="Full Name" autocomplete="name">
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="Email Address">
+                            <input type="email" id="email" name="email" required placeholder="Email Address" autocomplete="email">
                         </div>
                         
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="Phone Number">
+                            <input type="tel" id="phone" name="phone" placeholder="Phone Number" autocomplete="tel">
                         </div>
 
                         <div class="form-group">
@@ -999,7 +967,8 @@
                             </select>
                         </div>
 
-                        <!-- Service-Specific Details -->
+                        <div class="service-details-slot">
+                            <!-- Service-Specific Details -->
                         <div id="custom-shirts-details" class="service-details">
                             <div class="form-group">
                                 <label for="shirt-type">Shirt Type</label>
@@ -1130,10 +1099,18 @@
                                 <input type="text" id="design-colors" name="design-colors" placeholder="Design Colors (e.g., 3 colors)">
                             </div>
                         </div>
+                        </div>
                         
                         <div class="form-group">
                             <label for="deadline">Needed By (Deadline)</label>
-                            <input type="date" id="deadline" name="deadline">
+                            <input type="text" id="deadline" name="deadline"
+                                   placeholder="MM/DD/YYYY"
+                                   inputmode="numeric"
+                                   maxlength="10"
+                                   pattern="(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}"
+                                   autocomplete="off"
+                                   aria-describedby="deadline-error">
+                            <span id="deadline-error" class="deadline-error" role="alert"></span>
                         </div>
                         
                         <div class="form-group">
@@ -1158,14 +1135,14 @@
                         
                         <div class="form-group">
                             <label for="message">Project Details</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Project Details"></textarea>
+                            <textarea id="message" name="message" rows="4" maxlength="1500" placeholder="Project Details"></textarea>
                         </div>
                         
                         <div class="form-group">
                             <div class="language-preference">
                                 <div class="lang-text">
                                     <label for="spanish-preference">I prefer to communicate in Spanish</label>
-                                    <small>Prefiero comunicarme en español</small>
+                                    <small><span lang="es">Prefiero comunicarme en español</span></small>
                                 </div>
                                 <label class="switch">
                                     <input type="checkbox" id="spanish-preference" name="spanish-preference">
@@ -1193,28 +1170,28 @@
                     <div class="info-panel">
                         <div class="contact-info-list">
                             <div class="contact-info-item">
-                                <span class="info-icon">📍</span>
+                                <span class="info-icon" aria-hidden="true">📍</span>
                                 <div>
                                     <h5>Address</h5>
                                     <p>840 N State St<br>Northeast Elgin, IL</p>
                                 </div>
                             </div>
                             <div class="contact-info-item">
-                                <span class="info-icon">📞</span>
+                                <span class="info-icon" aria-hidden="true">📞</span>
                                 <div>
                                     <h5>Phone</h5>
-                                    <p><a href="tel:3312555330">(331) 255-5330</a></p>
+                                    <p><a href="tel:+13312555330">(331) 255-5330</a></p>
                                 </div>
                             </div>
                             <div class="contact-info-item">
-                                <span class="info-icon">📧</span>
+                                <span class="info-icon" aria-hidden="true">📧</span>
                                 <div>
                                     <h5>Email</h5>
                                     <p><a href="mailto:imaginepttp@gmail.com">imaginepttp@gmail.com</a></p>
                                 </div>
                             </div>
                             <div class="contact-info-item">
-                                <span class="info-icon">🕒</span>
+                                <span class="info-icon" aria-hidden="true">🕒</span>
                                 <div>
                                     <h5>Business Hours</h5>
                                     <p>Monday - Sunday<br>Always Open</p>
@@ -1254,8 +1231,8 @@
                     <div class="info-panel">
                         <h4>📱 Follow Us</h4>
                         <div class="social-buttons">
-                            <a href="https://www.tiktok.com/@https%3A%2F%2Fwww.tiktok.com%2Ft%2FZP8kGeyLB%2F" class="social-btn" target="_blank">TikTok</a>
-                            <a href="https://68da1e-18.myshopify.com" class="social-btn" target="_blank">Shop</a>
+                            <a href="https://www.tiktok.com/t/ZP8kGeyLB/" class="social-btn" target="_blank" rel="noopener noreferrer">TikTok</a>
+                            <a href="https://68da1e-18.myshopify.com" class="social-btn" target="_blank" rel="noopener noreferrer">Shop</a>
                         </div>
                     </div>
                 </div>
@@ -1267,7 +1244,7 @@
             <div class="container">
                 <h2 class="section-title">Frequently Asked Questions</h2>
                 <div class="faq-grid">
-                    <div class="faq-item" onclick="toggleFAQ(this)">
+                    <button class="faq-item" type="button" onclick="toggleFAQ(this)">
                         <div class="faq-question">
                             <span>What file formats do you accept for designs?</span>
                             <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
@@ -1277,9 +1254,9 @@
                         <div class="faq-answer">
                             <p>We accept JPG, PNG, PDF, AI (Adobe Illustrator), PSD (Adobe Photoshop), and SVG files. For best results, we recommend vector files (AI, SVG, PDF) or high-resolution images (300 DPI).</p>
                         </div>
-                    </div>
+                    </button>
 
-                    <div class="faq-item" onclick="toggleFAQ(this)">
+                    <button class="faq-item" type="button" onclick="toggleFAQ(this)">
                         <div class="faq-question">
                             <span>Do you provide design services?</span>
                             <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
@@ -1289,9 +1266,9 @@
                         <div class="faq-answer">
                             <p>Yes! If you don't have a design, we can help create one for you. Just let us know your ideas and we'll work with you to bring your vision to life.</p>
                         </div>
-                    </div>
+                    </button>
 
-                    <div class="faq-item" onclick="toggleFAQ(this)">
+                    <button class="faq-item" type="button" onclick="toggleFAQ(this)">
                         <div class="faq-question">
                             <span>What's the minimum order quantity?</span>
                             <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
@@ -1301,9 +1278,9 @@
                         <div class="faq-answer">
                             <p>Minimum orders vary by product: Shirts (12 pieces), Hoodies (6 pieces), Hats (12 pieces), Business Cards (100 pieces). Banners have no minimum. Contact us for custom requirements.</p>
                         </div>
-                    </div>
+                    </button>
 
-                    <div class="faq-item" onclick="toggleFAQ(this)">
+                    <button class="faq-item" type="button" onclick="toggleFAQ(this)">
                         <div class="faq-question">
                             <span>Do you offer rush orders?</span>
                             <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
@@ -1313,9 +1290,9 @@
                         <div class="faq-answer">
                             <p>Yes, we offer rush orders with 1-2 business day turnaround. Rush orders may include additional fees. Contact us to check availability for your specific timeline.</p>
                         </div>
-                    </div>
+                    </button>
 
-                    <div class="faq-item" onclick="toggleFAQ(this)">
+                    <button class="faq-item" type="button" onclick="toggleFAQ(this)">
                         <div class="faq-question">
                             <span>Can I see a proof before printing?</span>
                             <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
@@ -1325,9 +1302,9 @@
                         <div class="faq-answer">
                             <p>Absolutely! We provide digital proofs for approval before production begins. We want to ensure you're completely satisfied with the design before we print.</p>
                         </div>
-                    </div>
+                    </button>
 
-                    <div class="faq-item" onclick="toggleFAQ(this)">
+                    <button class="faq-item" type="button" onclick="toggleFAQ(this)">
                         <div class="faq-question">
                             <span>Do you ship nationwide?</span>
                             <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
@@ -1337,9 +1314,9 @@
                         <div class="faq-answer">
                             <p>Yes, we ship nationwide! We also offer local pickup at our Elgin location and contactless delivery for local customers.</p>
                         </div>
-                    </div>
+                    </button>
 
-                    <div class="faq-item" onclick="toggleFAQ(this)">
+                    <button class="faq-item" type="button" onclick="toggleFAQ(this)">
                         <div class="faq-question">
                             <span>What payment methods do you accept?</span>
                             <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
@@ -1349,9 +1326,9 @@
                         <div class="faq-answer">
                             <p>We accept cash, credit cards, PayPal, Venmo, and Zelle. Payment is typically required before production begins, with payment plans available for large orders.</p>
                         </div>
-                    </div>
+                    </button>
 
-                    <div class="faq-item" onclick="toggleFAQ(this)">
+                    <button class="faq-item" type="button" onclick="toggleFAQ(this)">
                         <div class="faq-question">
                             <span>¿Hablan español?</span>
                             <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
@@ -1361,7 +1338,7 @@
                         <div class="faq-answer">
                             <p>¡Sí! Hablamos español y podemos ayudarte en tu idioma preferido. / Yes! We speak Spanish and can help you in your preferred language.</p>
                         </div>
-                    </div>
+                    </button>
                 </div>
             </div>
         </section>
@@ -1391,13 +1368,69 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Imagine PPTP Prints. All rights reserved.</p>
+                <p>&copy; 2026 Imagine PPTP Prints. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    
+
+    <script>
+        // Deadline date field — manual entry with MM/DD/YYYY auto-format and min=today validation.
+        document.addEventListener('DOMContentLoaded', function() {
+            const deadline = document.getElementById('deadline');
+            const errorEl = document.getElementById('deadline-error');
+            if (!deadline) return;
+
+            function todayMidnight() {
+                const d = new Date();
+                d.setHours(0, 0, 0, 0);
+                return d;
+            }
+
+            function setError(msg) {
+                if (!errorEl) return;
+                errorEl.textContent = msg || '';
+                errorEl.classList.toggle('show', !!msg);
+                deadline.setCustomValidity(msg || '');
+            }
+
+            // Auto-insert "/" while the user types digits.
+            deadline.addEventListener('input', function(e) {
+                const digits = deadline.value.replace(/\D/g, '').slice(0, 8);
+                let formatted = digits;
+                if (digits.length > 4) {
+                    formatted = digits.slice(0, 2) + '/' + digits.slice(2, 4) + '/' + digits.slice(4);
+                } else if (digits.length > 2) {
+                    formatted = digits.slice(0, 2) + '/' + digits.slice(2);
+                }
+                deadline.value = formatted;
+                if (errorEl && errorEl.classList.contains('show')) setError('');
+            });
+
+            // Validate on blur — date must parse and be today or later.
+            deadline.addEventListener('blur', function() {
+                const v = deadline.value.trim();
+                if (!v) { setError(''); return; }
+                const m = v.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+                if (!m) { setError('Use MM/DD/YYYY format.'); return; }
+                const month = parseInt(m[1], 10);
+                const day = parseInt(m[2], 10);
+                const year = parseInt(m[3], 10);
+                const d = new Date(year, month - 1, day);
+                if (d.getFullYear() !== year || d.getMonth() !== month - 1 || d.getDate() !== day) {
+                    setError("That doesn't look like a real date.");
+                    return;
+                }
+                if (d < todayMidnight()) {
+                    setError('Pick today or a later date.');
+                    return;
+                }
+                setError('');
+            });
+        });
+    </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // File upload functionality
@@ -1422,61 +1455,112 @@
                 }
             });
 
-            // Form submission
+            // Form submission — opens user's mail client with prefilled details
             const contactForm = document.querySelector('.contact-form');
+            const RECIPIENT_EMAIL = 'imaginepttp@gmail.com';
+
+            const FIELD_LABELS = {
+                'name': 'Full Name',
+                'email': 'Email',
+                'phone': 'Phone',
+                'contact-method': 'Preferred Contact Method',
+                'service': 'Service',
+                'shirt-type': 'Shirt Type',
+                'shirt-sizes': 'Sizes Needed',
+                'shirt-quantity': 'Quantity',
+                'shirt-design-colors': 'Design Colors',
+                'hoodie-type': 'Hoodie Type',
+                'hoodie-sizes': 'Sizes Needed',
+                'hoodie-quantity': 'Quantity',
+                'hoodie-design-colors': 'Design Colors',
+                'hat-type': 'Hat Type',
+                'banner-size': 'Banner Size',
+                'banner-material': 'Banner Material',
+                'card-size': 'Card Size',
+                'card-finish': 'Card Finish',
+                'card-quantity': 'Quantity',
+                'card-design-colors': 'Design Colors',
+                'sticker-quantity': 'Quantity',
+                'sticker-colors': 'Design Colors',
+                'quantity': 'Quantity',
+                'design-colors': 'Design Colors',
+                'deadline': 'Needed By',
+                'message': 'Project Details',
+                'spanish-preference': 'Prefers Spanish'
+            };
+
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                // Show success message
-                alert('Thank you for your quote request! We will contact you soon.');
-                // Reset form
-                this.reset();
-                // Hide all service details
-                document.querySelectorAll('.service-details').forEach(detail => {
-                    detail.classList.remove('show');
-                });
-                // Reset file upload texts
-                designFilesText.textContent = 'No file chosen';
-                referenceImagesText.textContent = 'No file chosen';
+
+                const formData = new FormData(contactForm);
+                const lines = [];
+                for (const [rawKey, rawValue] of formData.entries()) {
+                    const value = (rawValue || '').toString().trim();
+                    if (!value) continue;
+                    if (rawKey === 'design-files' || rawKey === 'reference-images') continue;
+                    const label = FIELD_LABELS[rawKey] || rawKey;
+                    lines.push(`${label}: ${value}`);
+                }
+
+                const designFiles = designFilesInput.files;
+                const referenceFiles = referenceImagesInput.files;
+                if (designFiles.length || referenceFiles.length) {
+                    lines.push('');
+                    lines.push('--- Files to attach manually ---');
+                    for (const f of designFiles) lines.push(`Design: ${f.name}`);
+                    for (const f of referenceFiles) lines.push(`Reference: ${f.name}`);
+                    lines.push('(Please attach the files above to this email before sending.)');
+                }
+
+                const subject = 'Quote Request from Website';
+                const body = lines.join('\n');
+                const mailtoUrl = `mailto:${RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+                window.location.href = mailtoUrl;
+
+                alert('Your email client will open with your quote request. Please attach any design or reference files, then send the email to complete your request.');
             });
         });
 
         // Show/hide service-specific details
+        // Reserve enough vertical space for the tallest panel. This is set
+        // once on load (and again on resize) so the slot's box never resizes
+        // when the user picks or switches services — only the panels inside
+        // fade in/out.
+        function reserveSlotHeight() {
+            const slot = document.querySelector('.service-details-slot');
+            if (!slot) return;
+            const panels = slot.querySelectorAll('.service-details');
+            let maxH = 0;
+            panels.forEach(p => {
+                if (p.scrollHeight > maxH) maxH = p.scrollHeight;
+            });
+            slot.style.minHeight = maxH + 'px';
+        }
+
         function showServiceDetails(service) {
-            // Hide all service details first
+            // Hide every panel.
             document.querySelectorAll('.service-details').forEach(detail => {
                 detail.classList.remove('show');
             });
 
-            // Show the selected service details
-            if (service) {
-                const detailsId = service + '-details';
-                const detailsElement = document.getElementById(detailsId);
-                if (detailsElement) {
-                    detailsElement.classList.add('show');
-                }
-                
-                // Show the general service-specific fields (quantity and design colors) 
-                // only for services that don't have their own specific fields
-                const servicesWithSpecificFields = ['custom-shirts', 'custom-hoodies', 'business-cards', 'stickers'];
-                const serviceSpecificFields = document.getElementById('service-specific-fields');
-                
-                if (serviceSpecificFields) {
-                    if (servicesWithSpecificFields.includes(service)) {
-                        // Hide general fields for services that have their own specific fields
-                        serviceSpecificFields.classList.remove('show');
-                    } else {
-                        // Show general fields for other services
-                        serviceSpecificFields.classList.add('show');
-                    }
-                }
-            } else {
-                // Hide the general service-specific fields if no service is selected
-                const serviceSpecificFields = document.getElementById('service-specific-fields');
-                if (serviceSpecificFields) {
-                    serviceSpecificFields.classList.remove('show');
-                }
-            }
+            if (!service) return;
+
+            const panelMap = {
+                'custom-shirts': 'custom-shirts-details',
+                'custom-hoodies': 'custom-hoodies-details',
+                'custom-hats': 'hats-details',
+                'custom-banners': 'banners-details',
+                'business-cards': 'business-cards-details',
+                'stickers': 'stickers-details'
+            };
+            const panelId = panelMap[service] || 'service-specific-fields';
+            const activePanel = document.getElementById(panelId);
+            if (activePanel) activePanel.classList.add('show');
         }
+
+        window.addEventListener('load', reserveSlotHeight);
+        window.addEventListener('resize', reserveSlotHeight);
 
         // FAQ toggle functionality
         function toggleFAQ(element) {
@@ -1490,80 +1574,6 @@
             // Toggle the clicked item
             element.classList.toggle('active');
         }
-    </script>
-
-    <!-- Snow Animation Elements -->
-    <div class="loader">
-        <div class="loader-icon-1">&#10052;</div>
-    </div>
-    <div class="main">
-        <div class="initial-snow">
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-        </div>
-    </div>
-
-    <!-- Paint Splat Color Cycling Script -->
-    <script>
-        const paintVideo = document.getElementById('paint-splat-bg');
-        let colorInterval;
-        
-        // Optimized color cycling function
-        function cyclePaintColors() {
-            const colors = [
-                'hue-rotate(0deg)',        // Blue (original, no change)
-                'hue-rotate(120deg)',      // Red
-                'hue-rotate(180deg)',      // Yellow
-                'hue-rotate(120deg)'       // Red (again)
-            ];
-            const timings = [4000, 4000, 4000, 4000]; // Slower transitions for better performance
-            let colorIndex = 0;
-            
-            function nextColor() {
-                // Use requestAnimationFrame for smoother transitions
-                requestAnimationFrame(() => {
-                    paintVideo.style.filter = colors[colorIndex];
-                });
-                colorIndex = (colorIndex + 1) % colors.length;
-                
-                // Schedule next transition
-                setTimeout(nextColor, timings[colorIndex === 0 ? 3 : colorIndex - 1]);
-            }
-            
-            // Start the cycle
-            nextColor();
-        }
-        
-        paintVideo.addEventListener('loadeddata', () => {
-            // Add a small delay to ensure video is fully loaded
-            setTimeout(() => {
-                cyclePaintColors();
-                
-                // Pause video after 8 seconds for better performance
-                setTimeout(() => {
-                    paintVideo.pause();
-                    console.log('Paint splat video paused after 8 seconds, color cycling continues');
-                }, 8000);
-            }, 500);
-        });
-        
-        // Optimized video loop
-        paintVideo.addEventListener('ended', () => {
-            paintVideo.currentTime = 0;
-            paintVideo.play();
-        });
-        
-        // Pause video when page is not visible to save resources
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                paintVideo.pause();
-            } else {
-                paintVideo.play();
-            }
-        });
     </script>
 </body>
 </html>

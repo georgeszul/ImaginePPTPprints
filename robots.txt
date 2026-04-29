@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://georgeszul.github.io/ImaginePPTPprints/sitemap.xml

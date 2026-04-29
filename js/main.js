@@ -68,20 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
     // Add scroll effect to header
     const header = document.querySelector('.header');
     if (header) {
@@ -161,9 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Search functionality
 function performSearch(query) {
-    // Customize this function based on your needs
-    console.log('Searching for:', query);
-    
     // Example: Search through services
     const searchableContent = [
         { title: 'Custom Shirts', content: 'High quality printed shirts for businesses and special occasions', url: 'services.html#custom-shirts' },
@@ -187,35 +170,14 @@ function performSearch(query) {
     }
 }
 
-// Utility functions
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Optimize scroll performance
-const optimizedScrollHandler = debounce(function() {
-    // Scroll-based animations and effects
-}, 16);
-
-window.addEventListener('scroll', optimizedScrollHandler);
-
 // Enhanced hover effects for rotating images
 function setupImageHoverEffects() {
-    console.log('Setting up enhanced hover effects for images...');
-    
-    // Add hover effects to all rotating images
     const images = document.querySelectorAll('.image-rotator img');
-    console.log('Found rotating images:', images.length);
-    
+
     images.forEach((img, index) => {
+        if (img.dataset.hoverBound === '1') return;
+        img.dataset.hoverBound = '1';
+
         // Remove modal attributes since we don't want clicking
         img.removeAttribute('data-modal');
         img.removeAttribute('data-modal-src');
@@ -249,8 +211,6 @@ function setupImageHoverEffects() {
                 this.style.transform = 'scale(1.15) rotate(3deg)';
             }, 150);
         });
-        
-        console.log(`Added hover effects to image ${index + 1}:`, img.src);
     });
 }
 
@@ -266,29 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-
-    // Add click effect to buttons
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-            
-            this.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
         });
     });
 
@@ -559,70 +496,152 @@ function initializeImageRotators() {
 }
 
 function loadImagesForCategory(rotator, category) {
-    // Define image paths for each category
+    // Curated by SigLIP zero-shot classification on 638 FB photos + 113 site images.
+    // Hi-res preferred where available; thumbnails (200px) used as fallback for
+    // categories without hi-res source files (hoodies, hats, mugs, most stickers/banners).
     const categoryImages = {
         'tshirts': [
-            'images/tshirts/539738239_122202396998293236_2183067847999368314_n.jpg',
-            'images/tshirts/515501507_122198526200293236_7607457180543503991_n.jpg',
-            'images/tshirts/526524609_122198365964293236_9110283145285838337_n.jpg',
-            'images/tshirts/527979919_122199178190293236_5235865814956008456_n.jpg',
-            'images/tshirts/528375755_122199177968293236_175638541641193936_n.jpg'
+            'images/curated/tshirts/01.jpg',
+            'images/curated/tshirts/02.jpg',
+            'images/curated/tshirts/03.jpg',
+            'images/curated/tshirts/04.jpg',
+            'images/curated/tshirts/05.jpg',
+            'images/curated/tshirts/06.jpg',
+            'images/curated/tshirts/07.jpg',
+            'images/curated/tshirts/08.jpg',
+            'images/curated/tshirts/09.jpg',
+            'images/curated/tshirts/10.jpg',
+            'images/curated/tshirts/11.jpg',
+            'images/curated/tshirts/12.jpg',
         ],
         'hoodies': [
-            'images/hoodies/539634838_122202397106293236_2065046746168162236_n.jpg',
-            'images/tshirts/536272747_122202396872293236_4789949311103324035_n.jpg',
-            'images/tshirts/536272747_122202396902293236_7950217503672986740_n.jpg',
-            'images/tshirts/536272764_122202397574293236_8296046152295572766_n.jpg',
-            'images/tshirts/536273428_122202396704293236_4522561417970752719_n.jpg'
+            'images/curated/hoodies/01.jpg',
+            'images/curated/hoodies/02.jpeg',
+            'images/curated/hoodies/03.jpeg',
+            'images/curated/hoodies/04.jpeg',
+            'images/curated/hoodies/05.jpeg',
+            'images/curated/hoodies/06.jpeg',
+            'images/curated/hoodies/07.jpeg',
+            'images/curated/hoodies/08.jpeg',
+            'images/curated/hoodies/09.jpeg',
+            'images/curated/hoodies/10.jpeg',
+            'images/curated/hoodies/11.jpeg',
+            'images/curated/hoodies/12.jpeg',
         ],
-        'business-cards': [
-            'images/business-cards/539586768_122202396788293236_2819796790172946060_n.jpg',
-            'images/tshirts/536268068_122202402710293236_6046720143165808036_n.jpg',
-            'images/tshirts/536268117_122202397010293236_2058466867356444882_n.jpg',
-            'images/tshirts/536268491_122202402668293236_8113688650266670840_n.jpg'
-        ],
-        'stickers': [
-            'images/tshirts/536270882_122202397520293236_7105880321075647519_n.jpg',
-            'images/tshirts/536283035_122202397160293236_4155407478648893138_n.jpg',
-            'images/tshirts/536284750_122202402566293236_1502887189542089323_n.jpg'
+        'hats': [
+            'images/curated/hats/01.jpeg',
+            'images/curated/hats/02.jpeg',
         ],
         'mugs': [
-            'images/tshirts/536274150_122202402422293236_6376054713154628511_n.jpg',
-            'images/tshirts/536276688_122202396734293236_3101851942421334847_n.jpg',
-            'images/tshirts/536276805_122202396914293236_4210882850675972293_n.jpg'
+            'images/curated/mugs/01.jpeg',
+            'images/curated/mugs/02.jpeg',
+            'images/curated/mugs/03.jpeg',
+        ],
+        'stickers': [
+            'images/curated/stickers/01.jpeg',
+            'images/curated/stickers/02.jpeg',
+            'images/curated/stickers/03.jpeg',
+            'images/curated/stickers/04.jpeg',
+            'images/curated/stickers/05.jpeg',
+            'images/curated/stickers/06.jpeg',
+            'images/curated/stickers/07.jpeg',
+            'images/curated/stickers/08.jpeg',
+            'images/curated/stickers/09.jpeg',
+            'images/curated/stickers/10.jpeg',
+            'images/curated/stickers/11.jpeg',
+            'images/curated/stickers/12.jpeg',
         ],
         'banners': [
-            'images/tshirts/538700448_122202402572293236_3868410749720602649_n.jpg',
-            'images/tshirts/538958290_122202397490293236_2227702217652836018_n.jpg',
-            'images/tshirts/538987215_122202396896293236_6434286786111045305_n.jpg'
-        ]
+            'images/curated/banners/01.jpg',
+            'images/curated/banners/02.jpeg',
+            'images/curated/banners/03.jpeg',
+            'images/curated/banners/04.jpeg',
+            'images/curated/banners/05.jpeg',
+            'images/curated/banners/06.jpeg',
+            'images/curated/banners/07.jpeg',
+            'images/curated/banners/08.jpeg',
+        ],
+        'business-cards': [
+            'images/curated/business-cards/01.jpg',
+            'images/curated/business-cards/02.jpg',
+            'images/curated/business-cards/03.jpg',
+            'images/curated/business-cards/04.jpg',
+            'images/curated/business-cards/05.jpg',
+        ],
     };
 
-    const images = categoryImages[category] || [];
-    
+    // Categories whose curated images are 200px FB thumbnails — render as a 2x2
+    // mosaic at native size instead of upscaling a single thumb to fill the panel
+    // (which would look blurry). Multiple small tiles also showcase variety.
+    const MOSAIC_CATEGORIES = new Set(['hoodies', 'hats', 'mugs', 'stickers', 'banners']);
+
+    // For categories with mixed hi-res + thumb images, slice to only the hi-res
+    // ones so the rotator never shows a blurry frame. (business-cards is now
+    // fully hi-res after the folder-name fix, so no slicing needed.)
+    const HIRES_ONLY = {};
+
+    let images = categoryImages[category] || [];
+    const hiresLimit = HIRES_ONLY[category];
+    if (hiresLimit) {
+        images = images.slice(0, hiresLimit);
+    }
+
     if (images.length === 0) {
-        // Fallback to placeholder
         rotator.innerHTML = '<div class="placeholder-image">📸<br>Images Loading...</div>';
         return;
     }
 
-    // Create image elements
+    if (MOSAIC_CATEGORIES.has(category)) {
+        renderMosaic(rotator, images, category);
+    } else {
+        renderRotator(rotator, images, category);
+    }
+
+    setupImageHoverEffects();
+}
+
+function renderRotator(rotator, images, category) {
+    rotator.classList.remove('mosaic');
     images.forEach((src, index) => {
         const img = document.createElement('img');
         img.src = src;
+        img.loading = 'lazy';
         img.alt = `${category} example ${index + 1}`;
         img.className = index === 0 ? 'active' : '';
-        
         rotator.appendChild(img);
     });
-
-    // Start rotation if multiple images
     if (images.length > 1) {
         startImageRotation(rotator, images.length);
     }
+}
 
-    // Setup enhanced hover effects for the new images
-    setupImageHoverEffects();
+function renderMosaic(rotator, images, category) {
+    rotator.classList.add('mosaic');
+    const TILE_COUNT = 4;
+    const tiles = [];
+    for (let i = 0; i < TILE_COUNT; i++) {
+        const img = document.createElement('img');
+        img.src = images[i % images.length];
+        img.loading = 'lazy';
+        img.alt = `${category} example ${i + 1}`;
+        rotator.appendChild(img);
+        tiles.push(img);
+    }
+    // If pool larger than visible tiles, cycle one tile every 4s through the rest
+    if (images.length > TILE_COUNT) {
+        let nextPoolIdx = TILE_COUNT;
+        let nextTileIdx = 0;
+        setInterval(() => {
+            const tile = tiles[nextTileIdx];
+            tile.classList.add('fading');
+            setTimeout(() => {
+                tile.src = images[nextPoolIdx % images.length];
+                tile.classList.remove('fading');
+            }, 400);
+            nextPoolIdx = (nextPoolIdx + 1) % images.length;
+            nextTileIdx = (nextTileIdx + 1) % TILE_COUNT;
+        }, 3500);
+    }
 }
 
 function startImageRotation(rotator, imageCount) {
@@ -634,11 +653,57 @@ function startImageRotation(rotator, imageCount) {
 
         // Remove active class from current image
         images[currentIndex].classList.remove('active');
-        
+
         // Move to next image
         currentIndex = (currentIndex + 1) % imageCount;
-        
+
         // Add active class to new image
         images[currentIndex].classList.add('active');
     }, 8000); // 8 seconds for smoother experience
 }
+
+// Paint-splat background video — color cycling + lifecycle management
+function initPaintSplatVideo() {
+    const paintVideo = document.getElementById('paint-splat-bg');
+    if (!paintVideo) return;
+
+    function cyclePaintColors() {
+        const colors = [
+            'hue-rotate(0deg)',
+            'hue-rotate(120deg)',
+            'hue-rotate(180deg)',
+            'hue-rotate(120deg)',
+        ];
+        const timings = [4000, 4000, 4000, 4000];
+        let colorIndex = 0;
+
+        function nextColor() {
+            requestAnimationFrame(() => {
+                paintVideo.style.filter = colors[colorIndex];
+            });
+            colorIndex = (colorIndex + 1) % colors.length;
+            setTimeout(nextColor, timings[colorIndex === 0 ? 3 : colorIndex - 1]);
+        }
+
+        nextColor();
+    }
+
+    paintVideo.addEventListener('loadeddata', () => {
+        setTimeout(() => {
+            cyclePaintColors();
+            setTimeout(() => paintVideo.pause(), 8000);
+        }, 500);
+    });
+
+    paintVideo.addEventListener('ended', () => {
+        paintVideo.currentTime = 0;
+        paintVideo.play();
+    });
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) paintVideo.pause();
+        else paintVideo.play();
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initPaintSplatVideo);

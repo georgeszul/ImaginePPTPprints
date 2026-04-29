@@ -7,6 +7,51 @@
     <meta name="description" content="Imagine PPTP Prints - Your trusted partner for high-quality printing services. From business cards to large format prints, we deliver excellence.">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="canonical" href="https://georgeszul.github.io/ImaginePPTPprints/">
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Imagine PPTP Prints — Custom Printing in Elgin, IL">
+    <meta property="og:description" content="Imagine PPTP Prints - Your trusted partner for high-quality printing services. From business cards to large format prints, we deliver excellence.">
+    <meta property="og:url" content="https://georgeszul.github.io/ImaginePPTPprints/">
+    <meta property="og:image" content="https://georgeszul.github.io/ImaginePPTPprints/images/mainLogo.jpg">
+    <meta property="og:site_name" content="Imagine PPTP Prints">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Imagine PPTP Prints — Custom Printing in Elgin, IL">
+    <meta name="twitter:description" content="Imagine PPTP Prints - Your trusted partner for high-quality printing services. From business cards to large format prints, we deliver excellence.">
+    <meta name="twitter:image" content="https://georgeszul.github.io/ImaginePPTPprints/images/mainLogo.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Imagine PPTP Prints",
+      "image": "https://georgeszul.github.io/ImaginePPTPprints/images/mainLogo.jpg",
+      "url": "https://georgeszul.github.io/ImaginePPTPprints/",
+      "telephone": "+1-331-255-5330",
+      "email": "imaginepttp@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "840 N State St",
+        "addressLocality": "Elgin",
+        "addressRegion": "IL",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "sameAs": [
+        "https://www.tiktok.com/t/ZP8kGeyLB/",
+        "https://68da1e-18.myshopify.com/"
+      ]
+    }
+    </script>
+
     <style>
         /* Paint Splat Background Video */
         #paint-splat-bg {
@@ -32,13 +77,14 @@
             top: 0 !important;
             z-index: 1002 !important;
             background: rgba(255, 255, 255, 0.95) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
             backdrop-filter: blur(10px) !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
         }
 
         /* Ensure nav text is readable on sticky background */
-        .nav-logo h1, .nav-link {
+        .nav-logo .brand-name, .nav-link {
             color: #1f2937 !important;
             text-shadow: none !important;
         }
@@ -53,7 +99,7 @@
             z-index: 1001;
         }
 
-        /* Make all sections transparent to show snow animation */
+        /* Make all sections transparent to show paint-splat video */
         .hero, .features, .services-preview, .gallery, .cta, .footer, 
         .page-header, .contact-content, .contact-grid, .contact-form-section,
         .feature-card, .service-card, .gallery-item, .product-card {
@@ -61,7 +107,7 @@
             background-color: transparent !important;
         }
 
-        /* Make sure text is readable against snow background */
+        /* Make sure text is readable against paint-splat video */
         .hero-title, .hero-subtitle, .section-title, .section-subtitle,
         h1, h2, h3, h4, h5, h6, p, span, label {
             color: white !important;
@@ -71,6 +117,7 @@
         /* Make cards semi-transparent with white text */
         .feature-card, .service-card, .product-card {
             background: rgba(255, 255, 255, 0.1) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
             backdrop-filter: blur(10px) !important;
             border: 1px solid rgba(255, 255, 255, 0.2) !important;
         }
@@ -92,12 +139,14 @@
         /* Add semi-transparent backgrounds to CTA and footer sections */
         .cta {
             background: rgba(31, 41, 55, 0.8) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
             backdrop-filter: blur(10px) !important;
             border: 1px solid rgba(255, 255, 255, 0.2) !important;
         }
 
         .footer {
             background: rgba(31, 41, 55, 0.9) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
             backdrop-filter: blur(10px) !important;
             border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
         }
@@ -105,6 +154,7 @@
         /* Make all cards have frosted glass effect (except footer) */
         .feature-card, .service-card, .product-card {
             background: rgba(255, 255, 255, 0.2) !important;
+            -webkit-backdrop-filter: blur(15px) !important;
             backdrop-filter: blur(15px) !important;
             border: 1px solid rgba(255, 255, 255, 0.3) !important;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
@@ -114,6 +164,7 @@
         /* Footer sections - no boxes, just text on page */
         .footer-section {
             background: transparent !important;
+            -webkit-backdrop-filter: none !important;
             backdrop-filter: none !important;
             border: none !important;
             box-shadow: none !important;
@@ -147,6 +198,7 @@
 
         .footer-bottom {
             background: transparent !important;
+            -webkit-backdrop-filter: none !important;
             backdrop-filter: none !important;
             border-top: none !important;
         }
@@ -169,99 +221,6 @@
             overflow: hidden;
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
             z-index: 1003 !important;
-        }
-
-        .slider-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            transition: transform 1s ease-in-out;
-            z-index: 1004 !important;
-        }
-
-        .slide {
-            min-width: 100%;
-            height: 100%;
-            position: relative;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 1005 !important;
-        }
-
-        .slide-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            z-index: 1006 !important;
-            width: 90%;
-            max-width: 800px;
-        }
-
-        .slide-content h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .slide-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-        }
-
-        .slider-nav {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 1007 !important;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .slider-dot.active {
-            background: white;
-        }
-
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-            font-size: 20px;
-            border-radius: 50%;
-            transition: background 0.3s ease;
-            z-index: 1007 !important;
-        }
-
-        .slider-arrow:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .slider-arrow.prev {
-            left: 20px;
-        }
-
-        .slider-arrow.next {
-            right: 20px;
         }
 
         /* Product Cards Slider Styles */
@@ -296,6 +255,8 @@
         .services-dot {
             width: 12px;
             height: 12px;
+            padding: 0;
+            border: none;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
@@ -354,6 +315,8 @@
         .gallery-dot {
             width: 12px;
             height: 12px;
+            padding: 0;
+            border: none;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
@@ -395,9 +358,10 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Paint Splat Background Video -->
-    <video autoplay muted playsinline loop id="paint-splat-bg">
-        <source src="4508057-uhd_3840_2160_25fps.mp4" type="video/mp4">
+    <video autoplay muted playsinline loop preload="metadata" poster="images/paint-splat-poster.jpg" id="paint-splat-bg">
+        <source src="paint-splat-1080p.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
@@ -407,12 +371,12 @@
                 <div class="nav-logo">
                     <a href="index.html" class="logo-link">
                         <img src="images/mainLogo.jpg" alt="Imagine PPTP Prints Logo" class="logo-image">
-                        <h1>Imagine PPTP Prints</h1>
+                        <span class="brand-name">Imagine PPTP Prints</span>
                     </a>
                 </div>
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link active">Home</a>
+                        <a href="index.html" class="nav-link active" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="services.html" class="nav-link">Services</a>
@@ -461,10 +425,10 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="hero">
             <div class="hero-content">
-                <h2 class="hero-title">Custom Printed Apparel & Accessories</h2>
+                <h1 class="hero-title">Custom Printed Apparel & Accessories</h1>
                 <p class="hero-subtitle">High Quality printed shirts, hoodies, hats, for businesses, special occasions you name it. Send us your design we will make the rest.</p>
                 <p class="hero-subtitle">Any questions feel free to text call or send a email.</p>
                 <div class="hero-buttons">
@@ -480,32 +444,32 @@
                 <p class="section-subtitle">Hablamos español</p>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <div class="feature-icon">👕</div>
+                        <div class="feature-icon" aria-hidden="true">👕</div>
                         <h3>Custom Shirts</h3>
                         <p>High quality printed shirts for businesses and special occasions</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🧥</div>
+                        <div class="feature-icon" aria-hidden="true">🧥</div>
                         <h3>Custom Hoodies</h3>
                         <p>Personalized hoodies with your design, perfect for teams and events</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🧢</div>
+                        <div class="feature-icon" aria-hidden="true">🧢</div>
                         <h3>Custom Hats</h3>
                         <p>Professional hats and caps with your branding or custom designs</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🎨</div>
+                        <div class="feature-icon" aria-hidden="true">🎨</div>
                         <h3>Design to Print</h3>
                         <p>Send us your design, we'll handle the rest with quality results</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🏷️</div>
+                        <div class="feature-icon" aria-hidden="true">🏷️</div>
                         <h3>Custom Banners</h3>
                         <p>Professional banners and signage for events and businesses</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">💼</div>
+                        <div class="feature-icon" aria-hidden="true">💼</div>
                         <h3>Business Cards</h3>
                         <p>High-quality business cards to make your first impression count</p>
                     </div>
@@ -519,37 +483,37 @@
                 <div class="services-grid">
                     <div class="services-slider-container">
                         <div class="service-card">
-                            <img src="images/shirts/539738239_122202396998293236_2183067847999368314_n.jpg" alt="Custom Shirts" class="service-image">
+                            <img src="images/shirts/539738239_122202396998293236_2183067847999368314_n.jpg" alt="Custom Shirts" class="service-image" loading="lazy">
                             <h3>Custom Shirts</h3>
                             <p>High quality printed shirts for businesses, teams, and special occasions</p>
                             <a href="services.html#custom-shirts" class="btn btn-outline">Learn More</a>
                         </div>
                         <div class="service-card">
-                            <img src="images/shirts/539634838_122202397106293236_2065046746168162236_n.jpg" alt="Custom Hoodies" class="service-image">
+                            <img src="images/shirts/539634838_122202397106293236_2065046746168162236_n.jpg" alt="Custom Hoodies" class="service-image" loading="lazy">
                             <h3>Custom Hoodies</h3>
                             <p>Personalized hoodies perfect for teams, events, and branding</p>
                             <a href="services.html#custom-hoodies" class="btn btn-outline">Learn More</a>
                         </div>
                         <div class="service-card">
-                            <img src="images/shirts/539586768_122202396788293236_2819796790172946060_n.jpg" alt="Custom Hats" class="service-image">
+                            <img src="images/shirts/539586768_122202396788293236_2819796790172946060_n.jpg" alt="Custom Hats" class="service-image" loading="lazy">
                             <h3>Custom Hats</h3>
                             <p>Professional hats and caps with your custom design or branding</p>
                             <a href="services.html#custom-hats" class="btn btn-outline">Learn More</a>
                         </div>
                         <div class="service-card">
-                            <img src="images/banner/526524609_122198365964293236_9110283145285838337_n.jpg" alt="Custom Banners" class="service-image">
+                            <img src="images/banner/526524609_122198365964293236_9110283145285838337_n.jpg" alt="Custom Banners" class="service-image" loading="lazy">
                             <h3>Custom Banners</h3>
                             <p>Professional banners and signage for events, businesses, and promotions</p>
                             <a href="services.html#custom-banners" class="btn btn-outline">Learn More</a>
                         </div>
                         <div class="service-card">
-                            <img src="images/business cards/529861076_122199178064293236_630406596597416380_n.jpg" alt="Business Cards" class="service-image">
+                            <img src="images/business cards/529861076_122199178064293236_630406596597416380_n.jpg" alt="Business Cards" class="service-image" loading="lazy">
                             <h3>Business Cards</h3>
                             <p>High-quality business cards to make your first impression count</p>
                             <a href="services.html#business-cards" class="btn btn-outline">Learn More</a>
                         </div>
                         <div class="service-card">
-                            <img src="images/business cards/529234045_122199178148293236_8808661976772103967_n.jpg" alt="More Business Cards" class="service-image">
+                            <img src="images/business cards/529234045_122199178148293236_8808661976772103967_n.jpg" alt="More Business Cards" class="service-image" loading="lazy">
                             <h3>Professional Printing</h3>
                             <p>Premium business cards and professional printing services</p>
                             <a href="services.html#professional-printing" class="btn btn-outline">Learn More</a>
@@ -558,12 +522,12 @@
                 </div>
                 <div class="services-nav">
                     <button class="services-arrow prev" onclick="changeServicesSlide(-1)">‹</button>
-                    <div class="services-dot active" onclick="goToServicesSlide(0)"></div>
-                    <div class="services-dot" onclick="goToServicesSlide(1)"></div>
-                    <div class="services-dot" onclick="goToServicesSlide(2)"></div>
-                    <div class="services-dot" onclick="goToServicesSlide(3)"></div>
-                    <div class="services-dot" onclick="goToServicesSlide(4)"></div>
-                    <div class="services-dot" onclick="goToServicesSlide(5)"></div>
+                    <button class="services-dot active" type="button" aria-label="Go to slide 1" onclick="goToServicesSlide(0)"></button>
+                    <button class="services-dot" type="button" aria-label="Go to slide 2" onclick="goToServicesSlide(1)"></button>
+                    <button class="services-dot" type="button" aria-label="Go to slide 3" onclick="goToServicesSlide(2)"></button>
+                    <button class="services-dot" type="button" aria-label="Go to slide 4" onclick="goToServicesSlide(3)"></button>
+                    <button class="services-dot" type="button" aria-label="Go to slide 5" onclick="goToServicesSlide(4)"></button>
+                    <button class="services-dot" type="button" aria-label="Go to slide 6" onclick="goToServicesSlide(5)"></button>
                     <button class="services-arrow next" onclick="changeServicesSlide(1)">›</button>
                 </div>
             </div>
@@ -576,33 +540,33 @@
                 <div class="gallery-grid">
                     <div class="gallery-slider-container">
                         <div class="gallery-item">
-                            <img src="images/shirts/540748072_122202402434293236_537020029792240004_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                            <img src="images/shirts/540748072_122202402434293236_537020029792240004_n.jpg" alt="Custom Shirt Design" class="gallery-image" loading="lazy">
                         </div>
                         <div class="gallery-item">
-                            <img src="images/shirts/539786646_122202402428293236_5026657620272618721_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                            <img src="images/shirts/539786646_122202402428293236_5026657620272618721_n.jpg" alt="Custom Shirt Design" class="gallery-image" loading="lazy">
                         </div>
                         <div class="gallery-item">
-                            <img src="images/shirts/539565489_122202397124293236_5997368702485755997_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                            <img src="images/shirts/539565489_122202397124293236_5997368702485755997_n.jpg" alt="Custom Shirt Design" class="gallery-image" loading="lazy">
                         </div>
                         <div class="gallery-item">
-                            <img src="images/business cards/528687307_122199178244293236_2834460709636963266_n.jpg" alt="Business Card Design" class="gallery-image">
+                            <img src="images/business cards/528687307_122199178244293236_2834460709636963266_n.jpg" alt="Business Card Design" class="gallery-image" loading="lazy">
                         </div>
                         <div class="gallery-item">
-                            <img src="images/shirts/539482495_122202397040293236_152716096225770613_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                            <img src="images/shirts/539482495_122202397040293236_152716096225770613_n.jpg" alt="Custom Shirt Design" class="gallery-image" loading="lazy">
                         </div>
                         <div class="gallery-item">
-                            <img src="images/business cards/527979919_122199178190293236_5235865814956008456_n.jpg" alt="Business Card Design" class="gallery-image">
+                            <img src="images/business cards/527979919_122199178190293236_5235865814956008456_n.jpg" alt="Business Card Design" class="gallery-image" loading="lazy">
                         </div>
                     </div>
                 </div>
                 <div class="gallery-nav">
                     <button class="gallery-arrow prev" onclick="changeGallerySlide(-1)">‹</button>
-                    <div class="gallery-dot active" onclick="goToGallerySlide(0)"></div>
-                    <div class="gallery-dot" onclick="goToGallerySlide(1)"></div>
-                    <div class="gallery-dot" onclick="goToGallerySlide(2)"></div>
-                    <div class="gallery-dot" onclick="goToGallerySlide(3)"></div>
-                    <div class="gallery-dot" onclick="goToGallerySlide(4)"></div>
-                    <div class="gallery-dot" onclick="goToGallerySlide(5)"></div>
+                    <button class="gallery-dot active" type="button" aria-label="Go to image 1" onclick="goToGallerySlide(0)"></button>
+                    <button class="gallery-dot" type="button" aria-label="Go to image 2" onclick="goToGallerySlide(1)"></button>
+                    <button class="gallery-dot" type="button" aria-label="Go to image 3" onclick="goToGallerySlide(2)"></button>
+                    <button class="gallery-dot" type="button" aria-label="Go to image 4" onclick="goToGallerySlide(3)"></button>
+                    <button class="gallery-dot" type="button" aria-label="Go to image 5" onclick="goToGallerySlide(4)"></button>
+                    <button class="gallery-dot" type="button" aria-label="Go to image 6" onclick="goToGallerySlide(5)"></button>
                     <button class="gallery-arrow next" onclick="changeGallerySlide(1)">›</button>
                 </div>
             </div>
@@ -613,11 +577,11 @@
             <div class="container">
                 <h2>Ready to Start Your Project?</h2>
                 <p>Any questions? Feel free to text, call, or send an email. We're here to help!</p>
-                <p>¡Hablamos español!</p>
+                <p>¡<span lang="es">Hablamos español!</span></p>
                 <div class="cta-buttons">
                     <a href="tel:+13312555330" class="btn-cta-primary">Call Now</a>
                     <a href="mailto:imaginepttp@gmail.com" class="btn-cta-secondary">Send Email</a>
-                    <a href="https://wa.me/13312555330" class="btn-cta-secondary" target="_blank">WhatsApp</a>
+                    <a href="https://wa.me/13312555330" class="btn-cta-secondary" target="_blank" rel="noopener noreferrer">WhatsApp</a>
                 </div>
             </div>
         </section>
@@ -634,20 +598,20 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="products.html">Products</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Contact Info</h4>
-                    <p>📧 info@imaginepptp.com</p>
-                    <p>📞 (555) 123-4567</p>
-                    <p>📍 123 Print Street, City, State 12345</p>
+                    <p>📧 imaginepttp@gmail.com</p>
+                    <p>📞 (331) 255-5330</p>
+                    <p>📍 840 N State St, Elgin, IL</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Imagine PPTP Prints. All rights reserved.</p>
+                <p>&copy; 2026 Imagine PPTP Prints. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -656,10 +620,6 @@
 
     <!-- Image Slider JavaScript -->
     <script>
-        let currentSlide = 0;
-        let slides, dots, sliderContainer, totalSlides;
-        let autoSlideInterval;
-
         // Services slider variables
         let currentServicesSlide = 0;
         let servicesCards, servicesDots, servicesContainer, totalServicesSlides;
@@ -669,26 +629,6 @@
         let currentGallerySlide = 0;
         let galleryItems, galleryDots, galleryContainer, totalGallerySlides;
         let galleryAutoSlideInterval;
-
-        function showSlide(n) {
-            if (!sliderContainer || !dots) return;
-            
-            currentSlide = (n * totalSlides) % totalSlides;
-            sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update active dot
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        function changeSlide(direction) {
-            showSlide(currentSlide + direction);
-        }
-
-        function goToSlide(n) {
-            showSlide(n);
-        }
 
         // Services slider functions
         function showServicesSlide(n) {
@@ -740,18 +680,6 @@
             showGallerySlide(n);
         }
 
-        function startAutoSlide() {
-            // Clear any existing interval
-            if (autoSlideInterval) {
-                clearInterval(autoSlideInterval);
-            }
-            
-            // Auto-advance slides every 5 seconds
-            autoSlideInterval = setInterval(() => {
-                changeSlide(1);
-            }, 5000);
-        }
-
         function startServicesAutoSlide() {
             if (servicesAutoSlideInterval) {
                 clearInterval(servicesAutoSlideInterval);
@@ -777,18 +705,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Wait a bit to ensure all elements are loaded
             setTimeout(() => {
-                // Hero slider initialization
-                slides = document.querySelectorAll('.slide');
-                dots = document.querySelectorAll('.slider-dot');
-                sliderContainer = document.querySelector('.slider-container');
-                
-                if (slides && dots && sliderContainer) {
-                    totalSlides = slides.length;
-                    console.log('Hero slider initialized with', totalSlides, 'slides');
-                    showSlide(0);
-                    startAutoSlide();
-                }
-
                 // Services slider initialization
                 servicesCards = document.querySelectorAll('.service-card');
                 servicesDots = document.querySelectorAll('.services-dot');
@@ -796,7 +712,6 @@
                 
                 if (servicesCards && servicesDots && servicesContainer) {
                     totalServicesSlides = 6; // We have 6 cards, showing 1 at a time
-                    console.log('Services slider initialized with', totalServicesSlides, 'slides');
                     showServicesSlide(0);
                     startServicesAutoSlide();
                 }
@@ -808,123 +723,10 @@
                 
                 if (galleryItems && galleryDots && galleryContainer) {
                     totalGallerySlides = 6; // We have 6 images, showing 1 at a time
-                    console.log('Gallery slider initialized with', totalGallerySlides, 'slides');
                     showGallerySlide(0);
                     startGalleryAutoSlide();
                 }
             }, 100);
-        });
-    </script>
-
-    <!-- Snow Animation Elements -->
-    <div class="loader">
-        <div class="loader-icon-1">&#10052;</div>
-    </div>
-    <div class="main">
-        <div class="initial-snow">
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-        <div class="snow">&#10052;</div>
-    </div>
-</div>
-
-    <!-- Paint Splat Color Cycling Script -->
-    <script>
-        const paintVideo = document.getElementById('paint-splat-bg');
-        let colorInterval;
-        
-        // Color cycling function - Blue → Red → Yellow → Red → Blue
-        function cyclePaintColors() {
-            const colors = [
-                'hue-rotate(0deg)',        // Blue (original, no change)
-                'hue-rotate(120deg)',      // Red
-                'hue-rotate(180deg)',      // Yellow
-                'hue-rotate(120deg)'       // Red (again)
-            ];
-            const timings = [3000, 3000, 3000, 3000]; // All transitions 3 seconds
-            let colorIndex = 0;
-            
-            function nextColor() {
-                paintVideo.style.filter = colors[colorIndex];
-                colorIndex = (colorIndex + 1) % colors.length;
-                
-                // Schedule next transition with appropriate timing
-                setTimeout(nextColor, timings[colorIndex === 0 ? 3 : colorIndex - 1]);
-            }
-            
-            // Start the cycle
-            nextColor();
-        }
-        
-        paintVideo.addEventListener('loadeddata', () => {
-            cyclePaintColors(); // Start color cycling
-            
-            // Pause video after 10 seconds but keep color cycling
-            setTimeout(() => {
-                paintVideo.pause();
-                console.log('Paint splat video paused after 10 seconds, color cycling continues');
-            }, 10000);
-        });
-        
-        // Ensure video plays initially
-        paintVideo.addEventListener('ended', () => {
-            paintVideo.currentTime = 0;
-            paintVideo.play();
         });
     </script>
 </body>

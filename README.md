@@ -128,5 +128,5 @@ This project is created for Imagine PPTP Prints. All rights reserved.
 ## Contact
 
 For questions about this website or printing services, contact:
-- Email: info@imaginepptp.com
-- Phone: (555) 123-4567
+- Email: imaginepttp@gmail.com
+- Phone: (331) 255-5330
