@@ -273,30 +273,66 @@
             line-height: 1.45;
         }
 
-        /* Gallery grid: uniform square tiles, no slider chrome. */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1rem;
+        /* Apple-style infinite marquee for the work gallery.
+           - Track contains 2x the unique tiles; animation translates 0 -> -50%
+             so the loop point lands exactly where the duplicate set starts.
+           - Hover anywhere over the track pauses the animation.
+           - Soft mask on the edges so tiles fade in/out instead of cutting hard.
+           - Respects prefers-reduced-motion. */
+        .gallery-marquee {
             margin-top: 2rem;
-        }
-
-        .gallery-item {
-            overflow: hidden;
-            border-radius: 12px;
-            transition: transform 0.25s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.02);
-        }
-
-        .gallery-item .gallery-image {
             width: 100%;
-            aspect-ratio: 1 / 1;
-            height: auto;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+                    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 1rem;
+            width: max-content;
+            animation: gallery-scroll 60s linear infinite;
+            will-change: transform;
+        }
+
+        .gallery-marquee:hover .gallery-track,
+        .gallery-track:focus-within {
+            animation-play-state: paused;
+        }
+
+        .gallery-tile {
+            flex: 0 0 280px;
+            height: 280px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-tile:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+        }
+
+        .gallery-tile img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        @keyframes gallery-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .gallery-track { animation: none; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-tile { flex: 0 0 200px; height: 200px; }
+            .gallery-track { animation-duration: 45s; }
         }
 
     </style>
@@ -475,25 +511,45 @@
             <div class="container">
                 <h2 class="section-title">Our Work Gallery</h2>
                 <p class="section-subtitle">Check out some of our recent projects</p>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="images/curated/tshirts/02.jpg" alt="Custom printed shirt" class="gallery-image" loading="lazy">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/curated/business-cards/02.jpg" alt="Branded business cards" class="gallery-image" loading="lazy">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/curated/tshirts/05.jpg" alt="Custom shirt design" class="gallery-image" loading="lazy">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/curated/banners/01.jpg" alt="Vinyl banner" class="gallery-image" loading="lazy">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/curated/business-cards/03.jpg" alt="Custom business cards" class="gallery-image" loading="lazy">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/curated/tshirts/08.jpg" alt="Printed apparel" class="gallery-image" loading="lazy">
-                    </div>
+            </div>
+
+            <!-- Apple-style infinite marquee. Tiles scroll right-to-left;
+                 hovering anywhere on the track pauses the animation. The
+                 second set of tiles is a duplicate (aria-hidden) so the
+                 loop seams invisibly when translateX hits -50%. -->
+            <div class="gallery-marquee" aria-label="Recent work showcase">
+                <div class="gallery-track">
+                    <!-- Set 1: 14 unique images -->
+                    <div class="gallery-tile"><img src="images/curated/tshirts/02.jpg" alt="Custom printed shirt" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/business-cards/02.jpg" alt="Branded business cards" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/tshirts/05.jpg" alt="Original graphic tee" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/banners/01.jpg" alt="Vinyl business banner" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/tshirts/03.jpg" alt="Cultural design t-shirt" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/business-cards/03.jpg" alt="Logo business cards" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/tshirts/08.jpg" alt="Printed apparel" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/hoodies/01.jpg" alt="Custom hoodie" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/tshirts/06.jpg" alt="Promotional shirt" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/stickers/01.jpeg" alt="Custom vinyl decals" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/tshirts/11.jpg" alt="Custom t-shirt design" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/business-cards/05.jpg" alt="Branded card stack" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/tshirts/04.jpg" alt="Printed tee" loading="lazy"></div>
+                    <div class="gallery-tile"><img src="images/curated/stickers/02.jpeg" alt="Sticker sheet" loading="lazy"></div>
+
+                    <!-- Set 2: duplicate for seamless loop -->
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/tshirts/02.jpg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/business-cards/02.jpg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/tshirts/05.jpg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/banners/01.jpg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/tshirts/03.jpg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/business-cards/03.jpg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/tshirts/08.jpg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/hoodies/01.jpg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/tshirts/06.jpg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/stickers/01.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/tshirts/11.jpg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/business-cards/05.jpg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/tshirts/04.jpg" alt="" loading="lazy"></div>
+                    <div class="gallery-tile" aria-hidden="true"><img src="images/curated/stickers/02.jpeg" alt="" loading="lazy"></div>
                 </div>
             </div>
         </section>
