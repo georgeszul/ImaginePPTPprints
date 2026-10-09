@@ -1,0 +1,328 @@
+/**
+ * Website Visibility Fixes
+ * Comprehensive fixes for content visibility and rendering issues
+ */
+
+/* ===== CRITICAL VISIBILITY FIXES ===== */
+
+/* Ensure all content is visible above video background */
+body {
+    background-color: #f8fafc !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Fix video background positioning */
+#paint-splat-bg {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    z-index: -1 !important; /* Behind all content */
+    opacity: 0.7 !important; /* Make it less dominant */
+}
+
+/* Ensure all content sections are above video */
+.header, .hero, .features, .services-preview, .gallery, .cta, .footer, 
+main, section, .page-header, .contact-content, .contact-grid, 
+.contact-form-section, .work-marquee {
+    position: relative !important;
+    z-index: 10 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 8px !important;
+    margin: 20px 0 !important;
+    padding: 30px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Hero section special styling */
+.hero {
+    background: linear-gradient(135deg, rgba(0, 180, 216, 0.95) 0%, rgba(0, 153, 194, 0.95) 100%) !important;
+    color: white !important;
+    text-align: center !important;
+    padding: 80px 40px !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+/* ===== TEXT VISIBILITY FIXES ===== */
+
+/* Ensure all text is readable */
+.hero-title, .hero-subtitle, .section-title, .section-subtitle,
+h1, h2, h3, h4, h5, h6, p, span, label, .service-item h3, 
+.service-item p, .service-item li, .faq-item h3, .faq-item p,
+.pricing-calculator-section h2, .pricing-calculator-section p,
+.testimonials-section h2, .testimonials-section p,
+.materials-sizing-section h2, .materials-sizing-section p,
+.materials-section h2, .materials-section p, .materials-section li,
+.sizing-section h2, .sizing-section p, .sizing-section table,
+.sizing-section th, .sizing-section td, .how-it-works h2, .how-it-works h3,
+.how-it-works p, .pricing-info h2, .pricing-info h3, .pricing-info p,
+.pricing-info li, .pricing-info .price {
+    color: #1f2937 !important;
+    text-shadow: none !important;
+    font-weight: 600 !important;
+    line-height: 1.6 !important;
+}
+
+/* Hero section text should be white */
+.hero .hero-title, .hero .hero-subtitle {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
+    font-size: 3rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.hero .hero-subtitle {
+    font-size: 1.25rem !important;
+    margin-bottom: 2rem !important;
+    opacity: 0.9 !important;
+}
+
+/* ===== CARD AND COMPONENT FIXES ===== */
+
+/* Make all cards readable */
+.feature-card, .service-card, .gallery-item, .product-card {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 25px !important;
+    margin: 15px !important;
+}
+
+.feature-card h3, .service-card h3, .product-card h3,
+.feature-card p, .service-card p, .product-card p {
+    color: #1f2937 !important;
+    text-shadow: none !important;
+    font-weight: 600 !important;
+}
+
+/* ===== BUTTON FIXES ===== */
+
+/* Make buttons highly visible */
+.btn-primary, .btn-secondary {
+    background: #00b4d8 !important;
+    color: white !important;
+    border: 2px solid #00b4d8 !important;
+    text-shadow: none !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3) !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    background: #0099c2 !important;
+    border-color: #0099c2 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 180, 216, 0.4) !important;
+}
+
+.btn-quote {
+    background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%) !important;
+    color: white !important;
+    border: none !important;
+    text-shadow: none !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3) !important;
+    padding: 12px 24px !important;
+    border-radius: 25px !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-quote:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4) !important;
+    background: linear-gradient(135deg, #e55a2b 0%, #cc4a1f 100%) !important;
+}
+
+/* ===== NAVIGATION FIXES ===== */
+
+/* Make navigation bar visible */
+.header {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(15px) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+}
+
+.nav-logo h1 {
+    color: #00b4d8 !important;
+    font-size: 1.8rem !important;
+    margin: 0 !important;
+}
+
+.nav-link {
+    color: #1f2937 !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #00b4d8 !important;
+}
+
+/* ===== FOOTER FIXES ===== */
+
+.footer {
+    background: rgba(31, 41, 55, 0.95) !important;
+    color: white !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+}
+
+.footer h3, .footer h4 {
+    color: white !important;
+}
+
+.footer p, .footer li {
+    color: #d1d5db !important;
+}
+
+.footer a {
+    color: #60a5fa !important;
+    text-decoration: none !important;
+}
+
+.footer a:hover {
+    color: #93c5fd !important;
+}
+
+/* ===== RESPONSIVE FIXES ===== */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 20px !important;
+    }
+    
+    .hero .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero .hero-subtitle {
+        font-size: 1.1rem !important;
+    }
+    
+    .header, .hero, .features, .services-preview, .gallery, .cta, .footer, 
+    main, section, .page-header, .contact-content, .contact-grid, 
+    .contact-form-section, .work-marquee {
+        margin: 10px 0 !important;
+        padding: 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 15px !important;
+    }
+    
+    .hero .hero-title {
+        font-size: 2rem !important;
+    }
+    
+    .hero .hero-subtitle {
+        font-size: 1rem !important;
+    }
+    
+    .header, .hero, .features, .services-preview, .gallery, .cta, .footer, 
+    main, section, .page-header, .contact-content, .contact-grid, 
+    .contact-form-section, .work-marquee {
+        margin: 5px 0 !important;
+        padding: 15px !important;
+    }
+}
+
+/* ===== LOADING AND ERROR STATES ===== */
+
+/* Loading spinner */
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error and success messages */
+.form-response-message {
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-weight: 500;
+    display: none;
+}
+
+.form-response-message.show {
+    display: block;
+}
+
+.form-response-message.success {
+    background: #d1fae5;
+    color: #047857;
+    border: 1px solid #059669;
+}
+
+.form-response-message.error {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #dc2626;
+}
+
+/* ===== ACCESSIBILITY FIXES ===== */
+
+/* Focus states for better accessibility */
+.btn-primary:focus, .btn-secondary:focus, .btn-quote:focus,
+.nav-link:focus, .search-input:focus {
+    outline: 2px solid #00b4d8;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .hero {
+        background: #000 !important;
+        color: #fff !important;
+    }
+    
+    .feature-card, .service-card, .gallery-item, .product-card {
+        background: #fff !important;
+        border: 2px solid #000 !important;
+    }
+    
+    .btn-primary, .btn-secondary {
+        background: #000 !important;
+        border-color: #000 !important;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

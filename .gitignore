@@ -1,0 +1,78 @@
+# Imagine PPTP Prints - Git Ignore
+
+# ===== Sensitive Configuration Files =====
+config/database.php
+config/email.php
+.env
+
+# ===== Backup Files =====
+backup_html_files/
+*.bak
+*.backup
+*.old
+
+# ===== Logs =====
+*.log
+logs/
+error_log
+
+# ===== Operating System Files =====
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ===== IDE and Editor Files =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ===== Temporary Files =====
+*.tmp
+*.temp
+tmp/
+temp/
+
+# ===== Node Modules (if using npm) =====
+node_modules/
+package-lock.json
+
+# ===== Vendor (if using Composer) =====
+vendor/
+composer.lock
+
+# ===== Uploads and User Content =====
+uploads/
+*.zip
+*.rar
+
+# ===== Database Dumps =====
+*.sql.gz
+*.sql.zip
+backup*.sql
+
+# ===== Cache =====
+cache/
+*.cache
+
+# ===== SSL Certificates (keep private!) =====
+*.key
+*.crt
+*.pem
+
+# ===== API Keys (keep private!) =====
+api-keys.txt
+secrets.txt
+
+
+
+

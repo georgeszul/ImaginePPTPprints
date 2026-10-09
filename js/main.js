@@ -26,15 +26,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.querySelector('.search-input');
     const searchContainer = document.querySelector('.search-container');
 
+    console.log('Search elements found:', {
+        searchToggle: !!searchToggle,
+        searchDropdown: !!searchDropdown,
+        searchForm: !!searchForm,
+        searchInput: !!searchInput,
+        searchContainer: !!searchContainer
+    });
+
     if (searchToggle && searchDropdown) {
+        console.log('Setting up search functionality...');
+        
         // Toggle search dropdown
         searchToggle.addEventListener('click', function(e) {
+            console.log('Search button clicked!');
             e.stopPropagation();
             searchDropdown.classList.toggle('active');
             
+            console.log('Dropdown active:', searchDropdown.classList.contains('active'));
+            
             // Focus on input when dropdown opens
             if (searchDropdown.classList.contains('active')) {
-                setTimeout(() => searchInput.focus(), 100);
+                setTimeout(() => {
+                    if (searchInput) {
+                        searchInput.focus();
+                        console.log('Input focused');
+                    }
+                }, 100);
             }
         });
 
@@ -65,6 +83,18 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.key === 'Escape' && searchDropdown.classList.contains('active')) {
                 searchDropdown.classList.remove('active');
             }
+        });
+    } else {
+        console.log('Search elements not found - search functionality disabled');
+        
+        // Fallback: Add click handler to any search button
+        const fallbackSearchButtons = document.querySelectorAll('button[aria-label*="search"], button[aria-label*="Search"], .search-toggle');
+        fallbackSearchButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                console.log('Fallback search button clicked');
+                e.preventDefault();
+                alert('Search functionality is being loaded. Please try again in a moment.');
+            });
         });
     }
 
@@ -161,15 +191,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Search functionality
 function performSearch(query) {
-    // Customize this function based on your needs
     console.log('Searching for:', query);
     
-    // Example: Search through services
+    // Search through your actual services
     const searchableContent = [
-        { title: 'Custom Shirts', content: 'High quality printed shirts for businesses and special occasions', url: 'services.html#custom-shirts' },
-        { title: 'Custom Hoodies', content: 'Personalized hoodies perfect for teams, events, and branding', url: 'services.html#custom-hoodies' },
-        { title: 'Custom Hats', content: 'Professional hats and caps with your custom design or branding', url: 'services.html#custom-hats' },
-        { title: 'Design to Print', content: 'Send us your design, we\'ll make the rest!', url: 'services.html' }
+        { title: 'Custom Shirts', content: 'High quality printed shirts for businesses and special occasions', url: 'services.php' },
+        { title: 'Custom Hoodies', content: 'Personalized hoodies with your design, perfect for teams and events', url: 'services.php' },
+        { title: 'Custom Hats', content: 'Professional hats and caps with your branding or custom designs', url: 'services.php' },
+        { title: 'Design to Print', content: 'Send us your design, we\'ll handle the rest with quality results', url: 'services.php' },
+        { title: 'Custom Banners', content: 'Professional banners and signage for events and businesses', url: 'services.php' },
+        { title: 'Business Cards', content: 'High-quality business cards to make your first impression count', url: 'services.php' },
+        { title: 'Portfolio', content: 'View our work and see examples of our printing services', url: 'portfolio.php' },
+        { title: 'About Us', content: 'Learn more about Imagine PPTP Prints and our team', url: 'about.php' },
+        { title: 'Contact', content: 'Get in touch with us for quotes and questions', url: 'contact.php' },
+        { title: 'Quote', content: 'Get a free quote for your printing project', url: 'contact.php' }
     ];
 
     const results = searchableContent.filter(item => 
@@ -178,12 +213,14 @@ function performSearch(query) {
     );
 
     if (results.length > 0) {
-        // Show search results (you can customize this)
-        alert(`Found ${results.length} results for "${query}". Check our services page for more details!`);
-        // Optionally redirect to services page
-        // window.location.href = 'services.html';
+        // Show search results with better formatting
+        const resultText = results.map(result => `• ${result.title}`).join('\n');
+        alert(`Found ${results.length} results for "${query}":\n\n${resultText}\n\nRedirecting to services page...`);
+        
+        // Redirect to services page for better user experience
+        window.location.href = 'services.php';
     } else {
-        alert(`No results found for "${query}". Please try different keywords or contact us for assistance.`);
+        alert(`No results found for "${query}".\n\nTry searching for:\n• Shirts\n• Hoodies\n• Hats\n• Banners\n• Business Cards\n• Portfolio\n• Contact\n\nOr contact us directly for assistance!`);
     }
 }
 
@@ -213,7 +250,7 @@ function setupImageHoverEffects() {
     
     // Add hover effects to all rotating images
     const images = document.querySelectorAll('.image-rotator img');
-    console.log('Found rotating images:', images.length);
+    console.log('Found rotating images:', images.length, images.length === 0 ? '(No rotating images found - this is normal)' : '');
     
     images.forEach((img, index) => {
         // Remove modal attributes since we don't want clicking

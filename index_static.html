@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Imagine PPTP Prints</title>
-    <meta name="description" content="View our portfolio of custom printing projects including shirts, hoodies, hats, banners, and business cards.">
+    <title>Imagine PPTP Prints - Professional Printing Solutions</title>
+    <meta name="description" content="Imagine PPTP Prints - Your trusted partner for high-quality printing services. From business cards to large format prints, we deliver excellence.">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <style>
@@ -66,13 +66,8 @@
             }
         }
 
-        .loader-text {
-            font-size: 25px;
-            color: rgb(200, 241, 255);
-        }
-
         .main {
-            z-index: 0;
+            z-index: 1;
             position: fixed;
             top: 0;
             left: 0;
@@ -107,6 +102,7 @@
             width: 100vw;
             height: 100vh;
             overflow: hidden;
+            pointer-events: none;
         }
 
         .initial-snow > * {
@@ -114,6 +110,8 @@
             color: white;
             position: absolute;
             top: -5vh;
+            pointer-events: none;
+            z-index: 0;
         }
 
         @keyframes snowfall {
@@ -130,28 +128,38 @@
         .snow:nth-child(1) { --size: 0.8vw; --left-ini: 0vw; --left-end: -1vw; left: 70vw; animation: snowfall 9s linear infinite; animation-delay: -1s; }
         .snow:nth-child(2) { --size: 0.2vw; --left-ini: -7vw; --left-end: 10vw; left: 65vw; animation: snowfall 15s linear infinite; animation-delay: -8s; }
         .snow:nth-child(3) { --size: 1vw; --left-ini: 6vw; --left-end: 6vw; left: 1vw; animation: snowfall 9s linear infinite; animation-delay: -7s; }
-        .snow:nth-child(4) { --size: 0.2vw; --left-ini: -3vw; --left-end: 9vw; left: 88vw; animation: snowfall 14s linear infinite; animation-delay: -5s; }
+        .snow:nth-child(4) { --size: 0.2vw; --left-ini: -3vw; --left-end: 9vw; left: 80vw; animation: snowfall 14s linear infinite; animation-delay: -5s; }
         .snow:nth-child(5) { --size: 0.4vw; --left-ini: -2vw; --left-end: -9vw; left: 74vw; animation: snowfall 6s linear infinite; animation-delay: -4s; }
         .snow:nth-child(6) { --size: 0.6vw; --left-ini: 4vw; --left-end: 2vw; left: 15vw; animation: snowfall 12s linear infinite; animation-delay: -3s; }
         .snow:nth-child(7) { --size: 0.3vw; --left-ini: -5vw; --left-end: 7vw; left: 45vw; animation: snowfall 8s linear infinite; animation-delay: -6s; }
         .snow:nth-child(8) { --size: 0.9vw; --left-ini: 3vw; --left-end: -4vw; left: 25vw; animation: snowfall 11s linear infinite; animation-delay: -2s; }
-        .snow:nth-child(9) { --size: 0.1vw; --left-ini: -8vw; --left-end: 5vw; left: 85vw; animation: snowfall 16s linear infinite; animation-delay: -9s; }
+        .snow:nth-child(9) { --size: 0.1vw; --left-ini: -8vw; --left-end: 5vw; left: 75vw; animation: snowfall 16s linear infinite; animation-delay: -9s; }
         .snow:nth-child(10) { --size: 0.7vw; --left-ini: 2vw; --left-end: -6vw; left: 35vw; animation: snowfall 10s linear infinite; animation-delay: -1.5s; }
         .snow:nth-child(11) { --size: 0.5vw; --left-ini: -4vw; --left-end: 8vw; left: 55vw; animation: snowfall 13s linear infinite; animation-delay: -7.5s; }
         .snow:nth-child(12) { --size: 0.8vw; --left-ini: 7vw; --left-end: -3vw; left: 5vw; animation: snowfall 9s linear infinite; animation-delay: -4.5s; }
-        .snow:nth-child(13) { --size: 0.2vw; --left-ini: -6vw; --left-end: 6vw; left: 75vw; animation: snowfall 15s linear infinite; animation-delay: -8.5s; }
-        .snow:nth-child(14) { --size: 0.4vw; --left-ini: 1vw; --left-end: -7vw; left: 95vw; animation: snowfall 7s linear infinite; animation-delay: -3.5s; }
+        .snow:nth-child(13) { --size: 0.2vw; --left-ini: -6vw; --left-end: 6vw; left: 60vw; animation: snowfall 15s linear infinite; animation-delay: -8.5s; }
+        .snow:nth-child(14) { --size: 0.4vw; --left-ini: 1vw; --left-end: -7vw; left: 85vw; animation: snowfall 7s linear infinite; animation-delay: -3.5s; }
         .snow:nth-child(15) { --size: 0.6vw; --left-ini: -2vw; --left-end: 9vw; left: 40vw; animation: snowfall 12s linear infinite; animation-delay: -6.5s; }
         .snow:nth-child(16) { --size: 0.3vw; --left-ini: 8vw; --left-end: -5vw; left: 20vw; animation: snowfall 8s linear infinite; animation-delay: -2.5s; }
-        .snow:nth-child(17) { --size: 0.9vw; --left-ini: -1vw; --left-end: 4vw; left: 60vw; animation: snowfall 11s linear infinite; animation-delay: -7.8s; }
-        .snow:nth-child(18) { --size: 0.1vw; --left-ini: 5vw; --left-end: -8vw; left: 80vw; animation: snowfall 16s linear infinite; animation-delay: -4.2s; }
-        .snow:nth-child(19) { --size: 0.7vw; --left-ini: -3vw; --left-end: 7vw; left: 30vw; animation: snowfall 10s linear infinite; animation-delay: -9.1s; }
-        .snow:nth-child(20) { --size: 0.5vw; --left-ini: 6vw; --left-end: -2vw; left: 50vw; animation: snowfall 13s linear infinite; animation-delay: -5.7s; }
+        .snow:nth-child(17) { --size: 0.9vw; --left-ini: -1vw; --left-end: 4vw; left: 50vw; animation: snowfall 11s linear infinite; animation-delay: -7.8s; }
+        .snow:nth-child(18) { --size: 0.1vw; --left-ini: 5vw; --left-end: -8vw; left: 30vw; animation: snowfall 16s linear infinite; animation-delay: -4.2s; }
+        .snow:nth-child(19) { --size: 0.7vw; --left-ini: -3vw; --left-end: 7vw; left: 10vw; animation: snowfall 10s linear infinite; animation-delay: -9.1s; }
+        .snow:nth-child(20) { --size: 0.5vw; --left-ini: 6vw; --left-end: -2vw; left: 90vw; animation: snowfall 13s linear infinite; animation-delay: -5.7s; }
 
         /* Ensure page content appears above snow animation */
         .header, .hero, .features, .services-preview, .gallery, .cta, .footer, main, section {
             position: relative;
             z-index: 1001;
+        }
+
+        /* Ensure snow animation stays behind content */
+        .loader, .main {
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .loader *, .main * {
+            pointer-events: none;
         }
 
         /* Make navigation bar sticky */
@@ -165,7 +173,7 @@
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
         }
 
-        /* Ensure nav text is readable on sticky background */
+        /* Ensure nav text is readable */
         .nav-logo h1, .nav-link {
             color: #1f2937 !important;
             text-shadow: none !important;
@@ -175,130 +183,39 @@
             color: #2563eb !important;
         }
 
-        /* Make all sections transparent to show snow animation */
-        .hero, .features, .services-preview, .gallery, .cta, .footer,
-        .page-header, .contact-content, .contact-grid, .contact-form-section,
-        .feature-card, .service-card, .gallery-item, .product-card,
-        .portfolio-grid, .portfolio-item, .portfolio-hero, .portfolio-content {
-            background: transparent !important;
-            background-color: transparent !important;
-        }
-
-        /* Make sure text is readable against snow background */
+        /* Make sure text is readable */
         .hero-title, .hero-subtitle, .section-title, .section-subtitle,
         h1, h2, h3, h4, h5, h6, p, span, label {
             color: white !important;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
         }
 
-        /* Make all cards have frosted glass effect */
-        .feature-card, .service-card, .product-card, .portfolio-item {
-            background: rgba(255, 255, 255, 0.2) !important;
-            backdrop-filter: blur(15px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.3) !important;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
-            border-radius: 12px !important;
-            padding: 2rem !important;
-            text-align: center !important;
-        }
-
-        /* Portfolio specific styles */
-        .portfolio-hero {
+        /* Make all sections transparent */
+        .hero, .features, .services-preview, .gallery, .cta, .footer,
+        .page-header, .contact-content, .contact-grid, .contact-form-section,
+        .feature-card, .service-card, .gallery-item, .product-card {
             background: transparent !important;
-            text-align: center;
-            padding: 4rem 0;
+            background-color: transparent !important;
         }
 
-        .portfolio-hero h1 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-        }
-
-        .portfolio-hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .portfolio-content {
-            padding: 4rem 0;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .portfolio-item {
+        /* Frosted glass effect for cards */
+        .feature-card, .service-card, .product-card {
             background: rgba(255, 255, 255, 0.2) !important;
             backdrop-filter: blur(15px) !important;
             border: 1px solid rgba(255, 255, 255, 0.3) !important;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
             border-radius: 12px !important;
-            overflow: hidden;
-            transition: transform 0.3s ease;
         }
 
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .portfolio-item h3 {
+        /* Card text styling */
+        .feature-card h3, .service-card h3, .product-card h3,
+        .feature-card p, .service-card p, .product-card p {
             color: white !important;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
-            margin: 1rem;
-            font-size: 1.3rem;
+            font-weight: 700 !important;
         }
 
-        .portfolio-item p {
-            color: white !important;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7) !important;
-            margin: 0 1rem 1rem;
-            font-size: 0.9rem;
-        }
-
-        .portfolio-categories {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .category-filter {
-            display: inline-flex;
-            gap: 1rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .category-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .category-btn:hover,
-        .category-btn.active {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Make buttons stand out */
+        /* Button styling */
         .btn-primary, .btn-secondary {
             background: rgba(255, 255, 255, 0.9) !important;
             color: #1f2937 !important;
@@ -306,12 +223,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3) !important;
         }
 
-        .btn-primary:hover, .btn-secondary:hover {
-            background: white !important;
-            color: #1f2937 !important;
-        }
-
-        /* Add semi-transparent backgrounds to CTA and footer sections */
+        /* CTA and Footer sections */
         .cta {
             background: rgba(31, 41, 55, 0.8) !important;
             backdrop-filter: blur(10px) !important;
@@ -324,13 +236,14 @@
             border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
         }
 
-        .footer-bottom {
+        .footer-section {
             background: transparent !important;
             backdrop-filter: none !important;
-            border-top: none !important;
+            border: none !important;
+            box-shadow: none !important;
         }
 
-        /* Footer text - white with shadow */
+        /* Footer text */
         .footer-section h3, .footer-section h4, .footer-section p, .footer-section a {
             color: white !important;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
@@ -339,22 +252,12 @@
 
         .footer-section a:hover {
             color: #60a5fa !important;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
         }
 
-        @media (max-width: 768px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .category-filter {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .portfolio-hero h1 {
-                font-size: 2rem;
-            }
+        .footer-bottom {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            border-top: none !important;
         }
     </style>
 </head>
@@ -369,20 +272,20 @@
         <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <a href="index.html" class="logo-link">
+                    <a href="index_static.html" class="logo-link">
                         <img src="images/mainLogo.jpg" alt="Imagine PPTP Prints Logo" class="logo-image">
                         <h1>Imagine PPTP Prints</h1>
                     </a>
                 </div>
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index_static.html" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="services.html" class="nav-link">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a href="portfolio.html" class="nav-link active">Portfolio</a>
+                        <a href="portfolio.html" class="nav-link">Portfolio</a>
                     </li>
                     <li class="nav-item">
                         <a href="about.html" class="nav-link">About</a>
@@ -391,7 +294,7 @@
                         <a href="contact.html" class="nav-link">Contact</a>
                     </li>
                 </ul>
-
+                
                 <div class="nav-actions">
                     <div class="search-container">
                         <button class="search-toggle" aria-label="Toggle search">
@@ -402,7 +305,7 @@
                         </button>
                         <div class="search-dropdown">
                             <form class="search-form" role="search">
-                                <input type="search" class="search-input" placeholder="Search projects..." aria-label="Search">
+                                <input type="search" class="search-input" placeholder="Search services..." aria-label="Search">
                                 <button type="submit" class="search-submit" aria-label="Submit search">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <circle cx="11" cy="11" r="8"></circle>
@@ -412,10 +315,10 @@
                             </form>
                         </div>
                     </div>
-
+                    
                     <a href="contact.html" class="btn btn-quote">Get Quote</a>
                 </div>
-
+                
                 <div class="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -426,85 +329,152 @@
     </header>
 
     <main>
-        <section class="portfolio-hero">
-            <div class="container">
-                <h1>Our Portfolio</h1>
-                <p>Explore our collection of custom printing projects and see the quality of our work</p>
+        <section class="hero">
+            <div class="hero-content">
+                <h2 class="hero-title">Custom Printed Apparel & Accessories</h2>
+                <p class="hero-subtitle">High Quality printed shirts, hoodies, hats, for businesses, special occasions you name it. Send us your design we will make the rest.</p>
+                <p class="hero-subtitle">Any questions feel free to text call or send a email.</p>
+                <div class="hero-buttons">
+                    <a href="services.html" class="btn btn-primary">Our Services</a>
+                    <a href="contact.html" class="btn btn-secondary">Get Quote</a>
+                </div>
             </div>
         </section>
 
-        <section class="portfolio-content">
+        <section class="features">
             <div class="container">
-                <div class="portfolio-categories">
-                    <div class="category-filter">
-                        <button class="category-btn active" data-category="all">All Projects</button>
-                        <button class="category-btn" data-category="shirts">Custom Shirts</button>
-                        <button class="category-btn" data-category="hoodies">Custom Hoodies</button>
-                        <button class="category-btn" data-category="hats">Custom Hats</button>
-                        <button class="category-btn" data-category="banners">Banners</button>
-                        <button class="category-btn" data-category="business-cards">Business Cards</button>
+                <h2 class="section-title">Why Choose Imagine PPTP Prints?</h2>
+                <p class="section-subtitle">Hablamos español</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">👕</div>
+                        <h3>Custom Shirts</h3>
+                        <p>High quality printed shirts for businesses and special occasions</p>
                     </div>
-                </div>
-
-                <div class="portfolio-grid">
-                    <div class="portfolio-item" data-category="shirts">
-                        <img src="images/shirts/540748072_122202402434293236_537020029792240004_n.jpg" alt="Custom Team Shirts">
-                        <h3>Custom Team Shirts</h3>
-                        <p>Professional team uniforms with custom designs and numbering for local sports league.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧥</div>
+                        <h3>Custom Hoodies</h3>
+                        <p>Personalized hoodies with your design, perfect for teams and events</p>
                     </div>
-
-                    <div class="portfolio-item" data-category="hoodies">
-                        <img src="images/hoodies/539634838_122202397106293236_2065046746168162236_n.jpg" alt="Company Hoodies">
-                        <h3>Company Branding Hoodies</h3>
-                        <p>Custom hoodies for corporate events with company logos and professional embroidery.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧢</div>
+                        <h3>Custom Hats</h3>
+                        <p>Professional hats and caps with your branding or custom designs</p>
                     </div>
-
-                    <div class="portfolio-item" data-category="hats">
-                        <img src="images/business-cards/539586768_122202396788293236_2819796790172946060_n.jpg" alt="Custom Baseball Caps">
-                        <h3>Custom Baseball Caps</h3>
-                        <p>Professional embroidered caps for business branding and promotional events.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Design to Print</h3>
+                        <p>Send us your design, we'll handle the rest with quality results</p>
                     </div>
-
-                    <div class="portfolio-item" data-category="shirts">
-                        <img src="images/shirts/540748072_122202402434293236_537020029792240004_n.jpg" alt="Event T-Shirts">
-                        <h3>Event T-Shirts</h3>
-                        <p>Custom printed shirts for special events and celebrations with unique designs.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏷️</div>
+                        <h3>Custom Banners</h3>
+                        <p>Professional banners and signage for events and businesses</p>
                     </div>
-
-                    <div class="portfolio-item" data-category="banners">
-                        <img src="images/banner/526524609_122198365964293236_9110283145285838337_n.jpg" alt="Event Banners">
-                        <h3>Event Banners</h3>
-                        <p>Large format banners for events and business promotions with weather-resistant material.</p>
-                    </div>
-
-                    <div class="portfolio-item" data-category="business-cards">
-                        <img src="images/business-cards/527979919_122199178190293236_5235865814956008456_n.jpg" alt="Business Cards">
-                        <h3>Professional Business Cards</h3>
-                        <p>High-quality business cards with custom designs and premium card stock.</p>
-                    </div>
-
-                    <div class="portfolio-item" data-category="hoodies">
-                        <img src="images/hoodies/539634838_122202397106293236_2065046746168162236_n.jpg" alt="School Hoodies">
-                        <h3>School Spirit Hoodies</h3>
-                        <p>Custom hoodies for school events and team spirit with school colors and logos.</p>
-                    </div>
-
-                    <div class="portfolio-item" data-category="shirts">
-                        <img src="images/shirts/540748072_122202402434293236_537020029792240004_n.jpg" alt="Promotional Shirts">
-                        <h3>Promotional Shirts</h3>
-                        <p>Custom promotional apparel for marketing campaigns and business giveaways.</p>
-                    </div>
-
-                    <div class="portfolio-item" data-category="stickers">
-                        <img src="images/stickers_/imgi_60_527334183_122198365886293236_6336333727270942028_n.jpeg" alt="Custom Stickers">
-                        <h3>Custom Stickers & Decals</h3>
-                        <p>Vinyl stickers and decals for branding, vehicles, and promotional materials.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">💼</div>
+                        <h3>Business Cards</h3>
+                        <p>High-quality business cards to make your first impression count</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
+        <section class="services-preview">
+            <div class="container">
+                <h2 class="section-title">Our Products</h2>
+                <div class="services-grid">
+                    <div class="services-slider-container">
+                        <div class="service-card">
+                            <img src="images/shirts/539738239_122202396998293236_2183067847999368314_n.jpg" alt="Custom Shirts" class="service-image">
+                            <h3>Custom Shirts</h3>
+                            <p>High quality printed shirts for businesses, teams, and special occasions</p>
+                            <a href="services.html#custom-shirts" class="btn btn-outline">Learn More</a>
+                        </div>
+                        <div class="service-card">
+                            <img src="images/shirts/539634838_122202397106293236_2065046746168162236_n.jpg" alt="Custom Hoodies" class="service-image">
+                            <h3>Custom Hoodies</h3>
+                            <p>Personalized hoodies perfect for teams, events, and branding</p>
+                            <a href="services.html#custom-hoodies" class="btn btn-outline">Learn More</a>
+                        </div>
+                        <div class="service-card">
+                            <img src="images/shirts/539586768_122202396788293236_2819796790172946060_n.jpg" alt="Custom Hats" class="service-image">
+                            <h3>Custom Hats</h3>
+                            <p>Professional hats and caps with your custom design or branding</p>
+                            <a href="services.html#custom-hats" class="btn btn-outline">Learn More</a>
+                        </div>
+                        <div class="service-card">
+                            <img src="images/banner/526524609_122198365964293236_9110283145285838337_n.jpg" alt="Custom Banners" class="service-image">
+                            <h3>Custom Banners</h3>
+                            <p>Professional banners and signage for events, businesses, and promotions</p>
+                            <a href="services.html#custom-banners" class="btn btn-outline">Learn More</a>
+                        </div>
+                        <div class="service-card">
+                            <img src="images/business cards/529861076_122199178064293236_630406596597416380_n.jpg" alt="Business Cards" class="service-image">
+                            <h3>Business Cards</h3>
+                            <p>High-quality business cards to make your first impression count</p>
+                            <a href="services.html#business-cards" class="btn btn-outline">Learn More</a>
+                        </div>
+                        <div class="service-card">
+                            <img src="images/business cards/529234045_122199178148293236_8808661976772103967_n.jpg" alt="More Business Cards" class="service-image">
+                            <h3>Professional Printing</h3>
+                            <p>Premium business cards and professional printing services</p>
+                            <a href="services.html#professional-printing" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="services-nav">
+                    <button class="services-arrow prev" onclick="changeServicesSlide(-1)">‹</button>
+                    <div class="services-dot active" onclick="goToServicesSlide(0)"></div>
+                    <div class="services-dot" onclick="goToServicesSlide(1)"></div>
+                    <div class="services-dot" onclick="goToServicesSlide(2)"></div>
+                    <div class="services-dot" onclick="goToServicesSlide(3)"></div>
+                    <div class="services-dot" onclick="goToServicesSlide(4)"></div>
+                    <div class="services-dot" onclick="goToServicesSlide(5)"></div>
+                    <button class="services-arrow next" onclick="changeServicesSlide(1)">›</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <div class="container">
+                <h2 class="section-title">Our Work Gallery</h2>
+                <p class="section-subtitle">Check out some of our recent projects</p>
+                <div class="gallery-grid">
+                    <div class="gallery-slider-container">
+                        <div class="gallery-item">
+                            <img src="images/shirts/540748072_122202402434293236_537020029792240004_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/shirts/539786646_122202402428293236_5026657620272618721_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/shirts/539565489_122202397124293236_5997368702485755997_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/business cards/528687307_122199178244293236_2834460709636963266_n.jpg" alt="Business Card Design" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/shirts/539482495_122202397040293236_152716096225770613_n.jpg" alt="Custom Shirt Design" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/business cards/527979919_122199178190293236_5235865814956008456_n.jpg" alt="Business Card Design" class="gallery-image">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-nav">
+                    <button class="gallery-arrow prev" onclick="changeGallerySlide(-1)">‹</button>
+                    <div class="gallery-dot active" onclick="goToGallerySlide(0)"></div>
+                    <div class="gallery-dot" onclick="goToGallerySlide(1)"></div>
+                    <div class="gallery-dot" onclick="goToGallerySlide(2)"></div>
+                    <div class="gallery-dot" onclick="goToGallerySlide(3)"></div>
+                    <div class="gallery-dot" onclick="goToGallerySlide(4)"></div>
+                    <div class="gallery-dot" onclick="goToGallerySlide(5)"></div>
+                    <button class="gallery-arrow next" onclick="changeGallerySlide(1)">›</button>
+                </div>
+            </div>
+        </section>
+
         <section class="cta">
             <div class="container">
                 <h2>Ready to Start Your Project?</h2>
@@ -517,7 +487,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer class="footer">
@@ -531,7 +500,7 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="products.html">Products</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -540,7 +509,7 @@
                     <h4>Contact Info</h4>
                     <p>📧 imaginepttp@gmail.com</p>
                     <p>📞 (331) 255-5330</p>
-                    <p>📍 840 N State St, Northeast Elgin, IL</p>
+                    <p>📍 840 N State St, Northeast Elgin, IL, United States, 60123</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -557,33 +526,32 @@
     </div>
     <div class="main">
         <div class="initial-snow">
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-            <div class="snow">&#10052;</div>
-        </div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
+        <div class="snow">&#10052;</div>
     </div>
+</div>
 
     <!-- Paint Splat Color Cycling Script -->
     <script>
         const paintVideo = document.getElementById('paint-splat-bg');
-        let colorInterval;
         
         // Color cycling function - Blue → Red → Yellow → Red → Blue
         function cyclePaintColors() {
@@ -626,3 +594,4 @@
     </script>
 </body>
 </html>
+
