@@ -1,0 +1,88 @@
+---
+import { getImage } from 'astro:assets';
+import Photo from './Photo.astro';
+import { photos, categories } from '../data/photos';
+import type { Lang } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const items = await Promise.all(
+  photos.map(async (p) => ({
+    p,
+    full: (await getImage({ src: p.src, width: Math.min(1600, p.src.width), format: 'webp' })).src,
+  })),
+);
+---
+<div class="filters" role="group" aria-label={t(lang, 'portfolio.filterLabel')} data-filters>
+  <button type="button" aria-pressed="true" data-filter="all">{t(lang, 'portfolio.filters.all')}</button>
+  {categories.map((c) => <button type="button" aria-pressed="false" data-filter={c}>{t(lang, `portfolio.filters.${c}`)}</button>)}
+</div>
+
+<ul class="gallery" data-gallery>
+  {items.map(({ p, full }) => (
+    <li data-category={p.category}>
+      <button type="button" class="thumb" data-full={full} data-alt={p.alt[lang]} aria-label={`${t(lang, 'portfolio.open')}: ${p.alt[lang]}`}>
+        <Photo photo={p} lang={lang} sizes="(max-width: 600px) 50vw, (max-width: 1000px) 33vw, 280px" />
+      </button>
+    </li>
+  ))}
+</ul>
+
+<dialog class="viewer" data-viewer aria-label={t(lang, 'portfolio.open')}>
+  <button type="button" class="btn btn--primary close" data-close>{t(lang, 'portfolio.close')}</button>
+  <img alt="" data-viewer-img />
+</dialog>
+
+<style>
+  .filters { display: none; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2rem; }
+  :global(.js) .filters { display: flex; }
+  .filters button {
+    min-height: 44px; padding: 0.5rem 1rem; cursor: pointer;
+    border: 2px solid var(--line); border-radius: 999px; background: var(--surface-2); color: var(--ink);
+    font: 600 1rem/1 'Fredoka', system-ui, sans-serif;
+  }
+  .filters button[aria-pressed='true'] { background: var(--brand); color: #111; border-color: #111; }
+  .gallery { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(240px, 45%), 1fr)); }
+  .gallery li[hidden] { display: none; }
+  .thumb {
+    display: block; width: 100%; aspect-ratio: 1; padding: 0; cursor: zoom-in;
+    border: 2px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--surface);
+    transition: transform 0.15s ease;
+  }
+  .thumb:hover { transform: translateY(-3px); }
+  .thumb :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .viewer { max-width: min(92vw, 1100px); max-height: 92vh; padding: 0; border: 3px solid #111; border-radius: 20px; background: var(--surface-2); }
+  .viewer::backdrop { background: rgb(0 0 0 / 0.75); }
+  .viewer img { max-height: 84vh; width: auto; margin: 0 auto; }
+  .close { position: absolute; top: 0.75rem; right: 0.75rem; }
+</style>
+
+<script>
+  const filters = document.querySelector<HTMLElement>('[data-filters]');
+  const items = [...document.querySelectorAll<HTMLElement>('[data-gallery] > li')];
+  filters?.addEventListener('click', (e) => {
+    const btn = (e.target as Element).closest<HTMLButtonElement>('[data-filter]');
+    if (!btn) return;
+    for (const b of filters.querySelectorAll('[data-filter]')) b.setAttribute('aria-pressed', String(b === btn));
+    const f = btn.dataset.filter;
+    for (const li of items) li.hidden = f !== 'all' && li.dataset.category !== f;
+  });
+
+  const viewer = document.querySelector<HTMLDialogElement>('[data-viewer]');
+  const img = viewer?.querySelector<HTMLImageElement>('[data-viewer-img]');
+  let opener: HTMLElement | null = null;
+  if (viewer && img) {
+    document.querySelector('[data-gallery]')?.addEventListener('click', (e) => {
+      const btn = (e.target as Element).closest<HTMLButtonElement>('.thumb');
+      if (!btn) return;
+      opener = btn;
+      img.src = btn.dataset.full ?? '';
+      img.alt = btn.dataset.alt ?? '';
+      viewer.showModal();
+    });
+    viewer.querySelector('[data-close]')?.addEventListener('click', () => viewer.close());
+    viewer.addEventListener('click', (e) => { if (e.target === viewer) viewer.close(); });
+    viewer.addEventListener('close', () => opener?.focus());
+  }
+</script>
