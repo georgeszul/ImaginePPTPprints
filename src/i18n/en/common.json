@@ -1,0 +1,17 @@
+{
+  "skip": "Skip to content",
+  "tagline": "Professional Printing Solutions",
+  "spanish": "¡Hablamos español!",
+  "nav": { "label": "Main", "home": "Home", "services": "Services", "portfolio": "Portfolio", "about": "About", "contact": "Contact", "menu": "Menu" },
+  "cta": { "quote": "Get quote", "freeQuote": "Get free quote", "call": "Call now", "whatsapp": "Text on WhatsApp", "email": "Send email" },
+  "theme": { "toggle": "Dark mode" },
+  "lang": { "short": "ES", "label": "Ver en español" },
+  "floating": { "label": "Quick contact", "call": "Call", "whatsapp": "WhatsApp", "quote": "Quote" },
+  "ctaBlock": {
+    "title": "Ready to Start Your Project?",
+    "body": "Any questions? Feel free to text, call, or send an email. We're here to help!",
+    "promo": "First-time customers get 10% off with code"
+  },
+  "footer": { "about": "Your trusted partner for professional printing solutions.", "links": "Quick links", "contact": "Contact info", "follow": "Follow us", "rights": "All rights reserved." },
+  "social": { "shop": "Online store" }
+}

@@ -1,0 +1,17 @@
+{
+  "skip": "Saltar al contenido",
+  "tagline": "Soluciones profesionales de impresión",
+  "spanish": "¡Hablamos español!",
+  "nav": { "label": "Principal", "home": "Inicio", "services": "Servicios", "portfolio": "Portafolio", "about": "Nosotros", "contact": "Contacto", "menu": "Menú" },
+  "cta": { "quote": "Cotizar", "freeQuote": "Cotización gratis", "call": "Llama ahora", "whatsapp": "Escríbenos por WhatsApp", "email": "Envía un correo" },
+  "theme": { "toggle": "Modo oscuro" },
+  "lang": { "short": "EN", "label": "View in English" },
+  "floating": { "label": "Contacto rápido", "call": "Llamar", "whatsapp": "WhatsApp", "quote": "Cotizar" },
+  "ctaBlock": {
+    "title": "¿Listo para empezar tu proyecto?",
+    "body": "¿Tienes preguntas? Mándanos un mensaje, llámanos o envíanos un correo. ¡Estamos para ayudarte!",
+    "promo": "Clientes nuevos obtienen 10% de descuento con el código"
+  },
+  "footer": { "about": "Tu socio de confianza para soluciones profesionales de impresión.", "links": "Enlaces rápidos", "contact": "Contacto", "follow": "Síguenos", "rights": "Todos los derechos reservados." },
+  "social": { "shop": "Tienda en línea" }
+}

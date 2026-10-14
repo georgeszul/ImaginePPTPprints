@@ -1,0 +1,15 @@
+{
+  "title": "Preguntas frecuentes",
+  "items": [
+    { "q": "¿Qué tan rápido entregan?", "a": "Nuestro tiempo estándar es de 24 a 48 horas después de aprobar el diseño. Los pedidos urgentes pueden estar listos el mismo día; contáctanos si tienes una fecha límite." },
+    { "q": "¿Hay pedido mínimo?", "a": "¡Sin mínimos! Ya sea 1 camiseta o 1,000, estamos para ayudarte. Los pedidos pequeños son bienvenidos." },
+    { "q": "¿Pueden ayudarme con el diseño?", "a": "¡Claro! Mándanos tus ideas, logotipos o bocetos y creamos un diseño profesional sin costo adicional." },
+    { "q": "¿Cuánto cuesta?", "a": "El precio depende del producto, la cantidad y la complejidad del diseño. Prueba la calculadora de precios en nuestra página de Servicios o pide una cotización gratis. ¡Mejoramos el precio de cualquier competidor!" },
+    { "q": "¿Qué formatos de archivo aceptan?", "a": "Los más comunes: PNG, JPG, PDF, AI, EPS, PSD y SVG. Para la mejor calidad, envía archivos vectoriales (AI, EPS, SVG, PDF) o imágenes a 300 DPI. ¿No tienes diseño? No hay problema, te creamos uno." },
+    { "q": "¿Ofrecen garantía?", "a": "¡Sí! Satisfacción 100% garantizada. Si no te gusta la calidad, lo volvemos a hacer o te devolvemos tu dinero. Sin preguntas." },
+    { "q": "¿Puedo ver una prueba antes de imprimir?", "a": "Claro. Te enviamos una prueba digital para que la apruebes antes de empezar la producción, así sabes exactamente lo que vas a recibir." },
+    { "q": "¿Hacen envíos a todo el país?", "a": "Sí, enviamos a todo Estados Unidos. También puedes recoger tu pedido en nuestro local de Elgin, y ofrecemos entrega sin contacto para clientes locales." },
+    { "q": "¿Qué formas de pago aceptan?", "a": "Aceptamos efectivo, tarjetas de crédito, PayPal, Venmo y Zelle. Normalmente el pago se hace antes de empezar la producción, y hay planes de pago para pedidos grandes." },
+    { "q": "¿Hablan español?", "a": "¡Sí! Hablamos español y podemos ayudarte en tu idioma preferido." }
+  ]
+}
