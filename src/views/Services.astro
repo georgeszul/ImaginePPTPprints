@@ -32,7 +32,7 @@ const tables = [tRaw<Table>(lang, 'services.sizes.apparel'), tRaw<Table>(lang, '
           <article id={s.id} class:list={['service', { flip: i % 2 === 1 }]}>
             <div class="media">
               {photo ? (
-                <Photo photo={photo} lang={lang} sizes="(max-width: 860px) 100vw, 520px" />
+                <Photo photo={photo} lang={lang} sizes="(max-width: 860px) 100vw, 520px" eager={i === 0} />
               ) : (
                 <div class="tile"><span>{t(lang, 'services.noPhoto')}</span></div>
               )}
