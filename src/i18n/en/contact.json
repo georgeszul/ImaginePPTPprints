@@ -6,7 +6,7 @@
   "title": "Contact Us",
   "intro": [
     "High quality printed shirts, hoodies, and hats for businesses, special occasions, you name it.",
-    "Send us your design, we'll make the rest. Any questions? Feel free to text, call, or send an email."
+    "Send us your design, we’ll make the rest. Any questions? Feel free to text, call, or send an email."
   ],
   "formTitle": "Get In Touch",
   "form": {
@@ -33,16 +33,17 @@
     "deadline": "Needed by (deadline)",
     "designFile": "Upload design file", "designHint": "Accepted formats: JPG, PNG, PDF, AI, EPS, PSD, SVG",
     "referenceFile": "Reference image", "referenceHint": "Upload any reference image or inspiration",
-    "filesHint": "Up to 7.5 MB total. Bigger files? Send them on WhatsApp or by email.",
-    "message": "Project details", "messagePh": "Tell us about your project...",
+    "filesHint": "Up to 7.5 MB total. Bigger files? Send them on WhatsApp or by email.",
+    "message": "Project details", "messagePh": "Tell us about your project…",
     "spanish": "I prefer to communicate in Spanish",
     "spanishAlt": "Prefiero comunicarme en español",
-    "tooBig": "Those files are larger than 7.5 MB. Please send them on WhatsApp or by email instead, and submit the form without them.",
-    "submit": "Send quote request",
+    "tooBig": "Those files are larger than 7.5 MB. Please send them on WhatsApp or by email instead, and submit the form without them.",
+    "submit": "Send Quote Request",
+    "sending": "Sending…",
     "honeypot": "Leave this field empty"
   },
-  "info": { "title": "Contact Information", "address": "Address", "phone": "Phone", "email": "Email", "hours": "Business hours", "hoursValue": "Monday - Sunday, always open", "directions": "Get directions" },
+  "info": { "title": "Contact Information", "address": "Address", "phone": "Phone", "email": "Email", "hours": "Business hours", "hoursValue": "Monday–Sunday, always open", "directions": "Get directions" },
   "delivery": { "title": "Delivery and Pickup", "items": ["Contactless delivery available", "Local pickup at our Elgin location", "Shipping available nationwide"] },
-  "turnaround": { "title": "Turnaround Times", "items": ["Standard: 24-48 hours", "Rush: same day available", "Large orders: 2-3 days"] },
+  "turnaround": { "title": "Turnaround Times", "items": ["Standard: 24–48 hours", "Rush: same day available", "Large orders: 2–3 days"] },
   "follow": { "title": "Follow Us", "shop": "Shop" }
 }

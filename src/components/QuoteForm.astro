@@ -18,8 +18,10 @@ const MAX_BYTES = 7_500_000;
   data-netlify="true"
   netlify-honeypot="bot-field"
   data-quote
+  autocomplete="off"
   data-max-bytes={MAX_BYTES}
   data-too-big={f('tooBig')}
+  data-sending={f('sending')}
 >
   <input type="hidden" name="form-name" value="quote" />
   <input type="hidden" name="lang" value={lang} />
@@ -34,7 +36,7 @@ const MAX_BYTES = 7_500_000;
     </div>
     <div class="field">
       <label for="q-email">{f('email')} <span class="req" aria-hidden="true">*</span></label>
-      <input id="q-email" name="email" type="email" required autocomplete="email" />
+      <input id="q-email" name="email" type="email" required autocomplete="email" spellcheck="false" />
     </div>
     <div class="field">
       <label for="q-phone">{f('phone')}</label>
@@ -135,16 +137,17 @@ const MAX_BYTES = 7_500_000;
   <div class="row">
     <div class="field">
       <label for="q-design">{f('designFile')}</label>
-      <input id="q-design" name="design_file" type="file" accept=".jpg,.jpeg,.png,.pdf,.ai,.eps,.psd,.svg" aria-describedby="q-design-hint q-files-hint" />
+      <input id="q-design" name="design_file" type="file" accept=".jpg,.jpeg,.png,.pdf,.ai,.eps,.psd,.svg" aria-describedby="q-design-hint q-files-hint q-files-error" />
       <small id="q-design-hint">{f('designHint')}</small>
     </div>
     <div class="field">
       <label for="q-ref">{f('referenceFile')}</label>
-      <input id="q-ref" name="reference_image" type="file" accept="image/*" aria-describedby="q-ref-hint q-files-hint" />
+      <input id="q-ref" name="reference_image" type="file" accept="image/*" aria-describedby="q-ref-hint q-files-hint q-files-error" />
       <small id="q-ref-hint">{f('referenceHint')}</small>
     </div>
   </div>
   <p class="hint" id="q-files-hint">{f('filesHint')}</p>
+  <p class="error" id="q-files-error" role="alert" data-error hidden></p>
 
   <div class="field">
     <label for="q-message">{f('message')} <span class="req" aria-hidden="true">*</span></label>
@@ -156,7 +159,6 @@ const MAX_BYTES = 7_500_000;
     <span>{f('spanish')} <span class="alt" lang={other(lang)}>· {f('spanishAlt')}</span></span>
   </label>
 
-  <p class="error" role="alert" data-error hidden></p>
   <button type="submit" class="btn btn--primary submit">{f('submit')}</button>
 </form>
 
@@ -182,6 +184,7 @@ const MAX_BYTES = 7_500_000;
   .error { margin: 0; padding: 0.75rem 1rem; border: 2px solid #b42318; border-radius: 14px; background: #fde8e6; color: #7a1a12; font-weight: 700; }
   .error[hidden] { display: none; }
   .submit { justify-self: start; }
+  .submit:disabled { opacity: 0.7; cursor: progress; }
 </style>
 
 <script>
@@ -190,6 +193,8 @@ const MAX_BYTES = 7_500_000;
     const service = form.querySelector<HTMLSelectElement>('select[name="service"]')!;
     const groups = [...form.querySelectorAll<HTMLFieldSetElement>('fieldset[data-for]')];
     const error = form.querySelector<HTMLElement>('[data-error]')!;
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const label = submit.textContent ?? '';
 
     const sync = () => {
       for (const g of groups) {
@@ -210,7 +215,17 @@ const MAX_BYTES = 7_500_000;
         e.preventDefault();
         error.textContent = form.dataset.tooBig ?? '';
         error.hidden = false;
+        form.querySelector<HTMLInputElement>('#q-design')?.focus();
+        return;
       }
+      // Valid and sending: block a second tap while the upload runs.
+      submit.disabled = true;
+      submit.textContent = form.dataset.sending ?? label;
+    });
+    // Coming back with the browser's Back button restores a usable button.
+    window.addEventListener('pageshow', () => {
+      submit.disabled = false;
+      submit.textContent = label;
     });
   }
 </script>

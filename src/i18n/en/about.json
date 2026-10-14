@@ -9,10 +9,10 @@
     "title": "Our Story",
     "paragraphs": [
       "Imagine PPTP Prints is your local printing service specializing in high-quality custom apparel and accessories. We serve businesses, teams, and individuals throughout the Elgin area and beyond.",
-      "Our mission is to provide exceptional printing services with a focus on quality, customer satisfaction, and timely delivery. Whether you need custom shirts for your business, hoodies for your team, or hats for your special event, we've got you covered."
+      "Our mission is to provide exceptional printing services with a focus on quality, customer satisfaction, and timely delivery. Whether you need custom shirts for your business, hoodies for your team, or hats for your special event, we’ve got you covered."
     ]
   },
-  "what": { "title": "What We Do", "body": "We specialize in custom printing services! We're proud to serve our Spanish-speaking community:" },
+  "what": { "title": "What We Do", "body": "We specialize in custom printing services! We’re proud to serve our Spanish-speaking community:" },
   "servicesTitle": "Our Services",
   "services": [
     { "title": "Custom Shirts and T-Shirts", "body": "High-quality custom printed apparel for businesses, teams, and events. Screen printing and heat transfer options available." },
@@ -33,7 +33,7 @@
   },
   "hours": {
     "title": "Business Hours",
-    "body": "Always open. We're here when you need us!",
+    "body": "Always open. We’re here when you need us!",
     "delivery": "We offer delivery and contactless delivery options for your convenience."
   }
 }

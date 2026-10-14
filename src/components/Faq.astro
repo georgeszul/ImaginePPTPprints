@@ -29,6 +29,7 @@ const items = tRaw<{ q: string; a: string; lang?: string; en?: string }[]>(lang,
     font: 500 1.15rem/1.3 'Fredoka', system-ui, sans-serif;
   }
   summary::-webkit-details-marker { display: none; }
+  summary:hover { background: var(--surface); border-radius: 16px; }
   summary::after {
     content: '+'; position: absolute; right: 1.1rem; top: 50%; translate: 0 -50%;
     width: 1.8rem; height: 1.8rem; display: grid; place-items: center;

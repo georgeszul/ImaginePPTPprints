@@ -45,7 +45,16 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 /* Keeps focused and anchored elements clear of the sticky header and the fixed contact buttons. */
-html { -webkit-text-size-adjust: 100%; scroll-padding: 5.5rem 0 7.5rem; }
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-padding: 5.5rem 0 7.5rem;
+}
+a, button, summary, label, select, input, textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: color-mix(in srgb, var(--brand) 25%, transparent);
+}
 body {
   margin: 0;
   background: var(--bg);
@@ -61,6 +70,8 @@ h1, h2, h3, h4 {
   margin: 0 0 0.5em;
   letter-spacing: -0.01em;
 }
+h1, h2, h3, h4 { text-wrap: balance; }
+p, li, dd, summary { text-wrap: pretty; }
 h1 { font-size: clamp(2.1rem, 4vw + 1rem, 3.6rem); }
 h2 { font-size: clamp(1.7rem, 2.5vw + 0.9rem, 2.5rem); }
 h3 { font-size: 1.3rem; font-weight: 500; }
@@ -78,8 +89,9 @@ main:focus { outline: none; }
 }
 .skip:focus { top: 1rem; }
 
-.container { width: min(1120px, 100% - 2rem); margin-inline: auto; }
-.narrow { width: min(820px, 100% - 2rem); margin-inline: auto; }
+/* Side gutters grow past the notch in landscape (viewport-fit=cover); full-bleed backgrounds stay full width. */
+.container { width: min(1120px, 100% - 2rem - env(safe-area-inset-left) - env(safe-area-inset-right)); margin-inline: auto; }
+.narrow { width: min(820px, 100% - 2rem - env(safe-area-inset-left) - env(safe-area-inset-right)); margin-inline: auto; }
 .section { padding-block: clamp(3rem, 6vw, 5.5rem); }
 .section--tint { background: var(--surface); }
 .page-head {
@@ -108,6 +120,9 @@ main:focus { outline: none; }
 .btn--primary:hover { box-shadow: 5px 5px 0 #111; }
 .btn--ghost { background: var(--surface-2); color: var(--ink); border-color: var(--line); }
 .btn:hover { transform: translate(-1px, -1px); }
+/* Press "into" the offset shadow, like a stamp. */
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #111; }
+.btn--ghost:active { box-shadow: none; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .center .btn-row { justify-content: center; }
 
@@ -134,8 +149,35 @@ main:focus { outline: none; }
 .num {
   position: absolute; top: -1.4rem; left: 1.5rem; width: 2.8rem; height: 2.8rem;
   display: grid; place-items: center; border-radius: 50%;
-  background: var(--accent); color: #111; border: 2px solid #111;
+  background: var(--pop); color: #111; border: 2px solid #111;
   font: 600 1.3rem/1 'Fredoka', system-ui, sans-serif;
+}
+
+/* Print-shop signature: halftone dots fading in across a band, like a screen-printed gradient. */
+.halftone, .page-head { position: relative; isolation: isolate; }
+.halftone::before, .page-head::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: radial-gradient(color-mix(in srgb, var(--hero-ink) 16%, transparent) 1.4px, transparent 1.9px);
+  background-size: 13px 13px;
+  -webkit-mask-image: linear-gradient(115deg, transparent 40%, #000 100%);
+  mask-image: linear-gradient(115deg, transparent 40%, #000 100%);
+}
+
+/* Printer's crop marks just outside a frame's corners. The element needs room around it (about 16px). */
+.crop-marks { position: relative; }
+.crop-marks::after {
+  --m: var(--ink-soft);
+  content: ''; position: absolute; inset: -16px; pointer-events: none;
+  background:
+    linear-gradient(var(--m), var(--m)) 0 16px / 10px 1.5px,
+    linear-gradient(var(--m), var(--m)) 16px 0 / 1.5px 10px,
+    linear-gradient(var(--m), var(--m)) 100% 16px / 10px 1.5px,
+    linear-gradient(var(--m), var(--m)) calc(100% - 16px) 0 / 1.5px 10px,
+    linear-gradient(var(--m), var(--m)) 0 calc(100% - 16px) / 10px 1.5px,
+    linear-gradient(var(--m), var(--m)) 16px 100% / 1.5px 10px,
+    linear-gradient(var(--m), var(--m)) 100% calc(100% - 16px) / 10px 1.5px,
+    linear-gradient(var(--m), var(--m)) calc(100% - 16px) 100% / 1.5px 10px;
+  background-repeat: no-repeat;
 }
 
 .visually-hidden {

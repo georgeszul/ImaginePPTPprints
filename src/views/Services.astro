@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 import PriceCalculator from '../components/PriceCalculator.astro';
 import Cta from '../components/Cta.astro';
+import DesignHere from '../components/DesignHere.astro';
 import { coverFor, type Category } from '../data/photos';
 import type { Lang } from '../i18n/routes';
 import { t, tRaw } from '../i18n/t';
@@ -30,12 +31,14 @@ const tables = [tRaw<Table>(lang, 'services.sizes.apparel'), tRaw<Table>(lang, '
         const photo = coverFor(s.id);
         return (
           <article id={s.id} class:list={['service', { flip: i % 2 === 1 }]}>
-            <div class="media">
-              {photo ? (
-                <Photo photo={photo} lang={lang} sizes="(max-width: 860px) 100vw, 520px" eager={i === 0} />
-              ) : (
-                <div class="tile"><span>{t(lang, 'services.noPhoto')}</span></div>
-              )}
+            <div class="frame crop-marks">
+              <div class="media">
+                {photo ? (
+                  <Photo photo={photo} lang={lang} sizes="(max-width: 860px) 100vw, 520px" eager={i === 0} />
+                ) : (
+                  <DesignHere lang={lang} />
+                )}
+              </div>
             </div>
             <div class="text">
               <h2>{s.title}</h2>
@@ -97,11 +100,10 @@ const tables = [tRaw<Table>(lang, 'services.sizes.apparel'), tRaw<Table>(lang, '
 <style>
   .list { display: grid; gap: clamp(2.5rem, 6vw, 4.5rem); }
   .service { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
-  .flip .media { order: 2; }
-  @media (max-width: 860px) { .service { grid-template-columns: 1fr; } .flip .media { order: 0; } }
+  .flip .frame { order: 2; }
+  @media (max-width: 860px) { .service { grid-template-columns: 1fr; } .flip .frame { order: 0; } }
   .media { border: 2px solid var(--line); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4 / 3; background: var(--surface); }
-  .media :global(img) { width: 100%; height: 100%; object-fit: cover; }
-  .tile { height: 100%; display: grid; place-items: center; background: var(--brand); color: #111; font: 600 1.3rem 'Fredoka', system-ui, sans-serif; }
+  .media :global(picture img) { width: 100%; height: 100%; object-fit: cover; }
   .offer { font-weight: 700; margin-bottom: 0.5rem; }
   .steps { margin-bottom: 0; }
   .materials { list-style: none; padding: 0; margin: 1.5rem 0 3rem; }

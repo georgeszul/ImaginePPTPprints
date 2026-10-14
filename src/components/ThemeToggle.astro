@@ -18,16 +18,21 @@ const label = t(lang, 'common.theme.toggle');
     border: 2px solid var(--line); border-radius: 999px;
     background: var(--surface-2); color: var(--ink); cursor: pointer;
   }
-  .sun { display: none; }
-  .moon { display: inline-flex; }
-  :global([data-theme='dark']) .sun { display: inline-flex; }
-  :global([data-theme='dark']) .moon { display: none; }
+  .theme-toggle:hover { background: var(--surface); }
+  /* Sun and moon share one cell and crossfade instead of popping. */
+  .theme-toggle > span { grid-area: 1 / 1; display: inline-flex; transition: opacity 0.2s ease, transform 0.2s ease; }
+  .sun { opacity: 0; transform: rotate(-45deg) scale(0.7); }
+  :global([data-theme='dark']) .sun { opacity: 1; transform: none; }
+  :global([data-theme='dark']) .moon { opacity: 0; transform: rotate(45deg) scale(0.7); }
 </style>
 
 <script>
   const root = document.documentElement;
   for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]')) {
-    const sync = () => btn.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
+    const sync = () => {
+      btn.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', getComputedStyle(root).getPropertyValue('--bg').trim());
+    };
     sync();
     btn.addEventListener('click', () => {
       const next = root.dataset.theme === 'dark' ? 'light' : 'dark';

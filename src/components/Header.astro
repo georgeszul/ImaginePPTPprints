@@ -20,7 +20,7 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
   <div class="container bar">
     <a class="brand" href={routes.home[lang]}>
       <Image src={logo} alt="" width={48} height={48} densities={[1, 2]} loading="eager" />
-      <span>{site.name}</span>
+      <span translate="no">{site.name}</span>
     </a>
     <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav" data-menu-btn>
       <Icon name="menu" /><span class="visually-hidden">{t(lang, 'common.nav.menu')}</span>
@@ -75,6 +75,7 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
       max-height: calc(100dvh - 74px); overflow-y: auto; overscroll-behavior: contain;
       background: var(--bg); border: 2px solid var(--line); border-radius: 0 0 20px 20px;
     }
+    :global(.js) .menu-btn:hover { background: var(--surface); }
     :global(.js) .nav.open { display: flex; }
     :global(.js) .nav ul { flex-direction: column; }
   }

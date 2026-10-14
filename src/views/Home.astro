@@ -6,6 +6,9 @@ import Icon from '../components/Icon.astro';
 import Marquee from '../components/Marquee.astro';
 import Faq from '../components/Faq.astro';
 import Cta from '../components/Cta.astro';
+import Photo from '../components/Photo.astro';
+import DesignHere from '../components/DesignHere.astro';
+import { coverFor, type Category } from '../data/photos';
 import { site } from '../data/site';
 import { routes, type Lang } from '../i18n/routes';
 import { t, tRaw } from '../i18n/t';
@@ -16,12 +19,12 @@ const badges = tRaw<string[]>(lang, 'home.hero.badges');
 const services = tRaw<{ key: string; title: string; body: string }[]>(lang, 'home.services.items');
 const steps = tRaw<{ title: string; body: string }[]>(lang, 'home.how.steps');
 const why = tRaw<string[]>(lang, 'home.why.items');
-const bands = ['var(--brand)', 'var(--accent)', 'var(--pop)', 'var(--brand-deep)'];
+const photoFor = (key: string) => (key === 'process' ? undefined : coverFor(key as Category));
 const spanish = t(lang, 'common.spanish');
 const langOf = (text: string) => (text === spanish ? 'es' : undefined);
 ---
 <Base lang={lang} page="home" title={t(lang, 'home.meta.title')} description={t(lang, 'home.meta.description')}>
-  <section class="hero">
+  <section class="hero halftone">
     <div class="container hero-grid">
       <div>
         <p class="eyebrow">{t(lang, 'home.hero.eyebrow')}</p>
@@ -46,27 +49,37 @@ const langOf = (text: string) => (text === spanish ? 'es' : undefined);
     </div>
   </section>
 
-  <section class="section">
+  <Marquee lang={lang} />
+
+  <section class="section section--tint">
     <div class="container">
       <div class="center">
         <h2>{t(lang, 'home.services.title')}</h2>
         <p class="lead">{t(lang, 'home.services.subtitle')}</p>
       </div>
       <ul class="grid svc-grid">
-        {services.map((s, i) => (
-          <li>
-            <a class="card svc" href={`${routes.services[lang]}#${s.key}`} style={`--band: ${bands[i % bands.length]}`}>
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
-            </a>
-          </li>
-        ))}
+        {services.map((s) => {
+          const photo = photoFor(s.key);
+          return (
+            <li>
+              <a class="card svc" href={`${routes.services[lang]}#${s.key}`}>
+                <div class="svc-media">
+                  {photo ? <Photo photo={photo} lang={lang} sizes="(max-width: 600px) 100vw, 280px" decorative /> : <DesignHere lang={lang} />}
+                </div>
+                <div class="svc-body">
+                  <h3>{s.title}</h3>
+                  <p>{s.body}</p>
+                </div>
+              </a>
+            </li>
+          );
+        })}
       </ul>
       <p class="center more"><a class="btn btn--ghost" href={routes.services[lang]}>{t(lang, 'home.services.more')}<Icon name="arrow" /></a></p>
     </div>
   </section>
 
-  <section class="section section--tint">
+  <section class="section">
     <div class="container">
       <div class="center">
         <h2>{t(lang, 'home.how.title')}</h2>
@@ -80,8 +93,6 @@ const langOf = (text: string) => (text === spanish ? 'es' : undefined);
       <p class="center"><a class="btn btn--primary" href={routes.contact[lang]}>{t(lang, 'home.how.cta')}<Icon name="arrow" /></a></p>
     </div>
   </section>
-
-  <Marquee lang={lang} />
 
   <section class="section section--tint">
     <div class="container center">
@@ -110,13 +121,18 @@ const langOf = (text: string) => (text === spanish ? 'es' : undefined);
   }
   @media (max-width: 860px) {
     .hero-grid { grid-template-columns: 1fr; }
-    .hero-logo { width: 200px; grid-row: 1; }
+    .hero-logo { width: 128px; grid-row: 1; box-shadow: 5px 5px 0 #111; }
   }
   .svc-grid { list-style: none; padding: 0; margin: 2rem 0; }
-  .svc { position: relative; display: block; height: 100%; padding-top: 2rem; color: var(--ink); text-decoration: none; overflow: hidden; transition: transform 0.15s ease; }
-  .svc::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 12px; background: var(--band); border-bottom: 2px solid var(--line); }
-  .svc:hover { transform: translateY(-3px); }
-  .svc p { color: var(--ink-soft); margin: 0; }
+  .svc {
+    display: flex; flex-direction: column; height: 100%; padding: 0; overflow: hidden;
+    color: var(--ink); text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .svc:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow); }
+  .svc-media { aspect-ratio: 4 / 3; border-bottom: 2px solid var(--line); background: var(--surface); }
+  .svc-media :global(picture img) { width: 100%; height: 100%; object-fit: cover; }
+  .svc-body { padding: 1.1rem 1.25rem 1.35rem; }
+  .svc-body p { color: var(--ink-soft); margin: 0; }
   .more { margin: 0; }
   .why { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; list-style: none; padding: 0; margin: 1.5rem 0 2.5rem; }
   .why .pill { display: inline-flex; align-items: center; gap: 0.4rem; }

@@ -4,6 +4,8 @@ import '@fontsource/fredoka/600.css';
 import '@fontsource/nunito/400.css';
 import '@fontsource/nunito/700.css';
 import '../styles/global.css';
+import fredoka600 from '@fontsource/fredoka/files/fredoka-latin-600-normal.woff2?url';
+import nunito400 from '@fontsource/nunito/files/nunito-latin-400-normal.woff2?url';
 import { getImage } from 'astro:assets';
 import logo from '../assets/logo.jpg';
 import Header from '../components/Header.astro';
@@ -53,7 +55,9 @@ const jsonLd =
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="preload" href={fredoka600} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={nunito400} as="font" type="font/woff2" crossorigin />
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
@@ -61,7 +65,7 @@ const jsonLd =
     {paths && langs.map((l) => <link rel="alternate" hreflang={l} href={abs(paths[l])} />)}
     {paths && <link rel="alternate" hreflang="x-default" href={abs(paths.en)} />}
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#22c3e6" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
@@ -80,6 +84,8 @@ const jsonLd =
           theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
         root.setAttribute('data-theme', theme);
+        // Browser bar matches --bg (runs before the stylesheet loads, so the two values are spelled out).
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', theme === 'dark' ? '#0f1419' : '#ffffff');
       })();
     </script>
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

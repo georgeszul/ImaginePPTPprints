@@ -1,0 +1,24 @@
+---
+// Stand-in for a product photo we don't have yet: the penguin plus a dashed "print area" label.
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.jpg';
+import type { Lang } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<div class="design-here halftone">
+  <Image src={logo} alt="" width={96} height={96} densities={[1, 2]} />
+  <span>{t(lang, 'common.designHere')}</span>
+</div>
+
+<style>
+  .design-here {
+    height: 100%; display: grid; place-content: center; justify-items: center; gap: 0.75rem; padding: 1rem;
+    background: var(--hero-bg); color: var(--hero-ink); text-align: center;
+    font: 600 1.1rem/1.2 'Fredoka', system-ui, sans-serif;
+  }
+  .design-here img { width: clamp(56px, 30%, 96px); height: auto; border-radius: 50%; border: 2px solid #111; background: #fff; }
+  .design-here span { border: 2px dashed currentColor; border-radius: 999px; padding: 0.35rem 1rem; }
+</style>

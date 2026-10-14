@@ -33,7 +33,7 @@ test('no empty strings in either language', () => {
 });
 
 test('no banned stale facts', () => {
-  const banned = /3-5 business days|3-7 business days|Monday-Friday|12 pieces|555\) 123|info@imaginepptp/i;
+  const banned = /3[-–]5 business days|3[-–]7 business days|Monday[-–]Friday|12 pieces|555\) 123|info@imaginepptp/i;
   const hits = [...en, ...es].filter(([, v]) => typeof v === 'string' && banned.test(v)).map(([k]) => k);
   assert.deepEqual(hits, []);
 });

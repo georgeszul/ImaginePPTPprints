@@ -7,11 +7,11 @@ import { t } from '../i18n/t';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 ---
-<section class="cta" aria-labelledby="cta-title">
+<section class="cta halftone" aria-labelledby="cta-title">
   <div class="container center">
     <h2 id="cta-title">{t(lang, 'common.ctaBlock.title')}</h2>
     <p class="lead">{t(lang, 'common.ctaBlock.body')}</p>
-    <p class="promo"><span>{t(lang, 'common.ctaBlock.promo')}</span> <strong class="code">{site.promoCode}</strong></p>
+    <p class="promo"><span>{t(lang, 'common.ctaBlock.promo')}</span> <strong class="code" translate="no">{site.promoCode}</strong></p>
     <div class="btn-row">
       <a class="btn btn--primary" href={site.phoneHref}><Icon name="phone" />{t(lang, 'common.cta.call')}</a>
       <a class="btn btn--ghost" href={site.whatsapp} target="_blank" rel="noopener"><Icon name="chat" />{t(lang, 'common.cta.whatsapp')}</a>

@@ -42,6 +42,7 @@ const items = await Promise.all(
     border: 2px solid var(--line); border-radius: 999px; background: var(--surface-2); color: var(--ink);
     font: 600 1rem/1 'Fredoka', system-ui, sans-serif;
   }
+  .filters button:hover { background: var(--surface); }
   .filters button[aria-pressed='true'] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
   .gallery { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(240px, 45%), 1fr)); }
   .gallery li[hidden] { display: none; }
@@ -52,8 +53,12 @@ const items = await Promise.all(
   }
   .thumb:hover { transform: translateY(-3px); }
   .thumb :global(img) { width: 100%; height: 100%; object-fit: cover; }
-  .viewer { max-width: min(92vw, 1100px); max-height: 92vh; padding: 0; border: 3px solid #111; border-radius: 20px; background: var(--surface-2); }
+  .viewer { max-width: min(92vw, 1100px); max-height: 92vh; padding: 0; border: 3px solid #111; border-radius: 20px; background: var(--surface-2); overscroll-behavior: contain; }
   .viewer::backdrop { background: rgb(0 0 0 / 0.75); }
+  .viewer[open] { animation: viewer-in 0.18s ease-out; }
+  .viewer[open]::backdrop { animation: backdrop-in 0.18s ease-out; }
+  @keyframes viewer-in { from { opacity: 0; transform: scale(0.96); } }
+  @keyframes backdrop-in { from { opacity: 0; } }
   .viewer img { max-height: 84vh; width: auto; margin: 0 auto; }
   .close { position: absolute; top: 0.75rem; right: 0.75rem; }
 </style>
@@ -61,13 +66,24 @@ const items = await Promise.all(
 <script>
   const filters = document.querySelector<HTMLElement>('[data-filters]');
   const items = [...document.querySelectorAll<HTMLElement>('[data-gallery] > li')];
-  filters?.addEventListener('click', (e) => {
-    const btn = (e.target as Element).closest<HTMLButtonElement>('[data-filter]');
-    if (!btn) return;
-    for (const b of filters.querySelectorAll('[data-filter]')) b.setAttribute('aria-pressed', String(b === btn));
-    const f = btn.dataset.filter;
-    for (const li of items) li.hidden = f !== 'all' && li.dataset.category !== f;
-  });
+  if (filters) {
+    const apply = (f: string) => {
+      for (const b of filters.querySelectorAll<HTMLElement>('[data-filter]')) b.setAttribute('aria-pressed', String(b.dataset.filter === f));
+      for (const li of items) li.hidden = f !== 'all' && li.dataset.category !== f;
+    };
+    filters.addEventListener('click', (e) => {
+      const f = (e.target as Element).closest<HTMLButtonElement>('[data-filter]')?.dataset.filter;
+      if (!f) return;
+      apply(f);
+      // Keep the filter in the URL so a filtered view can be shared or bookmarked.
+      const url = new URL(location.href);
+      if (f === 'all') url.searchParams.delete('category');
+      else url.searchParams.set('category', f);
+      history.replaceState(null, '', url);
+    });
+    const initial = new URLSearchParams(location.search).get('category');
+    if (initial && filters.querySelector(`[data-filter="${CSS.escape(initial)}"]`)) apply(initial);
+  }
 
   const viewer = document.querySelector<HTMLDialogElement>('[data-viewer]');
   const img = viewer?.querySelector<HTMLImageElement>('[data-viewer-img]');

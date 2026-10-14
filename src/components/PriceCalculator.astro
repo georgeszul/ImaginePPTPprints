@@ -67,7 +67,7 @@ const r = estimate(defaults);
           <div><dt>{c('unit')}</dt><dd><span data-out="unit">{money.format(r.unit)}</span></dd></div>
         </dl>
         <p class="volume"><output data-out="volume"></output></p>
-        <p class="promo">{c('promo')} <strong class="code">{site.promoCode}</strong> {c('promoOff')}</p>
+        <p class="promo">{c('promo')} <strong class="code" translate="no">{site.promoCode}</strong> {c('promoOff')}</p>
         <div class="btn-row">
           <a class="btn btn--primary" href={routes.contact[lang]}>{c('official')}</a>
           <a class="btn btn--ghost" href={site.phoneHref}><Icon name="phone" />{t(lang, 'common.cta.call')}</a>
