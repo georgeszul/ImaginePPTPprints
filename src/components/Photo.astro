@@ -1,0 +1,28 @@
+---
+import { Picture } from 'astro:assets';
+import type { Photo } from '../data/photos';
+import type { Lang } from '../i18n/routes';
+
+interface Props {
+  photo: Photo;
+  lang: Lang;
+  sizes: string;
+  eager?: boolean;
+  decorative?: boolean;
+  class?: string;
+}
+const { photo, lang, sizes, eager = false, decorative = false, class: className } = Astro.props;
+const widths = [400, 800, 1200].filter((w) => w <= photo.src.width);
+if (widths.length === 0) widths.push(photo.src.width);
+---
+<Picture
+  src={photo.src}
+  alt={decorative ? '' : photo.alt[lang]}
+  widths={widths}
+  sizes={sizes}
+  formats={['avif', 'webp']}
+  fallbackFormat="jpg"
+  loading={eager ? 'eager' : 'lazy'}
+  decoding="async"
+  class={className}
+/>
