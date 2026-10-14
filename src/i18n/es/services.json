@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "title": "Nuestros servicios | Imagine PPTP Prints",
+    "description": "Camisetas, sudaderas, gorras, lonas, tarjetas de presentación y calcomanías personalizadas en Elgin, IL. Precios estimados al instante, entrega en 24 a 48 horas y sin mínimos."
+  },
+  "title": "Nuestros servicios",
+  "subtitle": "Ropa y accesorios impresos a tu medida para negocios y ocasiones especiales",
+  "weOffer": "Ofrecemos:",
+  "noPhoto": "Fotos próximamente",
+  "items": [
+    { "id": "shirts", "title": "Camisetas personalizadas", "intro": "Camisetas impresas de alta calidad, perfectas para negocios, equipos y ocasiones especiales.", "bullets": ["Impresión de camisetas con materiales premium", "Camisetas con el logotipo de tu negocio", "Uniformes para equipos y deportes", "Camisetas para eventos y celebraciones", "Serigrafía, bordado y transferencia térmica", "Varios estilos: cuello redondo, cuello en V, manga larga"] },
+    { "id": "hoodies", "title": "Sudaderas personalizadas", "intro": "Sudaderas con tu diseño, perfectas para equipos, eventos y tu marca.", "bullets": ["Impresión de sudaderas con telas premium", "Sudaderas para equipos y empresas", "Sudaderas para eventos y celebraciones", "Estilos cerrados y con cierre", "Serigrafía, bordado y transferencia térmica", "Disponibles en varios colores y tallas"] },
+    { "id": "hats", "title": "Gorras personalizadas", "intro": "Gorras profesionales con tu diseño o tu marca.", "bullets": ["Bordado e impresión de gorras", "Gorras con el logotipo de tu negocio", "Gorras para equipos y deportes", "Gorras para eventos y promociones", "Gorras de béisbol, gorras trucker y gorros tejidos", "Bordado y serigrafía de alta calidad"] },
+    { "id": "banners", "title": "Lonas y gran formato", "intro": "Lonas e impresión de gran formato profesionales para eventos y negocios.", "bullets": ["Lonas de vinil resistentes a la intemperie para exteriores", "Lonas de tela premium para interiores", "Impresión de gran formato de hasta 10 pies de ancho", "Servicio de instalación profesional", "Tamaños y materiales a tu medida", "Entrega rápida para fechas de eventos"] },
+    { "id": "cards", "title": "Tarjetas de presentación", "intro": "Tarjetas de presentación de alta calidad con diseño personalizado. Varios acabados disponibles.", "bullets": ["Cartulinas premium", "Tamaños y formas personalizados", "Acabado mate, brillante y semibrillante", "Estampado metálico y relieve", "Impresión a todo color", "Entrega rápida"] },
+    { "id": "stickers", "title": "Calcomanías", "intro": "Calcomanías de vinil personalizadas para tu marca, vehículos y material promocional.", "bullets": [] }
+  ],
+  "calc": {
+    "title": "Calculadora de precios",
+    "subtitle": "Calcula un estimado de tu pedido en segundos",
+    "product": "Tipo de producto",
+    "products": { "tshirt": "Camiseta", "hoodie": "Sudadera", "hat": "Gorra", "banner": "Lona", "businesscard": "Tarjetas de presentación", "sticker": "Calcomanías" },
+    "quantity": "Cantidad",
+    "qtyHint": "¡Sin mínimos! Pide 1 o más de 1,000",
+    "method": "Método de impresión",
+    "methods": { "screen": "Serigrafía", "dtg": "Impresión directa (DTG)", "embroidery": "Bordado", "heat": "Transferencia térmica", "vinyl": "Vinil" },
+    "colors": "Número de colores",
+    "colorOptions": { "1": "1 color", "2": "2 colores", "3": "3 colores", "4": "4 o más (a todo color)" },
+    "turnaround": "Tiempo de entrega",
+    "turnarounds": { "standard": "Estándar (24-48 h)", "rush": "Urgente (mismo día) +30%", "extended": "Extendido (3-5 días) -10%" },
+    "cardNote": "Las tarjetas se imprimen en paquetes de 100.",
+    "bannerNote": "El estimado de lonas supone unos 6 pies cuadrados. Dinos tu medida para un precio exacto.",
+    "designNote": "¿Necesitas ayuda con el diseño? Es gratis.",
+    "estimate": "Tu estimado",
+    "base": "Precio base",
+    "print": "Método de impresión",
+    "color": "Colores",
+    "turnaroundLine": "Tiempo de entrega",
+    "total": "Total estimado",
+    "unit": "Por unidad",
+    "volApplied": "¡Descuento por volumen del {pct}% aplicado!",
+    "volNext": "¡Pide {n} más y ahorra {pct}%!",
+    "promo": "Descuento en tu primer pedido: usa el código",
+    "promoOff": "para 10% de descuento.",
+    "official": "Pedir cotización oficial",
+    "disclaimer": "*Solo es un estimado. El precio final puede variar según los detalles del pedido. Contáctanos para una cotización oficial."
+  },
+  "process": {
+    "title": "Cómo funciona",
+    "subtitle": "Del diseño a la entrega en 4 pasos sencillos",
+    "steps": [
+      { "title": "Envía tu diseño", "body": "Mándanos tu logotipo, arte o idea. Aceptamos AI, EPS, PNG, JPG y más." },
+      { "title": "Elige tus productos", "body": "Escoge entre camisetas, sudaderas y gorras. Elige colores, tallas y cantidades." },
+      { "title": "Imprimimos y revisamos", "body": "Nuestro equipo se encarga de la impresión y revisa la calidad de cada pieza." },
+      { "title": "Entrega rápida", "body": "Tu pedido está listo en 24 a 48 horas, con opción urgente el mismo día." }
+    ]
+  },
+  "materials": {
+    "title": "Opciones de material",
+    "items": [
+      { "name": "Algodón premium", "spec": "100% algodón, 180 GSM" },
+      { "name": "Mezcla de algodón", "spec": "50/50 algodón-poliéster" },
+      { "name": "Tela deportiva", "spec": "Absorbe la humedad" },
+      { "name": "Tela gruesa", "spec": "Felpa de 300 GSM" }
+    ]
+  },
+  "sizes": {
+    "title": "Tablas de tallas",
+    "apparel": {
+      "caption": "Camisetas y sudaderas (pulgadas)",
+      "head": ["Talla", "Pecho", "Largo", "Hombros"],
+      "rows": [["XS", "32-34", "26", "14"], ["S", "34-36", "27", "15"], ["M", "38-40", "28", "16"], ["L", "42-44", "29", "17"], ["XL", "46-48", "30", "18"], ["2XL", "50-52", "31", "19"]]
+    },
+    "hats": {
+      "caption": "Gorras (pulgadas)",
+      "head": ["Talla", "Circunferencia", "Medida"],
+      "rows": [["S/M", "21-22", "6 7/8 - 7"], ["M/L", "22-23", "7 - 7 1/4"], ["L/XL", "23-24", "7 1/4 - 7 5/8"], ["XL/XXL", "24-25", "7 5/8 - 8"]]
+    },
+    "note": "¿Necesitas una talla que no aparece? Pregúntanos: hacemos tallas especiales en pedidos especiales."
+  }
+}

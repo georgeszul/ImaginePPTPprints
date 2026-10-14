@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "title": "Our Services | Imagine PPTP Prints",
+    "description": "Custom shirts, hoodies, hats, banners, business cards, and stickers in Elgin, IL. Instant price estimates, 24-48 hour turnaround, no minimums."
+  },
+  "title": "Our Services",
+  "subtitle": "Custom printed apparel and accessories for businesses and special occasions",
+  "weOffer": "We offer:",
+  "noPhoto": "Photos coming soon",
+  "items": [
+    { "id": "shirts", "title": "Custom Shirts", "intro": "High quality printed shirts perfect for businesses, teams, and special occasions.", "bullets": ["Custom t-shirt printing with premium materials", "Business logo shirts for company branding", "Team uniforms and sports shirts", "Event and celebration shirts", "Screen printing, embroidery, and heat transfer options", "Various styles: crew neck, v-neck, long sleeve"] },
+    { "id": "hoodies", "title": "Custom Hoodies", "intro": "Personalized hoodies perfect for teams, events, and branding.", "bullets": ["Custom hoodie printing with premium fabrics", "Team and company hoodies for branding", "Event and celebration hoodies", "Pullover and zip-up hoodie styles", "Screen printing, embroidery, and heat transfer", "Available in various colors and sizes"] },
+    { "id": "hats", "title": "Custom Hats", "intro": "Professional hats and caps with your custom design or branding.", "bullets": ["Custom hat embroidery and printing", "Business logo hats for company branding", "Team and sports hats", "Event and promotional hats", "Baseball caps, trucker hats, beanies", "High-quality embroidery and screen printing"] },
+    { "id": "banners", "title": "Custom Banners and Large Format", "intro": "Professional banners and large format printing for events and businesses.", "bullets": ["Weather-resistant vinyl banners for outdoor use", "Premium fabric banners for indoor displays", "Large format printing up to 10ft wide", "Professional installation services", "Custom sizing and material options", "Fast turnaround for event deadlines"] },
+    { "id": "cards", "title": "Business Cards", "intro": "High-quality business cards with custom designs. Various finishes available.", "bullets": ["Premium card stock options", "Custom sizes and shapes", "Matte, glossy, and semi-gloss finishes", "Foil stamping and embossing", "Full-color printing", "Fast turnaround"] },
+    { "id": "stickers", "title": "Stickers and Decals", "intro": "Custom vinyl stickers and decals for branding, vehicles, and promotional materials.", "bullets": [] }
+  ],
+  "calc": {
+    "title": "Instant Price Calculator",
+    "subtitle": "Get an estimate for your custom order in seconds",
+    "product": "Product type",
+    "products": { "tshirt": "T-Shirt", "hoodie": "Hoodie", "hat": "Hat/Cap", "banner": "Banner", "businesscard": "Business Cards", "sticker": "Stickers" },
+    "quantity": "Quantity",
+    "qtyHint": "No minimums! Order 1 or 1,000+",
+    "method": "Print method",
+    "methods": { "screen": "Screen Printing", "dtg": "Direct to Garment (DTG)", "embroidery": "Embroidery", "heat": "Heat Transfer", "vinyl": "Vinyl Print" },
+    "colors": "Number of colors",
+    "colorOptions": { "1": "1 Color", "2": "2 Colors", "3": "3 Colors", "4": "4+ Colors (Full Color)" },
+    "turnaround": "Turnaround time",
+    "turnarounds": { "standard": "Standard (24-48 hrs)", "rush": "Rush (Same Day) +30%", "extended": "Extended (3-5 days) -10%" },
+    "cardNote": "Business cards print in batches of 100.",
+    "bannerNote": "Banner estimate assumes about 6 sq ft. Tell us your size for an exact price.",
+    "designNote": "Need design help? It's free.",
+    "estimate": "Your estimate",
+    "base": "Base price",
+    "print": "Print method",
+    "color": "Colors",
+    "turnaroundLine": "Turnaround",
+    "total": "Total estimate",
+    "unit": "Per unit",
+    "volApplied": "{pct}% volume discount applied!",
+    "volNext": "Order {n} more to save {pct}%!",
+    "promo": "First order discount: use code",
+    "promoOff": "for 10% off!",
+    "official": "Get official quote",
+    "disclaimer": "*Estimate only. Final price may vary based on specific requirements. Contact us for an official quote."
+  },
+  "process": {
+    "title": "How It Works",
+    "subtitle": "From design to delivery in 4 simple steps",
+    "steps": [
+      { "title": "Submit Your Design", "body": "Send us your logo, artwork, or design concept. We accept AI, EPS, PNG, JPG, and more." },
+      { "title": "Choose Your Products", "body": "Select from our range of shirts, hoodies, and hats. Pick colors, sizes, and quantities." },
+      { "title": "We Print and Quality Check", "body": "Our expert team handles the printing process and performs quality control checks." },
+      { "title": "Fast Delivery", "body": "Your custom order is ready in 24-48 hours, with same-day rush available." }
+    ]
+  },
+  "materials": {
+    "title": "Material Options",
+    "items": [
+      { "name": "Premium Cotton", "spec": "100% Cotton, 180 GSM" },
+      { "name": "Cotton Blend", "spec": "50/50 Cotton-Polyester" },
+      { "name": "Performance Fabric", "spec": "Moisture Wicking" },
+      { "name": "Heavyweight", "spec": "300 GSM Fleece" }
+    ]
+  },
+  "sizes": {
+    "title": "Size Charts",
+    "apparel": {
+      "caption": "Shirts and hoodies (inches)",
+      "head": ["Size", "Chest", "Length", "Shoulder"],
+      "rows": [["XS", "32-34", "26", "14"], ["S", "34-36", "27", "15"], ["M", "38-40", "28", "16"], ["L", "42-44", "29", "17"], ["XL", "46-48", "30", "18"], ["2XL", "50-52", "31", "19"]]
+    },
+    "hats": {
+      "caption": "Hats (inches)",
+      "head": ["Size", "Circumference", "Fits"],
+      "rows": [["S/M", "21-22", "6 7/8 - 7"], ["M/L", "22-23", "7 - 7 1/4"], ["L/XL", "23-24", "7 1/4 - 7 5/8"], ["XL/XXL", "24-25", "7 5/8 - 8"]]
+    },
+    "note": "Need a size that isn't listed? Ask us: custom sizing is available for special orders."
+  }
+}
