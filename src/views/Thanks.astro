@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+import { routes, type Lang } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<Base lang={lang} page="thanks" title={t(lang, 'thanks.meta.title')} description={t(lang, 'thanks.meta.description')} noindex>
+  <section class="section">
+    <div class="narrow center">
+      <h1>{t(lang, 'thanks.title')}</h1>
+      <p class="lead">{t(lang, 'thanks.body')}</p>
+      <p>{t(lang, 'thanks.urgent')}</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href={site.phoneHref}><Icon name="phone" />{site.phone}</a>
+        <a class="btn btn--ghost" href={site.whatsapp} target="_blank" rel="noopener"><Icon name="chat" />WhatsApp</a>
+        <a class="btn btn--ghost" href={routes.home[lang]}>{t(lang, 'thanks.back')}</a>
+      </div>
+    </div>
+  </section>
+</Base>

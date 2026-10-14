@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "title": "Contacto | Imagine PPTP Prints",
+    "description": "Pide una cotización gratis para camisetas, sudaderas, gorras, lonas y tarjetas de presentación. Llama, escribe por WhatsApp o envía tu diseño. Estamos en Elgin, IL."
+  },
+  "title": "Contáctanos",
+  "intro": [
+    "Camisetas, sudaderas y gorras impresas de alta calidad para negocios, ocasiones especiales y lo que necesites.",
+    "Mándanos tu diseño y nosotros hacemos el resto. ¿Tienes preguntas? Escríbenos, llámanos o envíanos un correo."
+  ],
+  "formTitle": "Escríbenos",
+  "form": {
+    "name": "Nombre completo", "email": "Correo electrónico", "phone": "Teléfono",
+    "method": "¿Cómo prefieres que te contactemos?", "methodPick": "Elige una opción",
+    "methods": { "phone": "Llamada", "email": "Correo", "text": "Mensaje de texto", "whatsapp": "WhatsApp" },
+    "service": "Servicio que te interesa", "servicePick": "Elige un servicio",
+    "services": { "shirts": "Camisetas", "hoodies": "Sudaderas", "hats": "Gorras", "banners": "Lonas", "cards": "Tarjetas de presentación", "stickers": "Calcomanías", "other": "Otro" },
+    "groups": { "shirts": "Detalles de camisetas", "hoodies": "Detalles de sudaderas", "hats": "Detalles de gorras", "banners": "Detalles de la lona", "cards": "Detalles de las tarjetas", "other": "Detalles del pedido (calcomanías y otros)" },
+    "type": "Tipo", "typePick": "Elige el tipo",
+    "shirtTypes": { "tshirt": "Camiseta", "polo": "Polo", "longsleeve": "Manga larga", "tank": "Sin mangas" },
+    "hoodieTypes": { "pullover": "Sudadera con capucha", "zip": "Sudadera con cierre", "sweatshirt": "Sudadera sin capucha" },
+    "hatTypes": { "baseball": "Gorra de béisbol", "snapback": "Snapback", "beanie": "Gorro tejido", "trucker": "Gorra trucker" },
+    "sizes": "Tallas", "sizesPh": "S:10, M:15",
+    "quantity": "Cantidad",
+    "colors": "Colores del diseño", "colorsPh": "3 colores",
+    "bannerSize": "Medida de la lona", "bannerSizePh": "3 pies x 6 pies",
+    "material": "Material", "materialPick": "Elige el material",
+    "materials": { "vinyl": "Vinil", "fabric": "Tela", "mesh": "Malla" },
+    "cardSize": "Tamaño de tarjeta", "cardSizePick": "Elige el tamaño",
+    "cardSizes": { "standard": "Estándar (3.5\" x 2\")", "square": "Cuadrada (2.5\" x 2.5\")", "mini": "Mini (3\" x 1.75\")" },
+    "finish": "Acabado", "finishPick": "Elige el acabado",
+    "finishes": { "matte": "Mate", "glossy": "Brillante", "semigloss": "Semibrillante" },
+    "deadline": "Fecha límite",
+    "designFile": "Sube tu diseño", "designHint": "Formatos: JPG, PNG, PDF, AI, EPS, PSD, SVG",
+    "referenceFile": "Imagen de referencia", "referenceHint": "Sube una imagen de referencia o inspiración",
+    "filesHint": "Hasta 8 MB en total. ¿Archivos más grandes? Mándalos por WhatsApp o correo.",
+    "message": "Detalles del proyecto", "messagePh": "Cuéntanos sobre tu proyecto...",
+    "spanish": "Prefiero comunicarme en español",
+    "spanishAlt": "I prefer to communicate in Spanish",
+    "tooBig": "Los archivos pesan más de 8 MB. Mándalos por WhatsApp o por correo y envía el formulario sin ellos.",
+    "submit": "Enviar solicitud de cotización",
+    "honeypot": "Deja este campo vacío"
+  },
+  "info": { "title": "Información de contacto", "address": "Dirección", "phone": "Teléfono", "email": "Correo", "hours": "Horario", "hoursValue": "Lunes a domingo, siempre abiertos", "directions": "Cómo llegar" },
+  "delivery": { "title": "Entrega y recogida", "items": ["Entrega sin contacto disponible", "Recoge en nuestro local de Elgin", "Envíos a todo el país"] },
+  "turnaround": { "title": "Tiempos de entrega", "items": ["Estándar: 24 a 48 horas", "Urgente: el mismo día", "Pedidos grandes: 2 a 3 días"] },
+  "follow": { "title": "Síguenos", "shop": "Tienda" }
+}

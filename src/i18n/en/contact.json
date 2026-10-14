@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "title": "Contact Us | Imagine PPTP Prints",
+    "description": "Get a free quote for custom shirts, hoodies, hats, banners, and business cards. Call, text, WhatsApp, or send your design. Located in Elgin, IL."
+  },
+  "title": "Contact Us",
+  "intro": [
+    "High quality printed shirts, hoodies, and hats for businesses, special occasions, you name it.",
+    "Send us your design, we'll make the rest. Any questions? Feel free to text, call, or send an email."
+  ],
+  "formTitle": "Get In Touch",
+  "form": {
+    "name": "Full name", "email": "Email address", "phone": "Phone number",
+    "method": "Preferred contact method", "methodPick": "Select preferred method",
+    "methods": { "phone": "Phone", "email": "Email", "text": "Text message", "whatsapp": "WhatsApp" },
+    "service": "Service interested in", "servicePick": "Select a service",
+    "services": { "shirts": "Custom Shirts", "hoodies": "Custom Hoodies", "hats": "Custom Hats", "banners": "Custom Banners", "cards": "Business Cards", "stickers": "Stickers", "other": "Other" },
+    "groups": { "shirts": "Shirt details", "hoodies": "Hoodie details", "hats": "Hat details", "banners": "Banner details", "cards": "Business card details", "other": "Order details (stickers and other)" },
+    "type": "Type", "typePick": "Select type",
+    "shirtTypes": { "tshirt": "T-Shirt", "polo": "Polo Shirt", "longsleeve": "Long Sleeve", "tank": "Tank Top" },
+    "hoodieTypes": { "pullover": "Pullover Hoodie", "zip": "Zip-up Hoodie", "sweatshirt": "Sweatshirt" },
+    "hatTypes": { "baseball": "Baseball Cap", "snapback": "Snapback", "beanie": "Beanie", "trucker": "Trucker Hat" },
+    "sizes": "Sizes needed", "sizesPh": "S:10, M:15",
+    "quantity": "Quantity needed",
+    "colors": "Design colors", "colorsPh": "3 colors",
+    "bannerSize": "Banner size", "bannerSizePh": "3ft x 6ft",
+    "material": "Material preference", "materialPick": "Select material",
+    "materials": { "vinyl": "Vinyl", "fabric": "Fabric", "mesh": "Mesh" },
+    "cardSize": "Card size", "cardSizePick": "Select size",
+    "cardSizes": { "standard": "Standard (3.5\" x 2\")", "square": "Square (2.5\" x 2.5\")", "mini": "Mini (3\" x 1.75\")" },
+    "finish": "Finish preference", "finishPick": "Select finish",
+    "finishes": { "matte": "Matte", "glossy": "Glossy", "semigloss": "Semi-Gloss" },
+    "deadline": "Needed by (deadline)",
+    "designFile": "Upload design file", "designHint": "Accepted formats: JPG, PNG, PDF, AI, EPS, PSD, SVG",
+    "referenceFile": "Reference image", "referenceHint": "Upload any reference image or inspiration",
+    "filesHint": "Up to 8 MB total. Bigger files? Send them on WhatsApp or by email.",
+    "message": "Project details", "messagePh": "Tell us about your project...",
+    "spanish": "I prefer to communicate in Spanish",
+    "spanishAlt": "Prefiero comunicarme en español",
+    "tooBig": "Those files are larger than 8 MB. Please send them on WhatsApp or by email instead, and submit the form without them.",
+    "submit": "Send quote request",
+    "honeypot": "Leave this field empty"
+  },
+  "info": { "title": "Contact Information", "address": "Address", "phone": "Phone", "email": "Email", "hours": "Business hours", "hoursValue": "Monday - Sunday, always open", "directions": "Get directions" },
+  "delivery": { "title": "Delivery and Pickup", "items": ["Contactless delivery available", "Local pickup at our Elgin location", "Shipping available nationwide"] },
+  "turnaround": { "title": "Turnaround Times", "items": ["Standard: 24-48 hours", "Rush: same day available", "Large orders: 2-3 days"] },
+  "follow": { "title": "Follow Us", "shop": "Shop" }
+}

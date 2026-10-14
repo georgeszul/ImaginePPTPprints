@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import Faq from '../components/Faq.astro';
+import { site } from '../data/site';
+import type { Lang } from '../i18n/routes';
+import { t, tRaw } from '../i18n/t';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = (key: string) => t(lang, `contact.${key}`);
+const intro = tRaw<string[]>(lang, 'contact.intro');
+const delivery = tRaw<string[]>(lang, 'contact.delivery.items');
+const turnaround = tRaw<string[]>(lang, 'contact.turnaround.items');
+---
+<Base lang={lang} page="contact" title={c('meta.title')} description={c('meta.description')}>
+  <section class="page-head">
+    <div class="container">
+      <h1>{c('title')}</h1>
+      {intro.map((p) => <p class="lead">{p}</p>)}
+      <p class="pill" lang="es">{t(lang, 'common.spanish')}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container layout">
+      <div class="card">
+        <h2>{c('formTitle')}</h2>
+        <QuoteForm lang={lang} />
+      </div>
+      <aside class="info">
+        <div class="card">
+          <h2>{c('info.title')}</h2>
+          <ul class="facts">
+            <li><Icon name="pin" /><div><strong>{c('info.address')}</strong><br /><a href={site.mapsUrl} target="_blank" rel="noopener">{site.addressLine}</a><br /><a href={site.mapsUrl} target="_blank" rel="noopener">{c('info.directions')}</a></div></li>
+            <li><Icon name="phone" /><div><strong>{c('info.phone')}</strong><br /><a href={site.phoneHref}>{site.phone}</a></div></li>
+            <li><Icon name="mail" /><div><strong>{c('info.email')}</strong><br /><a href={`mailto:${site.email}`}>{site.email}</a></div></li>
+            <li><Icon name="clock" /><div><strong>{c('info.hours')}</strong><br />{c('info.hoursValue')}</div></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><Icon name="truck" /> {c('delivery.title')}</h3>
+          <ul class="checks">{delivery.map((d) => <li>{d}</li>)}</ul>
+        </div>
+        <div class="card">
+          <h3><Icon name="clock" /> {c('turnaround.title')}</h3>
+          <ul class="checks">{turnaround.map((d) => <li>{d}</li>)}</ul>
+        </div>
+        <div class="card">
+          <h3>{c('follow.title')}</h3>
+          <div class="btn-row">
+            <a class="btn btn--ghost" href={site.tiktok} target="_blank" rel="noopener">TikTok</a>
+            <a class="btn btn--ghost" href={site.facebook} target="_blank" rel="noopener">Facebook</a>
+            <a class="btn btn--ghost" href={site.shopify} target="_blank" rel="noopener">{c('follow.shop')}</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <Faq lang={lang} />
+</Base>
+
+<style>
+  .layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 1.5rem; align-items: start; }
+  @media (max-width: 960px) { .layout { grid-template-columns: 1fr; } }
+  .info { display: grid; gap: 1.25rem; }
+  .info h3 { display: flex; align-items: center; gap: 0.5rem; }
+  .facts { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+  .facts li { display: grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: start; }
+  .facts :global(svg) { margin-top: 0.2rem; color: var(--brand-deep); }
+  .page-head .pill { margin-top: 0.5rem; }
+</style>
