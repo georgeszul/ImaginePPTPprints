@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "title": "About Us | Imagine PPTP Prints",
+    "description": "Learn about Imagine PPTP Prints, your trusted partner for high-quality custom printing services in Elgin, IL."
+  },
+  "title": "About Imagine PPTP Prints",
+  "subtitle": "Your trusted partner for high-quality custom printing services in Elgin, Illinois",
+  "story": {
+    "title": "Our Story",
+    "paragraphs": [
+      "Imagine PPTP Prints is your local printing service specializing in high-quality custom apparel and accessories. We serve businesses, teams, and individuals throughout the Elgin area and beyond.",
+      "Our mission is to provide exceptional printing services with a focus on quality, customer satisfaction, and timely delivery. Whether you need custom shirts for your business, hoodies for your team, or hats for your special event, we've got you covered."
+    ]
+  },
+  "what": { "title": "What We Do", "body": "We specialize in custom printing services! Hablamos español: we're proud to serve our Spanish-speaking community!" },
+  "servicesTitle": "Our Services",
+  "services": [
+    { "title": "Custom Shirts and T-Shirts", "body": "High-quality custom printed apparel for businesses, teams, and events. Screen printing and heat transfer options available." },
+    { "title": "Personalized Hoodies", "body": "Custom hoodies perfect for teams, events, and branding. Available in various styles, colors, and sizes." },
+    { "title": "Custom Hats and Caps", "body": "Professional embroidered caps for business branding and promotional events. Multiple styles available." },
+    { "title": "Business Cards", "body": "High-quality business cards with custom designs. Various finishes including foil stamping and embossing." },
+    { "title": "Banners and Signage", "body": "Large format banners and signs for events and business promotion. Weather-resistant vinyl options." },
+    { "title": "Stickers and Decals", "body": "Custom vinyl stickers and decals for branding, vehicles, and promotional materials." }
+  ],
+  "contactTitle": "Contact Information",
+  "cards": {
+    "address": "Address", "directions": "Get directions",
+    "phone": "Phone", "phoneNote": "Call anytime!",
+    "email": "Email", "emailNote": "We respond quickly!",
+    "store": "Online Store", "storeLink": "Visit our Shopify store", "storeNote": "Shop 24/7",
+    "social": "Social Media", "tiktokLink": "Follow us on TikTok", "socialNote": "See our latest work!",
+    "reviews": "Customer Reviews", "reviewsLink": "Read our reviews on Facebook", "reviewsNote": "Real reviews from real customers"
+  },
+  "hours": {
+    "title": "Business Hours",
+    "body": "Always open. We're here when you need us!",
+    "delivery": "We offer delivery and contactless delivery options for your convenience."
+  }
+}

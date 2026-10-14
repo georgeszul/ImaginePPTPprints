@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Cta from '../components/Cta.astro';
+import { site } from '../data/site';
+import type { Lang } from '../i18n/routes';
+import { t, tRaw } from '../i18n/t';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const a = (key: string) => t(lang, `about.${key}`);
+const paragraphs = tRaw<string[]>(lang, 'about.story.paragraphs');
+const services = tRaw<{ title: string; body: string }[]>(lang, 'about.services');
+const cards = [
+  { icon: 'pin', title: a('cards.address'), href: site.mapsUrl, link: site.addressLine, note: a('cards.directions'), external: true },
+  { icon: 'phone', title: a('cards.phone'), href: site.phoneHref, link: site.phone, note: a('cards.phoneNote'), external: false },
+  { icon: 'mail', title: a('cards.email'), href: `mailto:${site.email}`, link: site.email, note: a('cards.emailNote'), external: false },
+  { icon: 'shop', title: a('cards.store'), href: site.shopify, link: a('cards.storeLink'), note: a('cards.storeNote'), external: true },
+  { icon: 'chat', title: a('cards.social'), href: site.tiktok, link: a('cards.tiktokLink'), note: a('cards.socialNote'), external: true },
+  { icon: 'check', title: a('cards.reviews'), href: site.facebook, link: a('cards.reviewsLink'), note: a('cards.reviewsNote'), external: true },
+] as const;
+---
+<Base lang={lang} page="about" title={a('meta.title')} description={a('meta.description')}>
+  <section class="page-head">
+    <div class="container">
+      <h1>{a('title')}</h1>
+      <p class="lead">{a('subtitle')}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="narrow">
+      <div class="card story">
+        <h2>{a('story.title')}</h2>
+        {paragraphs.map((p) => <p>{p}</p>)}
+      </div>
+      <div class="center what">
+        <h2>{a('what.title')}</h2>
+        <p class="lead">{a('what.body')}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="container">
+      <h2 class="center">{a('servicesTitle')}</h2>
+      <ul class="grid plain">{services.map((s) => <li class="card"><h3>{s.title}</h3><p>{s.body}</p></li>)}</ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="center">{a('contactTitle')}</h2>
+      <ul class="grid plain">
+        {cards.map((c) => (
+          <li class="card contact-card">
+            <span class="icon"><Icon name={c.icon} size={24} /></span>
+            <h3>{c.title}</h3>
+            <p><a href={c.href} target={c.external ? '_blank' : undefined} rel={c.external ? 'noopener' : undefined}>{c.link}</a></p>
+            <p class="note">{c.note}</p>
+          </li>
+        ))}
+      </ul>
+      <div class="card hours">
+        <h3><Icon name="clock" /> {a('hours.title')}</h3>
+        <p>{a('hours.body')}</p>
+        <p><Icon name="truck" /> {a('hours.delivery')}</p>
+      </div>
+    </div>
+  </section>
+
+  <Cta lang={lang} />
+</Base>
+
+<style>
+  .story { margin-bottom: 3rem; }
+  .what .lead { margin-inline: auto; }
+  .plain { list-style: none; padding: 0; margin: 2rem 0 0; }
+  .plain p { color: var(--ink-soft); margin-bottom: 0.4rem; }
+  .contact-card { text-align: center; }
+  .icon {
+    display: inline-grid; place-items: center; width: 3rem; height: 3rem; margin-bottom: 0.75rem;
+    border-radius: 50%; background: var(--brand); color: #111; border: 2px solid #111;
+  }
+  .note { font-size: 0.95rem; }
+  .hours { margin-top: 2rem; text-align: center; }
+  .hours h3, .hours p { display: flex; gap: 0.5rem; align-items: center; justify-content: center; }
+</style>

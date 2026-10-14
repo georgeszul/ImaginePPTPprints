@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "title": "Nosotros | Imagine PPTP Prints",
+    "description": "Conoce a Imagine PPTP Prints, tu socio de confianza para impresión personalizada de alta calidad en Elgin, IL."
+  },
+  "title": "Sobre Imagine PPTP Prints",
+  "subtitle": "Tu socio de confianza para impresión personalizada de alta calidad en Elgin, Illinois",
+  "story": {
+    "title": "Nuestra historia",
+    "paragraphs": [
+      "Imagine PPTP Prints es tu imprenta local, especializada en ropa y accesorios personalizados de alta calidad. Atendemos a negocios, equipos y personas en toda el área de Elgin y más allá.",
+      "Nuestra misión es ofrecer un servicio de impresión excepcional, enfocado en la calidad, la satisfacción del cliente y la entrega a tiempo. Ya sea que necesites camisetas para tu negocio, sudaderas para tu equipo o gorras para tu evento, nosotros te ayudamos."
+    ]
+  },
+  "what": { "title": "Lo que hacemos", "body": "¡Nos especializamos en impresión personalizada! Hablamos español y estamos orgullosos de servir a nuestra comunidad hispana." },
+  "servicesTitle": "Nuestros servicios",
+  "services": [
+    { "title": "Camisetas personalizadas", "body": "Ropa impresa de alta calidad para negocios, equipos y eventos. Serigrafía y transferencia térmica disponibles." },
+    { "title": "Sudaderas personalizadas", "body": "Sudaderas perfectas para equipos, eventos y tu marca. Disponibles en varios estilos, colores y tallas." },
+    { "title": "Gorras personalizadas", "body": "Gorras bordadas profesionales para tu marca y eventos promocionales. Varios estilos disponibles." },
+    { "title": "Tarjetas de presentación", "body": "Tarjetas de alta calidad con diseño personalizado. Varios acabados, incluido estampado metálico y relieve." },
+    { "title": "Lonas y letreros", "body": "Lonas y letreros de gran formato para eventos y promoción de negocios. Opciones de vinil resistente a la intemperie." },
+    { "title": "Calcomanías", "body": "Calcomanías de vinil personalizadas para tu marca, vehículos y material promocional." }
+  ],
+  "contactTitle": "Información de contacto",
+  "cards": {
+    "address": "Dirección", "directions": "Cómo llegar",
+    "phone": "Teléfono", "phoneNote": "¡Llama cuando quieras!",
+    "email": "Correo", "emailNote": "¡Respondemos rápido!",
+    "store": "Tienda en línea", "storeLink": "Visita nuestra tienda en Shopify", "storeNote": "Compra 24/7",
+    "social": "Redes sociales", "tiktokLink": "Síguenos en TikTok", "socialNote": "¡Mira nuestros trabajos más recientes!",
+    "reviews": "Reseñas", "reviewsLink": "Lee nuestras reseñas en Facebook", "reviewsNote": "Reseñas reales de clientes reales"
+  },
+  "hours": {
+    "title": "Horario",
+    "body": "Siempre abiertos. ¡Estamos aquí cuando nos necesites!",
+    "delivery": "Ofrecemos entrega a domicilio y entrega sin contacto para tu comodidad."
+  }
+}
