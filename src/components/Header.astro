@@ -1,0 +1,101 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.jpg';
+import Icon from './Icon.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import LangSwitch from './LangSwitch.astro';
+import { site } from '../data/site';
+import { routes, type Lang, type PageKey } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props { lang: Lang; page: PageKey | null }
+const { lang, page } = Astro.props;
+const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map((key) => ({
+  key,
+  href: routes[key][lang],
+  label: t(lang, `common.nav.${key}`),
+}));
+---
+<header class="header">
+  <div class="container bar">
+    <a class="brand" href={routes.home[lang]}>
+      <Image src={logo} alt="" width={48} height={48} densities={[1, 2]} loading="eager" />
+      <span>{site.name}</span>
+    </a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav" data-menu-btn>
+      <Icon name="menu" /><span class="visually-hidden">{t(lang, 'common.nav.menu')}</span>
+    </button>
+    <nav id="site-nav" class="nav" aria-label={t(lang, 'common.nav.label')}>
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href} aria-current={item.key === page ? 'page' : undefined}>{item.label}</a></li>
+        ))}
+      </ul>
+      <div class="tools">
+        <LangSwitch lang={lang} page={page} />
+        <ThemeToggle lang={lang} />
+        <a class="btn btn--primary" href={routes.contact[lang]}>{t(lang, 'common.cta.quote')}</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg);
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--line-soft);
+  }
+  .bar { position: relative; display: flex; align-items: center; gap: 1rem; min-height: 72px; }
+  .brand {
+    display: inline-flex; align-items: center; gap: 0.6rem; margin-right: auto;
+    color: var(--ink); text-decoration: none; font: 600 1.15rem/1.1 'Fredoka', system-ui, sans-serif;
+  }
+  .brand img { border-radius: 50%; }
+  .nav { display: flex; align-items: center; gap: 1rem; }
+  .nav ul { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+  .nav ul a { display: block; padding: 0.55rem 0.8rem; border-radius: 999px; color: var(--ink); text-decoration: none; font-weight: 700; }
+  .nav ul a:hover { background: var(--surface); }
+  .nav ul a[aria-current='page'] { background: var(--brand); color: #111; }
+  .tools { display: flex; align-items: center; gap: 0.5rem; }
+  .menu-btn { display: none; }
+
+  @media (max-width: 960px) {
+    .bar { flex-wrap: wrap; }
+    .nav { flex-wrap: wrap; justify-content: flex-end; }
+    :global(.js) .menu-btn {
+      display: inline-grid; place-items: center; width: 44px; height: 44px;
+      border: 2px solid var(--line); border-radius: 999px; background: var(--surface-2); color: var(--ink); cursor: pointer;
+    }
+    :global(.js) .nav {
+      display: none; position: absolute; top: 72px; left: 0; right: 0;
+      flex-direction: column; align-items: stretch; gap: 1rem; padding: 1rem;
+      background: var(--bg); border: 2px solid var(--line); border-radius: 0 0 20px 20px;
+    }
+    :global(.js) .nav.open { display: flex; }
+    :global(.js) .nav ul { flex-direction: column; }
+  }
+  @media (max-width: 380px) {
+    .brand span { font-size: 1rem; }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu-btn]');
+  const nav = document.getElementById('site-nav');
+  if (btn && nav) {
+    const setOpen = (open: boolean) => {
+      btn.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('open', open);
+    };
+    btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        btn.focus();
+      }
+    });
+  }
+</script>

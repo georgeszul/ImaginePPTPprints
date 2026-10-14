@@ -1,0 +1,94 @@
+---
+import '@fontsource/fredoka/500.css';
+import '@fontsource/fredoka/600.css';
+import '@fontsource/nunito/400.css';
+import '@fontsource/nunito/700.css';
+import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import logo from '../assets/logo.jpg';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingContact from '../components/FloatingContact.astro';
+import { site } from '../data/site';
+import { routes, langs, type Lang, type PageKey } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props {
+  lang: Lang;
+  page: PageKey | null;
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+const { lang, page, title, description, noindex = false } = Astro.props;
+const abs = (path: string) => new URL(path, Astro.site).href;
+const paths = page !== null && !noindex ? routes[page] : null;
+const canonical = paths ? abs(paths[lang]) : undefined;
+const og = await getImage({ src: logo, width: 1200, height: 1200, format: 'jpg' });
+const jsonLd =
+  page === 'home'
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: site.name,
+        url: abs('/'),
+        image: abs(og.src),
+        telephone: '+1-331-255-5330',
+        email: site.email,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: site.street,
+          addressLocality: site.locality,
+          addressRegion: site.region,
+          postalCode: site.postalCode,
+          addressCountry: site.country,
+        },
+        openingHours: 'Mo-Su 00:00-23:59',
+        knowsLanguage: ['en', 'es'],
+        sameAs: [site.facebook, site.tiktok, site.shopify],
+      }
+    : null;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    {paths && langs.map((l) => <link rel="alternate" hreflang={l} href={abs(paths[l])} />)}
+    {paths && <link rel="alternate" hreflang="x-default" href={abs(paths.en)} />}
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#22c3e6" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={abs(og.src)} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_US' : 'en_US'} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        var theme = null;
+        root.classList.add('js');
+        try { theme = localStorage.getItem('theme'); } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        root.setAttribute('data-theme', theme);
+      })();
+    </script>
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <a class="skip" href="#main">{t(lang, 'common.skip')}</a>
+    <Header lang={lang} page={page} />
+    <main id="main" tabindex="-1"><slot /></main>
+    <Footer lang={lang} />
+    <FloatingContact lang={lang} />
+  </body>
+</html>

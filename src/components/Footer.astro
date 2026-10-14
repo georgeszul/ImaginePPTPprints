@@ -1,0 +1,56 @@
+---
+import { site } from '../data/site';
+import { routes, type Lang } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container cols">
+    <div>
+      <p class="name">{site.name}</p>
+      <p>{t(lang, 'common.footer.about')}</p>
+      <p lang="es">{t(lang, 'common.spanish')}</p>
+    </div>
+    <nav aria-label={t(lang, 'common.footer.links')}>
+      <h2>{t(lang, 'common.footer.links')}</h2>
+      <ul>
+        {(['services', 'portfolio', 'about', 'contact'] as const).map((k) => (
+          <li><a href={routes[k][lang]}>{t(lang, `common.nav.${k}`)}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <div>
+      <h2>{t(lang, 'common.footer.contact')}</h2>
+      <ul>
+        <li><a href={site.phoneHref}>{site.phone}</a></li>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><a href={site.mapsUrl} target="_blank" rel="noopener">{site.addressLine}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>{t(lang, 'common.footer.follow')}</h2>
+      <ul>
+        <li><a href={site.facebook} target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href={site.tiktok} target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href={site.shopify} target="_blank" rel="noopener">{t(lang, 'common.social.shop')}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container bottom">
+    <p>© {year} {site.name}. {t(lang, 'common.footer.rights')}</p>
+  </div>
+</footer>
+
+<style>
+  .footer { background: var(--surface); border-top: 2px solid var(--line); padding-top: 3rem; margin-top: 0; }
+  .cols { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); }
+  .name { font: 600 1.3rem/1.2 'Fredoka', system-ui, sans-serif; }
+  h2 { font-size: 1.05rem; margin-bottom: 0.75rem; }
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
+  a { color: var(--ink); }
+  .bottom { border-top: 2px solid var(--line-soft); margin-top: 2rem; padding-block: 1.25rem; font-size: 0.95rem; color: var(--ink-soft); }
+  .bottom p { margin: 0; }
+</style>

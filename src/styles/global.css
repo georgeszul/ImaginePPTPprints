@@ -1,0 +1,135 @@
+/* Theme tokens (spec §6.2). Light is the default; the inline script in Base.astro sets data-theme before paint. */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface: #eefafd;
+  --surface-2: #ffffff;
+  --ink: #111111;
+  --ink-soft: #3b4652;
+  --line: #111111;
+  --line-soft: #d5e3ea;
+  --brand: #22c3e6;
+  --brand-deep: #2a7bc8;
+  --link: #0e6694;
+  --hero-bg: #22c3e6;
+  --hero-ink: #111111;
+  --accent: #ffd60a;
+  --on-accent: #111111;
+  --pop: #ff8a00;
+  --focus: #0e6694;
+  --shadow: 4px 4px 0 #111111;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0f1419;
+  --surface: #18202a;
+  --surface-2: #1f2933;
+  --ink: #f2f5f7;
+  --ink-soft: #b9c3cc;
+  --line: #3a4a58;
+  --line-soft: #2a3642;
+  --brand: #22c3e6;
+  --brand-deep: #5fb4ec;
+  --link: #6fd6ef;
+  --hero-bg: #0e3a4a;
+  --hero-ink: #f2f5f7;
+  --accent: #ffd60a;
+  --on-accent: #111111;
+  --pop: #ffa040;
+  --focus: #6fd6ef;
+  --shadow: 4px 4px 0 #000000;
+}
+/* ponytail: without JS the site stays light; add a prefers-color-scheme block if no-JS dark matters. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+h1, h2, h3, h4 {
+  font-family: 'Fredoka', 'Nunito', system-ui, sans-serif;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: clamp(2.1rem, 4vw + 1rem, 3.6rem); }
+h2 { font-size: clamp(1.7rem, 2.5vw + 0.9rem, 2.5rem); }
+h3 { font-size: 1.3rem; font-weight: 500; }
+p { margin: 0 0 1em; }
+a { color: var(--link); text-underline-offset: 0.15em; }
+img { max-width: 100%; height: auto; display: block; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+main:focus { outline: none; }
+
+.skip {
+  position: absolute; left: 1rem; top: -4rem; z-index: 100;
+  background: var(--accent); color: var(--on-accent);
+  padding: 0.6rem 1rem; border: 2px solid #111; border-radius: 999px; font-weight: 700;
+}
+.skip:focus { top: 1rem; }
+
+.container { width: min(1120px, 100% - 2rem); margin-inline: auto; }
+.narrow { width: min(820px, 100% - 2rem); margin-inline: auto; }
+.section { padding-block: clamp(3rem, 6vw, 5.5rem); }
+.section--tint { background: var(--surface); }
+.page-head {
+  background: var(--hero-bg); color: var(--hero-ink);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  border-bottom: 2px solid var(--line);
+}
+.page-head .lead { color: var(--hero-ink); }
+.lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 60ch; }
+.eyebrow { font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85rem; margin-bottom: 0.75rem; }
+.center { text-align: center; }
+.center .lead { margin-inline: auto; }
+
+.grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
+.card { background: var(--surface-2); border: 2px solid var(--line); border-radius: 20px; padding: 1.5rem; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  min-height: 48px; padding: 0.7rem 1.4rem;
+  border: 2px solid #111; border-radius: 999px;
+  font: 600 1.05rem/1 'Fredoka', system-ui, sans-serif;
+  text-decoration: none; cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn--primary { background: var(--accent); color: var(--on-accent); box-shadow: var(--shadow); }
+.btn--primary:hover { box-shadow: 5px 5px 0 #111; }
+.btn--ghost { background: var(--surface-2); color: var(--ink); border-color: var(--line); }
+.btn:hover { transform: translate(-1px, -1px); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.center .btn-row { justify-content: center; }
+
+.pill {
+  display: inline-block; padding: 0.3rem 0.85rem;
+  border: 2px solid var(--line); border-radius: 999px;
+  background: var(--surface-2); color: var(--ink);
+  font-weight: 700; font-size: 0.95rem;
+}
+
+.checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+.checks li { position: relative; padding-left: 1.75rem; }
+.checks li::before {
+  content: ''; position: absolute; left: 0.1rem; top: 0.45em;
+  width: 0.9rem; height: 0.5rem;
+  border-left: 3px solid var(--brand-deep); border-bottom: 3px solid var(--brand-deep);
+  transform: rotate(-45deg);
+}
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

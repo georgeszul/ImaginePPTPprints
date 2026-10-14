@@ -1,0 +1,43 @@
+---
+import Icon from './Icon.astro';
+import type { Lang } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const label = t(lang, 'common.theme.toggle');
+---
+<button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label={label} title={label}>
+  <span class="sun"><Icon name="sun" /></span>
+  <span class="moon"><Icon name="moon" /></span>
+</button>
+
+<style>
+  .theme-toggle {
+    display: inline-grid; place-items: center; width: 44px; height: 44px;
+    border: 2px solid var(--line); border-radius: 999px;
+    background: var(--surface-2); color: var(--ink); cursor: pointer;
+  }
+  .sun { display: none; }
+  .moon { display: inline-flex; }
+  :global([data-theme='dark']) .sun { display: inline-flex; }
+  :global([data-theme='dark']) .moon { display: none; }
+</style>
+
+<script>
+  const root = document.documentElement;
+  for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]')) {
+    const sync = () => btn.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
+    sync();
+    btn.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem('theme', next);
+      } catch {
+        // Storage blocked (private mode): the choice lasts for this page view only.
+      }
+      sync();
+    });
+  }
+</script>
