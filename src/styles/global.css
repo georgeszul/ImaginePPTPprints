@@ -125,6 +125,17 @@ main:focus { outline: none; }
   transform: rotate(-45deg);
 }
 
+/* Numbered process steps (Home and Services). */
+.steps { list-style: none; padding: 0; margin: 3rem 0 2rem; row-gap: 2.5rem; }
+.step { position: relative; padding-top: 2.5rem; }
+.step p { color: var(--ink-soft); margin: 0; }
+.num {
+  position: absolute; top: -1.4rem; left: 1.5rem; width: 2.8rem; height: 2.8rem;
+  display: grid; place-items: center; border-radius: 50%;
+  background: var(--accent); color: #111; border: 2px solid #111;
+  font: 600 1.3rem/1 'Fredoka', system-ui, sans-serif;
+}
+
 .visually-hidden {
   position: absolute !important; width: 1px; height: 1px; overflow: hidden;
   clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
