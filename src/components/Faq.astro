@@ -4,16 +4,17 @@ import { t, tRaw } from '../i18n/t';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
-const items = tRaw<{ q: string; a: string }[]>(lang, 'faq.items');
+// `lang` marks an item written in another language; `en` is its English line (spec §4.5 #10 is bilingual).
+const items = tRaw<{ q: string; a: string; lang?: string; en?: string }[]>(lang, 'faq.items');
 ---
 <section class="section" aria-labelledby="faq-title">
   <div class="narrow">
     <h2 id="faq-title" class="center">{t(lang, 'faq.title')}</h2>
     <div class="faq">
       {items.map((item) => (
-        <details>
+        <details lang={item.lang}>
           <summary>{item.q}</summary>
-          <p>{item.a}</p>
+          <p>{item.a}{item.en && <> <span lang="en">{item.en}</span></>}</p>
         </details>
       ))}
     </div>

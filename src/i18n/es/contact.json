@@ -33,11 +33,11 @@
     "deadline": "Fecha límite",
     "designFile": "Sube tu diseño", "designHint": "Formatos: JPG, PNG, PDF, AI, EPS, PSD, SVG",
     "referenceFile": "Imagen de referencia", "referenceHint": "Sube una imagen de referencia o inspiración",
-    "filesHint": "Hasta 8 MB en total. ¿Archivos más grandes? Mándalos por WhatsApp o correo.",
+    "filesHint": "Hasta 7.5 MB en total. ¿Archivos más grandes? Mándalos por WhatsApp o correo.",
     "message": "Detalles del proyecto", "messagePh": "Cuéntanos sobre tu proyecto...",
     "spanish": "Prefiero comunicarme en español",
     "spanishAlt": "I prefer to communicate in Spanish",
-    "tooBig": "Los archivos pesan más de 8 MB. Mándalos por WhatsApp o por correo y envía el formulario sin ellos.",
+    "tooBig": "Los archivos pesan más de 7.5 MB. Mándalos por WhatsApp o por correo y envía el formulario sin ellos.",
     "submit": "Enviar solicitud de cotización",
     "honeypot": "Deja este campo vacío"
   },

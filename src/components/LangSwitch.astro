@@ -7,7 +7,7 @@ const { lang, page } = Astro.props;
 const to = other(lang);
 const href = routes[page ?? 'home'][to];
 ---
-<a class="lang" href={href} hreflang={to} lang={to} aria-label={t(lang, 'common.lang.label')}>{t(lang, 'common.lang.short')}</a>
+<a class="lang" href={href} hreflang={to} lang={to} aria-label={`${t(lang, 'common.lang.short')}: ${t(lang, 'common.lang.label')}`}>{t(lang, 'common.lang.short')}</a>
 
 <style>
   .lang {

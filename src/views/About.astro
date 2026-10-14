@@ -5,20 +5,30 @@ import Cta from '../components/Cta.astro';
 import { site } from '../data/site';
 import type { Lang } from '../i18n/routes';
 import { t, tRaw } from '../i18n/t';
+import type { ComponentProps } from 'astro/types';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const a = (key: string) => t(lang, `about.${key}`);
 const paragraphs = tRaw<string[]>(lang, 'about.story.paragraphs');
 const services = tRaw<{ title: string; body: string }[]>(lang, 'about.services');
-const cards = [
-  { icon: 'pin', title: a('cards.address'), href: site.mapsUrl, link: site.addressLine, note: a('cards.directions'), external: true },
+type Card = {
+  icon: ComponentProps<typeof Icon>['name'];
+  title: string;
+  href: string;
+  link: string;
+  note: string;
+  noteHref?: string;
+  external: boolean;
+};
+const cards: Card[] = [
+  { icon: 'pin', title: a('cards.address'), href: site.mapsUrl, link: site.addressLine, note: a('cards.directions'), noteHref: site.mapsUrl, external: true },
   { icon: 'phone', title: a('cards.phone'), href: site.phoneHref, link: site.phone, note: a('cards.phoneNote'), external: false },
   { icon: 'mail', title: a('cards.email'), href: `mailto:${site.email}`, link: site.email, note: a('cards.emailNote'), external: false },
   { icon: 'shop', title: a('cards.store'), href: site.shopify, link: a('cards.storeLink'), note: a('cards.storeNote'), external: true },
   { icon: 'chat', title: a('cards.social'), href: site.tiktok, link: a('cards.tiktokLink'), note: a('cards.socialNote'), external: true },
   { icon: 'check', title: a('cards.reviews'), href: site.facebook, link: a('cards.reviewsLink'), note: a('cards.reviewsNote'), external: true },
-] as const;
+];
 ---
 <Base lang={lang} page="about" title={a('meta.title')} description={a('meta.description')}>
   <section class="page-head">
@@ -36,7 +46,7 @@ const cards = [
       </div>
       <div class="center what">
         <h2>{a('what.title')}</h2>
-        <p class="lead">{a('what.body')}</p>
+        <p class="lead">{a('what.body')} <span lang="es">{t(lang, 'common.spanish')}</span></p>
       </div>
     </div>
   </section>
@@ -57,7 +67,7 @@ const cards = [
             <span class="icon"><Icon name={c.icon} size={24} /></span>
             <h3>{c.title}</h3>
             <p><a href={c.href} target={c.external ? '_blank' : undefined} rel={c.external ? 'noopener' : undefined}>{c.link}</a></p>
-            <p class="note">{c.note}</p>
+            <p class="note">{c.noteHref ? <a href={c.noteHref} target="_blank" rel="noopener">{c.note}</a> : c.note}</p>
           </li>
         ))}
       </ul>
@@ -78,6 +88,7 @@ const cards = [
   .plain { list-style: none; padding: 0; margin: 2rem 0 0; }
   .plain p { color: var(--ink-soft); margin-bottom: 0.4rem; }
   .contact-card { text-align: center; }
+  .contact-card a { display: inline-block; padding-block: 0.6rem; }
   .icon {
     display: inline-grid; place-items: center; width: 3rem; height: 3rem; margin-bottom: 0.75rem;
     border-radius: 50%; background: var(--brand); color: #111; border: 2px solid #111;

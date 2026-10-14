@@ -16,7 +16,7 @@ npm run check:links  # every internal link in dist/ resolves
 
 - Phone, email, address, social links, promo code: `src/data/site.ts`
 - Page text: `src/i18n/en/*.json` and `src/i18n/es/*.json`. Both languages must have the same keys; `npm test` fails if they drift.
-- Photos: put the file in `src/assets/photos/<category>/`, then add an entry to `src/data/photos.ts`. The build fails if a photo isn't listed.
+- Photos: put the file (JPG, PNG, or WebP) in `src/assets/photos/<category>/`, then add an entry to `src/data/photos.ts`. The build fails if a photo isn't listed.
 - Calculator prices: `src/lib/calc.js` (update `src/lib/calc.test.js` to match).
 
 ## Deploy

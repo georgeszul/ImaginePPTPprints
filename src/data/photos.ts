@@ -9,7 +9,7 @@ export interface Photo {
   cover?: boolean;
 }
 
-const files = import.meta.glob<{ default: ImageMetadata }>('../assets/photos/*/*.jpg', { eager: true });
+const files = import.meta.glob<{ default: ImageMetadata }>('../assets/photos/*/*.{jpg,jpeg,png,webp}', { eager: true });
 
 function img(path: string): ImageMetadata {
   const mod = files[`../assets/photos/${path}`];

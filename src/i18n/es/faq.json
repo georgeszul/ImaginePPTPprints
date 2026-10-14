@@ -10,6 +10,6 @@
     { "q": "¿Puedo ver una prueba antes de imprimir?", "a": "Claro. Te enviamos una prueba digital para que la apruebes antes de empezar la producción, así sabes exactamente lo que vas a recibir." },
     { "q": "¿Hacen envíos a todo el país?", "a": "Sí, enviamos a todo Estados Unidos. También puedes recoger tu pedido en nuestro local de Elgin, y ofrecemos entrega sin contacto para clientes locales." },
     { "q": "¿Qué formas de pago aceptan?", "a": "Aceptamos efectivo, tarjetas de crédito, PayPal, Venmo y Zelle. Normalmente el pago se hace antes de empezar la producción, y hay planes de pago para pedidos grandes." },
-    { "q": "¿Hablan español?", "a": "¡Sí! Hablamos español y podemos ayudarte en tu idioma preferido." }
+    { "q": "¿Hablan español?", "a": "¡Sí! Hablamos español y podemos ayudarte en tu idioma preferido.", "lang": "es", "en": "Yes! We speak Spanish and can help you in your preferred language." }
   ]
 }

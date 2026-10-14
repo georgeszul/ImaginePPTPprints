@@ -34,4 +34,9 @@ const { lang } = Astro.props;
     .fab--quote { display: inline-flex; background: var(--surface-2); color: var(--ink); border-color: var(--line); }
     :global(body) { padding-bottom: 76px; }
   }
+  /* Short screens: let the buttons sit at the end of the page instead of covering it. */
+  @media (max-height: 30rem) {
+    .float { position: static; padding: 1rem; }
+    :global(body) { padding-bottom: 0; }
+  }
 </style>

@@ -10,6 +10,6 @@
     { "q": "Can I see a proof before printing?", "a": "Absolutely. We send a digital proof for your approval before production starts, so you know exactly what you're getting." },
     { "q": "Do you ship nationwide?", "a": "Yes, we ship nationwide. We also offer local pickup at our Elgin location and contactless delivery for local customers." },
     { "q": "What payment methods do you accept?", "a": "We accept cash, credit cards, PayPal, Venmo, and Zelle. Payment is typically required before production begins, and payment plans are available for large orders." },
-    { "q": "¿Hablan español?", "a": "¡Sí! Hablamos español y podemos ayudarte en tu idioma preferido. Yes! We speak Spanish and can help you in your preferred language." }
+    { "q": "¿Hablan español?", "a": "¡Sí! Hablamos español y podemos ayudarte en tu idioma preferido.", "lang": "es", "en": "Yes! We speak Spanish and can help you in your preferred language." }
   ]
 }

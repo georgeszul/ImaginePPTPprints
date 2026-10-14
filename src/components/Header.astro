@@ -72,6 +72,7 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
     :global(.js) .nav {
       display: none; position: absolute; top: 72px; left: 0; right: 0;
       flex-direction: column; align-items: stretch; gap: 1rem; padding: 1rem;
+      max-height: calc(100dvh - 74px); overflow-y: auto; overscroll-behavior: contain;
       background: var(--bg); border: 2px solid var(--line); border-radius: 0 0 20px 20px;
     }
     :global(.js) .nav.open { display: flex; }
@@ -79,6 +80,10 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
   }
   @media (max-width: 380px) {
     .brand span { font-size: 1rem; }
+  }
+  /* Short screens (landscape phones, high zoom): a sticky header would eat most of the view. */
+  @media (max-height: 30rem) {
+    .header { position: relative; }
   }
 </style>
 
@@ -90,12 +95,19 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
       btn.setAttribute('aria-expanded', String(open));
       nav.classList.toggle('open', open);
     };
-    btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+    const isOpen = () => btn.getAttribute('aria-expanded') === 'true';
+    btn.addEventListener('click', () => setOpen(!isOpen()));
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+      if (e.key === 'Escape' && isOpen()) {
+        const focusWasInMenu = nav.contains(document.activeElement);
         setOpen(false);
-        btn.focus();
+        if (focusWasInMenu) btn.focus();
       }
+    });
+    // Close when keyboard focus leaves the header, so the open panel never covers the focused element.
+    const header = btn.closest('header')!;
+    header.addEventListener('focusout', (e) => {
+      if (isOpen() && e.relatedTarget instanceof Node && !header.contains(e.relatedTarget)) setOpen(false);
     });
   }
 </script>

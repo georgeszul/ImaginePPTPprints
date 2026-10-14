@@ -33,11 +33,11 @@
     "deadline": "Needed by (deadline)",
     "designFile": "Upload design file", "designHint": "Accepted formats: JPG, PNG, PDF, AI, EPS, PSD, SVG",
     "referenceFile": "Reference image", "referenceHint": "Upload any reference image or inspiration",
-    "filesHint": "Up to 8 MB total. Bigger files? Send them on WhatsApp or by email.",
+    "filesHint": "Up to 7.5 MB total. Bigger files? Send them on WhatsApp or by email.",
     "message": "Project details", "messagePh": "Tell us about your project...",
     "spanish": "I prefer to communicate in Spanish",
     "spanishAlt": "Prefiero comunicarme en español",
-    "tooBig": "Those files are larger than 8 MB. Please send them on WhatsApp or by email instead, and submit the form without them.",
+    "tooBig": "Those files are larger than 7.5 MB. Please send them on WhatsApp or by email instead, and submit the form without them.",
     "submit": "Send quote request",
     "honeypot": "Leave this field empty"
   },

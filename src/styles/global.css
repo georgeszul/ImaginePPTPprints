@@ -17,7 +17,7 @@
   --accent: #ffd60a;
   --on-accent: #111111;
   --pop: #ff8a00;
-  --focus: #0e6694;
+  --focus: #111111;
   --shadow: 4px 4px 0 #111111;
 }
 
@@ -28,7 +28,7 @@
   --surface-2: #1f2933;
   --ink: #f2f5f7;
   --ink-soft: #b9c3cc;
-  --line: #3a4a58;
+  --line: #6b7a89;
   --line-soft: #2a3642;
   --brand: #22c3e6;
   --brand-deep: #5fb4ec;
@@ -44,7 +44,8 @@
 /* ponytail: without JS the site stays light; add a prefers-color-scheme block if no-JS dark matters. */
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+/* Keeps focused and anchored elements clear of the sticky header and the fixed contact buttons. */
+html { -webkit-text-size-adjust: 100%; scroll-padding: 5.5rem 0 7.5rem; }
 body {
   margin: 0;
   background: var(--bg);
@@ -67,6 +68,7 @@ p { margin: 0 0 1em; }
 a { color: var(--link); text-underline-offset: 0.15em; }
 img { max-width: 100%; height: auto; display: block; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+::placeholder { color: var(--ink-soft); opacity: 1; }
 main:focus { outline: none; }
 
 .skip {

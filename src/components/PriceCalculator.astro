@@ -59,12 +59,12 @@ const r = estimate(defaults);
       <div class="card result">
         <h3>{c('estimate')}</h3>
         <dl>
-          <div><dt>{c('base')}</dt><dd><output data-out="base">{money.format(r.base)}</output></dd></div>
-          <div data-group="printLine"><dt>{c('print')}</dt><dd><output data-out="print">{money.format(r.print)}</output></dd></div>
-          <div data-group="colorLine"><dt>{c('color')}</dt><dd><output data-out="color">{money.format(r.color)}</output></dd></div>
-          <div><dt>{c('turnaroundLine')}</dt><dd><output data-out="turnaround">{money.format(r.turnaroundCost)}</output></dd></div>
-          <div class="total"><dt>{c('total')}</dt><dd><output data-out="total" aria-live="polite">{money.format(r.total)}</output></dd></div>
-          <div><dt>{c('unit')}</dt><dd><output data-out="unit">{money.format(r.unit)}</output></dd></div>
+          <div><dt>{c('base')}</dt><dd><span data-out="base">{money.format(r.base)}</span></dd></div>
+          <div data-group="printLine"><dt>{c('print')}</dt><dd><span data-out="print">{money.format(r.print)}</span></dd></div>
+          <div data-group="colorLine"><dt>{c('color')}</dt><dd><span data-out="color">{money.format(r.color)}</span></dd></div>
+          <div><dt>{c('turnaroundLine')}</dt><dd><span data-out="turnaround">{money.format(r.turnaroundCost)}</span></dd></div>
+          <div class="total" aria-live="polite" aria-atomic="true"><dt>{c('total')}</dt><dd><span data-out="total">{money.format(r.total)}</span></dd></div>
+          <div><dt>{c('unit')}</dt><dd><span data-out="unit">{money.format(r.unit)}</span></dd></div>
         </dl>
         <p class="volume"><output data-out="volume"></output></p>
         <p class="promo">{c('promo')} <strong class="code">{site.promoCode}</strong> {c('promoOff')}</p>
@@ -109,7 +109,11 @@ const r = estimate(defaults);
   const form = document.querySelector<HTMLFormElement>('[data-calc]');
   if (form) {
     const money = new Intl.NumberFormat(form.dataset.locale, { style: 'currency', currency: 'USD' });
-    const out = (name: string) => form.querySelector<HTMLOutputElement>(`[data-out="${name}"]`)!;
+    // Only the labelled total (aria-live) and the volume line (<output>) are announced; skip no-op writes.
+    const set = (name: string, text: string) => {
+      const el = form.querySelector<HTMLElement>(`[data-out="${name}"]`)!;
+      if (el.textContent !== text) el.textContent = text;
+    };
     const group = (name: string) => form.querySelector<HTMLElement>(`[data-group="${name}"]`)!;
     const fill = (tpl: string, vars: Record<string, number>) => tpl.replace(/\{(\w+)\}/g, (_, k: string) => String(vars[k]));
 
@@ -128,21 +132,23 @@ const r = estimate(defaults);
       group('cardNote').hidden = product !== 'businesscard';
       group('bannerNote').hidden = product !== 'banner';
 
-      out('base').value = money.format(r.base);
-      out('print').value = money.format(r.print);
-      out('color').value = money.format(r.color);
+      set('base', money.format(r.base));
+      set('print', money.format(r.print));
+      set('color', money.format(r.color));
       const sign = r.turnaroundCost > 0 ? '+' : r.turnaroundCost < 0 ? '−' : '';
-      out('turnaround').value = sign + money.format(Math.abs(r.turnaroundCost));
-      out('total').value = money.format(r.total);
-      out('unit').value = money.format(r.unit);
+      set('turnaround', sign + money.format(Math.abs(r.turnaroundCost)));
+      set('total', money.format(r.total));
+      set('unit', money.format(r.unit));
 
       const next = nextTier(r.effectiveQty);
-      out('volume').value =
+      set(
+        'volume',
         r.volumeDiscount > 0
           ? fill(form.dataset.volApplied!, { pct: Math.round(r.volumeDiscount * 100) })
           : next
             ? fill(form.dataset.volNext!, { n: next.min - r.effectiveQty, pct: Math.round(next.discount * 100) })
-            : '';
+            : '',
+      );
     };
 
     form.addEventListener('input', update);

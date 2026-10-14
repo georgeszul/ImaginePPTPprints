@@ -6,7 +6,8 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const f = (key: string) => t(lang, `contact.form.${key}`);
 const options = (key: string) => Object.entries(tRaw<Record<string, string>>(lang, `contact.form.${key}`));
-const MAX_BYTES = 8 * 1024 * 1024;
+// ponytail: 7.5 MB leaves room for text fields and multipart overhead under Netlify's 8 MB per-submission cap; recheck the cap at deploy.
+const MAX_BYTES = 7_500_000;
 ---
 <form
   class="quote"
@@ -175,7 +176,7 @@ const MAX_BYTES = 8 * 1024 * 1024;
   legend { font: 600 1.05rem 'Fredoka', system-ui, sans-serif; padding: 0 0.4rem; }
   small, .hint { color: var(--ink-soft); font-size: 0.92rem; margin: 0; }
   .req { color: var(--link); }
-  .check { display: flex; gap: 0.6rem; align-items: flex-start; font-weight: 400; }
+  .check { display: flex; gap: 0.6rem; align-items: flex-start; min-height: 44px; font-weight: 400; }
   .check input { width: 1.3rem; height: 1.3rem; margin-top: 0.2rem; accent-color: var(--brand-deep); }
   .alt { color: var(--ink-soft); }
   .error { margin: 0; padding: 0.75rem 1rem; border: 2px solid #b42318; border-radius: 14px; background: #fde8e6; color: #7a1a12; font-weight: 700; }

@@ -17,6 +17,8 @@ const services = tRaw<{ key: string; title: string; body: string }[]>(lang, 'hom
 const steps = tRaw<{ title: string; body: string }[]>(lang, 'home.how.steps');
 const why = tRaw<string[]>(lang, 'home.why.items');
 const bands = ['var(--brand)', 'var(--accent)', 'var(--pop)', 'var(--brand-deep)'];
+const spanish = t(lang, 'common.spanish');
+const langOf = (text: string) => (text === spanish ? 'es' : undefined);
 ---
 <Base lang={lang} page="home" title={t(lang, 'home.meta.title')} description={t(lang, 'home.meta.description')}>
   <section class="hero">
@@ -25,7 +27,7 @@ const bands = ['var(--brand)', 'var(--accent)', 'var(--pop)', 'var(--brand-deep)
         <p class="eyebrow">{t(lang, 'home.hero.eyebrow')}</p>
         <h1>{t(lang, 'home.hero.title')}</h1>
         <p class="lead">{t(lang, 'home.hero.subtitle')}</p>
-        <ul class="badges">{badges.map((b) => <li class="pill">{b}</li>)}</ul>
+        <ul class="badges">{badges.map((b) => <li class="pill" lang={langOf(b)}>{b}</li>)}</ul>
         <div class="btn-row">
           <a class="btn btn--primary" href={routes.contact[lang]}>{t(lang, 'common.cta.freeQuote')}<Icon name="arrow" /></a>
           <a class="btn btn--ghost" href={site.phoneHref}><Icon name="phone" />{site.phone}</a>
@@ -84,7 +86,7 @@ const bands = ['var(--brand)', 'var(--accent)', 'var(--pop)', 'var(--brand-deep)
   <section class="section section--tint">
     <div class="container center">
       <h2>{t(lang, 'home.why.title')}</h2>
-      <ul class="why">{why.map((w) => <li class="pill"><Icon name="check" size={18} />{w}</li>)}</ul>
+      <ul class="why">{why.map((w) => <li class="pill" lang={langOf(w)}><Icon name="check" size={18} />{w}</li>)}</ul>
       <div class="card reviews">
         <h3>{t(lang, 'home.reviews.title')}</h3>
         <p>{t(lang, 'home.reviews.body')}</p>
