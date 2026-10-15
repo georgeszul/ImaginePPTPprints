@@ -26,6 +26,7 @@ Netlify builds every push to `main` (see `netlify.toml`). The quote form uses Ne
 ## Before launch
 
 - Native speaker review of the Spanish text.
+- Read the privacy page (`src/i18n/{en,es}/privacy.json`) and confirm it matches how you handle customer files and messages.
 - Confirm payment methods, size range (chart stops at 2XL; an old FAQ said 5XL), and material specs.
 - Add hoodie and hat photos (`src/assets/photos/hoodies/`, `src/assets/photos/hats/`). Until then those service sections show "Photos coming soon" and the portfolio has no Hoodies or Hats filter.
 - Set the real domain in `astro.config.mjs` (`site`).

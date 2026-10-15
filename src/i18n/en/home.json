@@ -4,9 +4,8 @@
     "description": "Custom printed shirts, hoodies, hats, banners, business cards, and stickers in Elgin, IL. 24–48 hour turnaround, no minimums, free design help. ¡Hablamos español!"
   },
   "hero": {
-    "eyebrow": "Custom printing in Elgin, IL",
-    "title": "Transform Your Brand with Custom Printed Apparel",
-    "subtitle": "From design to delivery in 24–48 hours. 100% satisfaction guaranteed.",
+    "title": "Custom shirts, hoodies and signs, printed in Elgin in 24–48 hours",
+    "subtitle": "Send us your design, or we’ll create one with you. 100% satisfaction guaranteed.",
     "logoAlt": "Imagine Prints penguin logo"
   },
   "services": {
@@ -33,12 +32,9 @@
   },
   "work": { "title": "Featured Work", "all": "See All Our Work", "pause": "Pause Slideshow", "play": "Play Slideshow" },
   "why": {
-    "title": "Why Choose Imagine PPTP Prints?",
-    "items": ["24–48 hour standard turnaround", "Same-day rush orders available", "No minimums: order 1 or 1,000", "Free design help", "¡Hablamos español!"]
+    "items": ["Same-day rush available", "No minimums", "Free design help", "¡Hablamos español!"]
   },
   "reviews": {
-    "title": "Hear It From Our Customers",
-    "body": "Read real reviews and see our latest projects on our Facebook page.",
-    "cta": "Read Our Facebook Reviews"
+    "cta": "Read our Facebook reviews"
   }
 }

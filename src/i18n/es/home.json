@@ -4,9 +4,8 @@
     "description": "Camisetas, sudaderas, gorras, lonas, tarjetas de presentación y calcomanías personalizadas en Elgin, IL. Entrega en 24 a 48 horas, sin mínimos y ayuda con el diseño gratis."
   },
   "hero": {
-    "eyebrow": "Impresión personalizada en Elgin, IL",
-    "title": "Transforma tu marca con ropa personalizada",
-    "subtitle": "Del diseño a la entrega en 24 a 48 horas. Satisfacción 100% garantizada.",
+    "title": "Camisetas, sudaderas y lonas personalizadas, impresas en Elgin en 24 a 48 horas",
+    "subtitle": "Mándanos tu diseño o lo creamos contigo. Satisfacción 100% garantizada.",
     "logoAlt": "Logotipo de Imagine Prints con un pingüino"
   },
   "services": {
@@ -33,12 +32,9 @@
   },
   "work": { "title": "Trabajos destacados", "all": "Ver todos nuestros trabajos", "pause": "Pausar presentación", "play": "Reproducir presentación" },
   "why": {
-    "title": "¿Por qué elegir Imagine PPTP Prints?",
-    "items": ["Entrega estándar en 24 a 48 horas", "Pedidos urgentes el mismo día", "Sin mínimos: pide 1 o 1,000", "Ayuda con el diseño gratis", "¡Hablamos español!"]
+    "items": ["Urgentes el mismo día", "Sin mínimos", "Diseño gratis", "¡Hablamos español!"]
   },
   "reviews": {
-    "title": "Lo que dicen nuestros clientes",
-    "body": "Lee reseñas reales y mira nuestros proyectos más recientes en nuestra página de Facebook.",
     "cta": "Leer reseñas en Facebook"
   }
 }

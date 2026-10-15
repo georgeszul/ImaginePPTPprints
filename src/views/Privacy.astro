@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+import type { Lang } from '../i18n/routes';
+import { t, tRaw } from '../i18n/t';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const sections = tRaw<{ title: string; body: string }[]>(lang, 'privacy.sections');
+---
+<Base lang={lang} page="privacy" title={t(lang, 'privacy.meta.title')} description={t(lang, 'privacy.meta.description')}>
+  <section class="page-head">
+    <div class="narrow">
+      <h1>{t(lang, 'privacy.title')}</h1>
+      <p class="lead">{t(lang, 'privacy.updated')}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="narrow prose">
+      {sections.map((s) => (
+        <>
+          <h2>{s.title}</h2>
+          <p>{s.body}</p>
+        </>
+      ))}
+      <p class="contact">
+        {t(lang, 'privacy.contact')} <a href={`mailto:${site.email}`}>{site.email}</a>, <a href={site.phoneHref}>{site.phone}</a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .prose { max-width: 68ch; }
+  .prose h2 { font-size: 1.35rem; margin-top: 2rem; }
+  .prose h2:first-child { margin-top: 0; }
+  .prose p { color: var(--ink-soft); }
+  .contact { margin-top: 2.5rem; font-weight: 600; color: var(--ink); }
+</style>

@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "title": "Privacy Policy | Imagine PPTP Prints",
+    "description": "What Imagine PPTP Prints collects when you request a quote, how it is used, and how to have it deleted."
+  },
+  "title": "Privacy Policy",
+  "updated": "Last updated: October 2026",
+  "sections": [
+    { "title": "What we collect", "body": "When you request a quote, we receive what you enter in the form (name, email, phone, preferred contact method and project details) and any files you attach. If you call, text, message us on WhatsApp or email us, we receive what you send." },
+    { "title": "How we use it", "body": "Only to prepare your quote, produce your order and contact you about it. We don’t sell or rent your information, and we don’t send you marketing messages unless you ask." },
+    { "title": "Where it’s kept", "body": "Quote requests are delivered through our website host, Netlify, and to our business email. We keep your details and files only as long as we need them for your order and our records." },
+    { "title": "Cookies", "body": "This site doesn’t use tracking or advertising cookies. It remembers your light or dark mode choice in your own browser, and that choice is never sent to us." },
+    { "title": "Your choices", "body": "You can ask us at any time to show you, correct or delete the information we have about you." }
+  ],
+  "contact": "Questions or requests:"
+}

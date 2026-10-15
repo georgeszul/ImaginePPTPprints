@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "title": "Política de privacidad | Imagine PPTP Prints",
+    "description": "Qué información recibe Imagine PPTP Prints cuando pides una cotización, cómo se usa y cómo pedir que se borre."
+  },
+  "title": "Política de privacidad",
+  "updated": "Última actualización: octubre de 2026",
+  "sections": [
+    { "title": "Qué información recibimos", "body": "Cuando pides una cotización, recibimos lo que escribes en el formulario (nombre, correo, teléfono, forma de contacto preferida y detalles del proyecto) y los archivos que adjuntes. Si nos llamas, nos escribes por mensaje o WhatsApp, o nos envías un correo, recibimos lo que nos mandes." },
+    { "title": "Cómo la usamos", "body": "Solo para preparar tu cotización, producir tu pedido y comunicarnos contigo sobre él. No vendemos ni rentamos tu información, y no te enviamos publicidad a menos que la pidas." },
+    { "title": "Dónde se guarda", "body": "Las solicitudes de cotización llegan a través de nuestro proveedor de sitio web, Netlify, y a nuestro correo de negocio. Guardamos tus datos y archivos solo el tiempo necesario para tu pedido y nuestros registros." },
+    { "title": "Cookies", "body": "Este sitio no usa cookies de rastreo ni de publicidad. Recuerda en tu propio navegador si prefieres el modo claro u oscuro, y esa preferencia nunca se nos envía." },
+    { "title": "Tus opciones", "body": "Puedes pedirnos en cualquier momento que te mostremos, corrijamos o borremos la información que tenemos sobre ti." }
+  ],
+  "contact": "Preguntas o solicitudes:"
+}
