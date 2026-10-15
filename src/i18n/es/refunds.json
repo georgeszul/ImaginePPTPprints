@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "title": "Política de reembolsos | Imagine PPTP Prints",
+    "description": "Cómo maneja Imagine PPTP Prints las reimpresiones, los reembolsos y las cancelaciones de pedidos personalizados."
+  },
+  "title": "Política de reembolsos",
+  "updated": "Última actualización: octubre de 2026",
+  "sections": [
+    {
+      "id": "guarantee",
+      "title": "Nuestra garantía",
+      "body": "Si no te gusta la calidad de la impresión de tu pedido, lo volvemos a imprimir o te devolvemos tu dinero."
+    },
+    {
+      "id": "covered",
+      "title": "Qué cubre",
+      "body": "Problemas con la forma en que imprimimos tu pedido: errores de impresión, colores incorrectos o desvanecidos, manchas, partes que se despegan, o artículos que no coinciden con la prueba que aprobaste en tamaño, cantidad o posición."
+    },
+    {
+      "id": "not-covered",
+      "title": "Qué no cubre",
+      "body": "Cada pedido se hace solo para ti, así que no podemos reembolsar ni cambiar artículos que coinciden con la prueba que aprobaste. Eso incluye errores de ortografía o de diseño en una prueba aprobada, las tallas que elegiste o un cambio de opinión después de imprimir."
+    },
+    {
+      "id": "how",
+      "title": "Cómo pedir una reimpresión o un reembolso",
+      "body": "Contáctanos lo antes posible después de recoger o recibir tu pedido, con tu nombre, los detalles del pedido y una foto del problema. Puede que te pidamos ver o recoger los artículos. Te diremos si lo volvemos a imprimir o te devolvemos el dinero, y cuándo."
+    },
+    {
+      "id": "cancel",
+      "title": "Cancelar un pedido",
+      "body": "Puedes cancelar con reembolso completo hasta que apruebes la prueba. Una vez que empieza la impresión, solo podemos reembolsar la parte del pedido que todavía no hemos impreso."
+    },
+    {
+      "id": "paid",
+      "title": "Cómo se hacen los reembolsos",
+      "body": "Cuando es posible, el reembolso se hace por el mismo medio con el que pagaste."
+    }
+  ]
+}

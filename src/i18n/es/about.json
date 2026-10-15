@@ -1,39 +1,30 @@
 {
   "meta": {
     "title": "Nosotros | Imagine PPTP Prints",
-    "description": "Conoce a Imagine PPTP Prints, tu socio de confianza para impresión personalizada de alta calidad en Elgin, IL."
+    "description": "Imagine PPTP Prints es una imprenta en Elgin, IL, de camisetas, sudaderas, gorras, lonas, tarjetas de presentación y calcomanías personalizadas. Hablamos español."
   },
   "title": "Sobre Imagine PPTP Prints",
-  "subtitle": "Tu socio de confianza para impresión personalizada de alta calidad en Elgin, Illinois",
+  "subtitle": "Una imprenta de productos personalizados en 840 N State St, Elgin, Illinois.",
   "story": {
-    "title": "Nuestra historia",
+    "title": "Quiénes somos",
     "paragraphs": [
-      "Imagine PPTP Prints es tu imprenta local, especializada en ropa y accesorios personalizados de alta calidad. Atendemos a negocios, equipos y personas en toda el área de Elgin y más allá.",
-      "Nuestra misión es ofrecer un servicio de impresión excepcional, enfocado en la calidad, la satisfacción del cliente y la entrega a tiempo. Ya sea que necesites camisetas para tu negocio, sudaderas para tu equipo o gorras para tu evento, nosotros te ayudamos."
+      "Imagine PPTP Prints imprime camisetas, sudaderas, gorras, lonas, tarjetas de presentación y calcomanías personalizadas para negocios, equipos, eventos y personas. Atendemos a clientes del área de Elgin y enviamos a todo Estados Unidos.",
+      "Te ayudamos con el diseño sin costo adicional, te enviamos una prueba digital antes de imprimir y terminamos la mayoría de los pedidos de 24 a 48 horas después de que la apruebes."
     ]
   },
-  "what": { "title": "Lo que hacemos", "body": "¡Nos especializamos en impresión personalizada! Estamos orgullosos de servir a nuestra comunidad hispana:" },
-  "servicesTitle": "Nuestros servicios",
-  "services": [
-    { "title": "Camisetas personalizadas", "body": "Ropa impresa de alta calidad para negocios, equipos y eventos. Serigrafía y transferencia térmica disponibles." },
-    { "title": "Sudaderas personalizadas", "body": "Sudaderas perfectas para equipos, eventos y tu marca. Disponibles en varios estilos, colores y tallas." },
-    { "title": "Gorras personalizadas", "body": "Gorras bordadas profesionales para tu marca y eventos promocionales. Varios estilos disponibles." },
-    { "title": "Tarjetas de presentación", "body": "Tarjetas de alta calidad con diseño personalizado. Varios acabados, incluido estampado metálico y relieve." },
-    { "title": "Lonas y letreros", "body": "Lonas y letreros de gran formato para eventos y promoción de negocios. Opciones de vinil resistente a la intemperie." },
-    { "title": "Calcomanías", "body": "Calcomanías de vinil personalizadas para tu marca, vehículos y material promocional." }
-  ],
+  "what": { "title": "Te atendemos en tu idioma", "body": "Llámanos, escríbenos o mándanos un mensaje en español y atendemos todo tu pedido en español." },
   "contactTitle": "Información de contacto",
   "cards": {
     "address": "Dirección", "directions": "Cómo llegar",
-    "phone": "Teléfono", "phoneNote": "¡Llama cuando quieras!",
-    "email": "Correo", "emailNote": "¡Respondemos rápido!",
-    "store": "Tienda en línea", "storeLink": "Visita nuestra tienda en Shopify", "storeNote": "Compra 24/7",
-    "social": "Redes sociales", "tiktokLink": "Síguenos en TikTok", "socialNote": "¡Mira nuestros trabajos más recientes!",
-    "reviews": "Reseñas", "reviewsLink": "Lee nuestras reseñas en Facebook", "reviewsNote": "Reseñas reales de clientes reales"
+    "phone": "Teléfono", "phoneNote": "Llama o manda un mensaje",
+    "email": "Correo", "emailNote": "Mándanos tu diseño o tus preguntas",
+    "store": "Tienda en línea", "storeLink": "Visita nuestra tienda en Shopify", "storeNote": "Abierta en línea 24/7",
+    "social": "Redes sociales", "tiktokLink": "Síguenos en TikTok", "socialNote": "Mira nuestros trabajos más recientes",
+    "reviews": "Reseñas", "reviewsLink": "Lee nuestras reseñas en Facebook", "reviewsNote": "Reseñas de nuestros clientes"
   },
   "hours": {
     "title": "Horario",
-    "body": "Siempre abiertos. ¡Estamos aquí cuando nos necesites!",
-    "delivery": "Ofrecemos entrega a domicilio y entrega sin contacto para tu comodidad."
+    "body": "Siempre abiertos, todos los días.",
+    "delivery": "Recoge en Elgin, entrega local sin contacto o envío a todo el país."
   }
 }

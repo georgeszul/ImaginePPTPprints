@@ -64,7 +64,7 @@ const sizes = ['lg', 'wide', 'sm', 'sm', 'wide', 'wide'];
       <p class="lead">{t(lang, 'home.services.subtitle')}</p>
       <ul class="bento">
         {tiles.map((s, i) => (
-          <li class={`reveal tile tile--${sizes[i] ?? 'sm'}`}>
+          <li class={`tile tile--${sizes[i] ?? 'sm'}`}>
             <a class="svc" href={`${routes.services[lang]}#${s.key}`}>
               <div class="svc-media">
                 {s.photo ? <Photo photo={s.photo} lang={lang} sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 560px" decorative /> : <DesignHere lang={lang} />}
@@ -89,7 +89,7 @@ const sizes = ['lg', 'wide', 'sm', 'sm', 'wide', 'wide'];
       </div>
       <ol class="steps">
         {steps.map((s, i) => (
-          <li class="step reveal"><span class="num" aria-hidden="true">{i + 1}</span><h3>{s.title}</h3><p>{s.body}</p></li>
+          <li class="step"><span class="num" aria-hidden="true">{i + 1}</span><h3>{s.title}</h3><p>{s.body}</p></li>
         ))}
       </ol>
       <p class="center"><a class="btn btn--primary" href={routes.contact[lang]}>{t(lang, 'common.cta.freeQuote')}</a></p>

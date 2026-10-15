@@ -3,23 +3,23 @@
     "title": "Contact Us | Imagine PPTP Prints",
     "description": "Get a free quote for custom shirts, hoodies, hats, banners, and business cards. Call, text, WhatsApp, or send your design. Located in Elgin, IL."
   },
-  "title": "Contact Us",
+  "title": "Contact us",
   "intro": [
-    "High quality printed shirts, hoodies, and hats for businesses, special occasions, you name it.",
-    "Send us your design, we’ll make the rest. Any questions? Feel free to text, call, or send an email."
+    "Ask a question or request a free quote. We reply in English or Spanish.",
+    "Send your design with the form below, or text, call or email us."
   ],
-  "formTitle": "Get In Touch",
+  "formTitle": "Request a free quote",
   "form": {
     "name": "Full name", "email": "Email address", "phone": "Phone number",
     "method": "Preferred contact method", "methodPick": "Select preferred method",
     "methods": { "phone": "Phone", "email": "Email", "text": "Text message", "whatsapp": "WhatsApp" },
     "service": "Service interested in", "servicePick": "Select a service",
-    "services": { "shirts": "Custom Shirts", "hoodies": "Custom Hoodies", "hats": "Custom Hats", "banners": "Custom Banners", "cards": "Business Cards", "stickers": "Stickers", "other": "Other" },
+    "services": { "shirts": "Custom shirts", "hoodies": "Custom hoodies", "hats": "Custom hats", "banners": "Banners", "cards": "Business cards", "stickers": "Stickers", "other": "Other" },
     "groups": { "shirts": "Shirt details", "hoodies": "Hoodie details", "hats": "Hat details", "banners": "Banner details", "cards": "Business card details", "other": "Order details (stickers and other)" },
     "type": "Type", "typePick": "Select type",
-    "shirtTypes": { "tshirt": "T-Shirt", "polo": "Polo Shirt", "longsleeve": "Long Sleeve", "tank": "Tank Top" },
-    "hoodieTypes": { "pullover": "Pullover Hoodie", "zip": "Zip-up Hoodie", "sweatshirt": "Sweatshirt" },
-    "hatTypes": { "baseball": "Baseball Cap", "snapback": "Snapback", "beanie": "Beanie", "trucker": "Trucker Hat" },
+    "shirtTypes": { "tshirt": "T-shirt", "polo": "Polo shirt", "longsleeve": "Long sleeve", "tank": "Tank top" },
+    "hoodieTypes": { "pullover": "Pullover hoodie", "zip": "Zip-up hoodie", "sweatshirt": "Sweatshirt" },
+    "hatTypes": { "baseball": "Baseball cap", "snapback": "Snapback", "beanie": "Beanie", "trucker": "Trucker hat" },
     "sizes": "Sizes needed", "sizesPh": "S:10, M:15",
     "quantity": "Quantity needed",
     "colors": "Design colors", "colorsPh": "3 colors",
@@ -38,12 +38,14 @@
     "spanish": "I prefer to communicate in Spanish",
     "spanishAlt": "Prefiero comunicarme en español",
     "tooBig": "Those files are larger than 7.5 MB. Please send them on WhatsApp or by email instead, and submit the form without them.",
-    "submit": "Send Quote Request",
+    "submit": "Send quote request",
     "sending": "Sending…",
-    "honeypot": "Leave this field empty"
+    "honeypot": "Leave this field empty",
+    "privacyNote": "We use these details only to prepare your quote and contact you about it.",
+    "privacyLink": "Privacy policy"
   },
-  "info": { "title": "Contact Information", "address": "Address", "phone": "Phone", "email": "Email", "hours": "Business hours", "hoursValue": "Monday–Sunday, always open", "directions": "Get directions" },
-  "delivery": { "title": "Delivery and Pickup", "items": ["Contactless delivery available", "Local pickup at our Elgin location", "Shipping available nationwide"] },
-  "turnaround": { "title": "Turnaround Times", "items": ["Standard: 24–48 hours", "Rush: same day available", "Large orders: 2–3 days"] },
-  "follow": { "title": "Follow Us", "shop": "Shop" }
+  "info": { "title": "Contact information", "address": "Address", "phone": "Phone", "email": "Email", "hours": "Business hours", "hoursValue": "Monday–Sunday, always open", "directions": "Get directions" },
+  "delivery": { "title": "Delivery and pickup", "items": ["Contactless delivery available", "Local pickup at our Elgin location", "Shipping available nationwide"] },
+  "turnaround": { "title": "Turnaround times", "items": ["Standard: 24–48 hours", "Rush: same day available", "Large orders: 2–3 days"] },
+  "follow": { "title": "Follow us", "shop": "Shop" }
 }

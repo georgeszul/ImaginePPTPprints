@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "title": "Refund policy | Imagine PPTP Prints",
+    "description": "How Imagine PPTP Prints handles reprints, refunds and cancellations for custom orders."
+  },
+  "title": "Refund policy",
+  "updated": "Last updated: October 2026",
+  "sections": [
+    {
+      "id": "guarantee",
+      "title": "Our guarantee",
+      "body": "If you’re not happy with the print quality of your order, we’ll reprint it or refund you."
+    },
+    {
+      "id": "covered",
+      "title": "What’s covered",
+      "body": "Problems with how we printed your order: misprints, wrong or faded colors, smudges, peeling, or items that don’t match the proof you approved in size, quantity or placement."
+    },
+    {
+      "id": "not-covered",
+      "title": "What isn’t covered",
+      "body": "Every order is made just for you, so we can’t refund or exchange items that match the proof you approved. That includes spelling or design mistakes in an approved proof, sizes you chose, or a change of mind after printing."
+    },
+    {
+      "id": "how",
+      "title": "How to ask for a reprint or refund",
+      "body": "Contact us as soon as you can after pickup or delivery, with your name, the order details and a photo of the problem. We may ask to see or collect the items. We’ll tell you whether we’ll reprint or refund, and when."
+    },
+    {
+      "id": "cancel",
+      "title": "Cancelling an order",
+      "body": "You can cancel for a full refund until you approve the proof. After printing starts, we can only refund the part of the order we haven’t printed yet."
+    },
+    {
+      "id": "paid",
+      "title": "How refunds are paid",
+      "body": "When possible, refunds go back to the way you paid."
+    }
+  ]
+}

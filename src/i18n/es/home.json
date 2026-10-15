@@ -10,27 +10,27 @@
   },
   "services": {
     "title": "Lo que imprimimos",
-    "subtitle": "Camisetas, sudaderas y gorras impresas de alta calidad para negocios, ocasiones especiales y lo que necesites. Mándanos tu diseño y nosotros hacemos el resto.",
+    "subtitle": "Camisetas, sudaderas, gorras, lonas, tarjetas de presentación y calcomanías para negocios, equipos y eventos. Mándanos tu diseño o lo creamos contigo.",
     "items": [
-      { "key": "shirts", "title": "Camisetas personalizadas", "body": "Camisetas impresas de alta calidad para negocios y ocasiones especiales" },
-      { "key": "hoodies", "title": "Sudaderas personalizadas", "body": "Sudaderas con tu diseño, perfectas para equipos y eventos" },
-      { "key": "hats", "title": "Gorras personalizadas", "body": "Gorras profesionales con tu marca o diseño personalizado" },
-      { "key": "banners", "title": "Lonas y pancartas", "body": "Lonas y letreros profesionales para eventos y negocios" },
-      { "key": "cards", "title": "Tarjetas de presentación", "body": "Tarjetas de alta calidad para causar una gran primera impresión" },
-      { "key": "stickers", "title": "Calcomanías", "body": "Calcomanías de vinil personalizadas para tu marca, vehículos y promociones" }
+      { "key": "shirts", "title": "Camisetas personalizadas", "body": "Camisetas impresas para negocios, equipos y eventos." },
+      { "key": "hoodies", "title": "Sudaderas personalizadas", "body": "Tu diseño en sudaderas cerradas o con cierre, para equipos y eventos." },
+      { "key": "hats", "title": "Gorras personalizadas", "body": "Gorras, gorras trucker y gorros tejidos con tu logotipo o diseño." },
+      { "key": "banners", "title": "Lonas y pancartas", "body": "Lonas y letreros de vinil o tela para eventos y negocios." },
+      { "key": "cards", "title": "Tarjetas de presentación", "body": "Tarjetas a todo color en acabado mate, brillante o semibrillante." },
+      { "key": "stickers", "title": "Calcomanías", "body": "Calcomanías de vinil para tu marca, vehículos y promociones." }
     ],
     "more": "Ver todos los servicios"
   },
   "how": {
     "title": "Cómo funciona",
-    "subtitle": "Tu ropa personalizada en 3 pasos sencillos",
+    "subtitle": "De tu idea a la impresión terminada en tres pasos",
     "steps": [
-      { "title": "Mándanos tu diseño", "body": "Sube tu diseño o trabaja con nosotros para crear uno. ¡Aceptamos todos los formatos!" },
+      { "title": "Mándanos tu diseño", "body": "Sube tu diseño o trabaja con nosotros para crear uno. Aceptamos archivos JPG, PNG, PDF, AI, EPS, PSD y SVG." },
       { "title": "Elige tus productos", "body": "Escoge entre camisetas, sudaderas, gorras, lonas y más. Te ayudamos a elegir lo ideal." },
-      { "title": "Entrega rápida", "body": "Recibe tus productos personalizados en 24 a 48 horas. ¡También hacemos pedidos urgentes!" }
+      { "title": "Listo en 24 a 48 horas", "body": "La mayoría de los pedidos están listos de 24 a 48 horas después de aprobar la prueba. También hay servicio urgente el mismo día." }
     ]
   },
-  "work": { "title": "Trabajos destacados", "all": "Ver todos nuestros trabajos", "pause": "Pausar presentación", "play": "Reproducir presentación" },
+  "work": { "title": "Trabajos recientes", "all": "Ver todos nuestros trabajos", "pause": "Pausar presentación", "play": "Reproducir presentación" },
   "why": {
     "items": ["Urgentes el mismo día", "Sin mínimos", "Diseño gratis", "¡Hablamos español!"]
   },

@@ -4,14 +4,14 @@
     "description": "Camisetas, sudaderas, gorras, lonas, tarjetas de presentación y calcomanías personalizadas en Elgin, IL. Precios estimados al instante, entrega en 24 a 48 horas y sin mínimos."
   },
   "title": "Nuestros servicios",
-  "subtitle": "Ropa y accesorios impresos a tu medida para negocios y ocasiones especiales",
+  "subtitle": "Ropa, lonas e impresos para negocios, equipos y eventos, con ayuda de diseño gratis.",
   "weOffer": "Ofrecemos:",
   "items": [
-    { "id": "shirts", "title": "Camisetas personalizadas", "intro": "Camisetas impresas de alta calidad, perfectas para negocios, equipos y ocasiones especiales.", "bullets": ["Impresión de camisetas con materiales premium", "Camisetas con el logotipo de tu negocio", "Uniformes para equipos y deportes", "Camisetas para eventos y celebraciones", "Serigrafía, bordado y transferencia térmica", "Varios estilos: cuello redondo, cuello en V, manga larga"] },
-    { "id": "hoodies", "title": "Sudaderas personalizadas", "intro": "Sudaderas con tu diseño, perfectas para equipos, eventos y tu marca.", "bullets": ["Impresión de sudaderas con telas premium", "Sudaderas para equipos y empresas", "Sudaderas para eventos y celebraciones", "Estilos cerrados y con cierre", "Serigrafía, bordado y transferencia térmica", "Disponibles en varios colores y tallas"] },
-    { "id": "hats", "title": "Gorras personalizadas", "intro": "Gorras profesionales con tu diseño o tu marca.", "bullets": ["Bordado e impresión de gorras", "Gorras con el logotipo de tu negocio", "Gorras para equipos y deportes", "Gorras para eventos y promociones", "Gorras de béisbol, gorras trucker y gorros tejidos", "Bordado y serigrafía de alta calidad"] },
-    { "id": "banners", "title": "Lonas y gran formato", "intro": "Lonas e impresión de gran formato profesionales para eventos y negocios.", "bullets": ["Lonas de vinil resistentes a la intemperie para exteriores", "Lonas de tela premium para interiores", "Impresión de gran formato de hasta 10 pies de ancho", "Servicio de instalación profesional", "Tamaños y materiales a tu medida", "Entrega rápida para fechas de eventos"] },
-    { "id": "cards", "title": "Tarjetas de presentación", "intro": "Tarjetas de presentación de alta calidad con diseño personalizado. Varios acabados disponibles.", "bullets": ["Cartulinas premium", "Tamaños y formas personalizados", "Acabado mate, brillante y semibrillante", "Estampado metálico y relieve", "Impresión a todo color", "Entrega rápida"] },
+    { "id": "shirts", "title": "Camisetas personalizadas", "intro": "Camisetas impresas para negocios, equipos y eventos.", "bullets": ["Impresión de camisetas personalizadas", "Camisetas con el logotipo de tu negocio", "Uniformes para equipos y deportes", "Camisetas para eventos y celebraciones", "Serigrafía, bordado y transferencia térmica", "Varios estilos: cuello redondo, cuello en V, manga larga"] },
+    { "id": "hoodies", "title": "Sudaderas personalizadas", "intro": "Sudaderas con tu diseño, perfectas para equipos, eventos y tu marca.", "bullets": ["Impresión de sudaderas personalizadas", "Sudaderas para equipos y empresas", "Sudaderas para eventos y celebraciones", "Estilos cerrados y con cierre", "Serigrafía, bordado y transferencia térmica", "Disponibles en varios colores y tallas"] },
+    { "id": "hats", "title": "Gorras personalizadas", "intro": "Gorras con tu logotipo o diseño.", "bullets": ["Bordado e impresión de gorras", "Gorras con el logotipo de tu negocio", "Gorras para equipos y deportes", "Gorras para eventos y promociones", "Gorras de béisbol, gorras trucker y gorros tejidos", "Bordado y serigrafía"] },
+    { "id": "banners", "title": "Lonas y gran formato", "intro": "Lonas e impresión de gran formato para eventos y negocios.", "bullets": ["Lonas de vinil resistentes a la intemperie para exteriores", "Lonas de tela para interiores", "Impresión de gran formato de hasta 10 pies de ancho", "Servicio de instalación profesional", "Tamaños y materiales a tu medida", "Entrega rápida para fechas de eventos"] },
+    { "id": "cards", "title": "Tarjetas de presentación", "intro": "Tarjetas de presentación con tu diseño, en varios acabados.", "bullets": ["Varias cartulinas a elegir", "Tamaños y formas personalizados", "Acabado mate, brillante y semibrillante", "Estampado metálico y relieve", "Impresión a todo color", "Entrega rápida"] },
     { "id": "stickers", "title": "Calcomanías", "intro": "Calcomanías de vinil personalizadas para tu marca, vehículos y material promocional.", "bullets": [] }
   ],
   "calc": {
@@ -20,7 +20,7 @@
     "product": "Tipo de producto",
     "products": { "tshirt": "Camiseta", "hoodie": "Sudadera", "hat": "Gorra", "banner": "Lona", "businesscard": "Tarjetas de presentación", "sticker": "Calcomanías" },
     "quantity": "Cantidad",
-    "qtyHint": "¡Sin mínimos! Pide 1 o más de 1,000",
+    "qtyHint": "Sin mínimos. Pide 1 o más de 1,000.",
     "method": "Método de impresión",
     "methods": { "screen": "Serigrafía", "dtg": "Impresión directa (DTG)", "embroidery": "Bordado", "heat": "Transferencia térmica", "vinyl": "Vinil" },
     "colors": "Número de colores",
@@ -37,27 +37,27 @@
     "turnaroundLine": "Tiempo de entrega",
     "total": "Total estimado",
     "unit": "Por unidad",
-    "volApplied": "¡Descuento por volumen del {pct}% aplicado!",
-    "volNext": "¡Pide {n} más y ahorra {pct}%!",
+    "volApplied": "Descuento por volumen del {pct}% aplicado",
+    "volNext": "Pide {n} más y ahorra {pct}%",
     "promo": "Descuento en tu primer pedido: usa el código",
     "promoOff": "para 10% de descuento.",
-    "official": "Pedir cotización oficial",
-    "disclaimer": "*Solo es un estimado. El precio final puede variar según los detalles del pedido. Contáctanos para una cotización oficial."
+    "official": "Cotización gratis",
+    "disclaimer": "*Solo es un estimado. No incluye impuestos ni envío. Tu cotización gratis muestra el precio final antes de empezar."
   },
   "process": {
     "title": "Cómo funciona",
-    "subtitle": "Del diseño a la entrega en 4 pasos sencillos",
+    "subtitle": "Del diseño a la entrega en cuatro pasos",
     "steps": [
       { "title": "Envía tu diseño", "body": "Mándanos tu logotipo, arte o idea. Aceptamos AI, EPS, PNG, JPG y más." },
       { "title": "Elige tus productos", "body": "Escoge entre camisetas, sudaderas y gorras. Elige colores, tallas y cantidades." },
-      { "title": "Imprimimos y revisamos", "body": "Nuestro equipo se encarga de la impresión y revisa la calidad de cada pieza." },
-      { "title": "Entrega rápida", "body": "Tu pedido está listo en 24 a 48 horas, con opción urgente el mismo día." }
+      { "title": "Imprimimos y revisamos", "body": "Imprimimos tu pedido y revisamos la calidad antes de entregarlo." },
+      { "title": "Listo en 24 a 48 horas", "body": "Tu pedido está listo en 24 a 48 horas, con opción urgente el mismo día." }
     ]
   },
   "materials": {
     "title": "Opciones de material",
     "items": [
-      { "name": "Algodón premium", "spec": "100% algodón, 180 GSM" },
+      { "name": "Algodón", "spec": "100% algodón, 180 GSM" },
       { "name": "Mezcla de algodón", "spec": "50/50 algodón-poliéster" },
       { "name": "Tela deportiva", "spec": "Absorbe la humedad" },
       { "name": "Tela gruesa", "spec": "Felpa de 300 GSM" }

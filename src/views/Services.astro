@@ -13,6 +13,12 @@ const { lang } = Astro.props;
 type Service = { id: Category; title: string; intro: string; bullets: string[] };
 type Table = { caption: string; head: string[]; rows: string[][] };
 const items = tRaw<Service[]>(lang, 'services.items');
+// Services without a photo yet (hoodies, hats) sit side by side as compact cards; photo rows alternate sides.
+let row = 0;
+const list = items.map((s) => {
+  const photo = coverFor(s.id);
+  return { ...s, photo, flip: photo !== undefined && row++ % 2 === 1 };
+});
 const steps = tRaw<{ title: string; body: string }[]>(lang, 'services.process.steps');
 const materials = tRaw<{ name: string; spec: string }[]>(lang, 'services.materials.items');
 const tables = [tRaw<Table>(lang, 'services.sizes.apparel'), tRaw<Table>(lang, 'services.sizes.hats')];
@@ -27,11 +33,10 @@ const tables = [tRaw<Table>(lang, 'services.sizes.apparel'), tRaw<Table>(lang, '
 
   <section class="section">
     <div class="container list">
-      {items.map((s, i) => {
-        const photo = coverFor(s.id);
+      {list.map(({ photo, flip, ...s }, i) => {
         return (
-          <article id={s.id} class:list={['service', { flip: i % 2 === 1 }]}>
-            <div class="frame crop-marks reveal">
+          <article id={s.id} class:list={['service', { flip, compact: !photo }]}>
+            <div class="frame crop-marks">
               <div class="media">
                 {photo ? (
                   <Photo photo={photo} lang={lang} sizes="(max-width: 860px) 100vw, 520px" eager={i === 0} />
@@ -66,7 +71,7 @@ const tables = [tRaw<Table>(lang, 'services.sizes.apparel'), tRaw<Table>(lang, '
       </div>
       <ol class="steps">
         {steps.map((s, i) => (
-          <li class="step reveal"><span class="num" aria-hidden="true">{i + 1}</span><h3>{s.title}</h3><p>{s.body}</p></li>
+          <li class="step"><span class="num" aria-hidden="true">{i + 1}</span><h3>{s.title}</h3><p>{s.body}</p></li>
         ))}
       </ol>
     </div>
@@ -98,10 +103,16 @@ const tables = [tRaw<Table>(lang, 'services.sizes.apparel'), tRaw<Table>(lang, '
 </Base>
 
 <style>
-  .list { display: grid; gap: clamp(2.5rem, 6vw, 4.5rem); }
+  .list { display: grid; gap: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem); }
   .service { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
   .flip .frame { order: 2; }
   @media (max-width: 860px) { .service { grid-template-columns: 1fr; } .flip .frame { order: 0; } }
+  @media (min-width: 861px) {
+    .list { grid-template-columns: 1fr 1fr; }
+    .service { grid-column: 1 / -1; }
+    .service.compact { grid-column: auto; grid-template-columns: 1fr; align-items: start; }
+  }
+  .compact .media { aspect-ratio: 16 / 9; }
   .media { border: 2px solid var(--line); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4 / 3; background: var(--surface); }
   .media :global(picture img) { width: 100%; height: 100%; object-fit: cover; }
   .offer { font-weight: 700; margin-bottom: 0.5rem; }

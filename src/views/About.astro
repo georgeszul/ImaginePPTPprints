@@ -11,7 +11,6 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const a = (key: string) => t(lang, `about.${key}`);
 const paragraphs = tRaw<string[]>(lang, 'about.story.paragraphs');
-const services = tRaw<{ title: string; body: string }[]>(lang, 'about.services');
 type Card = {
   icon: ComponentProps<typeof Icon>['name'];
   title: string;
@@ -52,13 +51,6 @@ const cards: Card[] = [
   </section>
 
   <section class="section section--tint">
-    <div class="container">
-      <h2 class="center">{a('servicesTitle')}</h2>
-      <ul class="grid plain">{services.map((s) => <li class="card"><h3>{s.title}</h3><p>{s.body}</p></li>)}</ul>
-    </div>
-  </section>
-
-  <section class="section">
     <div class="container">
       <h2 class="center">{a('contactTitle')}</h2>
       <ul class="grid plain">

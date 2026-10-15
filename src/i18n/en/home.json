@@ -9,28 +9,28 @@
     "logoAlt": "Imagine Prints penguin logo"
   },
   "services": {
-    "title": "What We Print",
-    "subtitle": "High quality printed shirts, hoodies, and hats for businesses, special occasions, you name it. Send us your design, we’ll make the rest.",
+    "title": "What we print",
+    "subtitle": "Shirts, hoodies, hats, banners, business cards and stickers for businesses, teams and events. Send your design, or we’ll make one with you.",
     "items": [
-      { "key": "shirts", "title": "Custom Shirts", "body": "High quality printed shirts for businesses and special occasions" },
-      { "key": "hoodies", "title": "Custom Hoodies", "body": "Personalized hoodies with your design, perfect for teams and events" },
-      { "key": "hats", "title": "Custom Hats", "body": "Professional hats and caps with your branding or custom designs" },
-      { "key": "banners", "title": "Custom Banners", "body": "Professional banners and signage for events and businesses" },
-      { "key": "cards", "title": "Business Cards", "body": "High-quality business cards to make your first impression count" },
-      { "key": "stickers", "title": "Stickers and Decals", "body": "Custom vinyl stickers and decals for branding, vehicles, and promotions" }
+      { "key": "shirts", "title": "Custom shirts", "body": "Printed shirts for businesses, teams and events." },
+      { "key": "hoodies", "title": "Custom hoodies", "body": "Your design on pullover or zip-up hoodies, for teams and events." },
+      { "key": "hats", "title": "Custom hats", "body": "Caps, trucker hats and beanies with your logo or design." },
+      { "key": "banners", "title": "Banners and signs", "body": "Vinyl and fabric banners and signs for events and businesses." },
+      { "key": "cards", "title": "Business cards", "body": "Full-color business cards in matte, glossy or semi-gloss." },
+      { "key": "stickers", "title": "Stickers and decals", "body": "Vinyl stickers and decals for branding, vehicles and promotions." }
     ],
-    "more": "See All Services"
+    "more": "See all services"
   },
   "how": {
-    "title": "How It Works",
-    "subtitle": "Get your custom apparel in 3 simple steps",
+    "title": "How it works",
+    "subtitle": "From your idea to a finished print in three steps",
     "steps": [
-      { "title": "Send Your Design", "body": "Upload your artwork or work with us to create one. We accept all file formats!" },
-      { "title": "Choose Your Products", "body": "Select from shirts, hoodies, hats, banners, and more. We’ll help you pick the perfect items." },
-      { "title": "Fast Delivery", "body": "Receive your high-quality custom products in 24–48 hours. Rush orders available!" }
+      { "title": "Send your design", "body": "Upload your artwork, or work with us to create one. We take JPG, PNG, PDF, AI, EPS, PSD and SVG files." },
+      { "title": "Choose your products", "body": "Pick shirts, hoodies, hats, banners and more. We’ll help you choose." },
+      { "title": "Get it in 24–48 hours", "body": "Most orders are ready 24–48 hours after you approve the proof. Same-day rush is available." }
     ]
   },
-  "work": { "title": "Featured Work", "all": "See All Our Work", "pause": "Pause Slideshow", "play": "Play Slideshow" },
+  "work": { "title": "Recent work", "all": "See all our work", "pause": "Pause slideshow", "play": "Play slideshow" },
   "why": {
     "items": ["Same-day rush available", "No minimums", "Free design help", "¡Hablamos español!"]
   },

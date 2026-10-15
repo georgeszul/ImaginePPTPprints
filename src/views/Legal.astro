@@ -1,0 +1,47 @@
+---
+// Privacy (with the cookie policy), terms and refund policy share one layout; the text lives in i18n/<lang>/<doc>.json.
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+import type { Lang } from '../i18n/routes';
+import { t, tRaw } from '../i18n/t';
+
+interface Props { lang: Lang; doc: 'privacy' | 'terms' | 'refunds' }
+const { lang, doc } = Astro.props;
+const sections = tRaw<{ id: string; title: string; body: string | string[] }[]>(lang, `${doc}.sections`);
+const paras = (body: string | string[]) => (Array.isArray(body) ? body : [body]);
+const deleteHref = doc === 'privacy' ? `mailto:${site.email}?subject=${encodeURIComponent(t(lang, 'privacy.deleteSubject'))}` : '';
+---
+<Base lang={lang} page={doc} title={t(lang, `${doc}.meta.title`)} description={t(lang, `${doc}.meta.description`)}>
+  <section class="page-head">
+    <div class="narrow">
+      <h1>{t(lang, `${doc}.title`)}</h1>
+      <p class="lead">{t(lang, `${doc}.updated`)}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="narrow prose">
+      {sections.map((s) => (
+        <>
+          <h2 id={s.id}>{s.title}</h2>
+          {paras(s.body).map((p) => <p>{p}</p>)}
+          {s.id === 'delete' && <p><a class="btn btn--ghost" href={deleteHref}>{t(lang, 'privacy.deleteCta')}</a></p>}
+        </>
+      ))}
+      <h2 id="business">{t(lang, 'common.legal.business')}</h2>
+      <address class="business">
+        <span translate="no">{site.name}</span><br />
+        {site.street}, {site.locality}, {site.region} {site.postalCode}<br />
+        <a href={site.phoneHref}>{site.phone}</a><br />
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </address>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .prose { max-width: 68ch; }
+  .prose h2 { font-size: 1.35rem; margin-top: 2.25rem; }
+  .prose h2:first-child { margin-top: 0; }
+  .prose p { color: var(--ink-soft); }
+  .business { font-style: normal; line-height: 1.9; }
+</style>

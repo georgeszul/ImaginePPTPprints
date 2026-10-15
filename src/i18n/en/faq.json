@@ -1,13 +1,13 @@
 {
-  "title": "Frequently Asked Questions",
+  "title": "Frequently asked questions",
   "items": [
     { "q": "How fast can you deliver?", "a": "Our standard turnaround is 24–48 hours from artwork approval. Rush orders can be done the same day, so contact us if you’re on a deadline." },
-    { "q": "Do you have minimum orders?", "a": "No minimums! Whether you need 1 shirt or 1,000, we’re here to help. Small orders are welcome." },
-    { "q": "Can you help with design?", "a": "Absolutely! Send us your ideas, logos, or rough sketches and we’ll create professional artwork for you at no extra charge." },
-    { "q": "What’s your pricing?", "a": "Pricing depends on the product, quantity, and design complexity. Try the price calculator on our Services page, or contact us for a free quote. We’ll beat any competitor’s price!" },
+    { "q": "Do you have minimum orders?", "a": "No minimums. Whether you need 1 shirt or 1,000, small orders are welcome." },
+    { "q": "Can you help with design?", "a": "Yes. Send us your ideas, logos or rough sketches and we’ll create the artwork at no extra charge." },
+    { "q": "What’s your pricing?", "a": "Pricing depends on the product, quantity, and design complexity. Try the price calculator on our Services page, or contact us for a free quote." },
     { "q": "What file formats do you accept?", "a": "All the common ones: PNG, JPG, PDF, AI, EPS, PSD, and SVG. For the sharpest print, send vector files (AI, EPS, SVG, PDF) or images at 300 DPI. No design? No problem, we’ll create one for you." },
-    { "q": "Do you offer guarantees?", "a": "Yes! 100% satisfaction guaranteed. If you’re not happy with the quality, we’ll remake it or refund you. No questions asked." },
-    { "q": "Can I see a proof before printing?", "a": "Absolutely. We send a digital proof for your approval before production starts, so you know exactly what you’re getting." },
+    { "q": "Do you offer guarantees?", "a": "Yes. If you’re not happy with the print quality, we’ll reprint your order or refund you. Our refund policy has the details." },
+    { "q": "Can I see a proof before printing?", "a": "Yes. We send a digital proof for your approval before production starts, so you know exactly what you’re getting." },
     { "q": "Do you ship nationwide?", "a": "Yes, we ship nationwide. We also offer local pickup at our Elgin location and contactless delivery for local customers." },
     { "q": "What payment methods do you accept?", "a": "We accept cash, credit cards, PayPal, Venmo, and Zelle. Payment is typically required before production begins, and payment plans are available for large orders." },
     { "q": "¿Hablan español?", "a": "¡Sí! Hablamos español y podemos ayudarte en tu idioma preferido.", "lang": "es", "en": "Yes! We speak Spanish and can help you in your preferred language." }

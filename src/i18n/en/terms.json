@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "title": "Terms of service | Imagine PPTP Prints",
+    "description": "The terms for ordering custom printing from Imagine PPTP Prints in Elgin, IL: quotes, proofs, payment, artwork and turnaround."
+  },
+  "title": "Terms of service",
+  "updated": "Last updated: October 2026",
+  "sections": [
+    {
+      "id": "agreement",
+      "title": "About these terms",
+      "body": "These terms cover using this website and ordering from Imagine PPTP Prints. By placing an order, you agree to them."
+    },
+    {
+      "id": "quotes",
+      "title": "Quotes and prices",
+      "body": [
+        "Prices from the online calculator are estimates. They don’t include sales tax or shipping.",
+        "Your quote lists the final price. If you change the order after we quote it, such as quantities, sizes or colors, we’ll send an updated quote before we start."
+      ]
+    },
+    {
+      "id": "proofs",
+      "title": "Proofs and approval",
+      "body": "We send a digital proof before we print. Please check spelling, colors, sizes, placement and quantities carefully. We print exactly what you approve."
+    },
+    {
+      "id": "payment",
+      "title": "Payment",
+      "body": "We accept cash, credit cards, PayPal, Venmo and Zelle. Payment is normally due before production starts. Ask us about payment plans for large orders."
+    },
+    {
+      "id": "artwork",
+      "title": "Your artwork",
+      "body": "You confirm that you own the designs, logos and images you send us, or have permission to print them. We can decline to print artwork that copies someone else’s trademark or copyrighted work."
+    },
+    {
+      "id": "turnaround",
+      "title": "Turnaround",
+      "body": "Most orders are ready 24–48 hours after you approve the proof, and large orders take 2–3 days. Same-day rush costs extra. These are our usual times. If a date matters, tell us before you approve the proof and we’ll confirm whether we can meet it."
+    },
+    {
+      "id": "delivery",
+      "title": "Pickup, delivery and shipping",
+      "body": "You can pick up your order at our Elgin shop. Local contactless delivery and nationwide shipping are also available. Shipping costs are added to your quote."
+    },
+    {
+      "id": "refunds",
+      "title": "Reprints and refunds",
+      "body": "If something is wrong with your order, our refund policy explains how we fix it."
+    },
+    {
+      "id": "photos",
+      "title": "Photos of your order",
+      "body": "We may share photos of finished orders on this website and our social media. If you’d rather we didn’t show yours, tell us and we won’t, or we’ll take it down."
+    },
+    {
+      "id": "law",
+      "title": "Governing law",
+      "body": "These terms are governed by the laws of the State of Illinois."
+    },
+    {
+      "id": "changes",
+      "title": "Changes to these terms",
+      "body": "If we change these terms, we’ll update the date at the top of this page. The terms in place when you order apply to that order."
+    }
+  ]
+}

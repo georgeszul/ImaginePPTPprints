@@ -1,39 +1,30 @@
 {
   "meta": {
     "title": "About Us | Imagine PPTP Prints",
-    "description": "Learn about Imagine PPTP Prints, your trusted partner for high-quality custom printing services in Elgin, IL."
+    "description": "Imagine PPTP Prints is a custom print shop in Elgin, IL, for shirts, hoodies, hats, banners, business cards and stickers. Hablamos español."
   },
   "title": "About Imagine PPTP Prints",
-  "subtitle": "Your trusted partner for high-quality custom printing services in Elgin, Illinois",
+  "subtitle": "A custom print shop at 840 N State St in Elgin, Illinois.",
   "story": {
-    "title": "Our Story",
+    "title": "Who we are",
     "paragraphs": [
-      "Imagine PPTP Prints is your local printing service specializing in high-quality custom apparel and accessories. We serve businesses, teams, and individuals throughout the Elgin area and beyond.",
-      "Our mission is to provide exceptional printing services with a focus on quality, customer satisfaction, and timely delivery. Whether you need custom shirts for your business, hoodies for your team, or hats for your special event, we’ve got you covered."
+      "Imagine PPTP Prints prints custom shirts, hoodies, hats, banners, business cards and stickers for businesses, teams, events and individuals. We work with customers in the Elgin area and ship nationwide.",
+      "We help with design at no extra charge, send a digital proof before anything is printed, and finish most orders 24–48 hours after you approve it."
     ]
   },
-  "what": { "title": "What We Do", "body": "We specialize in custom printing services! We’re proud to serve our Spanish-speaking community:" },
-  "servicesTitle": "Our Services",
-  "services": [
-    { "title": "Custom Shirts and T-Shirts", "body": "High-quality custom printed apparel for businesses, teams, and events. Screen printing and heat transfer options available." },
-    { "title": "Personalized Hoodies", "body": "Custom hoodies perfect for teams, events, and branding. Available in various styles, colors, and sizes." },
-    { "title": "Custom Hats and Caps", "body": "Professional embroidered caps for business branding and promotional events. Multiple styles available." },
-    { "title": "Business Cards", "body": "High-quality business cards with custom designs. Various finishes including foil stamping and embossing." },
-    { "title": "Banners and Signage", "body": "Large format banners and signs for events and business promotion. Weather-resistant vinyl options." },
-    { "title": "Stickers and Decals", "body": "Custom vinyl stickers and decals for branding, vehicles, and promotional materials." }
-  ],
-  "contactTitle": "Contact Information",
+  "what": { "title": "We speak your language", "body": "Call, text or write to us in Spanish and we’ll handle your whole order in Spanish." },
+  "contactTitle": "Contact information",
   "cards": {
     "address": "Address", "directions": "Get directions",
-    "phone": "Phone", "phoneNote": "Call anytime!",
-    "email": "Email", "emailNote": "We respond quickly!",
-    "store": "Online Store", "storeLink": "Visit our Shopify store", "storeNote": "Shop 24/7",
-    "social": "Social Media", "tiktokLink": "Follow us on TikTok", "socialNote": "See our latest work!",
-    "reviews": "Customer Reviews", "reviewsLink": "Read our reviews on Facebook", "reviewsNote": "Real reviews from real customers"
+    "phone": "Phone", "phoneNote": "Call or text",
+    "email": "Email", "emailNote": "Send your design or questions",
+    "store": "Online store", "storeLink": "Visit our Shopify store", "storeNote": "Open online 24/7",
+    "social": "Social media", "tiktokLink": "Follow us on TikTok", "socialNote": "See our latest work",
+    "reviews": "Customer reviews", "reviewsLink": "Read our reviews on Facebook", "reviewsNote": "Reviews from our customers"
   },
   "hours": {
-    "title": "Business Hours",
-    "body": "Always open. We’re here when you need us!",
-    "delivery": "We offer delivery and contactless delivery options for your convenience."
+    "title": "Business hours",
+    "body": "Always open, every day.",
+    "delivery": "Pickup in Elgin, local contactless delivery, and shipping nationwide."
   }
 }

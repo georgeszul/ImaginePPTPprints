@@ -1,16 +1,72 @@
 {
   "meta": {
     "title": "Política de privacidad | Imagine PPTP Prints",
-    "description": "Qué información recibe Imagine PPTP Prints cuando pides una cotización, cómo se usa y cómo pedir que se borre."
+    "description": "Qué información recibe Imagine PPTP Prints cuando pides una cotización, cómo se usa, qué servicios la manejan y cómo pedir que se borre."
   },
   "title": "Política de privacidad",
   "updated": "Última actualización: octubre de 2026",
   "sections": [
-    { "title": "Qué información recibimos", "body": "Cuando pides una cotización, recibimos lo que escribes en el formulario (nombre, correo, teléfono, forma de contacto preferida y detalles del proyecto) y los archivos que adjuntes. Si nos llamas, nos escribes por mensaje o WhatsApp, o nos envías un correo, recibimos lo que nos mandes." },
-    { "title": "Cómo la usamos", "body": "Solo para preparar tu cotización, producir tu pedido y comunicarnos contigo sobre él. No vendemos ni rentamos tu información, y no te enviamos publicidad a menos que la pidas." },
-    { "title": "Dónde se guarda", "body": "Las solicitudes de cotización llegan a través de nuestro proveedor de sitio web, Netlify, y a nuestro correo de negocio. Guardamos tus datos y archivos solo el tiempo necesario para tu pedido y nuestros registros." },
-    { "title": "Cookies", "body": "Este sitio no usa cookies de rastreo ni de publicidad. Recuerda en tu propio navegador si prefieres el modo claro u oscuro, y esa preferencia nunca se nos envía." },
-    { "title": "Tus opciones", "body": "Puedes pedirnos en cualquier momento que te mostremos, corrijamos o borremos la información que tenemos sobre ti." }
+    {
+      "id": "collect",
+      "title": "Qué información recibimos",
+      "body": [
+        "Cuando pides una cotización, recibimos lo que escribes en el formulario y los archivos que adjuntes. Solo son obligatorios tu nombre, correo, servicio y detalles del proyecto. El teléfono, la forma de contacto preferida y la fecha límite son opcionales.",
+        "Si nos llamas, nos escribes por mensaje o WhatsApp, o nos envías un correo, recibimos lo que nos mandes."
+      ]
+    },
+    {
+      "id": "use",
+      "title": "Cómo la usamos",
+      "body": "Usamos tu información solo para preparar tu cotización, hacer y entregar tu pedido y comunicarnos contigo sobre él. No la vendemos, no la rentamos y no la compartimos con fines publicitarios."
+    },
+    {
+      "id": "third-parties",
+      "title": "Servicios que manejan tu información",
+      "body": [
+        "Netlify aloja este sitio y recibe las solicitudes del formulario de cotización, incluidos los archivos adjuntos. Netlify puede revisarlas para filtrar spam.",
+        "Nuestro correo de negocio funciona con Gmail, así que Google guarda copias de las solicitudes de cotización y de los correos.",
+        "Si nos contactas por WhatsApp, Facebook o TikTok, o compras en nuestra tienda de Shopify, también aplica la política de privacidad de esa empresa.",
+        "Este sitio no carga anuncios, analítica, píxeles de rastreo ni widgets de redes sociales. Sus fuentes e imágenes se sirven desde nuestro propio sitio."
+      ]
+    },
+    {
+      "id": "retention",
+      "title": "Cuánto tiempo la guardamos",
+      "body": "Guardamos las solicitudes, los mensajes y los archivos solo el tiempo necesario para tu pedido, una posible reimpresión y nuestros registros del negocio. Después los borramos."
+    },
+    {
+      "id": "cookies",
+      "title": "Política de cookies",
+      "body": [
+        "Este sitio no usa cookies. No usa cookies de analítica, de publicidad ni de rastreo.",
+        "Guarda en el almacenamiento de tu propio navegador si prefieres el modo claro u oscuro, para que el sitio se vea igual la próxima vez. Esa preferencia nunca sale de tu dispositivo y puedes borrarla desde la configuración de tu navegador.",
+        "Como no rastreamos nada, no hay nada que aceptar, así que no mostramos un aviso de cookies. Si algún día agregamos analítica o publicidad, primero te pediremos tu consentimiento."
+      ]
+    },
+    {
+      "id": "children",
+      "title": "Menores de edad",
+      "body": "Este sitio no está dirigido a menores de 13 años y no recopilamos su información a sabiendas. Si un padre, una madre o un tutor cree que su hijo nos envió información, contáctanos y la borraremos."
+    },
+    {
+      "id": "emails",
+      "title": "Correos de nuestra parte",
+      "body": "Solo te escribimos sobre tu cotización o tu pedido. No enviamos boletines ni correos publicitarios. Si algún día empezamos uno, será solo para quien se suscriba, y cada correo tendrá un enlace para darse de baja."
+    },
+    {
+      "id": "delete",
+      "title": "Ver, corregir o borrar tu información",
+      "body": [
+        "Puedes pedirnos en cualquier momento que te mostremos, corrijamos o borremos la información y los archivos que tenemos sobre ti. Escríbenos con el botón de abajo, o llámanos o mándanos un mensaje. Te confirmaremos cuando esté hecho, en un plazo de 30 días.",
+        "Podemos conservar registros básicos de pedidos pagados cuando la ley lo exija, por ejemplo para impuestos."
+      ]
+    },
+    {
+      "id": "changes",
+      "title": "Cambios a esta política",
+      "body": "Si cambiamos esta política, actualizaremos la fecha al principio de esta página."
+    }
   ],
-  "contact": "Preguntas o solicitudes:"
+  "deleteCta": "Pedir que borren mis datos",
+  "deleteSubject": "Solicitud para borrar mis datos"
 }

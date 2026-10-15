@@ -160,10 +160,12 @@ const MAX_BYTES = 7_500_000;
   </label>
 
   <button type="submit" class="btn btn--primary submit">{f('submit')}</button>
+  <p class="privacy-note">{f('privacyNote')} <a href={routes.privacy[lang]}>{f('privacyLink')}</a></p>
 </form>
 
 <style>
   .quote { display: grid; gap: 1.1rem; }
+  .privacy-note { margin: 0; font-size: 0.95rem; color: var(--ink-soft); }
   .row { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); }
   .field { display: grid; gap: 0.35rem; align-content: start; }
   label { font-weight: 700; }

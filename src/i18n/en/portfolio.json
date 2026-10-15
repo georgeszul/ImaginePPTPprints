@@ -3,10 +3,10 @@
     "title": "Portfolio | Imagine PPTP Prints",
     "description": "See real custom shirts, hoodies, business cards, banners, and stickers printed by Imagine PPTP Prints in Elgin, IL."
   },
-  "title": "Our Portfolio",
-  "subtitle": "Explore our collection of custom printing projects and see the quality of our work",
+  "title": "Our portfolio",
+  "subtitle": "Real orders we’ve printed for our customers.",
   "filterLabel": "Filter projects",
-  "filters": { "all": "All Projects", "shirts": "Custom Shirts", "hoodies": "Custom Hoodies", "hats": "Custom Hats", "banners": "Banners", "cards": "Business Cards", "stickers": "Stickers" },
+  "filters": { "all": "All", "shirts": "Shirts", "hoodies": "Hoodies", "hats": "Hats", "banners": "Banners", "cards": "Business cards", "stickers": "Stickers" },
   "open": "View larger",
   "close": "Close",
   "prev": "Previous photo",

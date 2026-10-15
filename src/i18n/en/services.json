@@ -3,30 +3,30 @@
     "title": "Our Services | Imagine PPTP Prints",
     "description": "Custom shirts, hoodies, hats, banners, business cards, and stickers in Elgin, IL. Instant price estimates, 24–48 hour turnaround, no minimums."
   },
-  "title": "Our Services",
-  "subtitle": "Custom printed apparel and accessories for businesses and special occasions",
+  "title": "Our services",
+  "subtitle": "Apparel, banners and print for businesses, teams and events, with free design help.",
   "weOffer": "We offer:",
   "items": [
-    { "id": "shirts", "title": "Custom Shirts", "intro": "High quality printed shirts perfect for businesses, teams, and special occasions.", "bullets": ["Custom t-shirt printing with premium materials", "Business logo shirts for company branding", "Team uniforms and sports shirts", "Event and celebration shirts", "Screen printing, embroidery, and heat transfer options", "Various styles: crew neck, v-neck, long sleeve"] },
-    { "id": "hoodies", "title": "Custom Hoodies", "intro": "Personalized hoodies perfect for teams, events, and branding.", "bullets": ["Custom hoodie printing with premium fabrics", "Team and company hoodies for branding", "Event and celebration hoodies", "Pullover and zip-up hoodie styles", "Screen printing, embroidery, and heat transfer", "Available in various colors and sizes"] },
-    { "id": "hats", "title": "Custom Hats", "intro": "Professional hats and caps with your custom design or branding.", "bullets": ["Custom hat embroidery and printing", "Business logo hats for company branding", "Team and sports hats", "Event and promotional hats", "Baseball caps, trucker hats, beanies", "High-quality embroidery and screen printing"] },
-    { "id": "banners", "title": "Custom Banners and Large Format", "intro": "Professional banners and large format printing for events and businesses.", "bullets": ["Weather-resistant vinyl banners for outdoor use", "Premium fabric banners for indoor displays", "Large format printing up to 10ft wide", "Professional installation services", "Custom sizing and material options", "Fast turnaround for event deadlines"] },
-    { "id": "cards", "title": "Business Cards", "intro": "High-quality business cards with custom designs. Various finishes available.", "bullets": ["Premium card stock options", "Custom sizes and shapes", "Matte, glossy, and semi-gloss finishes", "Foil stamping and embossing", "Full-color printing", "Fast turnaround"] },
-    { "id": "stickers", "title": "Stickers and Decals", "intro": "Custom vinyl stickers and decals for branding, vehicles, and promotional materials.", "bullets": [] }
+    { "id": "shirts", "title": "Custom shirts", "intro": "Printed shirts for businesses, teams and events.", "bullets": ["Custom t-shirt printing", "Business logo shirts for company branding", "Team uniforms and sports shirts", "Event and celebration shirts", "Screen printing, embroidery, and heat transfer options", "Various styles: crew neck, v-neck, long sleeve"] },
+    { "id": "hoodies", "title": "Custom hoodies", "intro": "Hoodies with your design for teams, events and branding.", "bullets": ["Custom hoodie printing", "Team and company hoodies for branding", "Event and celebration hoodies", "Pullover and zip-up hoodie styles", "Screen printing, embroidery, and heat transfer", "Available in various colors and sizes"] },
+    { "id": "hats", "title": "Custom hats", "intro": "Hats and caps with your logo or design.", "bullets": ["Custom hat embroidery and printing", "Business logo hats for company branding", "Team and sports hats", "Event and promotional hats", "Baseball caps, trucker hats, beanies", "Embroidery and screen printing"] },
+    { "id": "banners", "title": "Banners and large format", "intro": "Banners and large format prints for events and businesses.", "bullets": ["Weather-resistant vinyl banners for outdoor use", "Fabric banners for indoor displays", "Large format printing up to 10ft wide", "Professional installation services", "Custom sizing and material options", "Fast turnaround for event deadlines"] },
+    { "id": "cards", "title": "Business cards", "intro": "Business cards with your design, in several finishes.", "bullets": ["Choice of card stock", "Custom sizes and shapes", "Matte, glossy, and semi-gloss finishes", "Foil stamping and embossing", "Full-color printing", "Fast turnaround"] },
+    { "id": "stickers", "title": "Stickers and decals", "intro": "Custom vinyl stickers and decals for branding, vehicles, and promotional materials.", "bullets": [] }
   ],
   "calc": {
-    "title": "Instant Price Calculator",
-    "subtitle": "Get an estimate for your custom order in seconds",
+    "title": "Price calculator",
+    "subtitle": "A ballpark price for your order in seconds",
     "product": "Product type",
-    "products": { "tshirt": "T-Shirt", "hoodie": "Hoodie", "hat": "Hat/Cap", "banner": "Banner", "businesscard": "Business Cards", "sticker": "Stickers" },
+    "products": { "tshirt": "T-shirt", "hoodie": "Hoodie", "hat": "Hat/Cap", "banner": "Banner", "businesscard": "Business cards", "sticker": "Stickers" },
     "quantity": "Quantity",
-    "qtyHint": "No minimums! Order 1 or 1,000+",
+    "qtyHint": "No minimums. Order 1 or 1,000+.",
     "method": "Print method",
-    "methods": { "screen": "Screen Printing", "dtg": "Direct to Garment (DTG)", "embroidery": "Embroidery", "heat": "Heat Transfer", "vinyl": "Vinyl Print" },
+    "methods": { "screen": "Screen printing", "dtg": "Direct to garment (DTG)", "embroidery": "Embroidery", "heat": "Heat transfer", "vinyl": "Vinyl print" },
     "colors": "Number of colors",
-    "colorOptions": { "1": "1 Color", "2": "2 Colors", "3": "3 Colors", "4": "4+ Colors (Full Color)" },
+    "colorOptions": { "1": "1 color", "2": "2 colors", "3": "3 colors", "4": "4+ colors (full color)" },
     "turnaround": "Turnaround time",
-    "turnarounds": { "standard": "Standard (24–48 hrs)", "rush": "Rush (Same Day) +30%", "extended": "Extended (3–5 days) −10%" },
+    "turnarounds": { "standard": "Standard (24–48 hrs)", "rush": "Rush (same day) +30%", "extended": "Extended (3–5 days) −10%" },
     "cardNote": "Business cards print in batches of 100.",
     "bannerNote": "Banner estimate assumes about 6 sq ft. Tell us your size for an exact price.",
     "designNote": "Need design help? It’s free.",
@@ -37,34 +37,34 @@
     "turnaroundLine": "Turnaround",
     "total": "Total estimate",
     "unit": "Per unit",
-    "volApplied": "{pct}% volume discount applied!",
-    "volNext": "Order {n} more to save {pct}%!",
+    "volApplied": "{pct}% volume discount applied",
+    "volNext": "Order {n} more to save {pct}%",
     "promo": "First order discount: use code",
-    "promoOff": "for 10% off!",
-    "official": "Get Official Quote",
-    "disclaimer": "*Estimate only. Final price may vary based on specific requirements. Contact us for an official quote."
+    "promoOff": "for 10% off.",
+    "official": "Get free quote",
+    "disclaimer": "*Estimate only. It doesn’t include sales tax or shipping. Your free quote shows the final price before we start."
   },
   "process": {
-    "title": "How It Works",
-    "subtitle": "From design to delivery in 4 simple steps",
+    "title": "How it works",
+    "subtitle": "From design to delivery in four steps",
     "steps": [
-      { "title": "Submit Your Design", "body": "Send us your logo, artwork, or design concept. We accept AI, EPS, PNG, JPG, and more." },
-      { "title": "Choose Your Products", "body": "Select from our range of shirts, hoodies, and hats. Pick colors, sizes, and quantities." },
-      { "title": "We Print and Quality Check", "body": "Our expert team handles the printing process and performs quality control checks." },
-      { "title": "Fast Delivery", "body": "Your custom order is ready in 24–48 hours, with same-day rush available." }
+      { "title": "Send your design", "body": "Send us your logo, artwork, or design concept. We accept AI, EPS, PNG, JPG, and more." },
+      { "title": "Choose your products", "body": "Select from our range of shirts, hoodies, and hats. Pick colors, sizes, and quantities." },
+      { "title": "We print and check it", "body": "We print your order and check its quality before it leaves the shop." },
+      { "title": "Ready in 24–48 hours", "body": "Your custom order is ready in 24–48 hours, with same-day rush available." }
     ]
   },
   "materials": {
-    "title": "Material Options",
+    "title": "Material options",
     "items": [
-      { "name": "Premium Cotton", "spec": "100% Cotton, 180 GSM" },
-      { "name": "Cotton Blend", "spec": "50/50 Cotton-Polyester" },
-      { "name": "Performance Fabric", "spec": "Moisture Wicking" },
-      { "name": "Heavyweight", "spec": "300 GSM Fleece" }
+      { "name": "Cotton", "spec": "100% cotton, 180 GSM" },
+      { "name": "Cotton blend", "spec": "50/50 cotton-polyester" },
+      { "name": "Performance fabric", "spec": "Moisture-wicking" },
+      { "name": "Heavyweight", "spec": "300 GSM fleece" }
     ]
   },
   "sizes": {
-    "title": "Size Charts",
+    "title": "Size charts",
     "apparel": {
       "caption": "Shirts and hoodies (inches)",
       "head": ["Size", "Chest", "Length", "Shoulder"],

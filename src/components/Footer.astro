@@ -43,6 +43,9 @@ const year = new Date().getFullYear();
   <div class="container bottom">
     <p>© {year} {site.name}. {t(lang, 'common.footer.rights')}</p>
     <a href={routes.privacy[lang]}>{t(lang, 'common.footer.privacy')}</a>
+    <a href={`${routes.privacy[lang]}#cookies`}>{t(lang, 'common.footer.cookies')}</a>
+    <a href={routes.terms[lang]}>{t(lang, 'common.footer.terms')}</a>
+    <a href={routes.refunds[lang]}>{t(lang, 'common.footer.refunds')}</a>
   </div>
 </footer>
 

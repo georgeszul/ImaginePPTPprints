@@ -10,6 +10,8 @@ export const routes = {
   contact: { en: '/contact/', es: '/es/contacto/' },
   thanks: { en: '/thanks/', es: '/es/gracias/' },
   privacy: { en: '/privacy/', es: '/es/privacidad/' },
+  terms: { en: '/terms/', es: '/es/terminos/' },
+  refunds: { en: '/refunds/', es: '/es/reembolsos/' },
 } as const satisfies Record<string, Record<Lang, string>>;
 
 export type PageKey = keyof typeof routes;
