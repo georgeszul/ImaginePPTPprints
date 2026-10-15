@@ -8,5 +8,7 @@
   "filterLabel": "Filtrar proyectos",
   "filters": { "all": "Todos", "shirts": "Camisetas", "hoodies": "Sudaderas", "hats": "Gorras", "banners": "Lonas", "cards": "Tarjetas", "stickers": "Calcomanías" },
   "open": "Ver en grande",
-  "close": "Cerrar"
+  "close": "Cerrar",
+  "prev": "Foto anterior",
+  "next": "Foto siguiente"
 }

@@ -3,7 +3,7 @@
   "tagline": "Soluciones profesionales de impresión",
   "spanish": "¡Hablamos español!",
   "nav": { "label": "Principal", "home": "Inicio", "services": "Servicios", "portfolio": "Portafolio", "about": "Nosotros", "contact": "Contacto", "menu": "Menú" },
-  "cta": { "quote": "Cotizar", "freeQuote": "Cotización gratis", "call": "Llama ahora", "whatsapp": "Escríbenos por WhatsApp", "email": "Envía un correo" },
+  "cta": { "freeQuote": "Cotización gratis", "call": "Llama ahora", "whatsapp": "Escríbenos por WhatsApp", "email": "Envía un correo" },
   "theme": { "toggle": "Modo oscuro" },
   "lang": { "short": "EN", "label": "View in English" },
   "floating": { "label": "Contacto rápido", "call": "Llamar", "whatsapp": "WhatsApp", "quote": "Cotizar" },

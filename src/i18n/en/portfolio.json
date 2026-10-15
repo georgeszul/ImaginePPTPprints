@@ -8,5 +8,7 @@
   "filterLabel": "Filter projects",
   "filters": { "all": "All Projects", "shirts": "Custom Shirts", "hoodies": "Custom Hoodies", "hats": "Custom Hats", "banners": "Banners", "cards": "Business Cards", "stickers": "Stickers" },
   "open": "View larger",
-  "close": "Close"
+  "close": "Close",
+  "prev": "Previous photo",
+  "next": "Next photo"
 }

@@ -16,7 +16,6 @@
   --hero-ink: #111111;
   --accent: #ffd60a;
   --on-accent: #111111;
-  --pop: #ff8a00;
   --focus: #111111;
   --shadow: 4px 4px 0 #111111;
 }
@@ -37,7 +36,6 @@
   --hero-ink: #f2f5f7;
   --accent: #ffd60a;
   --on-accent: #111111;
-  --pop: #ffa040;
   --focus: #6fd6ef;
   --shadow: 4px 4px 0 #000000;
 }
@@ -72,9 +70,10 @@ h1, h2, h3, h4 {
 }
 h1, h2, h3, h4 { text-wrap: balance; }
 p, li, dd, summary { text-wrap: pretty; }
-h1 { font-size: clamp(2.1rem, 4vw + 1rem, 3.6rem); }
-h2 { font-size: clamp(1.7rem, 2.5vw + 0.9rem, 2.5rem); }
-h3 { font-size: 1.3rem; font-weight: 500; }
+/* Tracking and leading tighten as type grows (big display letters read too far apart otherwise). */
+h1 { font-size: clamp(2.1rem, 4vw + 1rem, 3.6rem); line-height: 1.08; letter-spacing: -0.022em; }
+h2 { font-size: clamp(1.7rem, 2.5vw + 0.9rem, 2.5rem); line-height: 1.12; letter-spacing: -0.016em; }
+h3 { font-size: 1.3rem; font-weight: 500; letter-spacing: -0.005em; }
 p { margin: 0 0 1em; }
 a { color: var(--link); text-underline-offset: 0.15em; }
 img { max-width: 100%; height: auto; display: block; }
@@ -142,16 +141,36 @@ main:focus { outline: none; }
   transform: rotate(-45deg);
 }
 
-/* Numbered process steps (Home and Services). */
-.steps { list-style: none; padding: 0; margin: 3rem 0 2rem; row-gap: 2.5rem; }
-.step { position: relative; padding-top: 2.5rem; }
-.step p { color: var(--ink-soft); margin: 0; }
+/* Process timeline (Home and Services): numbered stops joined by a dashed "cut line". */
+.steps { list-style: none; padding: 0; margin: 2.5rem 0 2rem; display: grid; gap: 2rem; }
+.step { position: relative; padding-left: 4.25rem; min-height: 2.8rem; }
+/* Each stop draws the dashed segment to the next one (down on phones, across on wider screens). */
+.step:not(:last-child)::after {
+  content: ''; position: absolute; pointer-events: none;
+  left: 1.4rem; top: 2.8rem; bottom: -2rem; border-left: 2px dashed var(--line);
+}
+.step h3 { margin-bottom: 0.3em; }
+.step p { color: var(--ink-soft); margin: 0; max-width: 34ch; }
 .num {
-  position: absolute; top: -1.4rem; left: 1.5rem; width: 2.8rem; height: 2.8rem;
+  position: absolute; top: 0; left: 0; z-index: 1; width: 2.8rem; height: 2.8rem;
   display: grid; place-items: center; border-radius: 50%;
-  background: var(--pop); color: #111; border: 2px solid #111;
+  background: var(--brand); color: #111; border: 2px solid #111;
   font: 600 1.3rem/1 'Fredoka', system-ui, sans-serif;
 }
+@media (min-width: 760px) {
+  .steps { grid-auto-flow: column; grid-auto-columns: 1fr; }
+  .step { padding: 4.25rem 1rem 0 0; }
+  .step:not(:last-child)::after { left: 2.8rem; right: -2rem; top: 1.4rem; bottom: auto; border-left: 0; border-top: 2px dashed var(--line); }
+}
+
+/* Scroll reveal: items rise into place as they enter the viewport. CSS only; browsers without
+   scroll-driven animations (and reduced-motion users) just see the content. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 55%; }
+  }
+}
+@keyframes reveal { from { opacity: 0; transform: translateY(28px) scale(0.98); } }
 
 /* Print-shop signature: halftone dots fading in across a band, like a screen-printed gradient. */
 .halftone, .page-head { position: relative; isolation: isolate; }

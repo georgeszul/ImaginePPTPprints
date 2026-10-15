@@ -34,7 +34,7 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
       <div class="tools">
         <LangSwitch lang={lang} page={page} />
         <ThemeToggle lang={lang} />
-        <a class="btn btn--primary" href={routes.contact[lang]}>{t(lang, 'common.cta.quote')}</a>
+        <a class="btn btn--primary" href={routes.contact[lang]}>{t(lang, 'common.cta.freeQuote')}</a>
       </div>
     </nav>
   </div>
@@ -44,9 +44,14 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
   .header {
     position: sticky; top: 0; z-index: 50;
     background: var(--bg);
-    background: color-mix(in srgb, var(--bg) 92%, transparent);
-    backdrop-filter: blur(8px);
+    /* Frosted bar: content scrolls visibly underneath, the blur keeps the nav readable. */
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
     border-bottom: 2px solid var(--line-soft);
+  }
+  @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+    .header { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom-color: var(--line); }
   }
   .bar { position: relative; display: flex; align-items: center; gap: 1rem; min-height: 72px; }
   .brand {

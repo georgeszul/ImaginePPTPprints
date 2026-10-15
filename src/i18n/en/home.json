@@ -7,17 +7,15 @@
     "eyebrow": "Custom printing in Elgin, IL",
     "title": "Transform Your Brand with Custom Printed Apparel",
     "subtitle": "From design to delivery in 24–48 hours. 100% satisfaction guaranteed.",
-    "badges": ["24–48 hr turnaround", "100% satisfaction", "¡Hablamos español!"],
     "logoAlt": "Imagine Prints penguin logo"
   },
   "services": {
-    "title": "Why Choose Imagine PPTP Prints?",
+    "title": "What We Print",
     "subtitle": "High quality printed shirts, hoodies, and hats for businesses, special occasions, you name it. Send us your design, we’ll make the rest.",
     "items": [
       { "key": "shirts", "title": "Custom Shirts", "body": "High quality printed shirts for businesses and special occasions" },
       { "key": "hoodies", "title": "Custom Hoodies", "body": "Personalized hoodies with your design, perfect for teams and events" },
       { "key": "hats", "title": "Custom Hats", "body": "Professional hats and caps with your branding or custom designs" },
-      { "key": "process", "title": "Design to Print", "body": "Send us your design, we’ll handle the rest with quality results" },
       { "key": "banners", "title": "Custom Banners", "body": "Professional banners and signage for events and businesses" },
       { "key": "cards", "title": "Business Cards", "body": "High-quality business cards to make your first impression count" },
       { "key": "stickers", "title": "Stickers and Decals", "body": "Custom vinyl stickers and decals for branding, vehicles, and promotions" }
@@ -31,12 +29,11 @@
       { "title": "Send Your Design", "body": "Upload your artwork or work with us to create one. We accept all file formats!" },
       { "title": "Choose Your Products", "body": "Select from shirts, hoodies, hats, banners, and more. We’ll help you pick the perfect items." },
       { "title": "Fast Delivery", "body": "Receive your high-quality custom products in 24–48 hours. Rush orders available!" }
-    ],
-    "cta": "Start Your Order Now"
+    ]
   },
   "work": { "title": "Featured Work", "all": "See All Our Work", "pause": "Pause Slideshow", "play": "Play Slideshow" },
   "why": {
-    "title": "The Short Version",
+    "title": "Why Choose Imagine PPTP Prints?",
     "items": ["24–48 hour standard turnaround", "Same-day rush orders available", "No minimums: order 1 or 1,000", "Free design help", "¡Hablamos español!"]
   },
   "reviews": {
