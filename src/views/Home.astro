@@ -15,13 +15,21 @@ import { t, tRaw } from '../i18n/t';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
-const badges = tRaw<string[]>(lang, 'home.hero.badges');
-const services = tRaw<{ key: string; title: string; body: string }[]>(lang, 'home.services.items');
+const services = tRaw<{ key: Category; title: string; body: string }[]>(lang, 'home.services.items');
 const steps = tRaw<{ title: string; body: string }[]>(lang, 'home.how.steps');
 const why = tRaw<string[]>(lang, 'home.why.items');
-const photoFor = (key: string) => (key === 'process' ? undefined : coverFor(key as Category));
 const spanish = t(lang, 'common.spanish');
 const langOf = (text: string) => (text === spanish ? 'es' : undefined);
+
+// Hero collage: one real print from each of three categories.
+const collage = (['shirts', 'banners', 'stickers'] as const).map((c) => coverFor(c)).filter((p) => p !== undefined);
+
+// Bento: services with a real photo come first, so the big tile is always a photo.
+// ponytail: the size pattern fills a 4-column, 3-row grid for exactly 6 services; revisit if the list changes length.
+const tiles = services
+  .map((s) => ({ ...s, photo: coverFor(s.key) }))
+  .sort((a, b) => Number(!a.photo) - Number(!b.photo));
+const sizes = ['lg', 'wide', 'sm', 'sm', 'wide', 'wide'];
 ---
 <Base lang={lang} page="home" title={t(lang, 'home.meta.title')} description={t(lang, 'home.meta.description')}>
   <section class="hero halftone">
@@ -30,22 +38,19 @@ const langOf = (text: string) => (text === spanish ? 'es' : undefined);
         <p class="eyebrow">{t(lang, 'home.hero.eyebrow')}</p>
         <h1>{t(lang, 'home.hero.title')}</h1>
         <p class="lead">{t(lang, 'home.hero.subtitle')}</p>
-        <ul class="badges">{badges.map((b) => <li class="pill" lang={langOf(b)}>{b}</li>)}</ul>
         <div class="btn-row">
           <a class="btn btn--primary" href={routes.contact[lang]}>{t(lang, 'common.cta.freeQuote')}<Icon name="arrow" /></a>
-          <a class="btn btn--ghost" href={site.phoneHref}><Icon name="phone" />{site.phone}</a>
           <a class="btn btn--ghost" href={site.whatsapp} target="_blank" rel="noopener"><Icon name="chat" />{t(lang, 'common.cta.whatsapp')}</a>
         </div>
       </div>
-      <Image
-        class="hero-logo"
-        src={logo}
-        alt={t(lang, 'home.hero.logoAlt')}
-        widths={[220, 340, 680]}
-        sizes="(max-width: 860px) 200px, 340px"
-        loading="eager"
-        fetchpriority="high"
-      />
+      <div class="collage" aria-hidden="true">
+        {collage.map((p, i) => (
+          <div class={`print p${i + 1}`}>
+            <Photo photo={p} lang={lang} sizes="(max-width: 860px) 230px, 310px" eager decorative />
+          </div>
+        ))}
+        <Image class="penguin" src={logo} alt="" widths={[120, 240]} sizes="120px" loading="eager" />
+      </div>
     </div>
   </section>
 
@@ -53,29 +58,24 @@ const langOf = (text: string) => (text === spanish ? 'es' : undefined);
 
   <section class="section section--tint">
     <div class="container">
-      <div class="center">
-        <h2>{t(lang, 'home.services.title')}</h2>
-        <p class="lead">{t(lang, 'home.services.subtitle')}</p>
-      </div>
-      <ul class="grid svc-grid">
-        {services.map((s) => {
-          const photo = photoFor(s.key);
-          return (
-            <li>
-              <a class="card svc" href={`${routes.services[lang]}#${s.key}`}>
-                <div class="svc-media">
-                  {photo ? <Photo photo={photo} lang={lang} sizes="(max-width: 600px) 100vw, 280px" decorative /> : <DesignHere lang={lang} />}
-                </div>
-                <div class="svc-body">
-                  <h3>{s.title}</h3>
-                  <p>{s.body}</p>
-                </div>
-              </a>
-            </li>
-          );
-        })}
+      <h2>{t(lang, 'home.services.title')}</h2>
+      <p class="lead">{t(lang, 'home.services.subtitle')}</p>
+      <ul class="bento">
+        {tiles.map((s, i) => (
+          <li class={`reveal tile tile--${sizes[i] ?? 'sm'}`}>
+            <a class="svc" href={`${routes.services[lang]}#${s.key}`}>
+              <div class="svc-media">
+                {s.photo ? <Photo photo={s.photo} lang={lang} sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 560px" decorative /> : <DesignHere lang={lang} />}
+              </div>
+              <div class="svc-body">
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            </a>
+          </li>
+        ))}
       </ul>
-      <p class="center more"><a class="btn btn--ghost" href={routes.services[lang]}>{t(lang, 'home.services.more')}<Icon name="arrow" /></a></p>
+      <p class="more"><a class="btn btn--ghost" href={routes.services[lang]}>{t(lang, 'home.services.more')}<Icon name="arrow" /></a></p>
     </div>
   </section>
 
@@ -85,12 +85,12 @@ const langOf = (text: string) => (text === spanish ? 'es' : undefined);
         <h2>{t(lang, 'home.how.title')}</h2>
         <p class="lead">{t(lang, 'home.how.subtitle')}</p>
       </div>
-      <ol class="grid steps">
+      <ol class="steps">
         {steps.map((s, i) => (
-          <li class="card step"><span class="num" aria-hidden="true">{i + 1}</span><h3>{s.title}</h3><p>{s.body}</p></li>
+          <li class="step reveal"><span class="num" aria-hidden="true">{i + 1}</span><h3>{s.title}</h3><p>{s.body}</p></li>
         ))}
       </ol>
-      <p class="center"><a class="btn btn--primary" href={routes.contact[lang]}>{t(lang, 'home.how.cta')}<Icon name="arrow" /></a></p>
+      <p class="center"><a class="btn btn--primary" href={routes.contact[lang]}>{t(lang, 'common.cta.freeQuote')}<Icon name="arrow" /></a></p>
     </div>
   </section>
 
@@ -112,28 +112,66 @@ const langOf = (text: string) => (text === spanish ? 'es' : undefined);
 
 <style>
   .hero { background: var(--hero-bg); color: var(--hero-ink); border-bottom: 2px solid var(--line); }
-  .hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; align-items: center; padding-block: clamp(3rem, 7vw, 6rem); }
-  .hero .lead { color: var(--hero-ink); }
-  .badges { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin: 0 0 1.5rem; }
-  .hero-logo {
-    width: min(340px, 100%); height: auto; justify-self: center;
-    border-radius: 50%; border: 3px solid #111; box-shadow: 8px 8px 0 #111; background: #fff;
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 2.5rem; align-items: center; padding-block: clamp(2.5rem, 6vw, 5rem); }
+  .hero .lead { color: var(--hero-ink); margin-bottom: 1.5rem; }
+
+  /* A loose pile of real prints, each outlined and shadowed like a sticker. */
+  .collage { position: relative; aspect-ratio: 1; width: min(100%, 460px); justify-self: center; }
+  .print {
+    position: absolute; overflow: hidden; background: #fff;
+    border: 2px solid #111; border-radius: 18px; box-shadow: 6px 6px 0 #111;
+    animation: drop 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
+  .print :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .p1 { width: 64%; aspect-ratio: 4 / 5; left: 0; top: 2%; rotate: -4deg; }
+  .p2 { width: 58%; aspect-ratio: 4 / 3; right: 0; top: 28%; rotate: 3deg; animation-delay: 0.1s; }
+  .p3 { width: 42%; aspect-ratio: 1; left: 12%; bottom: 0; rotate: -2deg; animation-delay: 0.2s; }
+  .penguin {
+    position: absolute; right: 4%; bottom: 3%; width: 26%; height: auto;
+    border: 3px solid #111; border-radius: 50%; box-shadow: 4px 4px 0 #111; background: #fff;
+    rotate: 8deg; animation: drop 0.6s 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  @keyframes drop { from { opacity: 0; translate: 0 18px; scale: 0.94; } }
   @media (max-width: 860px) {
     .hero-grid { grid-template-columns: 1fr; }
-    .hero-logo { width: 128px; grid-row: 1; box-shadow: 5px 5px 0 #111; }
+    .collage { width: min(100%, 340px); }
   }
-  .svc-grid { list-style: none; padding: 0; margin: 2rem 0; }
+
+  /* Bento: one big photo tile, wide tiles beside it and below, small tiles filling the gap. */
+  .bento { list-style: none; padding: 0; margin: 2rem 0; display: grid; gap: 1.25rem; }
   .svc {
-    display: flex; flex-direction: column; height: 100%; padding: 0; overflow: hidden;
+    display: grid; grid-template-rows: minmax(0, 1fr) auto; height: 100%; overflow: hidden;
+    background: var(--surface-2); border: 2px solid var(--line); border-radius: 20px;
     color: var(--ink); text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
   .svc:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow); }
-  .svc-media { aspect-ratio: 4 / 3; border-bottom: 2px solid var(--line); background: var(--surface); }
+  .svc:active { transform: scale(0.985); box-shadow: none; transition-duration: 0.08s; }
+  .svc-media { aspect-ratio: 4 / 3; overflow: hidden; border-bottom: 2px solid var(--line); background: var(--surface); }
   .svc-media :global(picture img) { width: 100%; height: 100%; object-fit: cover; }
   .svc-body { padding: 1.1rem 1.25rem 1.35rem; }
   .svc-body p { color: var(--ink-soft); margin: 0; }
+  @media (min-width: 720px) {
+    .bento { grid-template-columns: repeat(2, 1fr); }
+    .tile--lg, .tile:last-child { grid-column: span 2; }
+  }
+  @media (min-width: 720px) and (max-width: 1023.98px) {
+    .tile--lg .svc-media, .tile:last-child .svc-media { aspect-ratio: 16 / 9; }
+  }
+  @media (min-width: 1024px) {
+    .bento { grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(280px, auto); }
+    .tile--lg { grid-row: span 2; }
+    .tile--wide { grid-column: span 2; }
+    .tile--sm { grid-column: span 1; }
+    /* Photo fills whatever the grid row gives it, instead of its own height stretching the row. */
+    .bento .svc-media { aspect-ratio: auto; position: relative; }
+    .bento .svc-media > :global(*) { position: absolute; inset: 0; }
+    /* Wide tiles sit photo-left, text-right. */
+    .tile--wide .svc { grid-template-rows: none; grid-template-columns: 1.15fr 1fr; }
+    .tile--wide .svc-media { border-bottom: 0; border-right: 2px solid var(--line); }
+    .tile--wide .svc-body { align-self: center; }
+  }
   .more { margin: 0; }
+
   .why { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; list-style: none; padding: 0; margin: 1.5rem 0 2.5rem; }
   .why .pill { display: inline-flex; align-items: center; gap: 0.4rem; }
   .reviews { max-width: 560px; margin-inline: auto; }

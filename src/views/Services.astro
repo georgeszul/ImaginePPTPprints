@@ -31,7 +31,7 @@ const tables = [tRaw<Table>(lang, 'services.sizes.apparel'), tRaw<Table>(lang, '
         const photo = coverFor(s.id);
         return (
           <article id={s.id} class:list={['service', { flip: i % 2 === 1 }]}>
-            <div class="frame crop-marks">
+            <div class="frame crop-marks reveal">
               <div class="media">
                 {photo ? (
                   <Photo photo={photo} lang={lang} sizes="(max-width: 860px) 100vw, 520px" eager={i === 0} />
@@ -64,9 +64,9 @@ const tables = [tRaw<Table>(lang, 'services.sizes.apparel'), tRaw<Table>(lang, '
         <h2>{t(lang, 'services.process.title')}</h2>
         <p class="lead">{t(lang, 'services.process.subtitle')}</p>
       </div>
-      <ol class="grid steps">
+      <ol class="steps">
         {steps.map((s, i) => (
-          <li class="card step"><span class="num" aria-hidden="true">{i + 1}</span><h3>{s.title}</h3><p>{s.body}</p></li>
+          <li class="step reveal"><span class="num" aria-hidden="true">{i + 1}</span><h3>{s.title}</h3><p>{s.body}</p></li>
         ))}
       </ol>
     </div>

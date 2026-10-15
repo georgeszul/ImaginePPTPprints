@@ -7,17 +7,15 @@
     "eyebrow": "Impresión personalizada en Elgin, IL",
     "title": "Transforma tu marca con ropa personalizada",
     "subtitle": "Del diseño a la entrega en 24 a 48 horas. Satisfacción 100% garantizada.",
-    "badges": ["Entrega en 24–48 h", "Satisfacción 100%", "¡Hablamos español!"],
     "logoAlt": "Logotipo de Imagine Prints con un pingüino"
   },
   "services": {
-    "title": "¿Por qué elegir Imagine PPTP Prints?",
+    "title": "Lo que imprimimos",
     "subtitle": "Camisetas, sudaderas y gorras impresas de alta calidad para negocios, ocasiones especiales y lo que necesites. Mándanos tu diseño y nosotros hacemos el resto.",
     "items": [
       { "key": "shirts", "title": "Camisetas personalizadas", "body": "Camisetas impresas de alta calidad para negocios y ocasiones especiales" },
       { "key": "hoodies", "title": "Sudaderas personalizadas", "body": "Sudaderas con tu diseño, perfectas para equipos y eventos" },
       { "key": "hats", "title": "Gorras personalizadas", "body": "Gorras profesionales con tu marca o diseño personalizado" },
-      { "key": "process", "title": "Del diseño a la impresión", "body": "Mándanos tu diseño y nosotros nos encargamos del resto con resultados de calidad" },
       { "key": "banners", "title": "Lonas y pancartas", "body": "Lonas y letreros profesionales para eventos y negocios" },
       { "key": "cards", "title": "Tarjetas de presentación", "body": "Tarjetas de alta calidad para causar una gran primera impresión" },
       { "key": "stickers", "title": "Calcomanías", "body": "Calcomanías de vinil personalizadas para tu marca, vehículos y promociones" }
@@ -31,12 +29,11 @@
       { "title": "Mándanos tu diseño", "body": "Sube tu diseño o trabaja con nosotros para crear uno. ¡Aceptamos todos los formatos!" },
       { "title": "Elige tus productos", "body": "Escoge entre camisetas, sudaderas, gorras, lonas y más. Te ayudamos a elegir lo ideal." },
       { "title": "Entrega rápida", "body": "Recibe tus productos personalizados en 24 a 48 horas. ¡También hacemos pedidos urgentes!" }
-    ],
-    "cta": "Empieza tu pedido"
+    ]
   },
   "work": { "title": "Trabajos destacados", "all": "Ver todos nuestros trabajos", "pause": "Pausar presentación", "play": "Reproducir presentación" },
   "why": {
-    "title": "En resumen",
+    "title": "¿Por qué elegir Imagine PPTP Prints?",
     "items": ["Entrega estándar en 24 a 48 horas", "Pedidos urgentes el mismo día", "Sin mínimos: pide 1 o 1,000", "Ayuda con el diseño gratis", "¡Hablamos español!"]
   },
   "reviews": {
