@@ -174,6 +174,15 @@ main:focus { outline: none; }
   .step:not(:last-child)::after { left: 2.8rem; right: -2rem; top: 1.4rem; bottom: auto; border-left: 0; border-top: 2px dashed var(--line); }
 }
 
+/* Scroll reveal: items rise into place as they enter the viewport. CSS only; browsers without
+   scroll-driven animations (and reduced-motion users) just see the content. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 55%; }
+  }
+}
+@keyframes reveal { from { opacity: 0; transform: translateY(28px) scale(0.98); } }
+
 /* Print-shop signature: halftone dots fading in across a band, like a screen-printed gradient. */
 .halftone, .page-head { position: relative; isolation: isolate; }
 .halftone::before, .page-head::before {

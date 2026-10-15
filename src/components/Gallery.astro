@@ -27,7 +27,7 @@ const items = await Promise.all(
 
 <ul class="gallery" data-gallery>
   {items.map(({ p }) => (
-    <li data-category={p.category}>
+    <li class="reveal" data-category={p.category}>
       <button type="button" class="thumb" aria-label={`${t(lang, 'portfolio.open')}: ${p.alt[lang]}`}>
         <Photo photo={p} lang={lang} sizes="(max-width: 600px) 50vw, (max-width: 1000px) 33vw, 280px" />
       </button>
