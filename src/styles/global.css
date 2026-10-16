@@ -29,6 +29,8 @@
   --glass-hi: inset 0 1px 0 rgb(255 255 255 / 0.9);
   --glass-blur: blur(18px) saturate(170%);
   --glass-shadow: var(--glass-hi), var(--shadow-soft);
+  /* One corner radius for every panel, photo frame and card (fields use 14px, pills 999px). */
+  --radius: 20px;
   /* Strong ease-out for press and hover feedback (starts fast, so the response feels instant). */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --wash:
@@ -141,7 +143,7 @@ main:focus { outline: none; }
 .center .lead { margin-inline: auto; }
 
 .grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
-.card { border: 1px solid var(--glass-edge); border-radius: 20px; padding: 1.5rem; }
+.card { border: 1px solid var(--glass-edge); border-radius: var(--radius); padding: 1.5rem; }
 
 /* Frosted glass: translucent panels that blur the wash and whatever scrolls behind them.
    Color stays on solid layers (photos, primary buttons, page heads), and form fields stay opaque. */
@@ -218,7 +220,7 @@ main:focus { outline: none; }
   background: var(--brand); color: #111; border: 2px solid #111;
   font: 600 1.3rem/1 'Fredoka', system-ui, sans-serif;
 }
-@media (min-width: 760px) {
+@media (min-width: 720px) {
   .steps { grid-auto-flow: column; grid-auto-columns: 1fr; }
   .step { padding: 4.25rem 1rem 0 0; }
   .step:not(:last-child)::after { left: 2.8rem; right: -2rem; top: 1.4rem; bottom: auto; border-left: 0; border-top: 2px dashed var(--line); }

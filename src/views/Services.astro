@@ -113,7 +113,7 @@ const tables = [tRaw<Table>(lang, 'services.sizes.apparel'), tRaw<Table>(lang, '
     .service.compact { grid-column: auto; grid-template-columns: 1fr; align-items: start; }
   }
   .compact .media { aspect-ratio: 16 / 9; }
-  .media { border: 2px solid var(--line); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4 / 3; background: var(--surface); }
+  .media { border: 2px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4 / 3; background: var(--surface); }
   .media :global(picture img) { width: 100%; height: 100%; object-fit: cover; }
   .offer { font-weight: 700; margin-bottom: 0.5rem; }
   .steps { margin-bottom: 0; }
