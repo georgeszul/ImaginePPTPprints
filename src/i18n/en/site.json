@@ -1,0 +1,17 @@
+{
+  "skip": "Skip to content",
+  "tagline": "Professional Printing Solutions",
+  "spanish": "¡Hablamos español!",
+  "fig": "Fig.",
+  "quote": "Get a quote",
+  "theme": "Dark mode",
+  "designHere": "Your design here",
+  "nav": { "label": "Main", "home": "Home", "services": "Services", "portfolio": "Work", "about": "About", "contact": "Contact", "menu": "Menu", "close": "Close menu" },
+  "lang": { "short": "ES", "label": "Ver en español" },
+  "dock": { "label": "Quick contact", "call": "Call", "whatsapp": "WhatsApp", "quote": "Quote" },
+  "cta": { "call": "Call us", "whatsapp": "WhatsApp us", "email": "Email us" },
+  "categories": { "shirts": "Custom shirts", "hoodies": "Hoodies", "hats": "Hats", "banners": "Banners and signs", "cards": "Business cards", "stickers": "Stickers and decals" },
+  "coupon": { "kicker": "First order", "title": "10% off", "body": "First-time customers save 10% with code", "cut": "Cut along the line" },
+  "footer": { "about": "Custom shirts, hoodies, hats, banners, business cards and stickers, printed in Elgin, Illinois.", "pages": "Pages", "contact": "Contact", "follow": "Follow", "shop": "Online store", "rights": "All rights reserved.", "privacy": "Privacy", "cookies": "Cookies", "terms": "Terms", "refunds": "Refunds" },
+  "legal": { "business": "Business details", "contents": "On this page" }
+}

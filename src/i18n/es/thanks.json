@@ -1,7 +1,8 @@
 {
   "meta": { "title": "Gracias | Imagine PPTP Prints", "description": "Tu solicitud de cotización fue enviada." },
-  "title": "¡Gracias!",
-  "body": "Hemos recibido tu mensaje y te contactaremos pronto.",
-  "urgent": "¿Tienes prisa? Llámanos o escríbenos por WhatsApp:",
+  "kicker": "Pedido recibido",
+  "title": "Listo. ¡Gracias!",
+  "body": "Recibimos tu solicitud de cotización. Te respondemos pronto, en español o en inglés.",
+  "urgent": "¿Tienes prisa? Llámanos o escríbenos por WhatsApp.",
   "back": "Volver al inicio"
 }

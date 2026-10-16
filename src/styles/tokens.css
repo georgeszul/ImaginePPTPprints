@@ -1,0 +1,44 @@
+/* Design tokens (spec: Visual system). Light is the default; the inline script in Page.astro sets data-theme before paint. */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+  --paper: #f6f3ec;
+  --paper-2: #ece6da;
+  --ink: #141414;
+  --ink-soft: #4a4843;
+  --rule: #141414;
+  --cyan: #22c3e6;
+  --magenta: #e5197e;
+  --yellow: #ffd400;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #121212;
+  --paper-2: #1c1b19;
+  --ink: #efebe3;
+  --ink-soft: #b5afa4;
+  --rule: #3a3833;
+  --cyan: #3fd0ee;
+  --magenta: #f0479a;
+  --yellow: #ffd83a;
+}
+
+:root {
+  /* Text on cyan and yellow fills stays ink black in both themes. */
+  --on-color: #141414;
+  --font-display: 'Bricolage Grotesque Variable', 'Instrument Sans Variable', system-ui, sans-serif;
+  --font-body: 'Instrument Sans Variable', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace;
+  --text: clamp(1.0625rem, 0.3vw + 1rem, 1.1875rem);
+  --h1: clamp(2.75rem, 6.5vw + 1rem, 6.75rem);
+  --h2: clamp(2rem, 3.2vw + 1rem, 3.75rem);
+  --h3: clamp(1.25rem, 0.6vw + 1.05rem, 1.6rem);
+  --small: 0.875rem;
+  --wrap: 1240px;
+  --gutter: max(1rem, env(safe-area-inset-left), env(safe-area-inset-right));
+  --sec: clamp(4rem, 9vw, 8rem);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --press: 160ms;
+  --header-h: 72px;
+}

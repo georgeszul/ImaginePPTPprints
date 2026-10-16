@@ -1,0 +1,82 @@
+/* Base styles for the print studio editorial system. Tokens live in tokens.css. */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding: calc(var(--header-h) + 1rem) 0 6rem;
+}
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 var(--text)/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; margin: 0 0 0.4em; text-wrap: balance; }
+h1 { font-size: var(--h1); line-height: 0.95; letter-spacing: -0.035em; font-stretch: 85%; }
+h2 { font-size: var(--h2); line-height: 1; letter-spacing: -0.025em; font-stretch: 88%; }
+h3 { font-size: var(--h3); line-height: 1.15; letter-spacing: -0.01em; }
+p { margin: 0 0 1em; text-wrap: pretty; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a, button, summary, label, select, input, textarea { touch-action: manipulation; }
+img { display: block; max-width: 100%; height: auto; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+::selection { background: var(--yellow); color: var(--on-color); }
+main:focus { outline: none; }
+
+.wrap { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; }
+.sec { padding-block: var(--sec); border-top: 1px solid var(--rule); }
+.sec--tint { background: var(--paper-2); }
+.lead { font-size: calc(var(--text) * 1.15); color: var(--ink-soft); max-width: 58ch; }
+.mono, .kicker { font: 500 var(--small)/1.4 var(--font-mono); letter-spacing: 0.02em; }
+.kicker { display: inline-flex; align-items: center; gap: 0.5rem; margin: 0 0 1.25rem; text-transform: uppercase; }
+
+.btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+  min-height: 48px; padding: 0.75rem 1.4rem; border: 2px solid var(--ink); border-radius: 0;
+  font: 600 1rem/1 var(--font-body); text-decoration: none; cursor: pointer;
+  transition: transform var(--press) var(--ease-out);
+}
+.btn:active { transform: scale(0.97); }
+.btn--ink { background: var(--ink); color: var(--paper); }
+.btn--line { background: transparent; color: var(--ink); }
+.btn--cyan { background: var(--cyan); color: var(--on-color); border-color: var(--on-color); }
+.btn--yellow { background: var(--yellow); color: var(--on-color); border-color: var(--on-color); }
+/* Hover: a three-ink bar grows along the bottom edge, like a press color bar. */
+.btn::after {
+  content: ''; position: absolute; left: -2px; right: -2px; bottom: -8px; height: 4px;
+  background: linear-gradient(90deg, var(--cyan) 0 33.3%, var(--magenta) 0 66.6%, var(--yellow) 0);
+  transform: scaleX(0); transform-origin: left; transition: transform 220ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { .btn:hover::after { transform: scaleX(1); } }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; }
+
+.field { display: grid; gap: 0.35rem; align-content: start; }
+.field > label { font-weight: 600; }
+.input {
+  width: 100%; min-height: 48px; padding: 0.65rem 0.8rem; border: 1.5px solid var(--ink-soft); border-radius: 0;
+  background: var(--paper-2); color: var(--ink); font: inherit;
+}
+.input:focus-visible { outline-offset: 0; }
+::placeholder { color: var(--ink-soft); opacity: 1; }
+
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { padding: 0.6rem 0.75rem 0.6rem 0; text-align: left; border-bottom: 1px solid var(--rule); }
+thead th { font: 500 var(--small)/1.4 var(--font-mono); text-transform: uppercase; }
+
+.skip {
+  position: absolute; left: 1rem; top: -4rem; z-index: 100; padding: 0.6rem 1rem;
+  background: var(--yellow); color: var(--on-color); border: 2px solid var(--on-color); font-weight: 600;
+}
+.skip:focus { top: 1rem; }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 50%; }
+  }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

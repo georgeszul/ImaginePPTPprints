@@ -1,0 +1,15 @@
+---
+// Printer's control strip: cyan, magenta, yellow and key (ink). Decorative.
+interface Props { class?: string }
+const { class: className } = Astro.props;
+---
+<div class:list={['colorbar', className]} aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+<style>
+  .colorbar { display: flex; height: 6px; }
+  .colorbar span { flex: 1; }
+  .colorbar span:nth-child(1) { background: var(--cyan); }
+  .colorbar span:nth-child(2) { background: var(--magenta); }
+  .colorbar span:nth-child(3) { background: var(--yellow); }
+  .colorbar span:nth-child(4) { background: var(--ink); }
+</style>

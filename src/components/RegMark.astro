@@ -1,0 +1,9 @@
+---
+// Registration mark (target used to align print plates). Decorative.
+interface Props { size?: number }
+const { size = 16 } = Astro.props;
+---
+<svg class="reg" width={size} height={size} viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+  <circle cx="8" cy="8" r="4.5" fill="none" stroke="currentColor" stroke-width="1.2" />
+  <path d="M8 0v16M0 8h16" stroke="currentColor" stroke-width="1.2" />
+</svg>

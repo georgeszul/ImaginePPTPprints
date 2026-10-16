@@ -1,0 +1,17 @@
+{
+  "skip": "Ir al contenido",
+  "tagline": "Soluciones profesionales de impresión",
+  "spanish": "¡Hablamos español!",
+  "fig": "Fig.",
+  "quote": "Pide tu cotización",
+  "theme": "Modo oscuro",
+  "designHere": "Tu diseño aquí",
+  "nav": { "label": "Principal", "home": "Inicio", "services": "Servicios", "portfolio": "Trabajos", "about": "Nosotros", "contact": "Contacto", "menu": "Menú", "close": "Cerrar menú" },
+  "lang": { "short": "EN", "label": "View in English" },
+  "dock": { "label": "Contacto rápido", "call": "Llamar", "whatsapp": "WhatsApp", "quote": "Cotizar" },
+  "cta": { "call": "Llámanos", "whatsapp": "Escríbenos por WhatsApp", "email": "Mándanos un correo" },
+  "categories": { "shirts": "Camisetas personalizadas", "hoodies": "Sudaderas", "hats": "Gorras", "banners": "Lonas y letreros", "cards": "Tarjetas de presentación", "stickers": "Calcomanías y stickers" },
+  "coupon": { "kicker": "Primer pedido", "title": "10% de descuento", "body": "Clientes nuevos ahorran 10% con el código", "cut": "Recorta por la línea" },
+  "footer": { "about": "Camisetas, sudaderas, gorras, lonas, tarjetas de presentación y stickers personalizados, impresos en Elgin, Illinois.", "pages": "Páginas", "contact": "Contacto", "follow": "Síguenos", "shop": "Tienda en línea", "rights": "Todos los derechos reservados.", "privacy": "Privacidad", "cookies": "Cookies", "terms": "Términos", "refunds": "Reembolsos" },
+  "legal": { "business": "Datos del negocio", "contents": "En esta página" }
+}

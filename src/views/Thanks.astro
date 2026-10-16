@@ -1,6 +1,8 @@
 ---
-import Base from '../layouts/Base.astro';
-import Icon from '../components/Icon.astro';
+import Page from '../layouts/Page.astro';
+import ColorBar from '../components/ColorBar.astro';
+import RegMark from '../components/RegMark.astro';
+import Glyph from '../components/Glyph.astro';
 import { site } from '../data/site';
 import { routes, type Lang } from '../i18n/routes';
 import { t } from '../i18n/t';
@@ -8,17 +10,24 @@ import { t } from '../i18n/t';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 ---
-<Base lang={lang} page="thanks" title={t(lang, 'thanks.meta.title')} description={t(lang, 'thanks.meta.description')} noindex>
-  <section class="section">
-    <div class="narrow center">
-      <h1>{t(lang, 'thanks.title')}</h1>
-      <p class="lead">{t(lang, 'thanks.body')}</p>
-      <p>{t(lang, 'thanks.urgent')}</p>
-      <div class="btn-row">
-        <a class="btn btn--primary" href={site.phoneHref}><Icon name="phone" />{site.phone}</a>
-        <a class="btn btn--ghost" href={site.whatsapp} target="_blank" rel="noopener"><Icon name="chat" />WhatsApp</a>
-        <a class="btn btn--ghost" href={routes.home[lang]}>{t(lang, 'thanks.back')}</a>
-      </div>
+<Page lang={lang} page="thanks" title={t(lang, 'thanks.meta.title')} description={t(lang, 'thanks.meta.description')} noindex>
+  <section class="msg wrap">
+    <p class="kicker"><RegMark /> {t(lang, 'thanks.kicker')}</p>
+    <h1>{t(lang, 'thanks.title')}</h1>
+    <p class="lead">{t(lang, 'thanks.body')}</p>
+    <p>{t(lang, 'thanks.urgent')}</p>
+    <div class="btn-row">
+      <a class="btn btn--yellow" href={site.phoneHref}><Glyph name="phone" />{site.phone}</a>
+      <a class="btn btn--cyan" href={site.whatsapp} target="_blank" rel="noopener"><Glyph name="chat" />{t(lang, 'site.dock.whatsapp')}</a>
+      <a class="btn btn--line" href={routes.home[lang]}>{t(lang, 'thanks.back')}</a>
     </div>
+    <ColorBar class="bar" />
   </section>
-</Base>
+</Page>
+
+<style>
+  .msg { min-height: 70svh; display: grid; align-content: center; gap: 1.5rem; padding-block: var(--sec); }
+  .msg h1, .msg p { margin: 0; }
+  .msg h1 { max-width: 14ch; }
+  .msg :global(.bar) { max-width: 18rem; margin-top: 1rem; }
+</style>

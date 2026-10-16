@@ -1,7 +1,8 @@
 {
   "meta": { "title": "Page not found | Imagine PPTP Prints", "description": "This page doesn’t exist." },
-  "title": "Page not found",
-  "body": "Sorry, we couldn’t find that page. It may have moved.",
-  "home": "Go to the home page",
+  "kicker": "Error 404",
+  "title": "This page didn’t make it to print.",
+  "body": "The link may be old, or the page moved.",
+  "home": "Go to home",
   "contact": "Contact us"
 }

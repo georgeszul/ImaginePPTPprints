@@ -1,7 +1,8 @@
 {
   "meta": { "title": "Thank you | Imagine PPTP Prints", "description": "Your quote request was sent." },
-  "title": "Thank you",
-  "body": "We’ve received your message and will contact you soon.",
-  "urgent": "In a hurry? Call or WhatsApp us:",
+  "kicker": "Order received",
+  "title": "Got it. Thank you.",
+  "body": "Your quote request reached us. We’ll reply soon, in English or Spanish.",
+  "urgent": "In a hurry? Call or WhatsApp us.",
   "back": "Back to home"
 }

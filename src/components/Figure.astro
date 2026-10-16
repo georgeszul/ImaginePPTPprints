@@ -1,0 +1,42 @@
+---
+import { Picture } from 'astro:assets';
+import type { Photo } from '../data/photos';
+import type { Lang } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props {
+  photo: Photo; lang: Lang; n: number; sizes: string;
+  ratio?: string; eager?: boolean; crop?: boolean; decorative?: boolean; caption?: boolean; class?: string;
+}
+const { photo, lang, n, sizes, ratio = '4 / 5', eager = false, crop = false, decorative = false, caption = true, class: className } = Astro.props;
+const widths = [400, 800, 1200].filter((w) => w <= photo.src.width);
+if (widths.length === 0) widths.push(photo.src.width);
+const num = String(n).padStart(2, '0');
+---
+<figure class:list={['fig', { crop }, className]} style={`--ratio: ${ratio}`}>
+  <div class="frame">
+    <Picture src={photo.src} alt={decorative ? '' : photo.alt[lang]} widths={widths} sizes={sizes}
+      formats={['avif', 'webp']} fallbackFormat="jpg" loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : undefined} decoding="async" />
+  </div>
+  {caption && <figcaption class="mono">{t(lang, 'site.fig')} {num} — {t(lang, `site.categories.${photo.category}`)}</figcaption>}
+</figure>
+
+<style>
+  .fig { margin: 0; }
+  .frame { position: relative; aspect-ratio: var(--ratio); overflow: hidden; background: var(--paper-2); }
+  .frame :global(picture) { display: block; height: 100%; overflow: hidden; }
+  .frame :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  figcaption { margin-top: 0.6rem; color: var(--ink-soft); }
+  /* Printer's crop marks just outside the frame corners. */
+  .crop .frame { overflow: visible; }
+  .crop .frame::after {
+    --m: var(--ink); content: ''; position: absolute; inset: -14px; pointer-events: none;
+    background:
+      linear-gradient(var(--m), var(--m)) 0 14px / 9px 1px, linear-gradient(var(--m), var(--m)) 14px 0 / 1px 9px,
+      linear-gradient(var(--m), var(--m)) 100% 14px / 9px 1px, linear-gradient(var(--m), var(--m)) calc(100% - 14px) 0 / 1px 9px,
+      linear-gradient(var(--m), var(--m)) 0 calc(100% - 14px) / 9px 1px, linear-gradient(var(--m), var(--m)) 14px 100% / 1px 9px,
+      linear-gradient(var(--m), var(--m)) 100% calc(100% - 14px) / 9px 1px, linear-gradient(var(--m), var(--m)) calc(100% - 14px) 100% / 1px 9px;
+    background-repeat: no-repeat;
+  }
+</style>

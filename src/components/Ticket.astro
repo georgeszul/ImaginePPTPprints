@@ -1,0 +1,15 @@
+---
+// Job-ticket rows: mono label, value. Used for hero facts, service specs and contact details.
+interface Props { rows: { label: string; value: string }[]; class?: string }
+const { rows, class: className } = Astro.props;
+---
+<dl class:list={['ticket', className]}>
+  {rows.map((r) => <div><dt class="mono">{r.label}</dt><dd>{r.value}</dd></div>)}
+</dl>
+
+<style>
+  .ticket { margin: 0; border-top: 1px solid var(--rule); }
+  .ticket div { display: grid; grid-template-columns: minmax(7rem, 38%) 1fr; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--rule); }
+  dt { color: var(--ink-soft); text-transform: uppercase; }
+  dd { margin: 0; font-weight: 600; }
+</style>
