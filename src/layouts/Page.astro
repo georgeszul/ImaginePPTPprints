@@ -8,6 +8,9 @@ import '../styles/base.css';
 import bricolage from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-standard-normal.woff2?url';
 import instrument from '@fontsource-variable/instrument-sans/files/instrument-sans-latin-standard-normal.woff2?url';
 import { getImage } from 'astro:assets';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ContactDock from '../components/ContactDock.astro';
 import logo from '../assets/logo.jpg';
 import { site } from '../data/site';
 import { routes, langs, type Lang, type PageKey } from '../i18n/routes';
@@ -96,6 +99,9 @@ const jsonLd =
   </head>
   <body>
     <a class="skip" href="#main">{t(lang, 'site.skip')}</a>
+    <SiteHeader lang={lang} page={page} />
     <main id="main" tabindex="-1"><slot /></main>
+    <SiteFooter lang={lang} />
+    <ContactDock lang={lang} />
   </body>
 </html>

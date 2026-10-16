@@ -1,0 +1,19 @@
+---
+import { routes, other, type Lang, type PageKey } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props { lang: Lang; page: PageKey | null }
+const { lang, page } = Astro.props;
+const to = other(lang);
+const href = routes[page ?? 'home'][to];
+---
+<a class="lang" href={href} hreflang={to} lang={to} aria-label={`${t(lang, 'site.lang.short')}: ${t(lang, 'site.lang.label')}`}>{t(lang, 'site.lang.short')}</a>
+
+<style>
+  .lang {
+    display: inline-grid; place-items: center; min-width: 44px; height: 44px; padding: 0 0.6rem;
+    border: 1.5px solid var(--ink); color: var(--ink); text-decoration: none;
+    font: 500 0.875rem/1 var(--font-mono); letter-spacing: 0.04em;
+  }
+  @media (hover: hover) and (pointer: fine) { .lang:hover { background: var(--ink); color: var(--paper); } }
+</style>

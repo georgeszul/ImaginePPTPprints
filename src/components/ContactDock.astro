@@ -1,0 +1,56 @@
+---
+import Glyph from './Glyph.astro';
+import { site } from '../data/site';
+import { routes, type Lang } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<aside class="dock" aria-label={t(lang, 'site.dock.label')} data-dock>
+  <a class="fab fab--call" href={site.phoneHref}><Glyph name="phone" /><span>{t(lang, 'site.dock.call')}</span></a>
+  <a class="fab fab--wa" href={site.whatsapp} target="_blank" rel="noopener"><Glyph name="chat" /><span>{t(lang, 'site.dock.whatsapp')}</span></a>
+  <a class="fab fab--quote" href={routes.contact[lang]}><span>{t(lang, 'site.dock.quote')}</span></a>
+</aside>
+
+<style>
+  .dock {
+    position: fixed; z-index: 40; display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem;
+    right: calc(1rem + env(safe-area-inset-right)); bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+  /* Labelled pills: the one rounded shape in the system, so they read as "tap to reach a person". */
+  .fab {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+    min-height: 48px; padding: 0.6rem 1.1rem;
+    border: 2px solid var(--on-color); border-radius: 999px; color: var(--on-color);
+    font: 600 1rem/1 var(--font-body); text-decoration: none;
+    box-shadow: 3px 3px 0 var(--on-color);
+    transition: transform var(--press) var(--ease-out);
+  }
+  .fab--call { background: var(--yellow); }
+  .fab--wa { background: var(--cyan); }
+  .fab--quote { display: none; }
+  @media (hover: hover) and (pointer: fine) { .fab:hover { transform: translate(-1px, -1px); } }
+  .fab:active { transform: scale(0.97); }
+
+  @media (max-width: 720px) {
+    .dock {
+      left: 0; right: 0; bottom: 0; flex-direction: row; gap: 0.4rem;
+      padding: 0.5rem calc(0.5rem + env(safe-area-inset-right)) calc(0.5rem + env(safe-area-inset-bottom)) calc(0.5rem + env(safe-area-inset-left));
+      background: var(--paper); border-top: 1px solid var(--rule);
+    }
+    .fab { flex: 1; padding-inline: 0.5rem; box-shadow: none; }
+    .fab--quote { display: inline-flex; background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    :global(body) { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  }
+  /* Narrow phones: the labels carry the meaning, so the icons go first when three buttons share 320px. */
+  @media (max-width: 360px) {
+    .fab { gap: 0; font-size: 0.95rem; }
+    .fab :global(svg) { display: none; }
+  }
+  /* Short screens: the buttons sit at the end of the page instead of covering it. */
+  @media (max-height: 30rem) {
+    .dock { position: static; padding: 1rem; }
+    :global(body) { padding-bottom: 0; }
+  }
+</style>

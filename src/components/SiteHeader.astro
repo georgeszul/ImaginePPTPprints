@@ -1,0 +1,137 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.jpg';
+import Glyph from './Glyph.astro';
+import ColorBar from './ColorBar.astro';
+import LangLink from './LangLink.astro';
+import ThemeSwitch from './ThemeSwitch.astro';
+import { site } from '../data/site';
+import { routes, type Lang, type PageKey } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props { lang: Lang; page: PageKey | null }
+const { lang, page } = Astro.props;
+const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map((key, i) => ({
+  key,
+  n: String(i + 1).padStart(2, '0'),
+  href: routes[key][lang],
+  label: t(lang, `site.nav.${key}`),
+}));
+---
+<header class="header" data-header>
+  <div class="wrap bar">
+    <a class="brand" href={routes.home[lang]}>
+      <Image src={logo} alt="" width={44} height={44} densities={[1, 2]} loading="eager" />
+      <span translate="no">{site.name}</span>
+    </a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav" data-menu-btn>
+      <span class="i-open"><Glyph name="menu" /></span><span class="i-close"><Glyph name="close" /></span>
+      <span class="menu-label">{t(lang, 'site.nav.menu')}</span>
+    </button>
+    <nav id="site-nav" class="nav" aria-label={t(lang, 'site.nav.label')}>
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href} aria-current={item.key === page ? 'page' : undefined}><span class="n" aria-hidden="true">{item.n}</span>{item.label}</a></li>
+        ))}
+      </ul>
+      <div class="tools">
+        <LangLink lang={lang} page={page} />
+        <ThemeSwitch lang={lang} />
+        <a class="btn btn--ink quote" href={routes.contact[lang]}>{t(lang, 'site.quote')}</a>
+      </div>
+      <ColorBar class="nav-bar" />
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 1px solid var(--rule); }
+  /* Short screens (landscape phones, high zoom): a sticky header would eat most of the view. */
+  @media (max-height: 30rem) { .header { position: relative; } }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.25rem; min-height: var(--header-h); }
+  .brand {
+    display: inline-flex; align-items: center; gap: 0.65rem; margin-right: auto; min-height: 44px;
+    color: var(--ink); text-decoration: none;
+    font: 700 1.2rem/1 var(--font-display); letter-spacing: -0.02em; font-stretch: 90%;
+  }
+  .brand img { border-radius: 50%; }
+  .nav { display: flex; align-items: center; gap: 1.25rem; }
+  .nav ul { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+  .nav ul a {
+    display: flex; align-items: center; min-height: 44px; padding: 0 0.75rem;
+    color: var(--ink); text-decoration: none; font-weight: 600;
+  }
+  .nav ul a[aria-current='page'] { box-shadow: inset 0 -3px var(--cyan); }
+  @media (hover: hover) and (pointer: fine) { .nav ul a:hover { box-shadow: inset 0 -3px var(--ink); } }
+  .n { display: none; }
+  .tools { display: flex; align-items: center; gap: 0.5rem; }
+  .menu-btn { display: none; }
+  .nav :global(.nav-bar) { display: none; }
+
+  @media (max-width: 960px) {
+    /* Without JavaScript the menu stays a plain row of links under the bar. */
+    .nav { flex-wrap: wrap; width: 100%; padding-bottom: 0.75rem; }
+    .nav ul { flex-wrap: wrap; }
+
+    :global(.js) .menu-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0 0.9rem;
+      border: 1.5px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer;
+      font: 500 0.875rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em;
+      transition: transform var(--press) var(--ease-out);
+    }
+    :global(.js) .menu-btn:active { transform: scale(0.97); }
+    .i-open, .i-close { display: inline-flex; }
+    .menu-btn .i-close, .menu-btn[aria-expanded='true'] .i-open { display: none; }
+    .menu-btn[aria-expanded='true'] .i-close { display: inline-flex; }
+
+    :global(.js) .nav {
+      display: none; position: fixed; inset: var(--header-h) 0 0; z-index: 60; width: auto;
+      flex-direction: column; align-items: stretch; gap: 2rem; margin: 0;
+      padding: 1.5rem var(--gutter) calc(2rem + env(safe-area-inset-bottom));
+      background: var(--paper); overflow-y: auto; overscroll-behavior: contain;
+    }
+    :global(.js) .nav.open { display: flex; }
+    :global(.js) .nav ul { flex-direction: column; gap: 0; }
+    :global(.js) .nav ul li { border-bottom: 1px solid var(--rule); }
+    :global(.js) .nav ul a {
+      gap: 1rem; min-height: 64px; padding: 0.5rem 0;
+      font: 700 clamp(2rem, 9vw, 3.25rem)/1 var(--font-display); letter-spacing: -0.03em; font-stretch: 88%;
+    }
+    :global(.js) .nav ul a[aria-current='page'] { box-shadow: none; }
+    :global(.js) .nav ul a[aria-current='page']::after { content: ''; width: 0.5em; height: 0.5em; margin-left: auto; background: var(--cyan); }
+    :global(.js) .n { display: inline; font: 500 var(--small)/1 var(--font-mono); color: var(--ink-soft); }
+    :global(.js) .nav :global(.nav-bar) { display: flex; margin-top: auto; }
+  }
+  @media (max-width: 420px) {
+    .brand span { font-size: 1.05rem; }
+  }
+  :global(html.menu-open) { overflow: hidden; }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu-btn]');
+  const nav = document.getElementById('site-nav');
+  if (btn && nav) {
+    const setOpen = (open: boolean) => {
+      btn.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('open', open);
+      document.documentElement.classList.toggle('menu-open', open);
+    };
+    const isOpen = () => btn.getAttribute('aria-expanded') === 'true';
+    btn.addEventListener('click', () => setOpen(!isOpen()));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen()) {
+        const focusWasInMenu = nav.contains(document.activeElement);
+        setOpen(false);
+        if (focusWasInMenu || document.activeElement === document.body) btn.focus();
+      }
+    });
+    // Close when keyboard focus leaves the header, so the open panel never covers the focused element.
+    const header = btn.closest('header')!;
+    header.addEventListener('focusout', (e) => {
+      if (isOpen() && e.relatedTarget instanceof Node && !header.contains(e.relatedTarget)) setOpen(false);
+    });
+    // Back to a desktop width: drop the panel state so the page can scroll again.
+    matchMedia('(min-width: 961px)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+  }
+</script>
