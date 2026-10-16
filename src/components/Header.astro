@@ -16,7 +16,7 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
   label: t(lang, `common.nav.${key}`),
 }));
 ---
-<header class="header">
+<header class="header glass">
   <div class="container bar">
     <a class="brand" href={routes.home[lang]}>
       <Image src={logo} alt="" width={48} height={48} densities={[1, 2]} loading="eager" />
@@ -43,15 +43,9 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
 <style>
   .header {
     position: sticky; top: 0; z-index: 50;
-    background: var(--bg);
-    /* Frosted bar: content scrolls visibly underneath, the blur keeps the nav readable. */
-    background: color-mix(in srgb, var(--bg) 80%, transparent);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    backdrop-filter: blur(16px) saturate(160%);
-    border-bottom: 2px solid var(--line-soft);
-  }
-  @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
-    .header { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom-color: var(--line); }
+    /* Frosted bar (.glass), a little thicker than cards: content scrolls visibly underneath, the blur keeps the nav readable. */
+    background: var(--glass-bg-strong);
+    border-bottom: 1px solid var(--glass-edge);
   }
   .bar { position: relative; display: flex; align-items: center; gap: 1rem; min-height: 72px; }
   .brand {

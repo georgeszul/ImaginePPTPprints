@@ -25,16 +25,20 @@ const { lang } = Astro.props;
     background: var(--accent); color: #111;
     font: 600 1rem/1 'Fredoka', system-ui, sans-serif; text-decoration: none;
     box-shadow: 3px 3px 0 #111;
-    transition: transform 0.15s ease;
+    transition: transform 160ms var(--ease-out);
   }
-  .fab:hover { transform: translate(-1px, -1px); }
+  @media (hover: hover) and (pointer: fine) { .fab:hover { transform: translate(-1px, -1px); } }
+  .fab:active { transform: scale(0.97); }
   .fab--wa { background: var(--brand); }
   .fab--quote { display: none; }
   @media (max-width: 720px) {
     .float {
       left: 0; right: 0; bottom: 0; flex-direction: row; gap: 0.4rem;
       padding: 0.5rem calc(0.5rem + env(safe-area-inset-right)) calc(0.5rem + env(safe-area-inset-bottom)) calc(0.5rem + env(safe-area-inset-left));
-      background: var(--bg); border-top: 2px solid var(--line);
+      /* Frosted bar, same glass as the header. */
+      background: var(--glass-bg-strong); box-shadow: var(--glass-hi);
+      -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+      border-top: 1px solid var(--glass-edge);
     }
     .fab { flex: 1; box-shadow: none; padding-inline: 0.5rem; }
     .fab--quote { display: inline-flex; background: var(--surface-2); color: var(--ink); border-color: var(--line); }

@@ -65,7 +65,7 @@ const sizes = ['lg', 'wide', 'sm', 'sm', 'wide', 'wide'];
       <ul class="bento">
         {tiles.map((s, i) => (
           <li class={`reveal tile tile--${sizes[i] ?? 'sm'}`}>
-            <a class="svc" href={`${routes.services[lang]}#${s.key}`}>
+            <a class="svc glass" href={`${routes.services[lang]}#${s.key}`}>
               <div class="svc-media">
                 {s.photo ? <Photo photo={s.photo} lang={lang} sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 560px" decorative /> : <DesignHere lang={lang} />}
               </div>
@@ -134,10 +134,12 @@ const sizes = ['lg', 'wide', 'sm', 'sm', 'wide', 'wide'];
   .bento { list-style: none; padding: 0; margin: 2rem 0; display: grid; gap: 1.25rem; }
   .svc {
     display: grid; grid-template-rows: minmax(0, 1fr) auto; height: 100%; overflow: hidden;
-    background: var(--surface-2); border: 1px solid var(--edge); border-radius: 20px; box-shadow: var(--shadow-soft);
-    color: var(--ink); text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--glass-edge); border-radius: 20px;
+    color: var(--ink); text-decoration: none; transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
   }
-  .svc:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgb(14 60 80 / 0.08), 0 18px 36px -16px rgb(14 60 80 / 0.38); }
+  @media (hover: hover) and (pointer: fine) {
+    .svc:hover { transform: translateY(-3px); box-shadow: var(--glass-hi), 0 2px 4px rgb(14 60 80 / 0.08), 0 18px 36px -16px rgb(14 60 80 / 0.38); }
+  }
   .svc:active { transform: scale(0.985); transition-duration: 0.08s; }
   /* overflow:hidden keeps the 4:3 box from growing to fit portrait photos. */
   .svc-media { aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); }
