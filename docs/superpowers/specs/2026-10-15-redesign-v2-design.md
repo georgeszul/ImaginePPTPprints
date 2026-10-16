@@ -65,7 +65,7 @@ Body text is at least 17 px with a line height of 1.6. Headlines use tight track
 
 ### Layout
 
-The layout uses a 12-column editorial grid with a 1240 px maximum width and 16 px side gutters on phones. Thin ink rules separate sections, and each section carries a mono number label (01, 02, …). Each photo carries a mono caption in the form "Fig. 3 — Endless Motorsports stickers, vinyl".
+The layout uses a 12-column editorial grid with a 1240 px maximum width and 16 px side gutters on phones. Thin ink rules separate sections, and each section carries a mono number label (01, 02, …). Each photo carries a mono caption with its figure number and category, in the form "Fig. 03 — Stickers and decals". The caption reuses the category names, so no new per-photo data is needed and no detail is invented.
 
 ### Print-shop details
 
