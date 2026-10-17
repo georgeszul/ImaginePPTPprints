@@ -36,6 +36,8 @@ async function open(path, { width = 1280, height = 800, theme = 'light', js = tr
   await page.evaluate(async () => {
     document.querySelectorAll('img[loading=lazy]').forEach((i) => (i.loading = 'eager'));
     await Promise.all([...document.images].map((i) => (i.complete ? 0 : new Promise((r) => { i.onload = i.onerror = r; setTimeout(r, 6000); }))));
+    // Full-page captures skip images still decoding off-screen (decoding="async"); decode them first.
+    await Promise.all([...document.images].map((i) => i.decode().catch(() => {})));
   });
   return { page, ctx, errors };
 }
