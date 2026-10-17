@@ -82,7 +82,7 @@
     "hats": {
       "caption": "Hats, in inches",
       "head": ["Size", "Circumference", "Hat size"],
-      "rows": [["S/M", "21–22", "6 7/8 – 7"], ["M/L", "22–23", "7 – 7 1/4"], ["L/XL", "23–24", "7 1/4 – 7 5/8"], ["XL/XXL", "24–25", "7 5/8 – 8"]]
+      "rows": [["S/M", "21–22", "6 7/8 – 7"], ["M/L", "22–23", "7 – 7 1/4"], ["L/XL", "23–24", "7 1/4 – 7 5/8"], ["XL/XXL", "24–25", "7 5/8 – 8"]]
     },
     "note": "Custom sizing is available on special orders. Ask us about any size not listed here."
   }

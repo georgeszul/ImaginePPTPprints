@@ -28,7 +28,7 @@ const newTab = t(lang, 'site.newTab');
 <Page lang={lang} page="home" title={t(lang, 'home.meta.title')} description={t(lang, 'home.meta.description')}>
   <section class="hero wrap" aria-labelledby="hero-title">
     <div class="head">
-      <p class="kicker"><RegMark /> <span aria-hidden="true">01 ·</span> {t(lang, 'home.hero.kicker')}</p>
+      <p class="kicker"><RegMark /> <span class="kicker-no" aria-hidden="true">01 ·</span> {t(lang, 'home.hero.kicker')}</p>
       <h1 id="hero-title">{t(lang, 'home.hero.title')}</h1>
     </div>
     <Figure photo={heroPhoto} lang={lang} n={1} crop eager ratio="4 / 5" sizes="(max-width: 860px) 100vw, 520px" class="hero-fig" />
@@ -90,6 +90,8 @@ const newTab = t(lang, 'site.newTab');
 </Page>
 
 <style>
+  /* The label is a flex row; keep the section number "01 ·" from splitting inside its own item on narrow phones. */
+  .kicker-no { white-space: nowrap; flex-shrink: 0; }
   /* Hero: headline and offer on the left; one large print with crop marks on the right, its frame on the grid
      (the crop marks hang into the gutter). Phones stack headline, photo, then the offer, so the first screen shows the work. */
   .hero {

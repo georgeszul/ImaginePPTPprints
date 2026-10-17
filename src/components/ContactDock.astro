@@ -40,6 +40,11 @@ const { lang } = Astro.props;
   @media (hover: hover) and (pointer: fine) { .fab:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--on-color); } }
   .fab:active { transform: scale(0.97); }
 
+  /* Room at the end of the page so the buttons never sit on top of the footer's last links.
+     Only where the buttons exist: the styles load on every page, the buttons do not. */
+  @media (min-width: 721px) {
+    :global(body:has(> [data-dock])) { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
+  }
   @media (max-width: 720px) {
     .dock {
       left: 0; right: 0; bottom: 0; gap: 0.4rem;
@@ -48,7 +53,7 @@ const { lang } = Astro.props;
     }
     .fab { flex: 1; padding-inline: 0.5rem; box-shadow: none; }
     .fab--quote { display: inline-flex; background: var(--ink); color: var(--paper); border-color: var(--ink); }
-    :global(body) { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+    :global(body:has(> [data-dock])) { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
   }
   /* Narrow phones: the labels carry the meaning, so the icons go first when three buttons share 320px. */
   @media (max-width: 360px) {
@@ -58,7 +63,7 @@ const { lang } = Astro.props;
   /* Short screens: the buttons sit at the end of the page instead of covering it. */
   @media (max-height: 30rem) {
     .dock { position: static; padding: 1rem; }
-    :global(body) { padding-bottom: 0; }
+    :global(body:has(> [data-dock])) { padding-bottom: 0; }
   }
 </style>
 

@@ -34,6 +34,26 @@ export default async function ({ open, fail }) {
     if (r.h > r.token + 1) fail(`header wraps at ${w}px on ${path}: ${Math.round(r.h)}px tall, --header-h is ${r.token}px`);
     await ctx.close();
   }
+  // At the end of a page the floating buttons never cover the footer's legal links, on any width.
+  for (const [path, w, h] of [['/services/', 900, 700], ['/es/servicios/', 1024, 768], ['/', 868, 700], ['/about/', 1280, 800]]) {
+    const { page, ctx } = await open(path, { width: w, height: h });
+    await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight));
+    await page.waitForTimeout(300);
+    const covered = await page.evaluate(() => [...document.querySelectorAll('[data-footer] .bottom a')].filter((a) => {
+      const b = a.getBoundingClientRect();
+      const hit = document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2);
+      return !hit || !a.contains(hit);
+    }).map((a) => a.textContent.trim()));
+    if (covered.length) fail(`footer links covered at ${w}x${h} on ${path}: ${covered.join(', ')}`);
+    await ctx.close();
+  }
+  // No space is reserved for the floating buttons on pages that don't show them.
+  {
+    const { page, ctx } = await open('/contact/', { width: 375, height: 740 });
+    const pb = await page.evaluate(() => getComputedStyle(document.body).paddingBottom);
+    if (pb !== '0px') fail(`/contact/ reserves ${pb} at the bottom for buttons it doesn't show`);
+    await ctx.close();
+  }
   // Contact and Thanks carry their own call/WhatsApp buttons, so the floating ones are not rendered there.
   for (const [path, want] of [['/contact/', false], ['/es/gracias/', false], ['/services/', true]]) {
     const { page, ctx } = await open(path);
