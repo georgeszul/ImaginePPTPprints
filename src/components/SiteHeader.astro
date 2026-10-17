@@ -106,11 +106,9 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
     :global(.js) .n { display: inline; font: 500 var(--small)/1 var(--font-mono); color: var(--ink-soft); }
     :global(.js) .nav :global(.nav-bar) { display: flex; margin-top: auto; }
   }
-  @media (max-width: 420px) {
-    .brand span { font-size: 1.05rem; }
-  }
   /* Narrow phones: logo, wordmark and a labelled button do not fit one row, so the label becomes screen-reader text. */
   @media (max-width: 400px) {
+    .brand span { font-size: 1.05rem; }
     .menu-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
     :global(.js) .menu-btn { width: 44px; padding: 0; justify-content: center; }
   }
