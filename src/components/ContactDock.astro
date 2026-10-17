@@ -68,13 +68,17 @@ const { lang } = Astro.props;
   const dock = document.querySelector<HTMLElement>('[data-dock]');
   const targets = document.querySelectorAll('[data-contact-buttons]');
   if (dock && targets.length && 'IntersectionObserver' in window) {
-    const onScreen = new Set<Element>();
+    // A "lead" group (the hero's buttons) also keeps the dock away until the visitor scrolls past it,
+    // so the first screen shows one set of contact buttons, not two.
+    const blocking = new Set<Element>();
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
-        if (e.isIntersecting) onScreen.add(e.target);
-        else onScreen.delete(e.target);
+        const lead = (e.target as HTMLElement).dataset.contactButtons === 'lead';
+        const ahead = e.boundingClientRect.top >= (e.rootBounds?.bottom ?? innerHeight);
+        if (e.isIntersecting || (lead && ahead)) blocking.add(e.target);
+        else blocking.delete(e.target);
       }
-      dock.classList.toggle('is-hidden', onScreen.size > 0);
+      dock.classList.toggle('is-hidden', blocking.size > 0);
     });
     targets.forEach((el) => io.observe(el));
   }

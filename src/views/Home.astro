@@ -34,7 +34,7 @@ const newTab = t(lang, 'site.newTab');
     <Figure photo={heroPhoto} lang={lang} n={1} crop eager ratio="4 / 5" sizes="(max-width: 860px) 100vw, 520px" class="hero-fig" />
     <div class="body">
       <p class="lead">{t(lang, 'home.hero.lead')}</p>
-      <div class="btn-row" data-contact-buttons>
+      <div class="btn-row" data-contact-buttons="lead">
         <a class="btn btn--ink" href={routes.contact[lang]}>{t(lang, 'site.quote')}</a>
         <a class="btn btn--line" href={site.whatsapp} target="_blank" rel="noopener"><Glyph name="chat" />{t(lang, 'site.cta.whatsapp')}<span class="visually-hidden">{newTab}</span></a>
       </div>

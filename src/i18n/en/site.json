@@ -11,7 +11,7 @@
   "dock": { "label": "Quick contact", "call": "Call", "whatsapp": "WhatsApp", "quote": "Quote" },
   "cta": { "call": "Call us", "whatsapp": "WhatsApp us", "email": "Email us" },
   "categories": { "shirts": "Custom shirts", "hoodies": "Hoodies", "hats": "Hats", "banners": "Banners and signs", "cards": "Business cards", "stickers": "Stickers and decals" },
-  "coupon": { "kicker": "First order", "title": "10% off", "body": "First-time customers save 10% with code", "cut": "Cut along the line" },
+  "coupon": { "kicker": "First order", "title": "10% off", "body": "First-time customers save 10% with code" },
   "footer": { "about": "Custom shirts, hoodies, hats, banners, business cards and stickers, printed in Elgin, Illinois.", "pages": "Pages", "contact": "Contact", "follow": "Follow", "shop": "Online store", "rights": "All rights reserved.", "privacy": "Privacy", "cookies": "Cookies", "terms": "Terms", "refunds": "Refunds" },
   "newTab": "(opens in a new tab)",
   "process": {
