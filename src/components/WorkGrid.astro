@@ -25,8 +25,8 @@ const widthsFor = (w: number) => {
   return ws.length ? ws : [w];
 };
 ---
-<!-- data-strip: on phones this row scrolls sideways on purpose (QA skips intentional horizontal strips). -->
-<div class="filters" role="group" aria-label={t(lang, 'portfolio.filterLabel')} data-filters data-strip>
+<!-- data-scroll-x: on phones this row scrolls sideways on purpose (QA skips intentional horizontal scrollers). -->
+<div class="filters" role="group" aria-label={t(lang, 'portfolio.filterLabel')} data-filters data-scroll-x>
   <button type="button" aria-pressed="true" data-filter="all">{t(lang, 'portfolio.all')}</button>
   {categories.map((c) => <button type="button" aria-pressed="false" data-filter={c}>{t(lang, `site.categories.${c}`)}</button>)}
 </div>

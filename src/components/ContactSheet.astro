@@ -27,7 +27,7 @@ const sizes = '(max-width: 840px) 168px, 248px';
     </div>
   </div>
   {/* Decorative: every photo appears with a description on the Work page. */}
-  <div class="strip" data-strip aria-hidden="true">
+  <div class="strip" data-scroll-x aria-hidden="true">
     <ul class="track">
       {shots.map((p, i) => (
         <li><Figure photo={p} lang={lang} n={i + 1} ratio="1 / 1" sizes={sizes} caption={false} decorative /></li>

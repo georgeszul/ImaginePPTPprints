@@ -50,7 +50,7 @@ for (const [width, theme] of [[1280, 'light'], [1280, 'dark'], [375, 'light'], [
     const r = await page.evaluate(() => ({
       theme: document.documentElement.dataset.theme,
       overflow: document.documentElement.scrollWidth - innerWidth,
-      wide: [...document.querySelectorAll('body *')].filter((e) => e.getBoundingClientRect().right > innerWidth + 1 && getComputedStyle(e).position !== 'fixed' && !e.closest('[data-strip], dialog')).slice(0, 5).map((e) => e.tagName + '.' + e.className),
+      wide: [...document.querySelectorAll('body *')].filter((e) => e.getBoundingClientRect().right > innerWidth + 1 && getComputedStyle(e).position !== 'fixed' && !e.closest('[data-scroll-x], dialog')).slice(0, 5).map((e) => e.tagName + '.' + e.className),
       broken: [...document.images].filter((im) => im.complete && im.naturalWidth === 0 && im.getAttribute('src')).map((im) => im.src),
       unfilled: [...document.querySelectorAll('figure.fig img')].filter((im) => {
         const a = im.getBoundingClientRect(), b = im.closest('.frame').getBoundingClientRect();
