@@ -2,7 +2,6 @@
 // Price calculator as a two-part order form: the ticket (inputs) and the receipt (running estimate).
 // Server-renders the default estimate so it works without JavaScript; the script updates it live.
 import Glyph from './Glyph.astro';
-import RegMark from './RegMark.astro';
 import ColorBar from './ColorBar.astro';
 import { estimate } from '../lib/calc.js';
 import { site } from '../data/site';
@@ -18,9 +17,9 @@ const money = new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD'
 const defaults = { product: 'tshirt', quantity: 10, method: 'screen', colors: '1', turnaround: 'standard' };
 const r = estimate(defaults);
 ---
-<form class="order" data-calc data-locale={locale} data-vol-applied={c('volApplied')} data-vol-next={c('volNext')}>
+<form class="order" data-calc autocomplete="off" data-locale={locale} data-vol-applied={c('volApplied')} data-vol-next={c('volNext')} data-qty-range={c('qtyRange')}>
   <div class="slip">
-    <p class="slip-head mono"><span>{c('ticket')}</span><RegMark size={18} /></p>
+    <p class="slip-head mono">{c('ticket')}</p>
     <div class="fields">
       <div class="field">
         <label for="c-product">{c('product')}</label>
@@ -31,7 +30,7 @@ const r = estimate(defaults);
       <div class="field">
         <label for="c-qty">{c('quantity')}</label>
         <input id="c-qty" name="quantity" class="input" type="number" min="1" max="10000" step="1" inputmode="numeric" value={defaults.quantity} aria-describedby="c-qty-hint" />
-        <small id="c-qty-hint">{c('qtyHint')}</small>
+        <small id="c-qty-hint" aria-live="polite">{c('qtyHint')}</small>
       </div>
       <div class="field" data-group="method">
         <label for="c-method">{c('method')}</label>
@@ -66,10 +65,12 @@ const r = estimate(defaults);
       <div data-group="printLine"><dt>{c('print')}</dt><dd><span data-out="print">{money.format(r.print)}</span></dd></div>
       <div data-group="colorLine"><dt>{c('color')}</dt><dd><span data-out="color">{money.format(r.color)}</span></dd></div>
       <div><dt>{c('turnaroundLine')}</dt><dd><span data-out="turnaround">{money.format(r.turnaroundCost)}</span></dd></div>
-      <div class="total" aria-live="polite" aria-atomic="true"><dt>{c('total')}</dt><dd><span data-out="total">{money.format(r.total)}</span></dd></div>
+      <div class="total"><dt>{c('total')}</dt><dd><span data-out="total">{money.format(r.total)}</span></dd></div>
       <div class="unit"><dt>{c('unit')}</dt><dd><span data-out="unit">{money.format(r.unit)}</span></dd></div>
     </dl>
-    <p class="volume"><output data-out="volume"></output></p>
+    <p class="volume"><span data-out="volume"></span></p>
+    {/* Screen readers hear the total here once the visitor pauses or commits a change, not on every keystroke. */}
+    <p class="visually-hidden" aria-live="polite" data-out="say"></p>
     <p class="promo">{c('promo')} <strong class="code" translate="no">{site.promoCode}</strong> {c('promoOff')}</p>
     <div class="btn-row">
       <a class="btn btn--ink" href={routes.contact[lang]}>{c('official')}</a>
@@ -82,15 +83,13 @@ const r = estimate(defaults);
 
 <style>
   [hidden] { display: none !important; }
-  .order { --pad: clamp(1.25rem, 3vw, 2.25rem); display: grid; border: 1px solid var(--rule); background: var(--paper); }
+  /* Frame in --ink-soft, not --rule, so the form stays outlined in dark mode. */
+  .order { --pad: clamp(1.25rem, 3vw, 2.25rem); display: grid; border: 1px solid var(--ink-soft); background: var(--paper); }
   @media (min-width: 861px) { .order { grid-template-columns: 7fr 5fr; } }
 
-  /* Ticket half: a job ticket with a mono header and ruled fields. */
-  .slip { container-type: inline-size; display: grid; align-content: start; }
-  .slip-head {
-    display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 0;
-    padding: 0.9rem var(--pad); border-bottom: 1px solid var(--rule); text-transform: uppercase;
-  }
+  /* Ticket half: a job ticket with a mono header and ruled fields; the notes sit at the foot of the slip. */
+  .slip { container-type: inline-size; display: flex; flex-direction: column; }
+  .slip-head { margin: 0; padding: 0.9rem var(--pad); border-bottom: 1px solid var(--rule); text-transform: uppercase; }
   .fields { display: grid; gap: 1.5rem; padding: var(--pad); }
   @container (min-width: 520px) {
     .fields { grid-template-columns: 1fr 1fr; }
@@ -98,9 +97,8 @@ const r = estimate(defaults);
   }
   .field > label { font: 500 var(--small)/1.4 var(--font-mono); letter-spacing: 0.02em; text-transform: uppercase; }
   .input { border-color: var(--ink); background: var(--paper); }
-  .input:hover { border-color: var(--ink); }
   small, .note { color: var(--ink-soft); font-size: 0.95rem; }
-  .notes { display: grid; gap: 0.35rem; padding: 0 var(--pad) var(--pad); }
+  .notes { display: grid; gap: 0.35rem; margin-top: auto; padding: 0 var(--pad) var(--pad); }
   .note { margin: 0; }
 
   /* Receipt half: the running estimate, torn off along a perforation. */
@@ -122,8 +120,8 @@ const r = estimate(defaults);
   .total dd { margin-left: auto; font: 700 var(--h2)/1 var(--font-display); letter-spacing: -0.02em; font-stretch: 88%; }
   .unit { color: var(--ink-soft); font-size: var(--small); }
   .volume { min-height: 1.6em; margin: 1rem 0; font: 500 var(--small)/1.6 var(--font-mono); }
-  .volume output { display: block; }
-  .volume output:not(:empty) { padding-left: 0.75rem; box-shadow: inset 3px 0 var(--magenta); }
+  .volume span { display: block; }
+  .volume span:not(:empty) { padding-left: 0.75rem; box-shadow: inset 3px 0 var(--magenta); }
   .promo { margin-bottom: 1.5rem; }
   .code {
     display: inline-block; padding: 0.1rem 0.5rem; background: var(--yellow); color: var(--on-color);
@@ -134,14 +132,18 @@ const r = estimate(defaults);
 </style>
 
 <script>
-  import { estimate, APPAREL, nextTier } from '../lib/calc.js';
+  import { estimate, APPAREL, nextTier, clampQty } from '../lib/calc.js';
 
   const form = document.querySelector<HTMLFormElement>('[data-calc]');
   if (form) {
     const money = new Intl.NumberFormat(form.dataset.locale, { style: 'currency', currency: 'USD' });
-    // Only the labelled total (aria-live) and the volume line (<output>) are announced; skip no-op writes.
+    const qty = form.querySelector<HTMLInputElement>('#c-qty')!;
+    const hint = form.querySelector<HTMLElement>('#c-qty-hint')!;
+    const qtyHint = hint.textContent;
+    const out = (name: string) => form.querySelector<HTMLElement>(`[data-out="${name}"]`)!;
+    // Skip no-op writes so the live regions only speak when something changed.
     const set = (name: string, text: string) => {
-      const el = form.querySelector<HTMLElement>(`[data-out="${name}"]`)!;
+      const el = out(name);
       if (el.textContent !== text) el.textContent = text;
     };
     const group = (name: string) => form.querySelector<HTMLElement>(`[data-group="${name}"]`)!;
@@ -181,8 +183,30 @@ const r = estimate(defaults);
       );
     };
 
-    form.addEventListener('input', update);
-    form.addEventListener('change', update);
+    let timer: number | undefined;
+    const announce = () => {
+      clearTimeout(timer);
+      const total = form.querySelector('.total dt')!.textContent;
+      set('say', `${total}: ${out('total').textContent}. ${out('volume').textContent}`);
+    };
+
+    // The receipt updates on every keystroke; the announcement waits for a 400 ms pause or a committed change.
+    form.addEventListener('input', () => {
+      update();
+      clearTimeout(timer);
+      timer = window.setTimeout(announce, 400);
+    });
+    form.addEventListener('change', (e) => {
+      if (e.target === qty) {
+        // Out-of-range quantities snap to 1–10,000 and the hint says why; an empty field becomes 1.
+        const n = clampQty(qty.value);
+        const outOfRange = qty.value !== '' && Math.floor(Number(qty.value)) !== n;
+        qty.value = String(n);
+        hint.textContent = outOfRange ? form.dataset.qtyRange! : qtyHint;
+      }
+      update();
+      announce();
+    });
     form.addEventListener('submit', (e) => e.preventDefault());
     update();
   }

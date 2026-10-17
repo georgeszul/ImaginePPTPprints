@@ -4,8 +4,8 @@ import Page from '../layouts/Page.astro';
 import SectionHead from '../components/SectionHead.astro';
 import ServiceSpread from '../components/ServiceSpread.astro';
 import PriceTicket from '../components/PriceTicket.astro';
+import ProcessTicket from '../components/ProcessTicket.astro';
 import Ticket from '../components/Ticket.astro';
-import { coverFor } from '../data/photos';
 import type { Lang } from '../i18n/routes';
 import { t, tRaw } from '../i18n/t';
 
@@ -14,15 +14,12 @@ const { lang } = Astro.props;
 type Service = ComponentProps<typeof ServiceSpread>['service'];
 type Table = { caption: string; head: string[]; rows: string[][] };
 const items = tRaw<Service[]>(lang, 'services.items');
-// Photo spreads alternate sides; services without a photo yet (hoodies, hats) don't count.
-let row = 0;
-const list = items.map((s) => ({ s, flip: coverFor(s.id) !== undefined && row++ % 2 === 1 }));
-const steps = tRaw<{ title: string; body: string }[]>(lang, 'services.process.steps');
+// Rhythm: one wide spread, then two services side by side, repeated
+// (shirts | hoodies + hats | banners | cards + stickers). Wide spreads alternate sides.
+const list = items.map((s, i) => ({ s, wide: i % 3 === 0, flip: i % 6 === 3 }));
 const materials = tRaw<{ name: string; spec: string }[]>(lang, 'services.materials.items').map((m) => ({ label: m.name, value: m.spec }));
 const tables = [tRaw<Table>(lang, 'services.sizes.apparel'), tRaw<Table>(lang, 'services.sizes.hats')];
 const num = (i: number) => String(i + 1).padStart(2, '0');
-// Splits out ranges like "24–48" or "24 a 48" (odd indexes) so they stay on one line in narrow step columns.
-const ranges = (s: string) => s.split(/(\d+(?:–| a )\d+)/);
 ---
 <Page lang={lang} page="services" title={t(lang, 'services.meta.title')} description={t(lang, 'services.meta.description')}>
   <section class="head wrap">
@@ -32,12 +29,13 @@ const ranges = (s: string) => s.split(/(\d+(?:–| a )\d+)/);
         {items.map((s, i) => (
           <li><a href={`#${s.id}`}><span class="mono" aria-hidden="true">{num(i)}</span>{s.title}</a></li>
         ))}
+        <li><a href="#calculator"><span class="mono" aria-hidden="true">$</span>{t(lang, 'services.calc.title')}</a></li>
       </ol>
     </nav>
   </section>
 
   <div class="spreads wrap">
-    {list.map(({ s, flip }, i) => <ServiceSpread lang={lang} service={s} n={i + 1} flip={flip} />)}
+    {list.map(({ s, wide, flip }, i) => <ServiceSpread lang={lang} service={s} n={i + 1} wide={wide} flip={flip} />)}
   </div>
 
   <section id="calculator" class="sec sec--tint" aria-labelledby="calc-title">
@@ -50,19 +48,11 @@ const ranges = (s: string) => s.split(/(\d+(?:–| a )\d+)/);
   <section class="sec" aria-labelledby="process-title">
     <div class="wrap">
       <SectionHead n={3} id="process-title" title={t(lang, 'services.process.title')} />
-      <ol class="steps">
-        {steps.map((s, i) => (
-          <li class="reveal">
-            <p class="step-n mono" aria-hidden="true">{num(i)}<span class="plate"></span></p>
-            <h3>{ranges(s.title).map((p, j) => (j % 2 ? <span class="nw">{p}</span> : p))}</h3>
-            <p>{ranges(s.body).map((p, j) => (j % 2 ? <span class="nw">{p}</span> : p))}</p>
-          </li>
-        ))}
-      </ol>
+      <ProcessTicket lang={lang} />
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="materials-title">
+  <section class="sec sec--tight" aria-labelledby="materials-title">
     <div class="wrap split">
       <SectionHead n={4} id="materials-title" title={t(lang, 'services.materials.title')} />
       <Ticket rows={materials} class="materials" />
@@ -89,42 +79,30 @@ const ranges = (s: string) => s.split(/(\d+(?:–| a )\d+)/);
 <style>
   .head { display: grid; gap: 2rem; padding-block: clamp(3rem, 8vw, 6.5rem) clamp(2.5rem, 5vw, 4rem); }
   .head :global(.sec-head) { margin-bottom: 0; }
-  @media (min-width: 861px) { .head { grid-template-columns: 7fr 5fr; column-gap: clamp(2rem, 5vw, 5rem); align-items: end; } }
+  @media (min-width: 861px) { .head { grid-template-columns: 7fr 5fr; column-gap: clamp(2rem, 5vw, 5rem); align-items: start; } }
 
-  /* Contents list: one ruled row per service, like the index of a proof book. */
+  /* Contents list: one ruled row per service, then the calculator, like the index of a proof book. */
   .index ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
   .index li { border-bottom: 1px solid var(--rule); }
   .index a {
     display: flex; align-items: baseline; gap: 1rem; min-height: 48px; padding: 0.7rem 0;
     color: var(--ink); text-decoration: none; font-weight: 600;
   }
-  .index .mono { color: var(--ink-soft); }
+  .index .mono { min-width: 2ch; color: var(--ink-soft); }
   @media (hover: hover) and (pointer: fine) { .index a:hover { box-shadow: inset 0 -3px var(--ink); } }
 
-  /* Photo spreads span the row; the two photo-less services pair up from 861 px. */
-  @media (min-width: 861px) { .spreads { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(1.5rem, 3.5vw, 3.5rem); } }
-
-  .steps { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
-  @media (min-width: 600px) { .steps { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1000px) { .steps { grid-template-columns: repeat(4, 1fr); } }
-  .steps li { padding: 1.25rem 1.25rem 1.75rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-  .step-n { display: flex; justify-content: space-between; align-items: center; margin: 0 0 2.5rem; }
-  /* Four steps, four plates: cyan, magenta, yellow, then key (ink). */
-  .plate { width: 14px; height: 14px; outline: 1px solid var(--ink); }
-  .steps li:nth-child(1) .plate { background: var(--cyan); }
-  .steps li:nth-child(2) .plate { background: var(--magenta); }
-  .steps li:nth-child(3) .plate { background: var(--yellow); }
-  .steps li:nth-child(4) .plate { background: var(--ink); }
-  .steps p:last-child { margin: 0; }
-  .nw { white-space: nowrap; }
+  /* Wide spreads span the row; paired services sit two to a row from 861 px. */
+  @media (min-width: 861px) { .spreads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(1.5rem, 3.5vw, 3.5rem); } }
 
   @media (min-width: 861px) { .split { display: grid; grid-template-columns: 5fr 7fr; column-gap: clamp(2rem, 5vw, 5rem); align-items: start; } }
 
   .tables { display: grid; gap: 2.5rem; align-items: start; }
   @media (min-width: 861px) { .tables { grid-template-columns: 7fr 5fr; column-gap: clamp(2rem, 5vw, 5rem); } }
   caption { caption-side: top; text-align: left; padding-bottom: 0.75rem; text-transform: uppercase; }
-  th, td { padding: 0.6rem 0.6rem; }
+  th, td { padding: 0.6rem; }
+  /* Measurements in the mono face; striped rows, so no row rules as well. */
+  tbody :is(th, td) { border-bottom: 0; font: 400 1rem/1.4 var(--font-mono); }
+  tbody th { font-weight: 500; }
   tbody tr:nth-child(odd) { background: var(--paper-2); }
-  tbody th { font: 500 1rem/1.4 var(--font-mono); }
   .size-note { margin: 2rem 0 0; color: var(--ink-soft); max-width: 60ch; }
 </style>

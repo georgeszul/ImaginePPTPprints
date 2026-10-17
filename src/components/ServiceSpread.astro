@@ -1,40 +1,45 @@
 ---
-// One service as an editorial spread: photo (or a blank "your design here" proof) beside its spec sheet.
-import { Image } from 'astro:assets';
+// One service as an editorial spread: a photo, a contact sheet or a blank "your design here" proof, with its spec sheet.
 import Figure from './Figure.astro';
 import Ticket from './Ticket.astro';
-import RegMark from './RegMark.astro';
-import logo from '../assets/logo.jpg';
-import { coverFor, type Category } from '../data/photos';
-import type { Lang } from '../i18n/routes';
+import { coverFor, photos, type Category } from '../data/photos';
+import { routes, type Lang } from '../i18n/routes';
 import { t } from '../i18n/t';
 
 interface Props {
   lang: Lang;
-  service: { id: Category; title: string; intro: string; specs: { label: string; value: string }[]; bullets: string[] };
+  service: { id: Category; title: string; tag: string; intro: string; specs: { label: string; value: string }[]; bullets: string[] };
   n: number;
+  /** Wide spreads span the row with the media beside the text; the others pair up two to a row, media above text. */
+  wide: boolean;
   flip: boolean;
 }
-const { lang, service, n, flip } = Astro.props;
+const { lang, service, n, wide, flip } = Astro.props;
 const photo = coverFor(service.id);
+// Small photos (the stickers are 206 px) blur when enlarged, so they show as a contact sheet at about their own size.
+const sheet = photo && photo.src.width < 600 ? photos.filter((p) => p.category === service.id).slice(0, 6) : [];
 const num = String(n).padStart(2, '0');
+const category = t(lang, `site.categories.${service.id}`);
+const seeWork = t(lang, 'services.seeWork').replace('{category}', category.toLocaleLowerCase(lang));
 ---
-<article id={service.id} class:list={['spread', { flip, bare: !photo }]}>
+<article id={service.id} class:list={['spread', wide ? 'wide' : 'pair', { flip }]}>
   <div class="media">
-    {photo ? (
-      <Figure photo={photo} lang={lang} n={n} crop ratio="4 / 3" sizes="(max-width: 860px) 100vw, 640px" class="reveal" />
-    ) : (
-      <figure class="blank reveal">
-        <div class="design-here">
-          <Image src={logo} alt="" width={120} height={120} densities={[1, 2]} />
-          <span class="mono">{t(lang, 'site.designHere')}</span>
+    {sheet.length > 0 ? (
+      <figure class="sheet reveal">
+        <div class="cells">
+          {sheet.map((p) => <Figure photo={p} lang={lang} n={n} ratio="1 / 1" caption={false} sizes="(max-width: 860px) 30vw, 206px" />)}
         </div>
-        <figcaption class="mono">{t(lang, 'site.fig')} {num} — {t(lang, `site.categories.${service.id}`)}</figcaption>
+        <figcaption class="mono">{t(lang, 'site.fig')} {num} — {category}</figcaption>
       </figure>
+    ) : photo ? (
+      <Figure photo={photo} lang={lang} n={n} crop ratio={wide ? '4 / 3' : '3 / 2'}
+        sizes={wide ? '(max-width: 860px) 100vw, 705px' : '(max-width: 860px) 100vw, 600px'} class="reveal" />
+    ) : (
+      <div class="blank reveal" aria-hidden="true"><p>{t(lang, 'site.designHere')}</p></div>
     )}
   </div>
   <div class="text">
-    <p class="num mono" aria-hidden="true"><RegMark /> {num}</p>
+    <p class="no mono" aria-hidden="true">{t(lang, 'site.process.no')} {num} · {service.tag}</p>
     <h2>{service.title}</h2>
     <p class="intro">{service.intro}</p>
     <Ticket rows={service.specs} />
@@ -44,14 +49,16 @@ const num = String(n).padStart(2, '0');
         <ul>{service.bullets.map((b) => <li>{b}</li>)}</ul>
       </>
     )}
+    {photo && <p class="more"><a href={`${routes.portfolio[lang]}?category=${service.id}`}>{seeWork}</a></p>}
   </div>
 </article>
 
 <style>
   .spread { grid-column: 1 / -1; display: grid; align-content: start; gap: 2rem; padding-block: clamp(2.5rem, 6vw, 5rem); border-top: 1px solid var(--rule); }
   .text { min-width: 0; }
-  .num { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1.25rem; }
-  .num::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+  /* Job-ticket line: number and one key fact, ruled out to the column edge. */
+  .no { display: flex; align-items: center; gap: 0.75rem; margin: 0 0 1.25rem; }
+  .no::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
   h2 { margin-bottom: 0.5em; }
   .intro { font-size: calc(var(--text) * 1.1); color: var(--ink-soft); max-width: 40ch; margin-bottom: 1.75rem; }
   .details { margin: 2rem 0 0.75rem; }
@@ -59,18 +66,24 @@ const num = String(n).padStart(2, '0');
   li { display: flex; gap: 0.75rem; }
   /* Small cyan plate mark instead of a bullet. */
   li::before { content: ''; flex: none; width: 0.55em; height: 0.55em; margin-top: 0.55em; background: var(--cyan); outline: 1px solid var(--ink); }
+  .more { margin: 1.5rem 0 0; }
+  .more a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
 
-  /* No photo yet: a blank proof with a dashed print area, the penguin and crop marks. */
-  .blank { margin: 0; container-type: inline-size; }
-  .design-here {
-    position: relative; aspect-ratio: 4 / 3; display: grid; place-content: center; justify-items: center; gap: 1rem;
-    background: var(--paper-2); border: 1px solid var(--rule); text-align: center;
+  /* Contact sheet: the category's small photos in a 3 x 2 grid, never wider than 206 px each. */
+  .sheet { margin: 0; }
+  .cells { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; max-width: calc(3 * 206px + 1rem); }
+  .sheet figcaption { margin-top: 1.25rem; color: var(--ink-soft); }
+
+  /* No photo yet: a blank proof whose dashed print area reads "Your design here". */
+  .blank { position: relative; container-type: inline-size; aspect-ratio: 3 / 2; display: grid; place-items: center; background: var(--paper-2); border: 1px solid var(--rule); }
+  .blank::before { content: ''; position: absolute; inset: 12%; border: 1px dashed var(--ink-soft); pointer-events: none; }
+  .blank p {
+    margin: 0; padding-inline: 18%; text-align: center; text-wrap: balance;
+    font: 700 clamp(1.75rem, 10cqi, 4rem)/0.95 var(--font-display); font-stretch: 85%; letter-spacing: -0.03em;
   }
-  .design-here::before { content: ''; position: absolute; inset: 12%; border: 1px dashed var(--ink-soft); pointer-events: none; }
-  .design-here img { position: relative; width: clamp(72px, 20cqi, 120px); height: auto; border-radius: 50%; border: 1px solid var(--ink); }
-  .design-here span { position: relative; padding: 0 1rem; text-transform: uppercase; }
-  .design-here::after {
-    --m: var(--ink); content: ''; position: absolute; inset: -15px; pointer-events: none;
+  /* Printer's crop marks just outside the corners (same marks as Figure's crop frame). */
+  .blank::after, .cells::after {
+    --m: var(--ink); content: ''; position: absolute; inset: -14px; pointer-events: none;
     background:
       linear-gradient(var(--m), var(--m)) 0 14px / 9px 1px, linear-gradient(var(--m), var(--m)) 14px 0 / 1px 9px,
       linear-gradient(var(--m), var(--m)) 100% 14px / 9px 1px, linear-gradient(var(--m), var(--m)) calc(100% - 14px) 0 / 1px 9px,
@@ -78,16 +91,14 @@ const num = String(n).padStart(2, '0');
       linear-gradient(var(--m), var(--m)) 100% calc(100% - 14px) / 9px 1px, linear-gradient(var(--m), var(--m)) calc(100% - 14px) 100% / 1px 9px;
     background-repeat: no-repeat;
   }
-  .blank figcaption { margin-top: 0.6rem; color: var(--ink-soft); }
 
   @media (min-width: 861px) {
-    .spread:not(.bare) { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(1.5rem, 3.5vw, 3.5rem); align-items: start; }
-    .spread:not(.bare) > * { grid-row: 1; }
-    .spread:not(.bare) .media { grid-column: 1 / span 7; }
-    .spread:not(.bare) .text { grid-column: 8 / -1; }
-    .spread.flip:not(.bare) .media { grid-column: 6 / -1; }
-    .spread.flip:not(.bare) .text { grid-column: 1 / span 5; }
-    /* Services without a photo pair up side by side, proof above text. */
-    .bare { grid-column: auto; }
+    .wide { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(1.5rem, 3.5vw, 3.5rem); align-items: start; }
+    .wide > * { grid-row: 1; }
+    .wide .media { grid-column: 1 / span 7; }
+    .wide .text { grid-column: 8 / -1; }
+    .wide.flip .media { grid-column: 6 / -1; }
+    .wide.flip .text { grid-column: 1 / span 5; }
+    .pair { grid-column: auto; }
   }
 </style>
