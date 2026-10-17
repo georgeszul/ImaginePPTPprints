@@ -1,6 +1,5 @@
 ---
 import Glyph from './Glyph.astro';
-import RegMark from './RegMark.astro';
 import { routes, other, type Lang } from '../i18n/routes';
 import { t, tRaw } from '../i18n/t';
 
@@ -20,20 +19,19 @@ const MAX_BYTES = 7_500_000;
   data-netlify="true"
   netlify-honeypot="bot-field"
   data-quote
-  autocomplete="off"
   data-max-bytes={MAX_BYTES}
   data-too-big={f('tooBig')}
   data-sending={f('sending')}
+  data-errors={JSON.stringify(tRaw(lang, 'contact.form.errors'))}
 >
   <input type="hidden" name="form-name" value="quote" />
   <input type="hidden" name="lang" value={lang} />
   <p class="visually-hidden" aria-hidden="true">
     <label>{f('honeypot')} <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
   </p>
-  <p class="req-note">{f('requiredNote')}</p>
 
   <fieldset class="part">
-    <legend><span class="no" aria-hidden="true">01</span>{f('parts.details')}</legend>
+    <legend><span class="no" aria-hidden="true">A</span>{f('parts.details')}</legend>
     <div class="row">
       <div class="field">
         <label for="q-name">{f('name')} <span class="req" aria-hidden="true">*</span></label>
@@ -58,7 +56,7 @@ const MAX_BYTES = 7_500_000;
   </fieldset>
 
   <fieldset class="part">
-    <legend><span class="no" aria-hidden="true">02</span>{f('parts.job')}</legend>
+    <legend><span class="no" aria-hidden="true">B</span>{f('parts.job')}</legend>
     <div class="field">
       <label for="q-service">{f('service')} <span class="req" aria-hidden="true">*</span></label>
       <select class="input" id="q-service" name="service" required>
@@ -68,47 +66,47 @@ const MAX_BYTES = 7_500_000;
     </div>
 
     <fieldset class="group" data-for="shirts">
-      <legend><RegMark />{f('groups.shirts')}</legend>
+      <legend>{f('groups.shirts')}</legend>
       <div class="row">
         <div class="field">
           <label for="q-shirt-type">{f('type')}</label>
           <select class="input" id="q-shirt-type" name="shirt_type"><option value="">{f('typePick')}</option>{options('shirtTypes').map(([v, l]) => <option value={v}>{l}</option>)}</select>
         </div>
-        <div class="field"><label for="q-shirt-sizes">{f('sizes')}</label><input class="input" id="q-shirt-sizes" name="shirt_sizes" placeholder={f('sizesPh')} /></div>
-        <div class="field"><label for="q-shirt-qty">{f('quantity')}</label><input class="input" id="q-shirt-qty" name="shirt_qty" type="number" min="1" inputmode="numeric" /></div>
+        <div class="field"><label for="q-shirt-sizes">{f('sizes')}</label><input class="input" id="q-shirt-sizes" name="shirt_sizes" placeholder={f('sizesPh')} autocomplete="off" /></div>
+        <div class="field"><label for="q-shirt-qty">{f('quantity')}</label><input class="input" id="q-shirt-qty" name="shirt_qty" type="number" min="1" inputmode="numeric" autocomplete="off" /></div>
         <div class="field"><label for="q-shirt-colors">{f('colors')}</label><input class="input" id="q-shirt-colors" name="shirt_colors" placeholder={f('colorsPh')} /></div>
       </div>
     </fieldset>
 
     <fieldset class="group" data-for="hoodies">
-      <legend><RegMark />{f('groups.hoodies')}</legend>
+      <legend>{f('groups.hoodies')}</legend>
       <div class="row">
         <div class="field">
           <label for="q-hoodie-type">{f('type')}</label>
           <select class="input" id="q-hoodie-type" name="hoodie_type"><option value="">{f('typePick')}</option>{options('hoodieTypes').map(([v, l]) => <option value={v}>{l}</option>)}</select>
         </div>
-        <div class="field"><label for="q-hoodie-sizes">{f('sizes')}</label><input class="input" id="q-hoodie-sizes" name="hoodie_sizes" placeholder={f('sizesPh')} /></div>
-        <div class="field"><label for="q-hoodie-qty">{f('quantity')}</label><input class="input" id="q-hoodie-qty" name="hoodie_qty" type="number" min="1" inputmode="numeric" /></div>
+        <div class="field"><label for="q-hoodie-sizes">{f('sizes')}</label><input class="input" id="q-hoodie-sizes" name="hoodie_sizes" placeholder={f('sizesPh')} autocomplete="off" /></div>
+        <div class="field"><label for="q-hoodie-qty">{f('quantity')}</label><input class="input" id="q-hoodie-qty" name="hoodie_qty" type="number" min="1" inputmode="numeric" autocomplete="off" /></div>
         <div class="field"><label for="q-hoodie-colors">{f('colors')}</label><input class="input" id="q-hoodie-colors" name="hoodie_colors" placeholder={f('colorsPh')} /></div>
       </div>
     </fieldset>
 
     <fieldset class="group" data-for="hats">
-      <legend><RegMark />{f('groups.hats')}</legend>
+      <legend>{f('groups.hats')}</legend>
       <div class="row">
         <div class="field">
           <label for="q-hat-type">{f('type')}</label>
           <select class="input" id="q-hat-type" name="hat_type"><option value="">{f('typePick')}</option>{options('hatTypes').map(([v, l]) => <option value={v}>{l}</option>)}</select>
         </div>
-        <div class="field"><label for="q-hat-qty">{f('quantity')}</label><input class="input" id="q-hat-qty" name="hat_qty" type="number" min="1" inputmode="numeric" /></div>
+        <div class="field"><label for="q-hat-qty">{f('quantity')}</label><input class="input" id="q-hat-qty" name="hat_qty" type="number" min="1" inputmode="numeric" autocomplete="off" /></div>
         <div class="field"><label for="q-hat-colors">{f('colors')}</label><input class="input" id="q-hat-colors" name="hat_colors" placeholder={f('colorsPh')} /></div>
       </div>
     </fieldset>
 
     <fieldset class="group" data-for="banners">
-      <legend><RegMark />{f('groups.banners')}</legend>
+      <legend>{f('groups.banners')}</legend>
       <div class="row">
-        <div class="field"><label for="q-banner-size">{f('bannerSize')}</label><input class="input" id="q-banner-size" name="banner_size" placeholder={f('bannerSizePh')} /></div>
+        <div class="field"><label for="q-banner-size">{f('bannerSize')}</label><input class="input" id="q-banner-size" name="banner_size" placeholder={f('bannerSizePh')} autocomplete="off" /></div>
         <div class="field">
           <label for="q-banner-material">{f('material')}</label>
           <select class="input" id="q-banner-material" name="banner_material"><option value="">{f('materialPick')}</option>{options('materials').map(([v, l]) => <option value={v}>{l}</option>)}</select>
@@ -117,7 +115,7 @@ const MAX_BYTES = 7_500_000;
     </fieldset>
 
     <fieldset class="group" data-for="cards">
-      <legend><RegMark />{f('groups.cards')}</legend>
+      <legend>{f('groups.cards')}</legend>
       <div class="row">
         <div class="field">
           <label for="q-card-size">{f('cardSize')}</label>
@@ -127,14 +125,14 @@ const MAX_BYTES = 7_500_000;
           <label for="q-card-finish">{f('finish')}</label>
           <select class="input" id="q-card-finish" name="card_finish"><option value="">{f('finishPick')}</option>{options('finishes').map(([v, l]) => <option value={v}>{l}</option>)}</select>
         </div>
-        <div class="field"><label for="q-card-qty">{f('quantity')}</label><input class="input" id="q-card-qty" name="card_qty" type="number" min="1" inputmode="numeric" /></div>
+        <div class="field"><label for="q-card-qty">{f('quantity')}</label><input class="input" id="q-card-qty" name="card_qty" type="number" min="1" inputmode="numeric" autocomplete="off" /></div>
       </div>
     </fieldset>
 
     <fieldset class="group" data-for="stickers other">
-      <legend><RegMark />{f('groups.other')}</legend>
+      <legend>{f('groups.other')}</legend>
       <div class="row">
-        <div class="field"><label for="q-other-qty">{f('quantity')}</label><input class="input" id="q-other-qty" name="other_qty" type="number" min="1" inputmode="numeric" /></div>
+        <div class="field"><label for="q-other-qty">{f('quantity')}</label><input class="input" id="q-other-qty" name="other_qty" type="number" min="1" inputmode="numeric" autocomplete="off" /></div>
         <div class="field"><label for="q-other-colors">{f('colors')}</label><input class="input" id="q-other-colors" name="other_colors" placeholder={f('colorsPh')} /></div>
       </div>
     </fieldset>
@@ -145,7 +143,7 @@ const MAX_BYTES = 7_500_000;
   </fieldset>
 
   <fieldset class="part">
-    <legend><span class="no" aria-hidden="true">03</span>{f('parts.files')}</legend>
+    <legend><span class="no" aria-hidden="true">C</span>{f('parts.files')}</legend>
     <div class="row">
       <div class="field">
         <label for="q-design">{f('designFile')}</label>
@@ -159,14 +157,15 @@ const MAX_BYTES = 7_500_000;
       </div>
     </div>
     <p class="hint" id="q-files-hint">{f('filesHint')}</p>
+    {/* Always in the page so a screen reader announces the alert when its text changes; CSS hides it while empty. */}
     <div class="error-wrap">
-      <p class="error" id="q-files-error" role="alert" data-error hidden></p>
+      <p class="error" id="q-files-error" role="alert" data-error></p>
       <span class="error-icon" aria-hidden="true"><Glyph name="close" /></span>
     </div>
   </fieldset>
 
   <fieldset class="part">
-    <legend><span class="no" aria-hidden="true">04</span>{f('parts.message')}</legend>
+    <legend><span class="no" aria-hidden="true">D</span>{f('parts.message')}</legend>
     <div class="field">
       <label for="q-message">{f('message')} <span class="req" aria-hidden="true">*</span></label>
       <textarea class="input" id="q-message" name="message" rows="5" required minlength="10" placeholder={f('messagePh')}></textarea>
@@ -188,9 +187,8 @@ const MAX_BYTES = 7_500_000;
   .req { color: var(--ink); font-weight: 700; }
   /* The honeypot input has no .input class: hold it to the 1px box instead of the browser's default width. */
   .quote > .visually-hidden input { width: 100%; }
-  .req-note { margin: 0; font: 400 var(--small)/1.4 var(--font-mono); color: var(--ink-soft); }
 
-  /* Each numbered part opens with a heavy rule, like the boxes on a printed order form. */
+  /* Each lettered part opens with a heavy rule, like the boxes on a printed order form. */
   .part { display: grid; gap: 1.25rem; min-inline-size: 0; margin: 0; padding: 0; border: 0; }
   .part > legend {
     display: flex; align-items: baseline; gap: 0.85rem; width: 100%; margin-bottom: 1.25rem; padding: 0.8rem 0 0;
@@ -201,14 +199,17 @@ const MAX_BYTES = 7_500_000;
 
   .row { display: grid; gap: 1.1rem 1rem; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); }
   .field > label { line-height: 1.35; }
+  /* When the browser scrolls to a rejected field, its label stays in view below the header too. */
+  .input { scroll-margin-top: 2.25rem; }
 
-  /* Product details: a framed box with its label cut into the top rule. */
-  .group { min-inline-size: 0; margin: 0; padding: 1.1rem clamp(0.9rem, 2.5vw, 1.4rem) 1.4rem; border: 1px solid var(--rule); }
-  .group[hidden] { display: none; }
-  .group > legend {
-    display: inline-flex; align-items: center; gap: 0.5rem; padding: 0 0.5rem; margin-left: -0.5rem;
-    font: 500 var(--small)/1.4 var(--font-mono); letter-spacing: 0.02em;
+  /* Product details: a framed box with its label cut into the top rule. It fades in when the service changes. */
+  .group {
+    min-inline-size: 0; margin: 0; padding: 1.1rem clamp(0.9rem, 2.5vw, 1.4rem) 1.4rem; border: 1px solid var(--ink-soft);
+    transition: opacity 200ms var(--ease-out), translate 200ms var(--ease-out);
   }
+  @starting-style { .group { opacity: 0; translate: 0 -6px; } }
+  .group[hidden] { display: none; }
+  .group > legend { padding: 0 0.5rem; margin-left: -0.5rem; font: 500 var(--small)/1.4 var(--font-mono); letter-spacing: 0.02em; }
 
   textarea.input { min-height: 9rem; resize: vertical; line-height: 1.5; }
   input[type='file'].input { padding: 0.45rem; font-size: 0.9375rem; color: var(--ink-soft); cursor: pointer; }
@@ -222,21 +223,23 @@ const MAX_BYTES = 7_500_000;
   @media (hover: hover) and (pointer: fine) {
     input[type='file'].input:hover::file-selector-button { background: var(--ink); color: var(--paper); }
   }
-  /* Once someone has edited a field and left it invalid, a magenta tab marks it; the browser's own message names the fix. */
-  .input:user-invalid { border-color: var(--ink); box-shadow: inset 4px 0 var(--magenta); }
 
   .hint { margin: 0; font-size: 0.9375rem; line-height: 1.45; color: var(--ink-soft); }
+  /* Written by the script under a field the browser rejected; the magenta bar matches the field's own. */
+  .quote :global(.field-error) {
+    margin: 0; padding-left: 0.65rem; box-shadow: inset 3px 0 var(--magenta);
+    font-size: 0.9375rem; font-weight: 600; line-height: 1.45;
+  }
 
-  .error-wrap { position: relative; }
-  .error-wrap:has(> .error[hidden]) { display: none; }
+  /* Box and icon enter together. */
+  .error-wrap { position: relative; transition: opacity 200ms var(--ease-out), translate 200ms var(--ease-out); }
+  .error-wrap:has(> .error:empty) { display: none; }
+  @starting-style { .error-wrap { opacity: 0; translate: 0 -4px; } }
   .error {
     margin: 0; padding: 0.85rem 1rem 0.85rem 3rem;
     border: 2px solid var(--ink); background: var(--paper-2); color: var(--ink); font-weight: 700; line-height: 1.45;
-    transition: opacity 200ms var(--ease-out), translate 200ms var(--ease-out);
   }
-  .error[hidden], .error[hidden] + .error-icon { display: none; }
   .error-icon { position: absolute; left: 1rem; top: 0.95rem; display: flex; }
-  @starting-style { .error { opacity: 0; translate: 0 -4px; } }
 
   .check { display: flex; gap: 0.75rem; align-items: flex-start; min-height: 48px; padding-block: 0.25rem; cursor: pointer; line-height: 1.45; }
   .check input { flex: none; width: 1.375rem; height: 1.375rem; margin: 0.05rem 0 0; accent-color: var(--ink); cursor: pointer; }
@@ -250,13 +253,16 @@ const MAX_BYTES = 7_500_000;
 </style>
 
 <script>
+  type Field = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
   const form = document.querySelector<HTMLFormElement>('[data-quote]');
   if (form) {
     const service = form.querySelector<HTMLSelectElement>('select[name="service"]')!;
     const groups = [...form.querySelectorAll<HTMLFieldSetElement>('fieldset[data-for]')];
+    const files = [...form.querySelectorAll<HTMLInputElement>('input[type="file"]')];
     const error = form.querySelector<HTMLElement>('[data-error]')!;
     const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
     const label = submit.textContent ?? '';
+    const messages: Record<string, string> = JSON.parse(form.dataset.errors ?? '{}');
 
     const sync = () => {
       for (const g of groups) {
@@ -268,16 +274,47 @@ const MAX_BYTES = 7_500_000;
     service.addEventListener('change', sync);
     sync();
 
-    form.addEventListener('change', () => { error.hidden = true; });
+    // Inline errors. The browser still focuses the first rejected field; the text under each one says what to fix,
+    // in the page's language, and is read out with the field through aria-describedby.
+    const describe = (field: Field, id: string, on: boolean) => {
+      const ids = (field.getAttribute('aria-describedby') ?? '').split(' ').filter((x) => x && x !== id);
+      if (on) ids.unshift(id);
+      if (ids.length) field.setAttribute('aria-describedby', ids.join(' '));
+      else field.removeAttribute('aria-describedby');
+    };
+    form.addEventListener('invalid', (e) => {
+      const field = e.target as Field;
+      const id = `${field.id}-err`;
+      let p = document.getElementById(id);
+      if (!p) {
+        p = document.createElement('p');
+        p.className = 'field-error';
+        p.id = id;
+        field.after(p);
+      }
+      const text = messages[field.name] ?? (field.type === 'number' ? messages.number : field.validationMessage);
+      p.textContent = `${messages.prefix} ${text}`;
+      describe(field, id, true);
+      field.setAttribute('aria-invalid', 'true');
+    }, true);
+    // The message goes as soon as the field is fixed.
+    form.addEventListener('input', (e) => {
+      const field = e.target as Field;
+      if (field.getAttribute('aria-invalid') !== 'true' || !field.validity.valid) return;
+      document.getElementById(`${field.id}-err`)?.remove();
+      describe(field, `${field.id}-err`, false);
+      field.removeAttribute('aria-invalid');
+    });
+
+    form.addEventListener('change', (e) => {
+      if (files.includes(e.target as HTMLInputElement)) error.textContent = '';
+    });
     form.addEventListener('submit', (e) => {
-      const bytes = [...form.querySelectorAll<HTMLInputElement>('input[type="file"]')]
-        .flatMap((input) => [...(input.files ?? [])])
-        .reduce((sum, file) => sum + file.size, 0);
+      const bytes = files.flatMap((input) => [...(input.files ?? [])]).reduce((sum, file) => sum + file.size, 0);
       if (bytes > Number(form.dataset.maxBytes)) {
         e.preventDefault();
         error.textContent = form.dataset.tooBig ?? '';
-        error.hidden = false;
-        form.querySelector<HTMLInputElement>('#q-design')?.focus();
+        files.find((input) => input.files?.length)?.focus();
         return;
       }
       // Valid and sending: block a second tap while the upload runs.

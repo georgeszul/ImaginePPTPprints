@@ -34,14 +34,13 @@ const items = tRaw<{ q: string; a: string; lang?: string; en?: string }[]>(lang,
   summary {
     display: flex; align-items: center; justify-content: space-between; gap: 1.25rem;
     min-height: 44px; padding: 1.1rem 0; cursor: pointer; list-style: none;
-    scroll-margin-bottom: 2rem; /* clears the desktop Call/WhatsApp stack (about 120px) when focus scrolls */
     font: 700 var(--h3)/1.2 var(--font-display); letter-spacing: -0.01em; text-wrap: balance;
   }
   summary::-webkit-details-marker { display: none; }
   /* Plus/minus drawn in CSS: the vertical bar turns flat when the answer opens. */
   .pm {
     position: relative; flex: none; width: 44px; height: 44px; border: 1.5px solid var(--ink);
-    transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+    transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out), scale var(--press) var(--ease-out);
   }
   .pm::before, .pm::after {
     content: ''; position: absolute; left: 50%; top: 50%; width: 14px; height: 2px;
@@ -66,6 +65,8 @@ const items = tRaw<{ q: string; a: string; lang?: string; en?: string }[]>(lang,
         transition: block-size 260ms var(--ease-out), opacity 260ms var(--ease-out), content-visibility 260ms allow-discrete;
       }
       details[open]::details-content { block-size: auto; opacity: 1; }
+      /* Closing is quicker than opening: the visitor is done with the answer. */
+      details:not([open])::details-content { transition-duration: 180ms; }
     }
   }
 </style>
