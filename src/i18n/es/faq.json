@@ -1,15 +1,15 @@
 {
-  "title": "Preguntas frecuentes",
+  "title": "Tus preguntas, respondidas",
   "items": [
-    { "q": "¿Qué tan rápido entregan?", "a": "Nuestro tiempo estándar es de 24 a 48 horas después de aprobar el diseño. Los pedidos urgentes pueden estar listos el mismo día; contáctanos si tienes una fecha límite." },
-    { "q": "¿Hay pedido mínimo?", "a": "Sin mínimos. Ya sea 1 camiseta o 1,000, los pedidos pequeños son bienvenidos." },
-    { "q": "¿Pueden ayudarme con el diseño?", "a": "Sí. Mándanos tus ideas, logotipos o bocetos y creamos el diseño sin costo adicional." },
-    { "q": "¿Cuánto cuesta?", "a": "El precio depende del producto, la cantidad y la complejidad del diseño. Prueba la calculadora de precios en nuestra página de Servicios o pide una cotización gratis." },
-    { "q": "¿Qué formatos de archivo aceptan?", "a": "Los más comunes: PNG, JPG, PDF, AI, EPS, PSD y SVG. Para la mejor calidad, envía archivos vectoriales (AI, EPS, SVG, PDF) o imágenes a 300 DPI. ¿No tienes diseño? No hay problema, te creamos uno." },
+    { "q": "¿Qué tan rápido entregan?", "a": "Los pedidos normales salen en 24 a 48 horas después de que apruebas el diseño. Los urgentes pueden estar listos el mismo día, así que dinos para cuándo lo necesitas." },
+    { "q": "¿Hay pedido mínimo?", "a": "No hay mínimo. Pide 1 camiseta o 1,000; los pedidos pequeños son bienvenidos." },
+    { "q": "¿Me ayudan con el diseño?", "a": "Sí. Mándanos tus ideas, tu logotipo o un boceto, y creamos el diseño sin costo adicional." },
+    { "q": "¿Cuánto cuesta?", "a": "El precio depende del producto, la cantidad y qué tan complejo es el diseño. Prueba la calculadora de precios en la página de Servicios o pídenos una cotización gratis." },
+    { "q": "¿Qué formatos de archivo aceptan?", "a": "PNG, JPG, PDF, AI, EPS, PSD y SVG. Para la mejor calidad, manda archivos vectoriales (AI, EPS, SVG, PDF) o imágenes a 300 DPI. Si todavía no tienes diseño, te creamos uno." },
     { "q": "¿Ofrecen garantía?", "a": "Sí. Si no te gusta la calidad de la impresión, volvemos a imprimir tu pedido o te devolvemos tu dinero. Los detalles están en nuestra política de reembolsos." },
-    { "q": "¿Puedo ver una prueba antes de imprimir?", "a": "Claro. Te enviamos una prueba digital para que la apruebes antes de empezar la producción, así sabes exactamente lo que vas a recibir." },
-    { "q": "¿Hacen envíos a todo el país?", "a": "Sí, enviamos a todo Estados Unidos. También puedes recoger tu pedido en nuestro local de Elgin, y ofrecemos entrega sin contacto para clientes locales." },
-    { "q": "¿Qué formas de pago aceptan?", "a": "Aceptamos efectivo, tarjetas de crédito, PayPal, Venmo y Zelle. Normalmente el pago se hace antes de empezar la producción, y hay planes de pago para pedidos grandes." },
-    { "q": "¿Hablan español?", "a": "¡Sí! Hablamos español y podemos ayudarte en tu idioma preferido.", "lang": "es", "en": "Yes! We speak Spanish and can help you in your preferred language." }
+    { "q": "¿Puedo ver una prueba antes de imprimir?", "a": "Sí. Te mandamos una prueba digital para que la apruebes antes de empezar la producción, así sabes lo que vas a recibir." },
+    { "q": "¿Hacen envíos a todo el país?", "a": "Sí, enviamos a todo Estados Unidos. También puedes recoger tu pedido en nuestro local de Elgin, y hacemos entregas sin contacto para clientes locales." },
+    { "q": "¿Qué formas de pago aceptan?", "a": "Efectivo, tarjetas de crédito, PayPal, Venmo y Zelle. Normalmente el pago se hace antes de empezar la producción. Hay planes de pago para pedidos grandes." },
+    { "q": "¿Hablan español?", "a": "¡Sí! Hablamos español y te atendemos en el idioma que prefieras.", "lang": "es", "en": "Yes. We speak Spanish and can help you in the language you prefer." }
   ]
 }
