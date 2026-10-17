@@ -4,7 +4,10 @@
   "lead": "Real orders we’ve printed for our customers.",
   "filterLabel": "Filter photos",
   "all": "All",
+  "count": { "one": "{n} photo", "other": "{n} photos" },
   "open": "View larger",
+  "viewer": "Photo viewer",
+  "position": "{n} of {total}",
   "close": "Close",
   "prev": "Previous photo",
   "next": "Next photo"

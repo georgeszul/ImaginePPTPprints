@@ -11,7 +11,7 @@ const { lang } = Astro.props;
 <Page lang={lang} page="portfolio" title={t(lang, 'portfolio.meta.title')} description={t(lang, 'portfolio.meta.description')}>
   <section class="sec work" aria-labelledby="work-title">
     <div class="wrap">
-      <SectionHead level={1} n={1} id="work-title" title={t(lang, 'portfolio.title')} lead={t(lang, 'portfolio.lead')} />
+      <SectionHead level={1} id="work-title" title={t(lang, 'portfolio.title')} lead={t(lang, 'portfolio.lead')} />
       <WorkGrid lang={lang} />
     </div>
   </section>

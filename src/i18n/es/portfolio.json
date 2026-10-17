@@ -4,7 +4,10 @@
   "lead": "Pedidos reales que hemos impreso para nuestros clientes.",
   "filterLabel": "Filtrar fotos",
   "all": "Todos",
+  "count": { "one": "{n} foto", "other": "{n} fotos" },
   "open": "Ver en grande",
+  "viewer": "Visor de fotos",
+  "position": "{n} de {total}",
   "close": "Cerrar",
   "prev": "Foto anterior",
   "next": "Foto siguiente"
