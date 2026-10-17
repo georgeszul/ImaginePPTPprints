@@ -16,7 +16,7 @@
       "title": "Quotes and prices",
       "body": [
         "Prices from the online calculator are estimates. They don’t include sales tax or shipping.",
-        "Your quote lists the final price. If you change the order after we quote it, such as quantities, sizes or colors, we’ll send an updated quote before we start."
+        "Your quote lists the final price. If you change the order after we quote it, we’ll send an updated quote before we start. That includes changes to quantities, sizes or colors."
       ]
     },
     {
@@ -26,7 +26,7 @@
     },
     {
       "id": "payment",
-      "title": "Payment",
+      "title": "Paying for your order",
       "body": "We accept cash, credit cards, PayPal, Venmo and Zelle. Payment is normally due before production starts. Ask us about payment plans for large orders."
     },
     {
@@ -36,13 +36,13 @@
     },
     {
       "id": "turnaround",
-      "title": "Turnaround",
+      "title": "Turnaround times",
       "body": "Most orders are ready 24–48 hours after you approve the proof, and large orders take 2–3 days. Same-day rush costs extra. These are our usual times. If a date matters, tell us before you approve the proof and we’ll confirm whether we can meet it."
     },
     {
       "id": "delivery",
       "title": "Pickup, delivery and shipping",
-      "body": "You can pick up your order at our Elgin shop. Local contactless delivery and nationwide shipping are also available. Shipping costs are added to your quote."
+      "body": "You can pick up your order at our Elgin shop. Local contactless delivery and nationwide shipping are also available. We add shipping costs to your quote."
     },
     {
       "id": "refunds",
