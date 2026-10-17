@@ -1,0 +1,90 @@
+---
+// Home services index: numbered rows linking to each service. Phones show a thumbnail per row;
+// wide screens with a mouse show a large preview of the hovered (or focused) row instead.
+import Figure from './Figure.astro';
+import Glyph from './Glyph.astro';
+import RegMark from './RegMark.astro';
+import { coverFor, type Category } from '../data/photos';
+import { routes, type Lang } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props { lang: Lang; items: { key: Category; title: string; body: string }[] }
+const { lang, items } = Astro.props;
+---
+<div class="index">
+  <ol class="rows">
+    {items.map((s, i) => {
+      const photo = coverFor(s.key);
+      return (
+        <li class="row reveal">
+          <a href={`${routes.services[lang]}#${s.key}`}>
+            <span class="n mono" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+            <span class="arrow"><Glyph name="arrow" size={24} /></span>
+            <div class="thumb">
+              {photo ? (
+                <Figure photo={photo} lang={lang} n={i + 1} ratio="1 / 1" sizes="(min-width: 1024px) 320px, 96px" caption={false} decorative />
+              ) : (
+                <div class="blank" aria-hidden="true"><RegMark /><span>{t(lang, 'site.designHere')}</span></div>
+              )}
+            </div>
+          </a>
+        </li>
+      );
+    })}
+  </ol>
+</div>
+
+<style>
+  .index { position: relative; }
+  .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .row { border-bottom: 1px solid var(--rule); }
+  .row a {
+    display: grid; grid-template-columns: minmax(0, 1fr) 96px;
+    grid-template-areas: 'n thumb' 'title thumb' 'body thumb';
+    column-gap: 1rem; align-items: start; padding-block: 1.25rem;
+    color: var(--ink); text-decoration: none;
+  }
+  .n { grid-area: n; color: var(--ink-soft); }
+  h3 { grid-area: title; margin: 0.15rem 0 0.3rem; }
+  p { grid-area: body; margin: 0; color: var(--ink-soft); }
+  .arrow { display: none; }
+  .thumb { grid-area: thumb; align-self: center; container-type: inline-size; }
+
+  /* No photo yet (hoodies, hats): a blank print template. */
+  .blank {
+    display: grid; place-content: center; justify-items: center; gap: 0.4em; aspect-ratio: 1 / 1; padding: 0.5rem;
+    border: 1.5px dashed var(--ink-soft); color: var(--ink-soft); text-align: center;
+    font: 700 clamp(0.75rem, 13cqi, 2.25rem)/1 var(--font-display); letter-spacing: -0.01em; text-wrap: balance;
+  }
+
+  @media (min-width: 720px) {
+    .row a {
+      grid-template-columns: 3.5rem minmax(0, 1fr) minmax(0, 1.15fr) 96px 1.5rem;
+      grid-template-areas: 'n title body thumb arrow';
+      column-gap: 1.5rem; align-items: center;
+    }
+    .n, h3 { margin: 0; }
+    .arrow { grid-area: arrow; display: inline-flex; transition: translate 200ms var(--ease-out); }
+  }
+
+  /* Mouse on a wide screen: the thumbnails become one large preview beside the list. */
+  @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+    .index { padding-right: calc(320px + clamp(2rem, 5vw, 5rem)); }
+    .row a { grid-template-columns: 3.5rem minmax(0, 1fr) minmax(0, 1.15fr) 1.5rem; grid-template-areas: 'n title body arrow'; padding-block: 1.6rem; }
+    /* Opacity-only reveal: a transform on the row would trap the absolutely placed preview inside it. */
+    .row { animation-name: svc-fade; }
+    .thumb {
+      position: absolute; right: 0; top: 50%; width: 320px; pointer-events: none;
+      opacity: 0; translate: 0 calc(-50% + 12px);
+      transition: opacity 200ms var(--ease-out), translate 200ms var(--ease-out);
+    }
+    .thumb :global(.frame), .blank { aspect-ratio: 4 / 5; }
+    .row a:hover .thumb, .row a:focus-visible .thumb,
+    .index:not(:has(a:hover, a:focus-visible)) .row:first-child .thumb { opacity: 1; translate: 0 -50%; }
+    .row a:hover .n, .row a:focus-visible .n { color: var(--ink); }
+    .row a:hover .arrow, .row a:focus-visible .arrow { translate: 6px 0; }
+  }
+  @keyframes svc-fade { from { opacity: 0; } }
+</style>
