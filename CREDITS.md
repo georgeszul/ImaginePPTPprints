@@ -6,13 +6,13 @@ All three fonts are self-hosted through Fontsource (no Google Fonts requests) an
 
 | Font | Used for | Copyright |
 |---|---|---|
-| Fredoka (`@fontsource/fredoka`) | Page titles, logo text | Copyright 2016 The Fredoka Project Authors |
-| Archivo (`@fontsource-variable/archivo`) | Section headings, buttons | Copyright 2020 The Archivo Project Authors |
-| Nunito (`@fontsource/nunito`) | Body text | Copyright 2014 The Nunito Project Authors |
+| Bricolage Grotesque (`@fontsource-variable/bricolage-grotesque`) | Headlines, wordmark | Copyright 2022 The Bricolage Grotesque Project Authors |
+| Instrument Sans (`@fontsource-variable/instrument-sans`) | Body text, buttons | Copyright 2022 The Instrument Sans Project Authors |
+| IBM Plex Mono (`@fontsource/ibm-plex-mono`) | Labels, numbers, prices | Copyright © 2017 IBM Corp. |
 
 ## Icons
 
-The outline icons in `src/components/Icon.astro` are adapted from [Lucide](https://lucide.dev), which is under the ISC License:
+The outline icons in `src/components/Glyph.astro` are adapted from [Lucide](https://lucide.dev), which is under the ISC License:
 
 > ISC License
 >
