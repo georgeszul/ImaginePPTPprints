@@ -1,0 +1,189 @@
+---
+// Price calculator as a two-part order form: the ticket (inputs) and the receipt (running estimate).
+// Server-renders the default estimate so it works without JavaScript; the script updates it live.
+import Glyph from './Glyph.astro';
+import RegMark from './RegMark.astro';
+import ColorBar from './ColorBar.astro';
+import { estimate } from '../lib/calc.js';
+import { site } from '../data/site';
+import { routes, type Lang } from '../i18n/routes';
+import { t, tRaw } from '../i18n/t';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = (key: string) => t(lang, `services.calc.${key}`);
+const opts = (key: string) => Object.entries(tRaw<Record<string, string>>(lang, `services.calc.${key}`));
+const locale = lang === 'es' ? 'es-US' : 'en-US';
+const money = new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' });
+const defaults = { product: 'tshirt', quantity: 10, method: 'screen', colors: '1', turnaround: 'standard' };
+const r = estimate(defaults);
+---
+<form class="order" data-calc data-locale={locale} data-vol-applied={c('volApplied')} data-vol-next={c('volNext')}>
+  <div class="slip">
+    <p class="slip-head mono"><span>{c('ticket')}</span><RegMark size={18} /></p>
+    <div class="fields">
+      <div class="field">
+        <label for="c-product">{c('product')}</label>
+        <select id="c-product" name="product" class="input">
+          {opts('products').map(([v, l]) => <option value={v} selected={v === defaults.product}>{l}</option>)}
+        </select>
+      </div>
+      <div class="field">
+        <label for="c-qty">{c('quantity')}</label>
+        <input id="c-qty" name="quantity" class="input" type="number" min="1" max="10000" step="1" inputmode="numeric" value={defaults.quantity} aria-describedby="c-qty-hint" />
+        <small id="c-qty-hint">{c('qtyHint')}</small>
+      </div>
+      <div class="field" data-group="method">
+        <label for="c-method">{c('method')}</label>
+        <select id="c-method" name="method" class="input">
+          {opts('methods').map(([v, l]) => <option value={v}>{l}</option>)}
+        </select>
+      </div>
+      <div class="field" data-group="colors">
+        <label for="c-colors">{c('colors')}</label>
+        <select id="c-colors" name="colors" class="input">
+          {opts('colorOptions').map(([v, l]) => <option value={v}>{l}</option>)}
+        </select>
+      </div>
+      <div class="field wide">
+        <label for="c-turn">{c('turnaround')}</label>
+        <select id="c-turn" name="turnaround" class="input">
+          {opts('turnarounds').map(([v, l]) => <option value={v}>{l}</option>)}
+        </select>
+      </div>
+    </div>
+    <div class="notes">
+      <p class="note" data-group="cardNote" hidden>{c('cardNote')}</p>
+      <p class="note" data-group="bannerNote" hidden>{c('bannerNote')}</p>
+      <p class="note">{c('designNote')}</p>
+    </div>
+  </div>
+
+  <div class="receipt">
+    <h3 class="mono">{c('estimate')}</h3>
+    <dl>
+      <div><dt>{c('base')}</dt><dd><span data-out="base">{money.format(r.base)}</span></dd></div>
+      <div data-group="printLine"><dt>{c('print')}</dt><dd><span data-out="print">{money.format(r.print)}</span></dd></div>
+      <div data-group="colorLine"><dt>{c('color')}</dt><dd><span data-out="color">{money.format(r.color)}</span></dd></div>
+      <div><dt>{c('turnaroundLine')}</dt><dd><span data-out="turnaround">{money.format(r.turnaroundCost)}</span></dd></div>
+      <div class="total" aria-live="polite" aria-atomic="true"><dt>{c('total')}</dt><dd><span data-out="total">{money.format(r.total)}</span></dd></div>
+      <div class="unit"><dt>{c('unit')}</dt><dd><span data-out="unit">{money.format(r.unit)}</span></dd></div>
+    </dl>
+    <p class="volume"><output data-out="volume"></output></p>
+    <p class="promo">{c('promo')} <strong class="code" translate="no">{site.promoCode}</strong> {c('promoOff')}</p>
+    <div class="btn-row">
+      <a class="btn btn--ink" href={routes.contact[lang]}>{c('official')}</a>
+      <a class="btn btn--line" href={site.phoneHref}><Glyph name="phone" />{t(lang, 'site.cta.call')}</a>
+    </div>
+    <p class="disclaimer">{c('disclaimer')}</p>
+    <ColorBar class="bar" />
+  </div>
+</form>
+
+<style>
+  [hidden] { display: none !important; }
+  .order { --pad: clamp(1.25rem, 3vw, 2.25rem); display: grid; border: 1px solid var(--rule); background: var(--paper); }
+  @media (min-width: 861px) { .order { grid-template-columns: 7fr 5fr; } }
+
+  /* Ticket half: a job ticket with a mono header and ruled fields. */
+  .slip { container-type: inline-size; display: grid; align-content: start; }
+  .slip-head {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 0;
+    padding: 0.9rem var(--pad); border-bottom: 1px solid var(--rule); text-transform: uppercase;
+  }
+  .fields { display: grid; gap: 1.5rem; padding: var(--pad); }
+  @container (min-width: 520px) {
+    .fields { grid-template-columns: 1fr 1fr; }
+    .wide { grid-column: 1 / -1; }
+  }
+  .field > label { font: 500 var(--small)/1.4 var(--font-mono); letter-spacing: 0.02em; text-transform: uppercase; }
+  .input { border-color: var(--ink); background: var(--paper); }
+  .input:hover { border-color: var(--ink); }
+  small, .note { color: var(--ink-soft); font-size: 0.95rem; }
+  .notes { display: grid; gap: 0.35rem; padding: 0 var(--pad) var(--pad); }
+  .note { margin: 0; }
+
+  /* Receipt half: the running estimate, torn off along a perforation. */
+  .receipt {
+    display: flex; flex-direction: column; padding: var(--pad) var(--pad) 0;
+    background: var(--paper-2); border-top: 1px dashed var(--ink-soft);
+  }
+  @media (min-width: 861px) { .receipt { border-top: 0; border-left: 1px dashed var(--ink-soft); } }
+  h3 { font-size: var(--small); font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule); }
+  dl { margin: 0; font: 400 1rem/1.4 var(--font-mono); font-variant-numeric: tabular-nums; }
+  dl div { display: flex; align-items: baseline; gap: 0.5rem; padding: 0.35rem 0; }
+  /* Dotted leaders between label and price, as on a printed receipt. */
+  dt { display: flex; flex: 1; align-items: baseline; gap: 0.5rem; min-width: 0; }
+  dt::after { content: ''; flex: 1; min-width: 1rem; border-bottom: 1px dotted var(--ink-soft); }
+  dd { margin: 0; font-weight: 500; white-space: nowrap; }
+  .total { flex-wrap: wrap; margin-top: 0.75rem; padding-top: 0.9rem; border-top: 3px double var(--ink); }
+  .total dt { flex-basis: 100%; text-transform: uppercase; font-size: var(--small); }
+  .total dt::after { display: none; }
+  .total dd { margin-left: auto; font: 700 var(--h2)/1 var(--font-display); letter-spacing: -0.02em; font-stretch: 88%; }
+  .unit { color: var(--ink-soft); font-size: var(--small); }
+  .volume { min-height: 1.6em; margin: 1rem 0; font: 500 var(--small)/1.6 var(--font-mono); }
+  .volume output { display: block; }
+  .volume output:not(:empty) { padding-left: 0.75rem; box-shadow: inset 3px 0 var(--magenta); }
+  .promo { margin-bottom: 1.5rem; }
+  .code {
+    display: inline-block; padding: 0.1rem 0.5rem; background: var(--yellow); color: var(--on-color);
+    border: 1px dashed var(--on-color); font: 500 0.95em/1.4 var(--font-mono); letter-spacing: 0.06em;
+  }
+  .disclaimer { margin: 1.5rem 0; font-size: var(--small); color: var(--ink-soft); }
+  .receipt :global(.bar) { margin: auto calc(-1 * var(--pad)) 0; }
+</style>
+
+<script>
+  import { estimate, APPAREL, nextTier } from '../lib/calc.js';
+
+  const form = document.querySelector<HTMLFormElement>('[data-calc]');
+  if (form) {
+    const money = new Intl.NumberFormat(form.dataset.locale, { style: 'currency', currency: 'USD' });
+    // Only the labelled total (aria-live) and the volume line (<output>) are announced; skip no-op writes.
+    const set = (name: string, text: string) => {
+      const el = form.querySelector<HTMLElement>(`[data-out="${name}"]`)!;
+      if (el.textContent !== text) el.textContent = text;
+    };
+    const group = (name: string) => form.querySelector<HTMLElement>(`[data-group="${name}"]`)!;
+    const fill = (tpl: string, vars: Record<string, number>) => tpl.replace(/\{(\w+)\}/g, (_, k: string) => String(vars[k]));
+
+    const update = () => {
+      const data = new FormData(form);
+      const product = String(data.get('product'));
+      const r = estimate({
+        product,
+        quantity: data.get('quantity'),
+        method: data.get('method'),
+        colors: data.get('colors'),
+        turnaround: data.get('turnaround'),
+      });
+      const apparel = APPAREL.includes(product);
+      for (const g of ['method', 'colors', 'printLine', 'colorLine']) group(g).hidden = !apparel;
+      group('cardNote').hidden = product !== 'businesscard';
+      group('bannerNote').hidden = product !== 'banner';
+
+      set('base', money.format(r.base));
+      set('print', money.format(r.print));
+      set('color', money.format(r.color));
+      const sign = r.turnaroundCost > 0 ? '+' : r.turnaroundCost < 0 ? '−' : '';
+      set('turnaround', sign + money.format(Math.abs(r.turnaroundCost)));
+      set('total', money.format(r.total));
+      set('unit', money.format(r.unit));
+
+      const next = nextTier(r.effectiveQty);
+      set(
+        'volume',
+        r.volumeDiscount > 0
+          ? fill(form.dataset.volApplied!, { pct: Math.round(r.volumeDiscount * 100) })
+          : next
+            ? fill(form.dataset.volNext!, { n: next.min - r.effectiveQty, pct: Math.round(next.discount * 100) })
+            : '',
+      );
+    };
+
+    form.addEventListener('input', update);
+    form.addEventListener('change', update);
+    form.addEventListener('submit', (e) => e.preventDefault());
+    update();
+  }
+</script>

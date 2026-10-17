@@ -1,61 +1,74 @@
 {
   "meta": {
-    "title": "Our Services | Imagine PPTP Prints",
-    "description": "Custom shirts, hoodies, hats, banners, business cards, and stickers in Elgin, IL. Instant price estimates, 24–48 hour turnaround, no minimums."
+    "title": "Services and prices | Imagine PPTP Prints",
+    "description": "Custom shirts, hoodies, hats, banners, business cards and stickers in Elgin, IL. Instant price estimates, 24–48 hour turnaround, no minimums."
   },
-  "title": "Our services",
-  "subtitle": "Apparel, banners and print for businesses, teams and events, with free design help.",
-  "weOffer": "We offer:",
+  "title": "Services",
+  "lead": "Apparel, banners and print for businesses, teams and events. Design help is free.",
+  "index": "Jump to a service",
+  "details": "Also available",
   "items": [
-    { "id": "shirts", "title": "Custom shirts", "intro": "Printed shirts for businesses, teams and events.", "bullets": ["Custom t-shirt printing", "Business logo shirts for company branding", "Team uniforms and sports shirts", "Event and celebration shirts", "Screen printing, embroidery, and heat transfer options", "Various styles: crew neck, v-neck, long sleeve"] },
-    { "id": "hoodies", "title": "Custom hoodies", "intro": "Hoodies with your design for teams, events and branding.", "bullets": ["Custom hoodie printing", "Team and company hoodies for branding", "Event and celebration hoodies", "Pullover and zip-up hoodie styles", "Screen printing, embroidery, and heat transfer", "Available in various colors and sizes"] },
-    { "id": "hats", "title": "Custom hats", "intro": "Hats and caps with your logo or design.", "bullets": ["Custom hat embroidery and printing", "Business logo hats for company branding", "Team and sports hats", "Event and promotional hats", "Baseball caps, trucker hats, beanies", "Embroidery and screen printing"] },
-    { "id": "banners", "title": "Banners and large format", "intro": "Banners and large format prints for events and businesses.", "bullets": ["Weather-resistant vinyl banners for outdoor use", "Fabric banners for indoor displays", "Large format printing up to 10ft wide", "Professional installation services", "Custom sizing and material options", "Fast turnaround for event deadlines"] },
-    { "id": "cards", "title": "Business cards", "intro": "Business cards with your design, in several finishes.", "bullets": ["Choice of card stock", "Custom sizes and shapes", "Matte, glossy, and semi-gloss finishes", "Foil stamping and embossing", "Full-color printing", "Fast turnaround"] },
-    { "id": "stickers", "title": "Stickers and decals", "intro": "Custom vinyl stickers and decals for branding, vehicles, and promotional materials.", "bullets": [] }
+    { "id": "shirts", "title": "Custom shirts", "intro": "Printed T-shirts for businesses, teams, events and celebrations.",
+      "specs": [ { "label": "Methods", "value": "Screen printing, embroidery, heat transfer" }, { "label": "Styles", "value": "Crew neck, V-neck, long sleeve" }, { "label": "Minimum", "value": "None" }, { "label": "Turnaround", "value": "24–48 hours after proof approval" } ],
+      "bullets": ["Business logo shirts for company branding", "Team uniforms and sports shirts", "Event and celebration shirts"] },
+    { "id": "hoodies", "title": "Custom hoodies", "intro": "Pullover and zip-up hoodies for teams, companies and events.",
+      "specs": [ { "label": "Methods", "value": "Screen printing, embroidery, heat transfer" }, { "label": "Styles", "value": "Pullover, zip-up" }, { "label": "Colors and sizes", "value": "Various" }, { "label": "Minimum", "value": "None" } ],
+      "bullets": ["Team and company hoodies", "Event and celebration hoodies"] },
+    { "id": "hats", "title": "Custom hats", "intro": "Caps and beanies with your logo or design.",
+      "specs": [ { "label": "Methods", "value": "Embroidery, screen printing" }, { "label": "Styles", "value": "Baseball caps, trucker hats, beanies" }, { "label": "Minimum", "value": "None" } ],
+      "bullets": ["Business logo hats", "Team and sports hats", "Event and promotional hats"] },
+    { "id": "banners", "title": "Banners and large format", "intro": "Vinyl and fabric banners and large prints for events and businesses.",
+      "specs": [ { "label": "Materials", "value": "Weather-resistant vinyl, indoor fabric" }, { "label": "Width", "value": "Up to 10 ft" }, { "label": "Sizes", "value": "Custom" }, { "label": "Installation", "value": "Available" } ],
+      "bullets": ["Fast turnaround for event deadlines"] },
+    { "id": "cards", "title": "Business cards", "intro": "Full-color business cards in the stock, size and finish you choose.",
+      "specs": [ { "label": "Finishes", "value": "Matte, glossy, semi-gloss" }, { "label": "Extras", "value": "Foil stamping, embossing" }, { "label": "Sizes", "value": "Standard, square, mini or custom" }, { "label": "Printed in", "value": "Batches of 100" } ],
+      "bullets": [] },
+    { "id": "stickers", "title": "Stickers and decals", "intro": "Vinyl stickers and decals for branding, vehicles and promotions.",
+      "specs": [ { "label": "Material", "value": "Vinyl" }, { "label": "Uses", "value": "Branding, vehicles, promotions" }, { "label": "Minimum", "value": "None" } ],
+      "bullets": [] }
   ],
   "calc": {
     "title": "Price calculator",
-    "subtitle": "A ballpark price for your order in seconds",
-    "product": "Product type",
-    "products": { "tshirt": "T-shirt", "hoodie": "Hoodie", "hat": "Hat/Cap", "banner": "Banner", "businesscard": "Business cards", "sticker": "Stickers" },
+    "subtitle": "Choose a product, quantity and print method to see a ballpark price.",
+    "ticket": "Order ticket",
+    "product": "Product",
+    "products": { "tshirt": "T-shirt", "hoodie": "Hoodie", "hat": "Hat or cap", "banner": "Banner", "businesscard": "Business cards", "sticker": "Stickers" },
     "quantity": "Quantity",
     "qtyHint": "No minimums. Order 1 or 1,000+.",
     "method": "Print method",
     "methods": { "screen": "Screen printing", "dtg": "Direct to garment (DTG)", "embroidery": "Embroidery", "heat": "Heat transfer", "vinyl": "Vinyl print" },
-    "colors": "Number of colors",
+    "colors": "Colors in the design",
     "colorOptions": { "1": "1 color", "2": "2 colors", "3": "3 colors", "4": "4+ colors (full color)" },
-    "turnaround": "Turnaround time",
-    "turnarounds": { "standard": "Standard (24–48 hrs)", "rush": "Rush (same day) +30%", "extended": "Extended (3–5 days) −10%" },
+    "turnaround": "Turnaround",
+    "turnarounds": { "standard": "Standard: 24–48 hours", "rush": "Rush: same day, +30%", "extended": "Extended: 3–5 days, −10%" },
     "cardNote": "Business cards print in batches of 100.",
-    "bannerNote": "Banner estimate assumes about 6 sq ft. Tell us your size for an exact price.",
-    "designNote": "Need design help? It’s free.",
+    "bannerNote": "Banner prices assume about 6 sq ft. Send us your size for an exact price.",
+    "designNote": "Design help is free.",
     "estimate": "Your estimate",
     "base": "Base price",
     "print": "Print method",
     "color": "Colors",
     "turnaroundLine": "Turnaround",
-    "total": "Total estimate",
-    "unit": "Per unit",
+    "total": "Estimated total",
+    "unit": "Per item",
     "volApplied": "{pct}% volume discount applied",
-    "volNext": "Order {n} more to save {pct}%",
-    "promo": "First order discount: use code",
+    "volNext": "Add {n} more to save {pct}%",
+    "promo": "First order: use code",
     "promoOff": "for 10% off.",
-    "official": "Get free quote",
-    "disclaimer": "*Estimate only. It doesn’t include sales tax or shipping. Your free quote shows the final price before we start."
+    "official": "Get a free quote",
+    "disclaimer": "Estimate only, without sales tax or shipping. Your free quote shows the final price before we start."
   },
   "process": {
-    "title": "How it works",
-    "subtitle": "From design to delivery in four steps",
+    "title": "From file to finished print",
     "steps": [
-      { "title": "Send your design", "body": "Send us your logo, artwork, or design concept. We accept AI, EPS, PNG, JPG, and more." },
-      { "title": "Choose your products", "body": "Select from our range of shirts, hoodies, and hats. Pick colors, sizes, and quantities." },
-      { "title": "We print and check it", "body": "We print your order and check its quality before it leaves the shop." },
-      { "title": "Ready in 24–48 hours", "body": "Your custom order is ready in 24–48 hours, with same-day rush available." }
+      { "title": "Send your design", "body": "Send us your logo, artwork or idea. We accept AI, EPS, PNG, JPG and more." },
+      { "title": "Choose your products", "body": "Pick shirts, hoodies or hats, then the colors, sizes and quantities." },
+      { "title": "We print and check", "body": "We print your order and check its quality before it leaves the shop." },
+      { "title": "Ready in 24–48 hours", "body": "Most orders are ready 24–48 hours after you approve the proof. Same-day rush is available." }
     ]
   },
   "materials": {
-    "title": "Material options",
+    "title": "Fabrics",
     "items": [
       { "name": "Cotton", "spec": "100% cotton, 180 GSM" },
       { "name": "Cotton blend", "spec": "50/50 cotton-polyester" },
@@ -66,15 +79,15 @@
   "sizes": {
     "title": "Size charts",
     "apparel": {
-      "caption": "Shirts and hoodies (inches)",
+      "caption": "Shirts and hoodies, in inches",
       "head": ["Size", "Chest", "Length", "Shoulder"],
       "rows": [["XS", "32–34", "26", "14"], ["S", "34–36", "27", "15"], ["M", "38–40", "28", "16"], ["L", "42–44", "29", "17"], ["XL", "46–48", "30", "18"], ["2XL", "50–52", "31", "19"]]
     },
     "hats": {
-      "caption": "Hats (inches)",
-      "head": ["Size", "Circumference", "Fits"],
+      "caption": "Hats, in inches",
+      "head": ["Size", "Circumference", "Hat size"],
       "rows": [["S/M", "21–22", "6 7/8 – 7"], ["M/L", "22–23", "7 – 7 1/4"], ["L/XL", "23–24", "7 1/4 – 7 5/8"], ["XL/XXL", "24–25", "7 5/8 – 8"]]
     },
-    "note": "Need a size that isn’t listed? Ask us: custom sizing is available for special orders."
+    "note": "Custom sizing is available on special orders. Ask us about any size not listed here."
   }
 }
