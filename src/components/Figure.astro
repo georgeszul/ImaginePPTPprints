@@ -4,16 +4,18 @@ import type { Photo } from '../data/photos';
 import type { Lang } from '../i18n/routes';
 import { t } from '../i18n/t';
 
+// Frame shapes are classes, not inline styles, so the Content Security Policy can block style attributes.
+const RATIOS = { '4 / 5': 'r45', '4 / 3': 'r43', '1 / 1': 'r11', '3 / 2': 'r32' } as const;
 interface Props {
   photo: Photo; lang: Lang; n: number; sizes: string;
-  ratio?: string; eager?: boolean; crop?: boolean; decorative?: boolean; caption?: boolean; class?: string;
+  ratio?: keyof typeof RATIOS; eager?: boolean; crop?: boolean; decorative?: boolean; caption?: boolean; class?: string;
 }
 const { photo, lang, n, sizes, ratio = '4 / 5', eager = false, crop = false, decorative = false, caption = true, class: className } = Astro.props;
 const widths = [400, 800, 1200].filter((w) => w <= photo.src.width);
 if (widths.length === 0) widths.push(photo.src.width);
 const num = String(n).padStart(2, '0');
 ---
-<figure class:list={['fig', { crop }, className]} style={`--ratio: ${ratio}`}>
+<figure class:list={['fig', RATIOS[ratio], { crop }, className]}>
   <div class="frame">
     <Picture src={photo.src} alt={decorative ? '' : photo.alt[lang]} widths={widths} sizes={sizes}
       formats={['avif', 'webp']} fallbackFormat="jpg" loading={eager ? 'eager' : 'lazy'}
@@ -24,7 +26,10 @@ const num = String(n).padStart(2, '0');
 
 <style>
   .fig { margin: 0; }
-  .frame { position: relative; aspect-ratio: var(--ratio); overflow: hidden; background: var(--paper-2); }
+  .frame { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--paper-2); }
+  .r43 .frame { aspect-ratio: 4 / 3; }
+  .r11 .frame { aspect-ratio: 1 / 1; }
+  .r32 .frame { aspect-ratio: 3 / 2; }
   .frame :global(picture) { display: block; height: 100%; overflow: hidden; }
   .frame :global(img) { width: 100%; height: 100%; object-fit: cover; }
   figcaption { margin-top: 0.6rem; color: var(--ink-soft); }

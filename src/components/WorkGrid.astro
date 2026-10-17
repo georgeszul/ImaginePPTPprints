@@ -50,7 +50,7 @@ const widthsFor = (w: number) => {
   <ul class="slides" data-slides>
     {items.map(({ p, full, width, height }, i) => (
       <li data-category={p.category}>
-        <img src={full} alt={p.alt[lang]} width={width} height={height} loading="lazy" decoding="async" style={`max-width: min(100%, ${width * 2}px); max-height: min(100%, ${height * 2}px)`} />
+        <img src={full} alt={p.alt[lang]} width={width} height={height} loading="lazy" decoding="async" class:list={[{ small: width < 600 }]} />
         <p class="cap mono">{caption(p, i)}</p>
       </li>
     ))}
@@ -136,6 +136,9 @@ const widthsFor = (w: number) => {
   .slides li[hidden] { display: none; }
   /* Fill the slide but never upscale past 2x, so small source photos stay sharp enough. */
   .slides img { width: 100%; height: 100%; object-fit: contain; }
+  /* Never upscale small photos past 2x (a class, not an inline style, so the CSP can block style attributes).
+     ponytail: 412px = 2 x the 206px sticker and tent photos, the only sources under 600px; revisit if smaller photos arrive. */
+  .slides img.small { max-width: min(100%, 412px); max-height: min(100%, 412px); }
   .cap {
     position: absolute; left: 1rem; right: calc(0.75rem + 96px + 0.5rem + 1rem); bottom: 0.75rem;
     min-height: 48px; display: flex; align-items: center; margin: 0; color: var(--ink-soft);

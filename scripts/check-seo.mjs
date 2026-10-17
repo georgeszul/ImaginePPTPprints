@@ -70,6 +70,13 @@ for (const file of pages) {
   for (const m of html.matchAll(/<script[^>]*\ssrc="([^"]+)"/g)) {
     if (/^(https?:)?\/\//.test(m[1])) fail(`third-party script ${m[1]}`);
   }
+  // Injection hardening: a Content Security Policy that only runs this site's own (hashed) scripts,
+  // and no inline event handlers or javascript: URLs that a policy would have to allow.
+  const csp = html.match(/<meta http-equiv="content-security-policy" content="([^"]*)"/i)?.[1] ?? '';
+  if (!/script-src[^;]*'sha(256|384|512)-/.test(csp)) fail('no Content-Security-Policy with hashed script-src');
+  if (/'unsafe-inline'[^;]*;/.test(csp.match(/script-src[^;]*;?/)?.[0] ?? '')) fail("script-src allows 'unsafe-inline'");
+  if (/\son[a-z]+="/i.test(html.replace(/<script[\s\S]*?<\/script>/g, ''))) fail('inline event handler attribute');
+  if (/href="javascript:/i.test(html)) fail('javascript: URL');
 }
 
 const read = (name) => (existsSync(join(dist, name)) ? readFileSync(join(dist, name), 'utf8') : '');
