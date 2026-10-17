@@ -21,7 +21,7 @@ const sizes = '(max-width: 840px) 168px, 248px';
     </div>
     <div class="controls">
       <button type="button" class="btn btn--line toggle" aria-pressed="false" data-strip-toggle>
-        <Glyph name="pause" />{t(lang, 'home.work.pause')}
+        <span class="ico"><Glyph name="pause" /><Glyph name="play" /></span>{t(lang, 'home.work.pause')}
       </button>
       <a class="btn btn--line" href={routes.portfolio[lang]}>{t(lang, 'home.work.all')}</a>
     </div>
@@ -47,9 +47,16 @@ const sizes = '(max-width: 840px) 168px, 248px';
   .controls { display: flex; flex-wrap: wrap; gap: 0.75rem; }
   .toggle { display: none; }
   .toggle[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
+  /* Pause and play glyphs stacked; the one that matches what a press will do shows. */
+  .ico { display: grid; }
+  .ico > :global(svg) { grid-area: 1 / 1; transition: opacity 150ms var(--ease-out), scale 150ms var(--ease-out); }
+  .ico > :global(svg + svg),
+  .toggle[aria-pressed='true'] .ico > :global(svg:first-child) { opacity: 0; scale: 0.6; }
+  .toggle[aria-pressed='true'] .ico > :global(svg + svg) { opacity: 1; scale: 1; }
 
-  /* Static by default (no JavaScript, or reduced motion): a strip you can scroll sideways. */
-  .strip { overflow-x: auto; border-top: 1px solid var(--rule); padding-block: 0.75rem; }
+  /* Static by default (no JavaScript, or reduced motion): a still row of prints, clipped at the edge.
+     Not a scroller: the strip is hidden from assistive tech, so it must not take keyboard focus either. */
+  .strip { overflow: hidden; border-top: 1px solid var(--rule); padding-block: 0.75rem; }
   .track {
     display: flex; width: max-content; list-style: none; margin: 0;
     padding-inline: max(var(--gutter), (100% - var(--wrap)) / 2);
@@ -60,7 +67,6 @@ const sizes = '(max-width: 840px) 168px, 248px';
   /* With JavaScript (so the pause button exists) and motion allowed, the strip loops. */
   @media (prefers-reduced-motion: no-preference) {
     :global(.js) .toggle { display: inline-flex; }
-    :global(.js) .strip { overflow: hidden; }
     :global(.js) .track { padding-inline: 0; animation: sheet-scroll 60s linear infinite; }
     :global(.js) .dup { display: block; }
     .sheet:has([aria-pressed='true']) .track { animation-play-state: paused; }

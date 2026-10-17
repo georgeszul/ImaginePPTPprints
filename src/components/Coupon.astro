@@ -9,7 +9,7 @@ interface Props { lang: Lang; class?: string }
 const { lang, class: className } = Astro.props;
 ---
 <div class:list={['coupon', className]}>
-  <span class="cut"><Glyph name="scissors" size={22} label={t(lang, 'site.coupon.cut')} /></span>
+  <span class="cut"><Glyph name="scissors" size={22} /></span>
   <p class="kicker">{t(lang, 'site.coupon.kicker')}</p>
   <p class="title">{t(lang, 'site.coupon.title')}</p>
   <p class="body">{t(lang, 'site.coupon.body')} <strong class="code" translate="no">{site.promoCode}</strong></p>
@@ -28,8 +28,9 @@ const { lang, class: className } = Astro.props;
     letter-spacing: -0.04em; font-stretch: 80%;
   }
   .body { margin: 0; max-width: 30ch; }
+  /* The code gets its own line, sized to its text, so it never wraps mid-sentence. */
   .code {
-    display: inline-block; margin-top: 0.5rem; padding: 0.3rem 0.6rem;
+    display: block; width: fit-content; margin-top: 0.5rem; padding: 0.3rem 0.6rem;
     background: var(--yellow); color: var(--on-color); border: 2px solid var(--on-color);
     font: 500 1.25rem/1.2 var(--font-mono); letter-spacing: 0.08em;
   }

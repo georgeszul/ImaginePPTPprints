@@ -28,24 +28,13 @@
       { "key": "stickers", "title": "Stickers and decals", "body": "Vinyl for branding, vehicles and promotions." }
     ]
   },
-  "how": {
-    "title": "How an order works",
-    "step": "Step",
-    "steps": [
-      { "title": "Send your idea", "body": "Upload a file, send a photo or describe it. We take JPG, PNG, PDF, AI, EPS, PSD and SVG." },
-      { "title": "Approve the proof", "body": "We send a digital proof. Nothing prints until you say yes." },
-      { "title": "Pick up or ship", "body": "Most orders are ready 24–48 hours after approval. Pick up in Elgin, get local delivery or ship nationwide." }
-    ]
-  },
+  "how": { "title": "How an order works" },
   "proof": {
     "title": "What you can count on",
-    "items": [
-      "A digital proof before anything prints",
-      "No minimum order",
-      "Free design help",
-      "Same-day rush, for an extra fee",
-      "A reprint or refund if the print quality isn’t right",
-      "Service in English or Spanish"
+    "rows": [
+      { "label": "Rush jobs", "value": "Same-day, for an extra fee" },
+      { "label": "Print quality", "value": "A reprint or refund if the print quality isn’t right", "page": "refunds" },
+      { "label": "Getting it", "value": "Pick up in Elgin, get local delivery or ship nationwide" }
     ],
     "reviews": "Read our reviews on Facebook"
   },
