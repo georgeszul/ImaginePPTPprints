@@ -6,24 +6,25 @@
   "title": "Servicios",
   "lead": "Ropa, lonas e impresos para negocios, equipos y eventos. Te ayudamos con el diseño gratis.",
   "index": "Ir a un servicio",
-  "details": "También ofrecemos",
+  "details": "Ideal para",
+  "seeWork": "Ver {category} que hemos impreso",
   "items": [
-    { "id": "shirts", "title": "Camisetas personalizadas", "intro": "Camisetas impresas para negocios, equipos, eventos y celebraciones.",
+    { "id": "shirts", "title": "Camisetas personalizadas", "tag": "24 a 48 h", "intro": "Camisetas impresas para negocios, equipos, eventos y celebraciones.",
       "specs": [ { "label": "Métodos", "value": "Serigrafía, bordado, transferencia térmica" }, { "label": "Estilos", "value": "Cuello redondo, cuello en V, manga larga" }, { "label": "Mínimo", "value": "Ninguno" }, { "label": "Entrega", "value": "24 a 48 horas después de aprobar la prueba" } ],
       "bullets": ["Camisetas con el logotipo de tu negocio", "Uniformes para equipos y deportes", "Camisetas para eventos y celebraciones"] },
-    { "id": "hoodies", "title": "Sudaderas personalizadas", "intro": "Sudaderas cerradas y con cierre para equipos, empresas y eventos.",
+    { "id": "hoodies", "title": "Sudaderas personalizadas", "tag": "Cerrada o con cierre", "intro": "Sudaderas cerradas y con cierre para equipos, empresas y eventos.",
       "specs": [ { "label": "Métodos", "value": "Serigrafía, bordado, transferencia térmica" }, { "label": "Estilos", "value": "Cerrada, con cierre" }, { "label": "Colores y tallas", "value": "Varios" }, { "label": "Mínimo", "value": "Ninguno" } ],
       "bullets": ["Sudaderas para equipos y empresas", "Sudaderas para eventos y celebraciones"] },
-    { "id": "hats", "title": "Gorras personalizadas", "intro": "Gorras y gorros tejidos con tu logotipo o diseño.",
+    { "id": "hats", "title": "Gorras personalizadas", "tag": "Bordadas o con serigrafía", "intro": "Gorras y gorros tejidos con tu logotipo o diseño.",
       "specs": [ { "label": "Métodos", "value": "Bordado, serigrafía" }, { "label": "Estilos", "value": "Gorras de béisbol, gorras trucker, gorros tejidos" }, { "label": "Mínimo", "value": "Ninguno" } ],
       "bullets": ["Gorras con el logotipo de tu negocio", "Gorras para equipos y deportes", "Gorras para eventos y promociones"] },
-    { "id": "banners", "title": "Lonas y gran formato", "intro": "Lonas de vinil y de tela, e impresiones grandes para eventos y negocios.",
+    { "id": "banners", "title": "Lonas y gran formato", "tag": "Hasta 10 pies de ancho", "intro": "Lonas de vinil y de tela, e impresiones grandes para eventos y negocios.",
       "specs": [ { "label": "Materiales", "value": "Vinil para exteriores, tela para interiores" }, { "label": "Ancho", "value": "Hasta 10 pies" }, { "label": "Tamaños", "value": "A tu medida" }, { "label": "Instalación", "value": "Disponible" } ],
       "bullets": ["Entrega rápida para la fecha de tu evento"] },
-    { "id": "cards", "title": "Tarjetas de presentación", "intro": "Tarjetas a todo color en la cartulina, el tamaño y el acabado que elijas.",
+    { "id": "cards", "title": "Tarjetas de presentación", "tag": "Paquetes de 100", "intro": "Tarjetas a todo color en la cartulina, el tamaño y el acabado que elijas.",
       "specs": [ { "label": "Acabados", "value": "Mate, brillante, semibrillante" }, { "label": "Extras", "value": "Estampado metálico, relieve" }, { "label": "Tamaños", "value": "Estándar, cuadrada, mini o a tu medida" }, { "label": "Se imprimen en", "value": "Paquetes de 100" } ],
       "bullets": [] },
-    { "id": "stickers", "title": "Calcomanías y stickers", "intro": "Calcomanías de vinil para tu marca, tus vehículos y tus promociones.",
+    { "id": "stickers", "title": "Calcomanías y stickers", "tag": "Sin mínimo", "intro": "Calcomanías de vinil para tu marca, tus vehículos y tus promociones.",
       "specs": [ { "label": "Material", "value": "Vinil" }, { "label": "Usos", "value": "Marcas, vehículos, promociones" }, { "label": "Mínimo", "value": "Ninguno" } ],
       "bullets": [] }
   ],
@@ -35,6 +36,7 @@
     "products": { "tshirt": "Camiseta", "hoodie": "Sudadera", "hat": "Gorra", "banner": "Lona", "businesscard": "Tarjetas de presentación", "sticker": "Calcomanías" },
     "quantity": "Cantidad",
     "qtyHint": "Sin mínimos. Pide 1 o más de 1,000.",
+    "qtyRange": "La calculadora va de 1 a 10,000. Para pedidos más grandes, llámanos.",
     "method": "Método de impresión",
     "methods": { "screen": "Serigrafía", "dtg": "Impresión directa (DTG)", "embroidery": "Bordado", "heat": "Transferencia térmica", "vinyl": "Vinil" },
     "colors": "Colores del diseño",
@@ -59,13 +61,7 @@
     "disclaimer": "Es solo un estimado, sin impuestos ni envío. Tu cotización gratis muestra el precio final antes de empezar."
   },
   "process": {
-    "title": "Del archivo a la impresión",
-    "steps": [
-      { "title": "Manda tu diseño", "body": "Mándanos tu logotipo, arte o idea. Aceptamos AI, EPS, PNG, JPG y más." },
-      { "title": "Elige tus productos", "body": "Escoge camisetas, sudaderas o gorras, y luego los colores, las tallas y las cantidades." },
-      { "title": "Imprimimos y revisamos", "body": "Imprimimos tu pedido y revisamos la calidad antes de entregarlo." },
-      { "title": "Listo en 24 a 48 horas", "body": "La mayoría de los pedidos están listos de 24 a 48 horas después de aprobar la prueba. También hay servicio urgente el mismo día." }
-    ]
+    "title": "Del archivo a la impresión"
   },
   "materials": {
     "title": "Telas",

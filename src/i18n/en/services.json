@@ -6,24 +6,25 @@
   "title": "Services",
   "lead": "Apparel, banners and print for businesses, teams and events. Design help is free.",
   "index": "Jump to a service",
-  "details": "Also available",
+  "details": "Popular for",
+  "seeWork": "See {category} we've printed",
   "items": [
-    { "id": "shirts", "title": "Custom shirts", "intro": "Printed T-shirts for businesses, teams, events and celebrations.",
+    { "id": "shirts", "title": "Custom shirts", "tag": "24–48 h", "intro": "Printed T-shirts for businesses, teams, events and celebrations.",
       "specs": [ { "label": "Methods", "value": "Screen printing, embroidery, heat transfer" }, { "label": "Styles", "value": "Crew neck, V-neck, long sleeve" }, { "label": "Minimum", "value": "None" }, { "label": "Turnaround", "value": "24–48 hours after proof approval" } ],
       "bullets": ["Business logo shirts for company branding", "Team uniforms and sports shirts", "Event and celebration shirts"] },
-    { "id": "hoodies", "title": "Custom hoodies", "intro": "Pullover and zip-up hoodies for teams, companies and events.",
+    { "id": "hoodies", "title": "Custom hoodies", "tag": "Pullover or zip-up", "intro": "Pullover and zip-up hoodies for teams, companies and events.",
       "specs": [ { "label": "Methods", "value": "Screen printing, embroidery, heat transfer" }, { "label": "Styles", "value": "Pullover, zip-up" }, { "label": "Colors and sizes", "value": "Various" }, { "label": "Minimum", "value": "None" } ],
       "bullets": ["Team and company hoodies", "Event and celebration hoodies"] },
-    { "id": "hats", "title": "Custom hats", "intro": "Caps and beanies with your logo or design.",
+    { "id": "hats", "title": "Custom hats", "tag": "Embroidered or screen printed", "intro": "Caps and beanies with your logo or design.",
       "specs": [ { "label": "Methods", "value": "Embroidery, screen printing" }, { "label": "Styles", "value": "Baseball caps, trucker hats, beanies" }, { "label": "Minimum", "value": "None" } ],
       "bullets": ["Business logo hats", "Team and sports hats", "Event and promotional hats"] },
-    { "id": "banners", "title": "Banners and large format", "intro": "Vinyl and fabric banners and large prints for events and businesses.",
+    { "id": "banners", "title": "Banners and large format", "tag": "Up to 10 ft wide", "intro": "Vinyl and fabric banners and large prints for events and businesses.",
       "specs": [ { "label": "Materials", "value": "Weather-resistant vinyl, indoor fabric" }, { "label": "Width", "value": "Up to 10 ft" }, { "label": "Sizes", "value": "Custom" }, { "label": "Installation", "value": "Available" } ],
       "bullets": ["Fast turnaround for event deadlines"] },
-    { "id": "cards", "title": "Business cards", "intro": "Full-color business cards in the stock, size and finish you choose.",
+    { "id": "cards", "title": "Business cards", "tag": "Batches of 100", "intro": "Full-color business cards in the stock, size and finish you choose.",
       "specs": [ { "label": "Finishes", "value": "Matte, glossy, semi-gloss" }, { "label": "Extras", "value": "Foil stamping, embossing" }, { "label": "Sizes", "value": "Standard, square, mini or custom" }, { "label": "Printed in", "value": "Batches of 100" } ],
       "bullets": [] },
-    { "id": "stickers", "title": "Stickers and decals", "intro": "Vinyl stickers and decals for branding, vehicles and promotions.",
+    { "id": "stickers", "title": "Stickers and decals", "tag": "No minimum", "intro": "Vinyl stickers and decals for branding, vehicles and promotions.",
       "specs": [ { "label": "Material", "value": "Vinyl" }, { "label": "Uses", "value": "Branding, vehicles, promotions" }, { "label": "Minimum", "value": "None" } ],
       "bullets": [] }
   ],
@@ -35,6 +36,7 @@
     "products": { "tshirt": "T-shirt", "hoodie": "Hoodie", "hat": "Hat or cap", "banner": "Banner", "businesscard": "Business cards", "sticker": "Stickers" },
     "quantity": "Quantity",
     "qtyHint": "No minimums. Order 1 or 1,000+.",
+    "qtyRange": "The calculator goes from 1 to 10,000. For bigger runs, call us.",
     "method": "Print method",
     "methods": { "screen": "Screen printing", "dtg": "Direct to garment (DTG)", "embroidery": "Embroidery", "heat": "Heat transfer", "vinyl": "Vinyl print" },
     "colors": "Colors in the design",
@@ -59,13 +61,7 @@
     "disclaimer": "Estimate only, without sales tax or shipping. Your free quote shows the final price before we start."
   },
   "process": {
-    "title": "From file to finished print",
-    "steps": [
-      { "title": "Send your design", "body": "Send us your logo, artwork or idea. We accept AI, EPS, PNG, JPG and more." },
-      { "title": "Choose your products", "body": "Pick shirts, hoodies or hats, then the colors, sizes and quantities." },
-      { "title": "We print and check", "body": "We print your order and check its quality before it leaves the shop." },
-      { "title": "Ready in 24–48 hours", "body": "Most orders are ready 24–48 hours after you approve the proof. Same-day rush is available." }
-    ]
+    "title": "From file to finished print"
   },
   "materials": {
     "title": "Fabrics",
