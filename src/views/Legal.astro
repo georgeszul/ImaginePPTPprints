@@ -2,7 +2,6 @@
 // Privacy (with the cookie policy), terms and refund policy share one view; the text lives in i18n/<lang>/<doc>.json.
 import Page from '../layouts/Page.astro';
 import SectionHead from '../components/SectionHead.astro';
-import ColorBar from '../components/ColorBar.astro';
 import Ticket from '../components/Ticket.astro';
 import { site } from '../data/site';
 import type { Lang } from '../i18n/routes';
@@ -18,12 +17,13 @@ const businessTitle = t(lang, 'site.legal.business');
 const b = (key: string) => t(lang, `privacy.business.${key}`);
 const business = [
   { label: b('name'), value: site.name },
-  { label: b('address'), value: `${site.street}, ${site.locality}, ${site.region} ${site.postalCode}` },
+  { label: b('address'), value: site.addressLine },
   { label: b('phone'), value: site.phone, href: site.phoneHref },
   { label: b('email'), value: site.email, href: `mailto:${site.email}` },
 ];
 const contents = [...sections, { id: 'business', title: businessTitle }];
-const num = (i: number) => String(i + 1).padStart(2, '0');
+// Clauses use the section sign, so they don't read as another 01, 02… series next to the page's section numbers.
+const num = (i: number) => `§ ${String(i + 1).padStart(2, '0')}`;
 const contentsLabel = t(lang, 'site.legal.contents');
 ---
 <Page lang={lang} page={doc} title={t(lang, `${doc}.meta.title`)} description={t(lang, `${doc}.meta.description`)}>
@@ -42,7 +42,6 @@ const contentsLabel = t(lang, 'site.legal.contents');
 
     <!-- 960 px and up: the same list, sticky beside the text. -->
     <nav class="toc toc--side" aria-label={contentsLabel}>
-      <ColorBar />
       <p class="mono label" aria-hidden="true">{contentsLabel}</p>
       <ol>{contents.map((c, i) => <li><a href={`#${c.id}`}><span class="n" aria-hidden="true">{num(i)}</span><span class="t">{c.title}</span></a></li>)}</ol>
     </nav>
@@ -81,7 +80,7 @@ const contentsLabel = t(lang, 'site.legal.contents');
   @media (hover: hover) and (pointer: fine) { .toc a:hover .t { background-size: 100% 1px; } }
 
   .toc--side { display: none; }
-  .toc--fold { margin-bottom: 2.5rem; border-block: 1px solid var(--rule); }
+  .toc--fold { margin-bottom: 2.5rem; border-top: 1px solid var(--rule); }
   .toc--fold summary {
     display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     min-height: 48px; cursor: pointer; list-style: none; text-transform: uppercase;
@@ -108,7 +107,6 @@ const contentsLabel = t(lang, 'site.legal.contents');
   .prose h2 .n { display: block; width: fit-content; margin-bottom: 0.65rem; color: var(--ink-soft); }
   /* The clause you jumped to gets a highlighter mark on its number. */
   .prose h2:target .n { margin-left: -0.35em; padding-inline: 0.35em; background: var(--yellow); color: var(--on-color); }
-  .prose p { color: var(--ink-soft); }
   .prose .btn { margin-top: 0.5rem; }
   .prose :global(.biz) { margin-top: 1.25rem; }
   .prose :global(.biz dd) { overflow-wrap: anywhere; }

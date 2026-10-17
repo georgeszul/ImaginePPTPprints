@@ -19,6 +19,11 @@ const label = t(lang, 'site.theme');
     transition: transform var(--press) var(--ease-out);
   }
   .theme:active { transform: scale(0.97); }
+  /* Without JavaScript the switch could not do anything, so it only appears when it works. */
+  :global(html:not(.js)) .theme { display: none; }
+  @media (hover: hover) and (pointer: fine) { .theme:hover { background: var(--ink); color: var(--paper); } }
+  /* One-frame guard: the theme swaps everywhere at once instead of some controls fading in late. */
+  :global(.theme-switching *) { transition: none !important; }
   /* Sun and moon share one cell and crossfade instead of popping. */
   .theme > span { grid-area: 1 / 1; display: inline-flex; transition: opacity 200ms var(--ease-out), rotate 200ms var(--ease-out); }
   .sun { opacity: 0; rotate: -45deg; }
@@ -36,7 +41,9 @@ const label = t(lang, 'site.theme');
     sync();
     btn.addEventListener('click', () => {
       const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.classList.add('theme-switching');
       root.dataset.theme = next;
+      requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('theme-switching')));
       try {
         localStorage.setItem('theme', next);
       } catch {

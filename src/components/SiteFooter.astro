@@ -32,15 +32,15 @@ const year = new Date().getFullYear();
         <ul>
           <li><a href={site.phoneHref}>{site.phone}</a></li>
           <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
-          <li><a href={site.mapsUrl} target="_blank" rel="noopener">{site.addressLine}</a></li>
+          <li><a href={site.mapsUrl} target="_blank" rel="noopener">{site.addressLine}<span class="visually-hidden"> {t(lang, 'site.newTab')}</span></a></li>
         </ul>
       </div>
       <div>
         <h2 class="mono">{f('follow')}</h2>
         <ul>
-          <li><a href={site.facebook} target="_blank" rel="noopener">Facebook</a></li>
-          <li><a href={site.tiktok} target="_blank" rel="noopener">TikTok</a></li>
-          <li><a href={site.shopify} target="_blank" rel="noopener">{f('shop')}</a></li>
+          <li><a href={site.facebook} target="_blank" rel="noopener"><span translate="no">Facebook</span><span class="visually-hidden"> {t(lang, 'site.newTab')}</span></a></li>
+          <li><a href={site.tiktok} target="_blank" rel="noopener"><span translate="no">TikTok</span><span class="visually-hidden"> {t(lang, 'site.newTab')}</span></a></li>
+          <li><a href={site.shopify} target="_blank" rel="noopener">{f('shop')}<span class="visually-hidden"> {t(lang, 'site.newTab')}</span></a></li>
         </ul>
       </div>
     </div>
@@ -75,6 +75,6 @@ const year = new Date().getFullYear();
     margin-top: 2.5rem; padding-block: 0.75rem 1.5rem; border-top: 1px solid var(--rule); color: var(--ink-soft);
   }
   .bottom p { margin: 0; }
-  .bottom ul { display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
-  .bottom a { display: inline-block; padding-block: 0.6rem; color: inherit; text-decoration: none; }
+  .bottom ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+  .bottom a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-decoration: none; }
 </style>

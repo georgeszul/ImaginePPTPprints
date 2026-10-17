@@ -129,6 +129,7 @@ const schemas = [jsonLd, ...schema].filter(Boolean);
     <SiteHeader lang={lang} page={page} />
     <main id="main" tabindex="-1"><slot /></main>
     <SiteFooter lang={lang} />
-    <ContactDock lang={lang} />
+    {/* Contact and Thanks show these actions in the page itself, so the floating buttons stay away. */}
+    {page !== 'contact' && page !== 'thanks' && <ContactDock lang={lang} />}
   </body>
 </html>

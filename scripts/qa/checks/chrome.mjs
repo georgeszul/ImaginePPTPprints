@@ -34,8 +34,14 @@ export default async function ({ open, fail }) {
     if (r.h > r.token + 1) fail(`header wraps at ${w}px on ${path}: ${Math.round(r.h)}px tall, --header-h is ${r.token}px`);
     await ctx.close();
   }
-  for (const [w, h] of [[320, 568], [1280, 800]]) {
-    const { page, ctx } = await open('/contact/', { width: w, height: h });
+  // Contact and Thanks carry their own call/WhatsApp buttons, so the floating ones are not rendered there.
+  for (const [path, want] of [['/contact/', false], ['/es/gracias/', false], ['/services/', true]]) {
+    const { page, ctx } = await open(path);
+    if (Boolean(await page.$('[data-dock]')) !== want) fail(`contact buttons ${want ? 'missing' : 'should not render'} on ${path}`);
+    await ctx.close();
+  }
+  for (const [path, w, h] of [['/contact/', 320, 568], ['/contact/', 1280, 800], ['/services/', 320, 568], ['/services/', 1280, 800]]) {
+    const { page, ctx } = await open(path, { width: w, height: h });
     const hidden = [];
     for (let i = 0; i < 60; i++) {
       await page.keyboard.press('Tab');
@@ -43,16 +49,19 @@ export default async function ({ open, fail }) {
         const el = document.activeElement;
         const header = document.querySelector('[data-header]');
         const dockEl = document.querySelector('[data-dock]');
-        if (!header || !dockEl) return 'chrome missing';
+        if (!header) return 'chrome missing';
         if (!el || el === document.body || el.closest('[data-header], [data-dock], .skip')) return null;
         const b = el.getBoundingClientRect();
-        const dock = dockEl.getBoundingClientRect();
-        const bottom = getComputedStyle(dockEl).position === 'fixed' && dock.left < b.right && dock.right > b.left ? dock.top : innerHeight;
+        // The contact buttons are absent on Contact/Thanks and step aside while the page shows its own.
+        const dockCs = dockEl && getComputedStyle(dockEl);
+        const dock = dockEl?.getBoundingClientRect();
+        const covers = dockEl && dockCs.position === 'fixed' && dockCs.visibility !== 'hidden' && dock.left < b.right && dock.right > b.left;
+        const bottom = covers ? dock.top : innerHeight;
         return b.top >= header.getBoundingClientRect().bottom - 1 && b.bottom <= bottom + 1 ? null : el.tagName + '#' + (el.id || el.textContent.trim().slice(0, 20));
       });
       if (r) hidden.push(r);
     }
-    if (hidden.length) fail(`focus hidden at ${w}x${h}: ${[...new Set(hidden)].slice(0, 5).join(', ')}`);
+    if (hidden.length) fail(`focus hidden on ${path} at ${w}x${h}: ${[...new Set(hidden)].slice(0, 5).join(', ')}`);
     await ctx.close();
   }
 }

@@ -9,14 +9,20 @@ const { lang } = Astro.props;
 ---
 <aside class="dock" aria-label={t(lang, 'site.dock.label')} data-dock>
   <a class="fab fab--call" href={site.phoneHref}><Glyph name="phone" /><span>{t(lang, 'site.dock.call')}</span></a>
-  <a class="fab fab--wa" href={site.whatsapp} target="_blank" rel="noopener"><Glyph name="chat" /><span>{t(lang, 'site.dock.whatsapp')}</span></a>
+  <a class="fab fab--wa" href={site.whatsapp} target="_blank" rel="noopener"><Glyph name="chat" /><span>{t(lang, 'site.dock.whatsapp')}</span><span class="visually-hidden"> {t(lang, 'site.newTab')}</span></a>
   <a class="fab fab--quote" href={routes.contact[lang]}><span>{t(lang, 'site.dock.quote')}</span></a>
 </aside>
 
 <style>
   .dock {
-    position: fixed; z-index: 40; display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem;
+    position: fixed; z-index: 40; display: flex; align-items: center; gap: 0.5rem;
     right: calc(1rem + env(safe-area-inset-right)); bottom: calc(1rem + env(safe-area-inset-bottom));
+    transition: opacity 200ms var(--ease-out), translate 200ms var(--ease-out), visibility 0s;
+  }
+  /* Hidden while the page's own Call/WhatsApp buttons are on screen (see the script). */
+  .dock.is-hidden {
+    opacity: 0; translate: 0 8px; visibility: hidden; pointer-events: none;
+    transition: opacity 200ms var(--ease-out), translate 200ms var(--ease-out), visibility 0s 200ms;
   }
   /* Labelled pills: the one rounded shape in the system, so they read as "tap to reach a person". */
   .fab {
@@ -25,17 +31,18 @@ const { lang } = Astro.props;
     border: 2px solid var(--on-color); border-radius: 999px; color: var(--on-color);
     font: 600 1rem/1 var(--font-body); text-decoration: none;
     box-shadow: 3px 3px 0 var(--on-color);
-    transition: transform var(--press) var(--ease-out);
+    transition: transform var(--press) var(--ease-out), box-shadow var(--press) var(--ease-out);
   }
   .fab--call { background: var(--yellow); }
   .fab--wa { background: var(--cyan); }
   .fab--quote { display: none; }
-  @media (hover: hover) and (pointer: fine) { .fab:hover { transform: translate(-1px, -1px); } }
+  /* The lift reads only if the offset shadow grows with it. */
+  @media (hover: hover) and (pointer: fine) { .fab:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--on-color); } }
   .fab:active { transform: scale(0.97); }
 
   @media (max-width: 720px) {
     .dock {
-      left: 0; right: 0; bottom: 0; flex-direction: row; gap: 0.4rem;
+      left: 0; right: 0; bottom: 0; gap: 0.4rem;
       padding: 0.5rem calc(0.5rem + env(safe-area-inset-right)) calc(0.5rem + env(safe-area-inset-bottom)) calc(0.5rem + env(safe-area-inset-left));
       background: var(--paper); border-top: 1px solid var(--rule);
     }
@@ -54,3 +61,21 @@ const { lang } = Astro.props;
     :global(body) { padding-bottom: 0; }
   }
 </style>
+
+<script>
+  // The dock steps aside while the page shows its own Call/WhatsApp buttons (hero, closing call to action),
+  // so the same actions never appear twice on one screen. Without JavaScript it simply stays visible.
+  const dock = document.querySelector<HTMLElement>('[data-dock]');
+  const targets = document.querySelectorAll('[data-contact-buttons]');
+  if (dock && targets.length && 'IntersectionObserver' in window) {
+    const onScreen = new Set<Element>();
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) onScreen.add(e.target);
+        else onScreen.delete(e.target);
+      }
+      dock.classList.toggle('is-hidden', onScreen.size > 0);
+    });
+    targets.forEach((el) => io.observe(el));
+  }
+</script>

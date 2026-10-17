@@ -1,6 +1,5 @@
 ---
 import Page from '../layouts/Page.astro';
-import ColorBar from '../components/ColorBar.astro';
 import RegMark from '../components/RegMark.astro';
 import Glyph from '../components/Glyph.astro';
 import { site } from '../data/site';
@@ -18,10 +17,9 @@ const { lang } = Astro.props;
     <p>{t(lang, 'thanks.urgent')}</p>
     <div class="btn-row">
       <a class="btn btn--yellow" href={site.phoneHref}><Glyph name="phone" />{site.phone}</a>
-      <a class="btn btn--cyan" href={site.whatsapp} target="_blank" rel="noopener"><Glyph name="chat" />{t(lang, 'site.dock.whatsapp')}</a>
+      <a class="btn btn--cyan" href={site.whatsapp} target="_blank" rel="noopener"><Glyph name="chat" />{t(lang, 'site.dock.whatsapp')}<span class="visually-hidden"> {t(lang, 'site.newTab')}</span></a>
       <a class="btn btn--line" href={routes.home[lang]}>{t(lang, 'thanks.back')}</a>
     </div>
-    <ColorBar class="bar" />
   </section>
 </Page>
 
@@ -29,5 +27,4 @@ const { lang } = Astro.props;
   .msg { min-height: 70svh; display: grid; align-content: center; gap: 1.5rem; padding-block: var(--sec); }
   .msg h1, .msg p { margin: 0; }
   .msg h1 { max-width: 14ch; }
-  .msg :global(.bar) { max-width: 18rem; margin-top: 1rem; }
 </style>

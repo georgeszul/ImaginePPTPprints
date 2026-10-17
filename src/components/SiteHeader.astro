@@ -24,7 +24,7 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
       <Image src={logo} alt="" width={44} height={44} densities={[1, 2]} loading="eager" />
       <span translate="no">{site.name}</span>
     </a>
-    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav" data-menu-btn>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav" data-menu-btn data-label-open={t(lang, 'site.nav.menu')} data-label-close={t(lang, 'site.nav.close')}>
       <span class="i-open"><Glyph name="menu" /></span><span class="i-close"><Glyph name="close" /></span>
       <span class="menu-label">{t(lang, 'site.nav.menu')}</span>
     </button>
@@ -61,7 +61,8 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
     display: flex; align-items: center; min-height: 44px; padding: 0 0.75rem;
     color: var(--ink); text-decoration: none; font-weight: 600;
   }
-  .nav ul a[aria-current='page'] { box-shadow: inset 0 -3px var(--cyan); }
+  /* Cyan alone is 1.9:1 on paper; the ink line under it carries the 3:1 the current-page cue needs. */
+  .nav ul a[aria-current='page'] { box-shadow: inset 0 -3px var(--cyan), inset 0 -5px var(--ink); }
   @media (hover: hover) and (pointer: fine) { .nav ul a:hover { box-shadow: inset 0 -3px var(--ink); } }
   .n { display: none; }
   .tools { display: flex; align-items: center; gap: 0.5rem; }
@@ -70,7 +71,8 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
 
   /* 1100px: the Spanish menu, language, theme and quote button need about 1060px in one row. */
   @media (max-width: 1100px) {
-    /* Without JavaScript the menu stays a plain row of links under the bar. */
+    /* Without JavaScript the menu stays a plain row of links under the bar, and the now taller header scrolls away. */
+    :global(html:not(.js)) .header { position: relative; }
     .nav { flex-wrap: wrap; width: 100%; padding-bottom: 0.75rem; }
     .nav ul { flex-wrap: wrap; }
 
@@ -81,6 +83,7 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
       transition: transform var(--press) var(--ease-out);
     }
     :global(.js) .menu-btn:active { transform: scale(0.97); }
+    @media (hover: hover) and (pointer: fine) { :global(.js) .menu-btn:hover { background: var(--ink); color: var(--paper); } }
     .i-open, .i-close { display: inline-flex; }
     .menu-btn .i-close, .menu-btn[aria-expanded='true'] .i-open { display: none; }
     .menu-btn[aria-expanded='true'] .i-close { display: inline-flex; }
@@ -91,7 +94,7 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
       padding: 1.5rem var(--gutter) calc(2rem + env(safe-area-inset-bottom));
       background: var(--paper); overflow-y: auto; overscroll-behavior: contain;
     }
-    :global(.js) .nav.open { display: flex; }
+    :global(.js) .nav.open { display: flex; animation: menu-in 200ms var(--ease-out); }
     :global(.js) .nav ul { flex-direction: column; gap: 0; }
     :global(.js) .nav ul li { border-bottom: 1px solid var(--rule); }
     :global(.js) .nav ul a {
@@ -99,7 +102,7 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
       font: 700 clamp(2rem, 9vw, 3.25rem)/1 var(--font-display); letter-spacing: -0.03em; font-stretch: 88%;
     }
     :global(.js) .nav ul a[aria-current='page'] { box-shadow: none; }
-    :global(.js) .nav ul a[aria-current='page']::after { content: ''; width: 0.5em; height: 0.5em; margin-left: auto; background: var(--cyan); }
+    :global(.js) .nav ul a[aria-current='page']::after { content: ''; width: 0.5em; height: 0.5em; margin-left: auto; background: var(--cyan); outline: 1.5px solid var(--ink); }
     :global(.js) .n { display: inline; font: 500 var(--small)/1 var(--font-mono); color: var(--ink-soft); }
     :global(.js) .nav :global(.nav-bar) { display: flex; margin-top: auto; }
   }
@@ -111,17 +114,23 @@ const nav = (['home', 'services', 'portfolio', 'about', 'contact'] as const).map
     .menu-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
     :global(.js) .menu-btn { width: 44px; padding: 0; justify-content: center; }
   }
-  :global(html.menu-open) { overflow: hidden; }
+  /* stable gutter: hiding the scrollbar must not shift the button under the pointer. */
+  :global(html.menu-open) { overflow: hidden; scrollbar-gutter: stable; }
+  @keyframes menu-in { from { opacity: 0; translate: 0 -8px; } }
 </style>
 
 <script>
   const btn = document.querySelector<HTMLButtonElement>('[data-menu-btn]');
   const nav = document.getElementById('site-nav');
   if (btn && nav) {
+    const label = btn.querySelector<HTMLElement>('.menu-label');
     const setOpen = (open: boolean) => {
       btn.setAttribute('aria-expanded', String(open));
       nav.classList.toggle('open', open);
       document.documentElement.classList.toggle('menu-open', open);
+      if (label) label.textContent = (open ? btn.dataset.labelClose : btn.dataset.labelOpen) ?? '';
+      // The full-screen menu covers the page: keep screen readers and Tab out of what is behind it.
+      for (const el of document.querySelectorAll<HTMLElement>('main, footer, [data-dock]')) el.inert = open;
     };
     const isOpen = () => btn.getAttribute('aria-expanded') === 'true';
     btn.addEventListener('click', () => setOpen(!isOpen()));

@@ -3,9 +3,8 @@ import Page from '../layouts/Page.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Figure from '../components/Figure.astro';
 import Ticket from '../components/Ticket.astro';
-import ColorBar from '../components/ColorBar.astro';
 import Glyph from '../components/Glyph.astro';
-import { coverFor } from '../data/photos';
+import { coverFor, photos } from '../data/photos';
 import { site } from '../data/site';
 import type { Lang } from '../i18n/routes';
 import { t, tRaw } from '../i18n/t';
@@ -14,7 +13,8 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const a = (key: string) => t(lang, `about.${key}`);
 const [intro, ...paragraphs] = tRaw<string[]>(lang, 'about.story.paragraphs');
-const photo = coverFor('stickers')!;
+// A high-resolution team order (1536px wide); the sticker photos are only 206px and blur at this size.
+const photo = photos.find((p) => p.src.src.includes('tees-team-teddy-bear')) ?? coverFor('shirts')!;
 
 type Link = { href: string; label: string; external?: boolean };
 const contact: { label: string; text?: string; links: Link[]; note?: string }[] = [
@@ -24,10 +24,8 @@ const contact: { label: string; text?: string; links: Link[]; note?: string }[] 
   { label: a('contact.store'), links: [{ href: site.shopify, label: a('contact.storeLink'), external: true }] },
   {
     label: a('contact.social'),
-    links: [
-      { href: site.tiktok, label: a('contact.tiktok'), external: true },
-      { href: site.facebook, label: a('contact.facebook'), external: true },
-    ],
+    // Facebook appears once, under Reviews.
+    links: [{ href: site.tiktok, label: a('contact.tiktok'), external: true }],
   },
   { label: a('contact.reviews'), links: [{ href: site.facebook, label: a('contact.reviewsLink'), external: true }] },
 ];
@@ -59,7 +57,6 @@ const contact: { label: string; text?: string; links: Link[]; note?: string }[] 
       <SectionHead n={3} id="find-title" title={a('contact.title')} />
       <div class="find">
         <div class="hours reveal">
-          <ColorBar />
           <div class="hours-body">
             <h3>{a('hours.title')}</h3>
             <Ticket rows={[{ label: a('hours.days'), value: a('hours.value') }]} />
@@ -78,6 +75,7 @@ const contact: { label: string; text?: string; links: Link[]; note?: string }[] 
                   return (
                     <a href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener' : undefined}>
                       <span>{l.label.slice(0, cut)}{l.external && <span class="nw">{l.label.slice(cut)}<Glyph name="out" size={16} /></span>}</span>
+                      {l.external && <span class="visually-hidden"> {t(lang, 'site.newTab')}</span>}
                     </a>
                   );
                 })}
