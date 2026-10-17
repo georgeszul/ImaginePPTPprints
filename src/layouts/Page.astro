@@ -1,12 +1,13 @@
 ---
 import '@fontsource-variable/bricolage-grotesque/standard.css';
-import '@fontsource-variable/instrument-sans/standard.css';
+// Body text only varies weight, so the weight-only file (30 KB instead of 57 KB) is enough.
+import '@fontsource-variable/instrument-sans/wght.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/tokens.css';
 import '../styles/base.css';
 import bricolage from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-standard-normal.woff2?url';
-import instrument from '@fontsource-variable/instrument-sans/files/instrument-sans-latin-standard-normal.woff2?url';
+import instrument from '@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2?url';
 import { getImage } from 'astro:assets';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
