@@ -1,30 +1,23 @@
 {
-  "meta": {
-    "title": "Nosotros | Imagine PPTP Prints",
-    "description": "Imagine PPTP Prints es una imprenta en Elgin, IL, de camisetas, sudaderas, gorras, lonas, tarjetas de presentación y calcomanías personalizadas. Hablamos español."
-  },
-  "title": "Sobre Imagine PPTP Prints",
-  "subtitle": "Una imprenta de productos personalizados en 840 N State St, Elgin, Illinois.",
+  "meta": { "title": "Sobre la imprenta | Imagine PPTP Prints", "description": "Imagine PPTP Prints es una imprenta en Elgin, IL, de camisetas, sudaderas, gorras, lonas, tarjetas de presentación y calcomanías personalizadas. Hablamos español." },
+  "title": "Sobre la imprenta",
+  "lead": "Una imprenta de productos personalizados en 840 N State St, en Elgin, Illinois.",
   "story": {
     "title": "Quiénes somos",
     "paragraphs": [
-      "Imagine PPTP Prints imprime camisetas, sudaderas, gorras, lonas, tarjetas de presentación y calcomanías personalizadas para negocios, equipos, eventos y personas. Atendemos a clientes del área de Elgin y enviamos a todo Estados Unidos.",
-      "Te ayudamos con el diseño sin costo adicional, te enviamos una prueba digital antes de imprimir y terminamos la mayoría de los pedidos de 24 a 48 horas después de que la apruebes."
+      "Imprimimos camisetas, sudaderas, gorras, lonas, tarjetas de presentación y calcomanías personalizadas para negocios, equipos, eventos y particulares. Atendemos a clientes del área de Elgin y enviamos a todo Estados Unidos.",
+      "Te ayudamos con el diseño sin costo. Antes de imprimir, te mandamos una prueba digital para que la apruebes. La mayoría de los pedidos quedan listos de 24 a 48 horas después."
     ]
   },
-  "what": { "title": "Te atendemos en tu idioma", "body": "Llámanos, escríbenos o mándanos un mensaje en español y atendemos todo tu pedido en español." },
-  "contactTitle": "Información de contacto",
-  "cards": {
+  "language": { "title": "Te atendemos en español", "body": "Llámanos, mándanos un mensaje o escríbenos en español. Atendemos todo tu pedido en español, de principio a fin." },
+  "hours": { "title": "Horario", "days": "De lunes a domingo", "value": "Abierto las 24 horas", "delivery": "Recoge tu pedido en Elgin, pide entrega local sin contacto o recíbelo en cualquier parte del país." },
+  "contact": {
+    "title": "Encuéntranos",
     "address": "Dirección", "directions": "Cómo llegar",
-    "phone": "Teléfono", "phoneNote": "Llama o manda un mensaje",
-    "email": "Correo", "emailNote": "Mándanos tu diseño o tus preguntas",
-    "store": "Tienda en línea", "storeLink": "Visita nuestra tienda en Shopify", "storeNote": "Abierta en línea 24/7",
-    "social": "Redes sociales", "tiktokLink": "Síguenos en TikTok", "socialNote": "Mira nuestros trabajos más recientes",
-    "reviews": "Reseñas", "reviewsLink": "Lee nuestras reseñas en Facebook", "reviewsNote": "Reseñas de nuestros clientes"
-  },
-  "hours": {
-    "title": "Horario",
-    "body": "Siempre abiertos, todos los días.",
-    "delivery": "Recoge en Elgin, entrega local sin contacto o envío a todo el país."
+    "phone": "Teléfono", "phoneNote": "Llama o manda mensaje",
+    "email": "Correo",
+    "store": "Tienda en línea", "storeLink": "Visita nuestra tienda en Shopify",
+    "social": "Redes sociales", "tiktok": "TikTok", "facebook": "Facebook",
+    "reviews": "Reseñas", "reviewsLink": "Lee nuestras reseñas en Facebook"
   }
 }

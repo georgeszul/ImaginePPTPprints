@@ -1,30 +1,23 @@
 {
-  "meta": {
-    "title": "About Us | Imagine PPTP Prints",
-    "description": "Imagine PPTP Prints is a custom print shop in Elgin, IL, for shirts, hoodies, hats, banners, business cards and stickers. Hablamos español."
-  },
-  "title": "About Imagine PPTP Prints",
-  "subtitle": "A custom print shop at 840 N State St in Elgin, Illinois.",
+  "meta": { "title": "About the shop | Imagine PPTP Prints", "description": "Imagine PPTP Prints is a custom print shop in Elgin, IL, for shirts, hoodies, hats, banners, business cards and stickers. Hablamos español." },
+  "title": "About the shop",
+  "lead": "A custom print shop at 840 N State St in Elgin, Illinois.",
   "story": {
     "title": "Who we are",
     "paragraphs": [
-      "Imagine PPTP Prints prints custom shirts, hoodies, hats, banners, business cards and stickers for businesses, teams, events and individuals. We work with customers in the Elgin area and ship nationwide.",
-      "We help with design at no extra charge, send a digital proof before anything is printed, and finish most orders 24–48 hours after you approve it."
+      "We print custom shirts, hoodies, hats, banners, business cards and stickers for businesses, teams, events and individuals. We work with customers around Elgin and ship nationwide.",
+      "Design help costs nothing. You get a digital proof before anything prints, and most orders are ready 24–48 hours after you approve it."
     ]
   },
-  "what": { "title": "We speak your language", "body": "Call, text or write to us in Spanish and we’ll handle your whole order in Spanish." },
-  "contactTitle": "Contact information",
-  "cards": {
+  "language": { "title": "We speak your language", "body": "Call, text or write to us in Spanish and we’ll handle your whole order in Spanish." },
+  "hours": { "title": "Hours", "days": "Monday to Sunday", "value": "Open 24 hours", "delivery": "Pickup in Elgin, local contactless delivery and nationwide shipping." },
+  "contact": {
+    "title": "Find us",
     "address": "Address", "directions": "Get directions",
     "phone": "Phone", "phoneNote": "Call or text",
-    "email": "Email", "emailNote": "Send your design or questions",
-    "store": "Online store", "storeLink": "Visit our Shopify store", "storeNote": "Open online 24/7",
-    "social": "Social media", "tiktokLink": "Follow us on TikTok", "socialNote": "See our latest work",
-    "reviews": "Customer reviews", "reviewsLink": "Read our reviews on Facebook", "reviewsNote": "Reviews from our customers"
-  },
-  "hours": {
-    "title": "Business hours",
-    "body": "Always open, every day.",
-    "delivery": "Pickup in Elgin, local contactless delivery, and shipping nationwide."
+    "email": "Email",
+    "store": "Online store", "storeLink": "Visit our Shopify store",
+    "social": "Social", "tiktok": "TikTok", "facebook": "Facebook",
+    "reviews": "Reviews", "reviewsLink": "Read our reviews on Facebook"
   }
 }
