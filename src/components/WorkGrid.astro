@@ -1,0 +1,247 @@
+---
+import { getImage, Picture } from 'astro:assets';
+import Glyph from './Glyph.astro';
+import { photos, categories } from '../data/photos';
+import type { Lang } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const items = await Promise.all(
+  photos.map(async (p) => {
+    const width = Math.min(1600, p.src.width);
+    return {
+      p,
+      width,
+      height: Math.round((p.src.height * width) / p.src.width),
+      full: (await getImage({ src: p.src, width, format: 'webp' })).src,
+    };
+  }),
+);
+// "Fig. 07 — Custom shirts": the number is the photo's place in the full set, so it stays the same when filtered.
+const caption = (p: (typeof photos)[number], i: number) => `${t(lang, 'site.fig')} ${String(i + 1).padStart(2, '0')} — ${t(lang, `site.categories.${p.category}`)}`;
+const widthsFor = (w: number) => {
+  const ws = [400, 800, 1200].filter((x) => x <= w);
+  return ws.length ? ws : [w];
+};
+---
+<div class="filters" role="group" aria-label={t(lang, 'portfolio.filterLabel')} data-filters>
+  <button type="button" aria-pressed="true" data-filter="all">{t(lang, 'portfolio.all')}</button>
+  {categories.map((c) => <button type="button" aria-pressed="false" data-filter={c}>{t(lang, `site.categories.${c}`)}</button>)}
+</div>
+
+<ul class="gallery" data-gallery>
+  {items.map(({ p }, i) => (
+    <li class="reveal" data-category={p.category}>
+      <figure class="fig">
+        <button type="button" class="thumb frame" aria-label={`${t(lang, 'portfolio.open')}: ${p.alt[lang]}`}>
+          <Picture src={p.src} alt={p.alt[lang]} widths={widthsFor(p.src.width)}
+            sizes="(max-width: 600px) 46vw, (max-width: 1000px) 31vw, 300px"
+            formats={['avif', 'webp']} fallbackFormat="jpg" loading="lazy" decoding="async" />
+        </button>
+        <figcaption class="mono">{caption(p, i)}</figcaption>
+      </figure>
+    </li>
+  ))}
+</ul>
+
+<!-- One slide per photo, in the same order as the grid. Swiping is native scroll-snap, so momentum and edge bounce come from the browser. -->
+<dialog class="viewer" data-viewer aria-label={t(lang, 'portfolio.open')}>
+  <ul class="slides" data-slides>
+    {items.map(({ p, full, width, height }, i) => (
+      <li data-category={p.category}>
+        <img src={full} alt={p.alt[lang]} width={width} height={height} loading="lazy" decoding="async" style={`max-width: min(100%, ${width * 2}px); max-height: min(100%, ${height * 2}px)`} />
+        <p class="cap mono">{caption(p, i)}</p>
+      </li>
+    ))}
+  </ul>
+  <button type="button" class="btn btn--line step prev" data-step="-1" aria-label={t(lang, 'portfolio.prev')}><Glyph name="arrow" /></button>
+  <button type="button" class="btn btn--line step next" data-step="1" aria-label={t(lang, 'portfolio.next')}><Glyph name="arrow" /></button>
+  <button type="button" class="btn btn--ink close" data-close><Glyph name="close" />{t(lang, 'portfolio.close')}</button>
+</dialog>
+
+<style>
+  /* Filters: mono tabs on a hairline. They need the script, so they stay hidden without it. */
+  .filters {
+    display: none; flex-wrap: wrap; column-gap: clamp(1.25rem, 3vw, 2.5rem);
+    margin-bottom: clamp(2rem, 4vw, 3.25rem); border-bottom: 1px solid var(--rule);
+  }
+  :global(.js) .filters { display: flex; }
+  .filters button {
+    min-height: 44px; min-width: 44px; padding: 0.7rem 0 0.6rem; margin-bottom: -1px; cursor: pointer;
+    border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: none; color: var(--ink-soft);
+    font: 500 var(--small)/1.4 var(--font-mono); letter-spacing: 0.02em; white-space: nowrap;
+    transition: color 160ms ease, transform var(--press) var(--ease-out);
+  }
+  .filters button[aria-pressed='true'] { color: var(--ink); border-bottom-color: var(--ink); }
+  .filters button:active { transform: scale(0.97); }
+  .filters button:focus-visible { outline-offset: 2px; }
+  @media (hover: hover) and (pointer: fine) { .filters button:hover { color: var(--ink); } }
+
+  /* The contact sheet: identical 4:5 frames, each with a hairline and a figure caption. */
+  .gallery {
+    list-style: none; margin: 0; padding: 0; display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(260px, 46%), 1fr));
+    gap: clamp(1.75rem, 3.2vw, 3rem) clamp(1rem, 2.4vw, 2rem);
+  }
+  .gallery li[hidden] { display: none; }
+  .fig { margin: 0; }
+  .thumb {
+    position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0; cursor: zoom-in;
+    border: 0; border-radius: 0; background: var(--paper-2); color: inherit;
+    transition: transform var(--press) var(--ease-out);
+  }
+  .thumb :global(picture) { display: block; height: 100%; }
+  .thumb :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  /* The hairline sits on top of the photo, so the photo fills the whole frame. */
+  .thumb::after { content: ''; position: absolute; inset: 0; border: 1px solid var(--rule); pointer-events: none; }
+  /* Pointing at a frame marks it like a grease-pencil select on a proof sheet: magenta corner brackets. */
+  .thumb::before {
+    --m: var(--magenta);
+    content: ''; position: absolute; inset: -8px; pointer-events: none; opacity: 0;
+    background:
+      linear-gradient(var(--m), var(--m)) 0 0 / 16px 2px, linear-gradient(var(--m), var(--m)) 0 0 / 2px 16px,
+      linear-gradient(var(--m), var(--m)) 100% 0 / 16px 2px, linear-gradient(var(--m), var(--m)) 100% 0 / 2px 16px,
+      linear-gradient(var(--m), var(--m)) 0 100% / 16px 2px, linear-gradient(var(--m), var(--m)) 0 100% / 2px 16px,
+      linear-gradient(var(--m), var(--m)) 100% 100% / 16px 2px, linear-gradient(var(--m), var(--m)) 100% 100% / 2px 16px;
+    background-repeat: no-repeat;
+    transition: opacity 160ms ease;
+  }
+  @media (hover: hover) and (pointer: fine) { .thumb:hover::before { opacity: 1; } }
+  .thumb:active { transform: scale(0.97); }
+  figcaption { margin-top: 0.7rem; color: var(--ink-soft); }
+
+  /* Viewer: a paper proof on a dimmed desk. Close sits top right; the caption and arrows share the bottom bar. */
+  .viewer {
+    width: min(100vw - 1.5rem, 1200px); height: min(100dvh - 1.5rem, 940px); max-width: none; max-height: none;
+    padding: 0; overflow: hidden; border: 1px solid var(--rule); border-radius: 0;
+    background: var(--paper); color: var(--ink);
+  }
+  .viewer::backdrop { background: rgb(0 0 0 / 0.7); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  .viewer[open]::backdrop { animation: backdrop-in 240ms cubic-bezier(0.23, 1, 0.32, 1); }
+  @keyframes backdrop-in { from { opacity: 0; } }
+  /* Keep the page behind still while the viewer is open; the reserved gutter stops the layout from shifting. */
+  :global(html:has(dialog[data-viewer][open])) { overflow: hidden; scrollbar-gutter: stable; }
+  .slides {
+    display: flex; height: 100%; margin: 0; padding: 0; list-style: none;
+    overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+  .slides::-webkit-scrollbar { display: none; }
+  .slides li {
+    /* One definite track, so the photo's 100% height means the slide, not the photo's own size. */
+    position: relative; flex: 0 0 100%; min-width: 0; display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center;
+    padding: 4.5rem 0.75rem 4.75rem; scroll-snap-align: center; scroll-snap-stop: always;
+  }
+  .slides li[hidden] { display: none; }
+  /* Fill the slide but never upscale past 2x, so small source photos stay sharp enough. */
+  .slides img { width: 100%; height: 100%; object-fit: contain; }
+  .cap {
+    position: absolute; left: 1rem; right: calc(0.75rem + 96px + 0.5rem + 1rem); bottom: 0.75rem;
+    min-height: 48px; display: flex; align-items: center; margin: 0; color: var(--ink-soft);
+  }
+  .step { position: absolute; bottom: 0.75rem; width: 48px; min-height: 48px; height: 48px; padding: 0; background: var(--paper); }
+  .prev { right: calc(0.75rem + 48px + 0.5rem); }
+  .prev :global(svg) { rotate: 180deg; }
+  .next { right: 0.75rem; }
+  .close { position: absolute; top: 0.75rem; right: 0.75rem; }
+</style>
+
+<script>
+  const gallery = document.querySelector<HTMLElement>('[data-gallery]');
+  const filters = document.querySelector<HTMLElement>('[data-filters]');
+  const viewer = document.querySelector<HTMLDialogElement>('[data-viewer]');
+  const slides = viewer?.querySelector<HTMLElement>('[data-slides]');
+  const cells = gallery ? [...gallery.querySelectorAll<HTMLElement>(':scope > li')] : [];
+  const thumbs = cells.map((li) => li.querySelector<HTMLButtonElement>('.thumb')!);
+  const slideEls = slides ? [...slides.querySelectorAll<HTMLElement>(':scope > li')] : [];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (filters) {
+    const apply = (f: string) => {
+      for (const b of filters.querySelectorAll<HTMLElement>('[data-filter]')) b.setAttribute('aria-pressed', String(b.dataset.filter === f));
+      cells.forEach((li, i) => {
+        li.hidden = f !== 'all' && li.dataset.category !== f;
+        if (slideEls[i]) slideEls[i].hidden = li.hidden;
+      });
+    };
+    filters.addEventListener('click', (e) => {
+      const f = (e.target as Element).closest<HTMLButtonElement>('[data-filter]')?.dataset.filter;
+      if (!f) return;
+      apply(f);
+      // Keep the filter in the URL so a filtered view can be shared or bookmarked.
+      const url = new URL(location.href);
+      if (f === 'all') url.searchParams.delete('category');
+      else url.searchParams.set('category', f);
+      history.replaceState(null, '', url);
+    });
+    const initial = new URLSearchParams(location.search).get('category');
+    if (initial && filters.querySelector(`[data-filter="${CSS.escape(initial)}"]`)) apply(initial);
+  }
+
+  if (gallery && viewer && slides) {
+    const visible = () => slideEls.filter((s) => !s.hidden);
+    const currentIndex = () => slideEls.indexOf(visible()[Math.round(slides.scrollLeft / slides.clientWidth)] ?? visible()[0]);
+    let closing = false;
+    let returnTo: HTMLElement | null = null;
+
+    // Grow the dialog out of the tapped thumbnail (and shrink back into it), so the photo keeps its place in space.
+    const morph = (thumb: HTMLElement, dir: 'in' | 'out') => {
+      if (reduce.matches) return null;
+      const a = thumb.getBoundingClientRect();
+      const b = viewer.getBoundingClientRect();
+      const dx = a.left + a.width / 2 - (b.left + b.width / 2);
+      const dy = a.top + a.height / 2 - (b.top + b.height / 2);
+      const frames = [{ transform: `translate(${dx}px, ${dy}px) scale(${a.width / b.width})`, opacity: 0.5 }, { transform: 'none', opacity: 1 }];
+      if (dir === 'out') {
+        frames.reverse();
+        try { viewer.animate({ opacity: [1, 0] }, { duration: 240, pseudoElement: '::backdrop', fill: 'forwards' }); } catch {}
+      }
+      return viewer.animate(frames, { duration: dir === 'in' ? 360 : 240, easing: 'cubic-bezier(0.2, 0.9, 0.25, 1)', fill: dir === 'out' ? 'forwards' : 'none' });
+    };
+
+    const close = () => {
+      if (closing || !viewer.open) return;
+      closing = true;
+      returnTo = thumbs[currentIndex()] ?? null;
+      const r = returnTo?.getBoundingClientRect();
+      const onScreen = r && r.bottom > 0 && r.top < innerHeight;
+      const anim = returnTo && onScreen ? morph(returnTo, 'out') : null;
+      const done = () => {
+        viewer.close();
+        for (const a of viewer.getAnimations({ subtree: true })) a.cancel();
+        closing = false;
+      };
+      if (anim) anim.finished.then(done, done);
+      else done();
+    };
+
+    const step = (dir: number) => slides.scrollBy({ left: dir * slides.clientWidth, behavior: reduce.matches ? 'auto' : 'smooth' });
+
+    gallery.addEventListener('click', (e) => {
+      const thumb = (e.target as Element).closest<HTMLButtonElement>('.thumb');
+      if (!thumb) return;
+      viewer.showModal();
+      slides.scrollLeft = visible().indexOf(slideEls[thumbs.indexOf(thumb)]) * slides.clientWidth;
+      morph(thumb, 'in');
+    });
+    viewer.addEventListener('click', (e) => {
+      const target = e.target as Element;
+      const stepBtn = target.closest<HTMLElement>('[data-step]');
+      if (stepBtn) step(Number(stepBtn.dataset.step));
+      else if (target.closest('[data-close]') || target === viewer || target.parentElement === slides) close();
+    });
+    viewer.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        step(e.key === 'ArrowRight' ? 1 : -1);
+      }
+    });
+    // Esc: run the same animated close instead of the dialog's instant one.
+    viewer.addEventListener('cancel', (e) => {
+      e.preventDefault();
+      close();
+    });
+    viewer.addEventListener('close', () => returnTo?.focus());
+  }
+</script>

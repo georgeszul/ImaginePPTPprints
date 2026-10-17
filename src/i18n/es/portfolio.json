@@ -1,12 +1,9 @@
 {
-  "meta": {
-    "title": "Portafolio | Imagine PPTP Prints",
-    "description": "Mira camisetas, sudaderas, tarjetas de presentación, lonas y calcomanías reales impresas por Imagine PPTP Prints en Elgin, IL."
-  },
-  "title": "Nuestro portafolio",
-  "subtitle": "Pedidos reales que hemos impreso para nuestros clientes.",
-  "filterLabel": "Filtrar proyectos",
-  "filters": { "all": "Todos", "shirts": "Camisetas", "hoodies": "Sudaderas", "hats": "Gorras", "banners": "Lonas", "cards": "Tarjetas", "stickers": "Calcomanías" },
+  "meta": { "title": "Nuestros trabajos | Imagine PPTP Prints", "description": "Camisetas, tarjetas de presentación, lonas y calcomanías que imprimimos para clientes reales en Imagine PPTP Prints, en Elgin, IL." },
+  "title": "Trabajos",
+  "lead": "Pedidos reales que hemos impreso para nuestros clientes.",
+  "filterLabel": "Filtrar fotos",
+  "all": "Todos",
   "open": "Ver en grande",
   "close": "Cerrar",
   "prev": "Foto anterior",
