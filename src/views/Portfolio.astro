@@ -1,22 +1,23 @@
 ---
-import Base from '../layouts/Base.astro';
-import Gallery from '../components/Gallery.astro';
-import Cta from '../components/Cta.astro';
+import Page from '../layouts/Page.astro';
+import SectionHead from '../components/SectionHead.astro';
+import WorkGrid from '../components/WorkGrid.astro';
 import type { Lang } from '../i18n/routes';
 import { t } from '../i18n/t';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 ---
-<Base lang={lang} page="portfolio" title={t(lang, 'portfolio.meta.title')} description={t(lang, 'portfolio.meta.description')}>
-  <section class="page-head">
-    <div class="container">
-      <h1>{t(lang, 'portfolio.title')}</h1>
-      <p class="lead">{t(lang, 'portfolio.subtitle')}</p>
+<Page lang={lang} page="portfolio" title={t(lang, 'portfolio.meta.title')} description={t(lang, 'portfolio.meta.description')}>
+  <section class="sec work" aria-labelledby="work-title">
+    <div class="wrap">
+      <SectionHead level={1} n={1} id="work-title" title={t(lang, 'portfolio.title')} lead={t(lang, 'portfolio.lead')} />
+      <WorkGrid lang={lang} />
     </div>
   </section>
-  <section class="section">
-    <div class="container"><Gallery lang={lang} /></div>
-  </section>
-  <Cta lang={lang} />
-</Base>
+</Page>
+
+<style>
+  /* The header already draws the rule above this first section. */
+  .work { border-top: 0; }
+</style>
