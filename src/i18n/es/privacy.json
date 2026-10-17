@@ -32,14 +32,14 @@
     {
       "id": "retention",
       "title": "Cuánto tiempo la guardamos",
-      "body": "Guardamos las solicitudes, los mensajes y los archivos solo el tiempo necesario para tu pedido, una posible reimpresión y nuestros registros del negocio. Después los borramos."
+      "body": "Guardamos las solicitudes, los mensajes y los archivos solo mientras los necesitemos para tu pedido, una posible reimpresión y nuestros registros del negocio. Después los borramos."
     },
     {
       "id": "cookies",
       "title": "Política de cookies",
       "body": [
         "Este sitio no usa cookies. No usa cookies de analítica, de publicidad ni de rastreo.",
-        "Guarda en el almacenamiento de tu propio navegador si prefieres el modo claro u oscuro, para que el sitio se vea igual la próxima vez. Esa preferencia nunca sale de tu dispositivo y puedes borrarla desde la configuración de tu navegador.",
+        "Guarda en el almacenamiento de tu propio navegador si prefieres el modo claro u oscuro. Así, el sitio se verá igual la próxima vez. Esa preferencia nunca sale de tu dispositivo y puedes borrarla desde la configuración de tu navegador.",
         "Como no rastreamos nada, no hay nada que aceptar, así que no mostramos un aviso de cookies. Si algún día agregamos analítica o publicidad, primero te pediremos tu consentimiento."
       ]
     },
@@ -68,5 +68,6 @@
     }
   ],
   "deleteCta": "Pedir que borren mis datos",
-  "deleteSubject": "Solicitud para borrar mis datos"
+  "deleteSubject": "Solicitud para borrar mis datos",
+  "business": { "name": "Nombre", "address": "Dirección", "phone": "Teléfono", "email": "Correo" }
 }

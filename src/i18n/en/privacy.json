@@ -32,20 +32,20 @@
     {
       "id": "retention",
       "title": "How long we keep it",
-      "body": "We keep quote requests, messages and files only as long as we need them for your order, a possible reprint and our business records. Then we delete them."
+      "body": "We keep quote requests, messages and files only while we need them for your order, a possible reprint and our business records. Then we delete them."
     },
     {
       "id": "cookies",
       "title": "Cookie policy",
       "body": [
         "This site doesn’t set cookies. It doesn’t use analytics, advertising or tracking cookies.",
-        "It saves your light or dark mode choice in your own browser’s storage, so the site looks the way you picked next time. That choice never leaves your device, and you can clear it in your browser settings.",
+        "It saves your light or dark mode choice in your own browser’s storage. That way, the site looks the way you picked next time. That choice never leaves your device, and you can clear it in your browser settings.",
         "Because nothing is tracked, there’s nothing to opt in to, so we don’t show a cookie banner. If we ever add analytics or advertising, we’ll ask for your consent first."
       ]
     },
     {
       "id": "children",
-      "title": "Children",
+      "title": "Children’s privacy",
       "body": "This site isn’t directed at children under 13, and we don’t knowingly collect their information. If a parent or guardian believes their child sent us information, contact us and we’ll delete it."
     },
     {
@@ -68,5 +68,6 @@
     }
   ],
   "deleteCta": "Request data deletion",
-  "deleteSubject": "Data deletion request"
+  "deleteSubject": "Data deletion request",
+  "business": { "name": "Name", "address": "Address", "phone": "Phone", "email": "Email" }
 }

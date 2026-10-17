@@ -1,6 +1,9 @@
 ---
-// Privacy (with the cookie policy), terms and refund policy share one layout; the text lives in i18n/<lang>/<doc>.json.
-import Base from '../layouts/Base.astro';
+// Privacy (with the cookie policy), terms and refund policy share one view; the text lives in i18n/<lang>/<doc>.json.
+import Page from '../layouts/Page.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ColorBar from '../components/ColorBar.astro';
+import Ticket from '../components/Ticket.astro';
 import { site } from '../data/site';
 import type { Lang } from '../i18n/routes';
 import { t, tRaw } from '../i18n/t';
@@ -10,38 +13,119 @@ const { lang, doc } = Astro.props;
 const sections = tRaw<{ id: string; title: string; body: string | string[] }[]>(lang, `${doc}.sections`);
 const paras = (body: string | string[]) => (Array.isArray(body) ? body : [body]);
 const deleteHref = doc === 'privacy' ? `mailto:${site.email}?subject=${encodeURIComponent(t(lang, 'privacy.deleteSubject'))}` : '';
+const businessTitle = t(lang, 'site.legal.business');
+// The business-detail labels live in privacy.json and serve all three pages.
+const b = (key: string) => t(lang, `privacy.business.${key}`);
+const business = [
+  { label: b('name'), value: site.name },
+  { label: b('address'), value: `${site.street}, ${site.locality}, ${site.region} ${site.postalCode}` },
+  { label: b('phone'), value: site.phone },
+  { label: b('email'), value: site.email },
+];
+const contents = [...sections, { id: 'business', title: businessTitle }];
+const num = (i: number) => String(i + 1).padStart(2, '0');
+const contentsLabel = t(lang, 'site.legal.contents');
 ---
-<Base lang={lang} page={doc} title={t(lang, `${doc}.meta.title`)} description={t(lang, `${doc}.meta.description`)}>
-  <section class="page-head">
-    <div class="narrow">
-      <h1>{t(lang, `${doc}.title`)}</h1>
-      <p class="lead">{t(lang, `${doc}.updated`)}</p>
+<Page lang={lang} page={doc} title={t(lang, `${doc}.meta.title`)} description={t(lang, `${doc}.meta.description`)}>
+  <div class="wrap legal">
+    <div class="head">
+      <SectionHead level={1} n={1} id="title" title={t(lang, `${doc}.title`)} lead={t(lang, `${doc}.updated`)} />
     </div>
-  </section>
-  <section class="section">
-    <div class="narrow prose">
-      {sections.map((s) => (
+
+    <!-- Phones and tablets: a folded contents list above the text. -->
+    <details class="toc toc--fold">
+      <summary class="mono">{contentsLabel}</summary>
+      <nav aria-label={contentsLabel}>
+        <ol>{contents.map((c, i) => <li><a href={`#${c.id}`}><span class="n" aria-hidden="true">{num(i)}</span><span class="t">{c.title}</span></a></li>)}</ol>
+      </nav>
+    </details>
+
+    <!-- 960 px and up: the same list, sticky beside the text. -->
+    <nav class="toc toc--side" aria-label={contentsLabel}>
+      <ColorBar />
+      <p class="mono label" aria-hidden="true">{contentsLabel}</p>
+      <ol>{contents.map((c, i) => <li><a href={`#${c.id}`}><span class="n" aria-hidden="true">{num(i)}</span><span class="t">{c.title}</span></a></li>)}</ol>
+    </nav>
+
+    <div class="prose">
+      {sections.map((s, i) => (
         <>
-          <h2 id={s.id}>{s.title}</h2>
+          <h2 id={s.id}><span class="n mono" aria-hidden="true">{num(i)}</span>{s.title}</h2>
           {paras(s.body).map((p) => <p>{p}</p>)}
-          {s.id === 'delete' && <p><a class="btn btn--ghost" href={deleteHref}>{t(lang, 'privacy.deleteCta')}</a></p>}
+          {s.id === 'delete' && <p><a class="btn btn--line" href={deleteHref}>{t(lang, 'privacy.deleteCta')}</a></p>}
         </>
       ))}
-      <h2 id="business">{t(lang, 'common.legal.business')}</h2>
-      <address class="business">
-        <span translate="no">{site.name}</span><br />
-        {site.street}, {site.locality}, {site.region} {site.postalCode}<br />
-        <a href={site.phoneHref}>{site.phone}</a><br />
-        <a href={`mailto:${site.email}`}>{site.email}</a>
-      </address>
+      <h2 id="business"><span class="n mono" aria-hidden="true">{num(sections.length)}</span>{businessTitle}</h2>
+      <Ticket class="biz" rows={business} />
     </div>
-  </section>
-</Base>
+  </div>
+</Page>
 
 <style>
+  .legal { padding-block: clamp(2.5rem, 6vw, 5rem) var(--sec); }
+
+  /* Contents list: mono, numbered like the clauses it points to. */
+  .toc ol { list-style: none; margin: 0; padding: 0; }
+  .toc li + li { border-top: 1px solid var(--rule); }
+  .toc a {
+    display: grid; grid-template-columns: 2.25rem 1fr; align-items: baseline;
+    min-height: 44px; padding: 0.7rem 0; color: var(--ink); text-decoration: none;
+    font: 400 var(--small)/1.45 var(--font-mono);
+  }
+  .toc .n { color: var(--ink-soft); }
+  /* Underline grows under the title on hover. */
+  .toc .t {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size 220ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) { .toc a:hover .t { background-size: 100% 1px; } }
+
+  .toc--side { display: none; }
+  .toc--fold { margin-bottom: 2.5rem; border-block: 1px solid var(--rule); }
+  .toc--fold summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    min-height: 48px; cursor: pointer; list-style: none; text-transform: uppercase;
+  }
+  .toc--fold summary::-webkit-details-marker { display: none; }
+  /* Plus that turns into a cross when open. */
+  .toc--fold summary::after {
+    content: ''; flex: none; width: 14px; height: 14px;
+    background:
+      linear-gradient(currentColor, currentColor) center / 100% 1.5px no-repeat,
+      linear-gradient(currentColor, currentColor) center / 1.5px 100% no-repeat;
+    transition: transform 200ms var(--ease-out);
+  }
+  .toc--fold[open] summary::after { transform: rotate(45deg); }
+  .toc--fold ol { border-top: 1px solid var(--rule); }
+
+  /* Long-form text: one readable column, a hairline and a clause number above each heading. */
   .prose { max-width: 68ch; }
-  .prose h2 { font-size: 1.35rem; margin-top: 2.25rem; }
+  .prose h2 {
+    margin: 3.25rem 0 0.9rem; padding-top: 1.25rem; border-top: 1px solid var(--rule);
+    font-size: var(--h3); line-height: 1.15; letter-spacing: -0.01em; font-stretch: 100%;
+  }
   .prose h2:first-child { margin-top: 0; }
+  .prose h2 .n { display: block; width: fit-content; margin-bottom: 0.65rem; color: var(--ink-soft); }
+  /* The clause you jumped to gets a highlighter mark on its number. */
+  .prose h2:target .n { margin-left: -0.35em; padding-inline: 0.35em; background: var(--yellow); color: var(--on-color); }
   .prose p { color: var(--ink-soft); }
-  .business { font-style: normal; line-height: 1.9; }
+  .prose .btn { margin-top: 0.5rem; }
+  .prose :global(.biz) { margin-top: 1.25rem; }
+  .prose :global(.biz dd) { overflow-wrap: anywhere; }
+  /* Narrow phones: label above value, so the email address stays on one line. */
+  @media (max-width: 30rem) { .prose :global(.biz div) { grid-template-columns: 1fr; gap: 0.2rem; } }
+
+  @media (min-width: 960px) {
+    .legal { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 1.5rem; align-items: start; }
+    .head { grid-column: 1 / -1; }
+    .toc--fold { display: none; }
+    .toc--side {
+      display: block; grid-column: 1 / span 3; position: sticky; top: calc(var(--header-h) + 1.5rem);
+      max-height: calc(100svh - var(--header-h) - 3rem); overflow-y: auto;
+    }
+    .toc--side .label { margin: 1rem 0 0.5rem; color: var(--ink-soft); text-transform: uppercase; }
+    /* The list scrolls on short screens, so the focus ring sits inside the link. */
+    .toc--side a:focus-visible { outline-offset: -3px; }
+    .prose { grid-column: 5 / span 7; }
+  }
 </style>

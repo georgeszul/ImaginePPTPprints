@@ -16,7 +16,7 @@
       "title": "Cotizaciones y precios",
       "body": [
         "Los precios de la calculadora en línea son estimados. No incluyen impuestos ni envío.",
-        "Tu cotización muestra el precio final. Si cambias el pedido después de cotizarlo, por ejemplo cantidades, tallas o colores, te enviaremos una cotización nueva antes de empezar."
+        "Tu cotización muestra el precio final. Si cambias el pedido después de cotizarlo, te enviaremos una cotización nueva antes de empezar. Eso incluye cambios de cantidades, tallas o colores."
       ]
     },
     {
@@ -26,7 +26,7 @@
     },
     {
       "id": "payment",
-      "title": "Pagos",
+      "title": "Cómo pagar tu pedido",
       "body": "Aceptamos efectivo, tarjetas de crédito, PayPal, Venmo y Zelle. Normalmente el pago se hace antes de empezar la producción. Pregúntanos por planes de pago para pedidos grandes."
     },
     {
@@ -37,12 +37,12 @@
     {
       "id": "turnaround",
       "title": "Tiempos de entrega",
-      "body": "La mayoría de los pedidos están listos de 24 a 48 horas después de aprobar la prueba, y los pedidos grandes tardan de 2 a 3 días. El servicio urgente el mismo día tiene un costo adicional. Estos son nuestros tiempos habituales. Si una fecha es importante, avísanos antes de aprobar la prueba y te confirmamos si podemos cumplirla."
+      "body": "La mayoría de los pedidos están listos de 24 a 48 horas después de aprobar la prueba. Los pedidos grandes tardan de 2 a 3 días. El servicio urgente el mismo día tiene un costo adicional. Estos son nuestros tiempos habituales. Si una fecha es importante, avísanos antes de aprobar la prueba y te confirmamos si podemos cumplirla."
     },
     {
       "id": "delivery",
       "title": "Recogida, entrega y envío",
-      "body": "Puedes recoger tu pedido en nuestro local de Elgin. También hay entrega local sin contacto y envío a todo el país. El costo del envío se agrega a tu cotización."
+      "body": "Puedes recoger tu pedido en nuestro local de Elgin. También hay entrega local sin contacto y envío a todo el país. Agregamos el costo del envío a tu cotización."
     },
     {
       "id": "refunds",
