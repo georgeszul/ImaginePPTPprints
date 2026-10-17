@@ -7,7 +7,7 @@ This plan gets Imagine PPTP Prints found by people in and around Elgin who searc
 Search engines trust a business when its name, address and phone match exactly across the web. Copy these lines character for character into every listing:
 
 - **Name**: Imagine PPTP Prints
-- **Address**: 840 N State St, Elgin, IL 60123
+- **Address**: 840 N State St, Elgin, IL 60123. The website's footer also names the neighborhood ("Northeast Elgin"); pick one form, use it on every listing, and change `addressLine` in `src/data/site.ts` to match if needed.
 - **Phone**: (331) 255-5330
 - **Website**: the live domain, with `https://`
 - **Hours**: the same hours the site shows (currently "open 24 hours, every day"; change both together if that changes)
