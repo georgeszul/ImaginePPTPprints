@@ -22,8 +22,18 @@ const follow = [
   { href: site.tiktok, label: 'TikTok' },
   { href: site.shopify, label: c('follow.shop') },
 ];
+// The same questions as the FAQ below, as schema.org FAQPage data for search results.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: tRaw<{ q: string; a: string }[]>(lang, 'faq.items').map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
 ---
-<Page lang={lang} page="contact" title={c('meta.title')} description={c('meta.description')}>
+<Page lang={lang} page="contact" title={c('meta.title')} description={c('meta.description')} schema={[faqSchema]}>
   <div class="wrap intro">
     <SectionHead level={1} n={1} id="contact-title" title={c('title')} lead={c('lead')} />
   </div>

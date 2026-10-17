@@ -13,6 +13,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 import ContactDock from '../components/ContactDock.astro';
 import logo from '../assets/logo.jpg';
 import { site } from '../data/site';
+import { coverFor } from '../data/photos';
 import { routes, langs, type Lang, type PageKey } from '../i18n/routes';
 import { t } from '../i18n/t';
 
@@ -22,12 +23,19 @@ interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  /** Extra schema.org objects for this page (for example the FAQ on Contact). */
+  schema?: Record<string, unknown>[];
 }
-const { lang, page, title, description, noindex = false } = Astro.props;
+const { lang, page, title, description, noindex = false, schema = [] } = Astro.props;
 const abs = (path: string) => new URL(path, Astro.site).href;
 const paths = page !== null && !noindex ? routes[page] : null;
 const canonical = paths ? abs(paths[lang]) : undefined;
-const og = await getImage({ src: logo, width: 1200, height: 1200, format: 'jpg' });
+// Social preview: a 1200x630 crop of the hero shirt photo (the size Facebook, X and WhatsApp expect).
+const hero = coverFor('shirts');
+const og = hero
+  ? await getImage({ src: hero.src, width: 1200, height: 630, fit: 'cover', format: 'jpg' })
+  : await getImage({ src: logo, width: 1200, height: 1200, format: 'jpg' });
+const ogAlt = hero ? hero.alt[lang] : site.name;
 // Penguin favicon and home-screen icon, generated from the logo at build time.
 const favicon = await getImage({ src: logo, width: 64, height: 64, format: 'png' });
 const touchIcon = await getImage({ src: logo, width: 180, height: 180, format: 'png' });
@@ -50,10 +58,20 @@ const jsonLd =
           addressCountry: site.country,
         },
         openingHours: 'Mo-Su 00:00-23:59',
+        areaServed: 'Elgin, IL',
         knowsLanguage: ['en', 'es'],
         sameAs: [site.facebook, site.tiktok, site.shopify],
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: t(lang, 'site.nav.services'),
+          itemListElement: (['shirts', 'hoodies', 'hats', 'banners', 'cards', 'stickers'] as const).map((c) => ({
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: t(lang, `site.categories.${c}`), url: abs(`${routes.services[lang]}#${c}`) },
+          })),
+        },
       }
     : null;
+const schemas = [jsonLd, ...schema].filter(Boolean);
 ---
 <!doctype html>
 <html lang={lang}>
@@ -77,6 +95,14 @@ const jsonLd =
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={abs(og.src)} />
+    <meta property="og:image:width" content={String(og.attributes.width ?? 1200)} />
+    <meta property="og:image:height" content={String(og.attributes.height ?? 630)} />
+    <meta property="og:image:alt" content={ogAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={abs(og.src)} />
+    <meta name="twitter:image:alt" content={ogAlt} />
     <meta property="og:locale" content={lang === 'es' ? 'es_US' : 'en_US'} />
     {canonical && <meta property="og:url" content={canonical} />}
     <script is:inline>
@@ -95,7 +121,8 @@ const jsonLd =
         document.addEventListener('touchstart', function () {}, { passive: true });
       })();
     </script>
-    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    {/* `<` is escaped so no string in the data can close the script tag early. */}
+    {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s).replace(/</g, '\\u003c')} />)}
   </head>
   <body>
     <a class="skip" href="#main">{t(lang, 'site.skip')}</a>
