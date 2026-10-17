@@ -1,40 +1,53 @@
 {
   "meta": {
     "title": "Imagine PPTP Prints | Camisetas, sudaderas, gorras e impresión personalizada en Elgin, IL",
-    "description": "Camisetas, sudaderas, gorras, lonas, tarjetas de presentación y calcomanías personalizadas en Elgin, IL. Entrega en 24 a 48 horas, sin mínimos y ayuda con el diseño gratis."
+    "description": "Camisetas, sudaderas, gorras, lonas, tarjetas de presentación y stickers personalizados, impresos en Elgin, IL. Listos de 24 a 48 horas después de aprobar la prueba, sin mínimos y con ayuda de diseño gratis."
   },
   "hero": {
-    "title": "Camisetas, sudaderas y lonas personalizadas, impresas en Elgin en 24 a 48 horas",
-    "subtitle": "Mándanos tu diseño o lo creamos contigo. Satisfacción 100% garantizada.",
-    "logoAlt": "Logotipo de Imagine Prints con un pingüino"
-  },
-  "services": {
-    "title": "Lo que imprimimos",
-    "subtitle": "Camisetas, sudaderas, gorras, lonas, tarjetas de presentación y calcomanías para negocios, equipos y eventos. Mándanos tu diseño o lo creamos contigo.",
-    "items": [
-      { "key": "shirts", "title": "Camisetas personalizadas", "body": "Camisetas impresas para negocios, equipos y eventos." },
-      { "key": "hoodies", "title": "Sudaderas personalizadas", "body": "Tu diseño en sudaderas cerradas o con cierre, para equipos y eventos." },
-      { "key": "hats", "title": "Gorras personalizadas", "body": "Gorras, gorras trucker y gorros tejidos con tu logotipo o diseño." },
-      { "key": "banners", "title": "Lonas y pancartas", "body": "Lonas y letreros de vinil o tela para eventos y negocios." },
-      { "key": "cards", "title": "Tarjetas de presentación", "body": "Tarjetas a todo color en acabado mate, brillante o semibrillante." },
-      { "key": "stickers", "title": "Calcomanías", "body": "Calcomanías de vinil para tu marca, vehículos y promociones." }
-    ],
-    "more": "Ver todos los servicios"
-  },
-  "how": {
-    "title": "Cómo funciona",
-    "subtitle": "De tu idea a la impresión terminada en tres pasos",
-    "steps": [
-      { "title": "Mándanos tu diseño", "body": "Sube tu diseño o trabaja con nosotros para crear uno. Aceptamos archivos JPG, PNG, PDF, AI, EPS, PSD y SVG." },
-      { "title": "Elige tus productos", "body": "Escoge entre camisetas, sudaderas, gorras, lonas y más. Te ayudamos a elegir lo ideal." },
-      { "title": "Listo en 24 a 48 horas", "body": "La mayoría de los pedidos están listos de 24 a 48 horas después de aprobar la prueba. También hay servicio urgente el mismo día." }
+    "kicker": "Imprenta · Elgin, Illinois",
+    "title": "Imprimimos lo que imaginas.",
+    "lead": "Camisetas, sudaderas, gorras, lonas, tarjetas de presentación y stickers. Trae tu diseño o lo hacemos contigo sin costo.",
+    "facts": [
+      { "label": "Entrega", "value": "De 24 a 48 horas" },
+      { "label": "Pedido mínimo", "value": "No hay" },
+      { "label": "Diseño", "value": "Te ayudamos gratis" },
+      { "label": "Hablamos", "value": "Español e inglés" }
     ]
   },
-  "work": { "title": "Trabajos recientes", "all": "Ver todos nuestros trabajos", "pause": "Pausar presentación", "play": "Reproducir presentación" },
-  "why": {
-    "items": ["Urgentes el mismo día", "Sin mínimos", "Diseño gratis", "¡Hablamos español!"]
+  "work": { "title": "Recién impresos", "lead": "Pedidos reales que imprimimos para nuestros clientes.", "all": "Ver todos los trabajos", "pause": "Pausar" },
+  "services": {
+    "title": "Lo que imprimimos",
+    "lead": "Desde una sola pieza hasta pedidos grandes, para negocios, equipos y eventos.",
+    "more": "Servicios y precios",
+    "items": [
+      { "key": "shirts", "title": "Camisetas personalizadas", "body": "Para tu negocio, tu equipo o tu evento." },
+      { "key": "hoodies", "title": "Sudaderas", "body": "Cerradas o con cierre, con tu diseño." },
+      { "key": "hats", "title": "Gorras", "body": "Gorras, trucker y gorros tejidos, bordados o impresos." },
+      { "key": "banners", "title": "Lonas y letreros", "body": "De vinil o de tela, hasta 10 pies de ancho." },
+      { "key": "cards", "title": "Tarjetas de presentación", "body": "A todo color, en acabado mate, brillante o semibrillante." },
+      { "key": "stickers", "title": "Calcomanías y stickers", "body": "De vinil, para tu marca, tus vehículos y tus promociones." }
+    ]
   },
-  "reviews": {
-    "cta": "Leer reseñas en Facebook"
-  }
+  "how": {
+    "title": "Así funciona un pedido",
+    "step": "Paso",
+    "steps": [
+      { "title": "Mándanos tu idea", "body": "Sube un archivo, mándanos una foto o descríbenos lo que quieres. Aceptamos JPG, PNG, PDF, AI, EPS, PSD y SVG." },
+      { "title": "Revisa la prueba", "body": "Te mandamos una prueba digital. No imprimimos nada hasta que nos digas que sí." },
+      { "title": "Recoge o recibe tu pedido", "body": "La mayoría de los pedidos están listos de 24 a 48 horas después de aprobar la prueba. Recógelo en Elgin, pide entrega local o te lo mandamos a cualquier parte del país." }
+    ]
+  },
+  "proof": {
+    "title": "Con lo que puedes contar",
+    "items": [
+      "Una prueba digital antes de imprimir",
+      "Sin pedido mínimo",
+      "Ayuda con el diseño gratis",
+      "Servicio urgente el mismo día, con costo extra",
+      "Reimpresión o reembolso si la calidad de impresión no sale bien",
+      "Atención en español o en inglés"
+    ],
+    "reviews": "Lee nuestras reseñas en Facebook"
+  },
+  "cta": { "title": "Cuéntanos qué necesitas imprimir", "body": "Mándanos un mensaje, llámanos o escríbenos un correo, en español o en inglés. La cotización es gratis." }
 }

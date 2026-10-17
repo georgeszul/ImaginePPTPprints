@@ -1,40 +1,53 @@
 {
   "meta": {
     "title": "Imagine PPTP Prints | Custom Shirts, Hoodies, Hats and Printing in Elgin, IL",
-    "description": "Custom printed shirts, hoodies, hats, banners, business cards, and stickers in Elgin, IL. 24–48 hour turnaround, no minimums, free design help. ¡Hablamos español!"
+    "description": "Custom shirts, hoodies, hats, banners, business cards and stickers, printed in Elgin, IL. Ready 24–48 hours after proof approval, no minimums, free design help. ¡Hablamos español!"
   },
   "hero": {
-    "title": "Custom shirts, hoodies and signs, printed in Elgin in 24–48 hours",
-    "subtitle": "Send us your design, or we’ll create one with you. 100% satisfaction guaranteed.",
-    "logoAlt": "Imagine Prints penguin logo"
-  },
-  "services": {
-    "title": "What we print",
-    "subtitle": "Shirts, hoodies, hats, banners, business cards and stickers for businesses, teams and events. Send your design, or we’ll make one with you.",
-    "items": [
-      { "key": "shirts", "title": "Custom shirts", "body": "Printed shirts for businesses, teams and events." },
-      { "key": "hoodies", "title": "Custom hoodies", "body": "Your design on pullover or zip-up hoodies, for teams and events." },
-      { "key": "hats", "title": "Custom hats", "body": "Caps, trucker hats and beanies with your logo or design." },
-      { "key": "banners", "title": "Banners and signs", "body": "Vinyl and fabric banners and signs for events and businesses." },
-      { "key": "cards", "title": "Business cards", "body": "Full-color business cards in matte, glossy or semi-gloss." },
-      { "key": "stickers", "title": "Stickers and decals", "body": "Vinyl stickers and decals for branding, vehicles and promotions." }
-    ],
-    "more": "See all services"
-  },
-  "how": {
-    "title": "How it works",
-    "subtitle": "From your idea to a finished print in three steps",
-    "steps": [
-      { "title": "Send your design", "body": "Upload your artwork, or work with us to create one. We take JPG, PNG, PDF, AI, EPS, PSD and SVG files." },
-      { "title": "Choose your products", "body": "Pick shirts, hoodies, hats, banners and more. We’ll help you choose." },
-      { "title": "Get it in 24–48 hours", "body": "Most orders are ready 24–48 hours after you approve the proof. Same-day rush is available." }
+    "kicker": "Print shop · Elgin, Illinois",
+    "title": "We print what you imagine.",
+    "lead": "Shirts, hoodies, hats, banners, business cards and stickers. Bring your design, or we’ll make one with you at no charge.",
+    "facts": [
+      { "label": "Turnaround", "value": "24–48 hours" },
+      { "label": "Minimum order", "value": "None" },
+      { "label": "Design help", "value": "Free" },
+      { "label": "We speak", "value": "English and Spanish" }
     ]
   },
-  "work": { "title": "Recent work", "all": "See all our work", "pause": "Pause slideshow", "play": "Play slideshow" },
-  "why": {
-    "items": ["Same-day rush available", "No minimums", "Free design help", "¡Hablamos español!"]
+  "work": { "title": "Fresh off the press", "lead": "Real orders we’ve printed for our customers.", "all": "See all work", "pause": "Pause" },
+  "services": {
+    "title": "What we print",
+    "lead": "One piece or a large order, for businesses, teams and events.",
+    "more": "Services and prices",
+    "items": [
+      { "key": "shirts", "title": "Custom shirts", "body": "T-shirts for businesses, teams and events." },
+      { "key": "hoodies", "title": "Hoodies", "body": "Pullover and zip-up, with your design." },
+      { "key": "hats", "title": "Hats", "body": "Caps, trucker hats and beanies, embroidered or printed." },
+      { "key": "banners", "title": "Banners and signs", "body": "Vinyl and fabric, up to 10 ft wide." },
+      { "key": "cards", "title": "Business cards", "body": "Full color in matte, glossy or semi-gloss." },
+      { "key": "stickers", "title": "Stickers and decals", "body": "Vinyl for branding, vehicles and promotions." }
+    ]
   },
-  "reviews": {
-    "cta": "Read our Facebook reviews"
-  }
+  "how": {
+    "title": "How an order works",
+    "step": "Step",
+    "steps": [
+      { "title": "Send your idea", "body": "Upload a file, send a photo or describe it. We take JPG, PNG, PDF, AI, EPS, PSD and SVG." },
+      { "title": "Approve the proof", "body": "We send a digital proof. Nothing prints until you say yes." },
+      { "title": "Pick up or ship", "body": "Most orders are ready 24–48 hours after approval. Pick up in Elgin, get local delivery or ship nationwide." }
+    ]
+  },
+  "proof": {
+    "title": "What you can count on",
+    "items": [
+      "A digital proof before anything prints",
+      "No minimum order",
+      "Free design help",
+      "Same-day rush, for an extra fee",
+      "A reprint or refund if the print quality isn’t right",
+      "Service in English or Spanish"
+    ],
+    "reviews": "Read our reviews on Facebook"
+  },
+  "cta": { "title": "Tell us what you need printed", "body": "Text, call or email us in English or Spanish. Quotes are free." }
 }

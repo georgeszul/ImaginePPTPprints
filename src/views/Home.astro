@@ -1,12 +1,14 @@
 ---
-import { Image } from 'astro:assets';
-import logo from '../assets/logo.jpg';
-import Base from '../layouts/Base.astro';
-import Icon from '../components/Icon.astro';
-import Marquee from '../components/Marquee.astro';
-import Cta from '../components/Cta.astro';
-import Photo from '../components/Photo.astro';
-import DesignHere from '../components/DesignHere.astro';
+import Page from '../layouts/Page.astro';
+import Figure from '../components/Figure.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Ticket from '../components/Ticket.astro';
+import ColorBar from '../components/ColorBar.astro';
+import RegMark from '../components/RegMark.astro';
+import Glyph from '../components/Glyph.astro';
+import ContactSheet from '../components/ContactSheet.astro';
+import ServiceIndex from '../components/ServiceIndex.astro';
+import Coupon from '../components/Coupon.astro';
 import { coverFor, type Category } from '../data/photos';
 import { site } from '../data/site';
 import { routes, type Lang } from '../i18n/routes';
@@ -14,157 +16,138 @@ import { t, tRaw } from '../i18n/t';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
+const facts = tRaw<{ label: string; value: string }[]>(lang, 'home.hero.facts');
 const services = tRaw<{ key: Category; title: string; body: string }[]>(lang, 'home.services.items');
 const steps = tRaw<{ title: string; body: string }[]>(lang, 'home.how.steps');
-const why = tRaw<string[]>(lang, 'home.why.items');
-const spanish = t(lang, 'common.spanish');
-const langOf = (text: string) => (text === spanish ? 'es' : undefined);
-
-// Hero collage: one real print from each of three categories.
-const collage = (['shirts', 'banners', 'stickers'] as const).map((c) => coverFor(c)).filter((p) => p !== undefined);
-
-// Bento: services with a real photo come first, so the big tile is always a photo.
-// ponytail: the size pattern fills a 4-column, 3-row grid for exactly 6 services; revisit if the list changes length.
-const tiles = services
-  .map((s) => ({ ...s, photo: coverFor(s.key) }))
-  .sort((a, b) => Number(!a.photo) - Number(!b.photo));
-const sizes = ['lg', 'wide', 'sm', 'sm', 'wide', 'wide'];
+const proof = tRaw<string[]>(lang, 'home.proof.items');
+const heroPhoto = coverFor('shirts')!;
 ---
-<Base lang={lang} page="home" title={t(lang, 'home.meta.title')} description={t(lang, 'home.meta.description')}>
-  <section class="hero halftone">
-    <div class="container hero-grid">
-      <div>
-        <h1>{t(lang, 'home.hero.title')}</h1>
-        <p class="lead">{t(lang, 'home.hero.subtitle')}</p>
-        <div class="btn-row">
-          <a class="btn btn--primary" href={routes.contact[lang]}>{t(lang, 'common.cta.freeQuote')}</a>
-          <a class="btn btn--ghost" href={site.whatsapp} target="_blank" rel="noopener"><Icon name="chat" />{t(lang, 'common.cta.whatsapp')}</a>
-        </div>
-        <ul class="proof">
-          {why.map((w) => <li lang={langOf(w)}><Icon name="check" size={16} />{w}</li>)}
-          <li><a href={site.facebook} target="_blank" rel="noopener">{t(lang, 'home.reviews.cta')}</a></li>
-        </ul>
+<Page lang={lang} page="home" title={t(lang, 'home.meta.title')} description={t(lang, 'home.meta.description')}>
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="copy">
+      <p class="kicker"><RegMark /> {t(lang, 'home.hero.kicker')}</p>
+      <h1 id="hero-title">{t(lang, 'home.hero.title')}</h1>
+      <p class="lead">{t(lang, 'home.hero.lead')}</p>
+      <div class="btn-row">
+        <a class="btn btn--ink" href={routes.contact[lang]}>{t(lang, 'site.quote')}</a>
+        <a class="btn btn--line" href={site.whatsapp} target="_blank" rel="noopener"><Glyph name="chat" />{t(lang, 'site.cta.whatsapp')}</a>
       </div>
-      <div class="collage" aria-hidden="true">
-        {collage.map((p, i) => (
-          <div class={`print p${i + 1}`}>
-            <Photo photo={p} lang={lang} sizes="(max-width: 860px) 230px, 310px" eager decorative />
-          </div>
-        ))}
-        <Image class="penguin" src={logo} alt="" widths={[120, 240]} sizes="120px" loading="eager" />
+      <Ticket rows={facts} class="facts" />
+      <ColorBar class="hero-bar" />
+    </div>
+    <Figure photo={heroPhoto} lang={lang} n={1} crop eager ratio="4 / 5" sizes="(max-width: 860px) 100vw, 520px" class="hero-fig" />
+  </section>
+
+  <ContactSheet lang={lang} />
+
+  <section class="sec" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="reveal">
+        <SectionHead n={3} id="services-title" title={t(lang, 'home.services.title')} lead={t(lang, 'home.services.lead')} />
       </div>
+      <ServiceIndex lang={lang} items={services} />
+      <p class="after"><a class="btn btn--ink" href={routes.services[lang]}>{t(lang, 'home.services.more')}</a></p>
     </div>
   </section>
 
-  <Marquee lang={lang} />
-
-  <section class="section section--tint">
-    <div class="container">
-      <h2>{t(lang, 'home.services.title')}</h2>
-      <p class="lead">{t(lang, 'home.services.subtitle')}</p>
-      <ul class="bento">
-        {tiles.map((s, i) => (
-          <li class={`reveal tile tile--${sizes[i] ?? 'sm'}`}>
-            <a class="svc glass" href={`${routes.services[lang]}#${s.key}`}>
-              <div class="svc-media">
-                {s.photo ? <Photo photo={s.photo} lang={lang} sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 560px" decorative /> : <DesignHere lang={lang} />}
-              </div>
-              <div class="svc-body">
-                <h3>{s.title}</h3>
-                <p>{s.body}</p>
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <p class="more"><a class="btn btn--ghost" href={routes.services[lang]}>{t(lang, 'home.services.more')}</a></p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="center">
-        <h2>{t(lang, 'home.how.title')}</h2>
-        <p class="lead">{t(lang, 'home.how.subtitle')}</p>
+  <section class="sec" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="reveal">
+        <SectionHead n={4} id="how-title" title={t(lang, 'home.how.title')} />
       </div>
       <ol class="steps">
         {steps.map((s, i) => (
-          <li class="step reveal"><span class="num" aria-hidden="true">{i + 1}</span><h3>{s.title}</h3><p>{s.body}</p></li>
+          <li class="step reveal">
+            <p class="mono label">{t(lang, 'home.how.step')} {i + 1}</p>
+            <span class="corner"><RegMark size={18} /></span>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </li>
         ))}
       </ol>
-      <p class="center"><a class="btn btn--primary" href={routes.contact[lang]}>{t(lang, 'common.cta.freeQuote')}</a></p>
     </div>
   </section>
 
-  <Cta lang={lang} />
-</Base>
+  <section class="sec" aria-labelledby="proof-title">
+    <div class="wrap split">
+      <div class="reveal">
+        <SectionHead n={5} id="proof-title" title={t(lang, 'home.proof.title')} />
+        <a class="btn btn--line" href={site.facebook} target="_blank" rel="noopener">{t(lang, 'home.proof.reviews')}<Glyph name="out" /></a>
+      </div>
+      <ul class="proof">
+        {proof.map((item) => <li><Glyph name="check" />{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec sec--tint" aria-labelledby="cta-title">
+    <div class="wrap close">
+      <div class="close-head reveal">
+        <SectionHead n={6} id="cta-title" title={t(lang, 'home.cta.title')} lead={t(lang, 'home.cta.body')} />
+      </div>
+      <Coupon lang={lang} class="close-coupon" />
+      <div class="btn-row close-btns">
+        <a class="btn btn--yellow" href={site.phoneHref}><Glyph name="phone" />{site.phone}</a>
+        <a class="btn btn--cyan" href={site.whatsapp} target="_blank" rel="noopener"><Glyph name="chat" />{t(lang, 'site.cta.whatsapp')}</a>
+        <a class="btn btn--line" href={`mailto:${site.email}`}><Glyph name="mail" />{t(lang, 'site.cta.email')}</a>
+      </div>
+    </div>
+  </section>
+</Page>
 
 <style>
-  .hero { background: var(--hero-bg); color: var(--hero-ink); }
-  /* Quick facts under the buttons: plain checks, no pills, so the primary button stays the loudest thing. */
-  .proof { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; list-style: none; padding: 0; margin: 1.5rem 0 0; font-weight: 600; font-size: 0.98rem; }
-  .proof li { display: inline-flex; align-items: center; gap: 0.35rem; }
-  .proof a { color: inherit; text-decoration-thickness: 1.5px; }
-  .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 2.5rem; align-items: center; padding-block: clamp(2.5rem, 6vw, 5rem); }
-  .hero .lead { color: var(--hero-ink); margin-bottom: 1.5rem; }
-
-  /* A loose pile of real prints, each outlined and shadowed like a sticker. */
-  .collage { position: relative; aspect-ratio: 1; width: min(100%, 460px); justify-self: center; }
-  .print {
-    position: absolute; overflow: hidden; background: #fff;
-    border: 2px solid #111; border-radius: var(--radius); box-shadow: 6px 6px 0 #111;
-    animation: drop 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  /* Hero: headline, offer and facts on the left; one large print with crop marks on the right. */
+  .hero {
+    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(1rem, 3vw, 2.5rem); row-gap: 3rem;
+    align-items: start; padding-block: clamp(2.5rem, 6vw, 5.5rem) var(--sec);
   }
-  .print :global(img) { width: 100%; height: 100%; object-fit: cover; }
-  .p1 { width: 64%; aspect-ratio: 4 / 5; left: 0; top: 2%; rotate: -4deg; }
-  .p2 { width: 58%; aspect-ratio: 4 / 3; right: 0; top: 28%; rotate: 3deg; animation-delay: 0.1s; }
-  .p3 { width: 42%; aspect-ratio: 1; left: 12%; bottom: 0; rotate: -2deg; animation-delay: 0.2s; }
-  .penguin {
-    position: absolute; right: 4%; bottom: 3%; width: 26%; height: auto;
-    border: 3px solid #111; border-radius: 50%; box-shadow: 4px 4px 0 #111; background: #fff;
-    rotate: 8deg; animation: drop 0.6s 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  }
-  @keyframes drop { from { opacity: 0; translate: 0 18px; scale: 0.94; } }
+  .copy { grid-column: 1 / span 7; }
+  .hero :global(.hero-fig) { grid-column: 8 / -1; margin: 0.9rem 14px 0 0; }
+  /* The one oversized element on the page. */
+  .hero h1 { margin-bottom: 1.5rem; font-size: clamp(3.25rem, 7.5vw + 1rem, 8.25rem); }
+  .hero .lead { margin-bottom: 2rem; }
+  .hero :global(.facts) { margin-top: clamp(2.5rem, 5vw, 3.5rem); max-width: 34rem; }
+  .hero :global(.hero-bar) { max-width: 34rem; margin-top: 1.5rem; }
   @media (max-width: 860px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .collage { width: min(100%, 340px); }
+    .copy, .hero :global(.hero-fig) { grid-column: 1 / -1; }
+    .hero :global(.hero-fig) { margin: 0 14px; }
   }
 
-  /* Bento: one big photo tile, wide tiles beside it and below, small tiles filling the gap. */
-  .bento { list-style: none; padding: 0; margin: 2rem 0; display: grid; gap: 1.25rem; }
-  .svc {
-    display: grid; grid-template-rows: minmax(0, 1fr) auto; height: 100%; overflow: hidden;
-    border: 1px solid var(--glass-edge); border-radius: var(--radius);
-    color: var(--ink); text-decoration: none; transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .svc:hover { transform: translateY(-3px); box-shadow: var(--glass-hi), 0 2px 4px rgb(14 60 80 / 0.08), 0 18px 36px -16px rgb(14 60 80 / 0.38); }
-  }
-  .svc:active { transform: scale(0.985); transition-duration: 0.08s; }
-  /* overflow:hidden keeps the 4:3 box from growing to fit portrait photos. */
-  .svc-media { aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); }
-  .svc-media :global(picture) { display: block; height: 100%; }
-  .svc-media :global(picture img) { width: 100%; height: 100%; object-fit: cover; }
-  .svc-body { padding: 1.1rem 1.25rem 1.35rem; }
-  .svc-body p { color: var(--ink-soft); margin: 0; }
+  .after { margin: clamp(2rem, 4vw, 3rem) 0 0; }
+
+  /* How it works: one job ticket split into three parts by perforations. */
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; border: 1px solid var(--rule); }
+  .step { position: relative; padding: clamp(1.25rem, 3vw, 2rem); }
+  .step + .step { border-top: 1px dashed var(--rule); }
+  .label { margin: 0 0 clamp(2rem, 5vw, 4rem); color: var(--ink-soft); text-transform: uppercase; }
+  .corner { position: absolute; top: clamp(1.25rem, 3vw, 2rem); right: clamp(1.25rem, 3vw, 2rem); display: inline-flex; }
+  .step h3 { margin-bottom: 0.5rem; }
+  .step p:last-child { margin: 0; color: var(--ink-soft); }
   @media (min-width: 720px) {
-    .bento { grid-template-columns: repeat(2, 1fr); }
-    .tile--lg, .tile:last-child { grid-column: span 2; }
+    .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .step + .step { border-top: 0; border-left: 1px dashed var(--rule); }
   }
-  @media (min-width: 720px) and (max-width: 1023.98px) {
-    .tile--lg .svc-media, .tile:last-child .svc-media { aspect-ratio: 16 / 9; }
+
+  /* Proof: heading and reviews link beside a ruled list of plain facts. */
+  .split { display: grid; gap: 2rem clamp(2rem, 5vw, 5rem); }
+  .proof { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--rule); align-self: start; }
+  .proof li { display: flex; gap: 0.75rem; align-items: baseline; padding-block: 1rem; border-bottom: 1px solid var(--rule); font-weight: 600; }
+  .proof li :global(svg) { flex: none; translate: 0 0.2em; }
+  @media (min-width: 720px) {
+    .proof { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
   }
   @media (min-width: 1024px) {
-    .bento { grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(280px, auto); }
-    .tile--lg { grid-row: span 2; }
-    .tile--wide { grid-column: span 2; }
-    .tile--sm { grid-column: span 1; }
-    /* Photo fills whatever the grid row gives it, instead of its own height stretching the row. */
-    .bento .svc-media { aspect-ratio: auto; position: relative; }
-    .bento .svc-media > :global(*) { position: absolute; inset: 0; }
-    /* Wide tiles sit photo-left, text-right. */
-    .tile--wide .svc { grid-template-rows: none; grid-template-columns: 1.15fr 1fr; }
-    .tile--wide .svc-body { align-self: center; }
+    .split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
   }
-  .more { margin: 0; }
+
+  /* Closing call to action: invitation and buttons, with the coupon alongside. */
+  .close { display: grid; gap: 2.5rem clamp(2rem, 6vw, 6rem); grid-template-areas: 'head' 'coupon' 'btns'; }
+  .close-head { grid-area: head; }
+  .close-head :global(.sec-head) { margin-bottom: 0; }
+  .close :global(.close-coupon) { grid-area: coupon; }
+  .close-btns { grid-area: btns; }
+  @media (min-width: 960px) {
+    .close { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: 'head coupon' 'btns coupon'; align-items: start; }
+    .close :global(.close-coupon) { align-self: center; }
+  }
 </style>

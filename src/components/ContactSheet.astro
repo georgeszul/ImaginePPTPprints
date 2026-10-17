@@ -1,0 +1,79 @@
+---
+// Home "recent work": a contact-sheet strip of featured prints that scrolls on its own, with a pause toggle.
+import Figure from './Figure.astro';
+import SectionHead from './SectionHead.astro';
+import Glyph from './Glyph.astro';
+import { photos, coverFor } from '../data/photos';
+import { routes, type Lang } from '../i18n/routes';
+import { t } from '../i18n/t';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+// The Home hero already shows the shirts cover, so the strip skips it.
+const hero = coverFor('shirts');
+const shots = photos.filter((p) => p.featured && p !== hero).slice(0, 12);
+const sizes = '(max-width: 840px) 168px, 248px';
+---
+<section class="sec sheet" aria-labelledby="work-title">
+  <div class="wrap head">
+    <div class="reveal">
+      <SectionHead n={2} id="work-title" title={t(lang, 'home.work.title')} lead={t(lang, 'home.work.lead')} />
+    </div>
+    <div class="controls">
+      <button type="button" class="btn btn--line toggle" aria-pressed="false" data-strip-toggle>
+        <Glyph name="pause" />{t(lang, 'home.work.pause')}
+      </button>
+      <a class="btn btn--line" href={routes.portfolio[lang]}>{t(lang, 'home.work.all')}</a>
+    </div>
+  </div>
+  {/* Decorative: every photo appears with a description on the Work page. */}
+  <div class="strip" data-strip aria-hidden="true">
+    <ul class="track">
+      {shots.map((p, i) => (
+        <li><Figure photo={p} lang={lang} n={i + 1} ratio="1 / 1" sizes={sizes} caption={false} decorative /></li>
+      ))}
+      {shots.map((p, i) => (
+        <li class="dup"><Figure photo={p} lang={lang} n={i + 1} ratio="1 / 1" sizes={sizes} caption={false} decorative /></li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  /* The strip runs to the next section's rule, like film on a contact sheet. */
+  .sheet { padding-bottom: 0; }
+  .head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem 2rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .head :global(.sec-head) { margin-bottom: 0; }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .toggle { display: none; }
+  .toggle[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
+
+  /* Static by default (no JavaScript, or reduced motion): a strip you can scroll sideways. */
+  .strip { overflow-x: auto; border-top: 1px solid var(--rule); padding-block: 0.75rem; }
+  .track {
+    display: flex; width: max-content; list-style: none; margin: 0;
+    padding-inline: max(var(--gutter), (100% - var(--wrap)) / 2);
+  }
+  .track li { flex: none; width: clamp(168px, 20vw, 248px); padding-right: 0.75rem; }
+  .dup { display: none; }
+
+  /* With JavaScript (so the pause button exists) and motion allowed, the strip loops. */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .toggle { display: inline-flex; }
+    :global(.js) .strip { overflow: hidden; }
+    :global(.js) .track { padding-inline: 0; animation: sheet-scroll 60s linear infinite; }
+    :global(.js) .dup { display: block; }
+    .sheet:has([aria-pressed='true']) .track { animation-play-state: paused; }
+    @media (hover: hover) and (pointer: fine) { .strip:hover .track { animation-play-state: paused; } }
+  }
+  /* The second copy of the photos makes -50% land exactly where the strip started. */
+  @keyframes sheet-scroll { to { transform: translateX(-50%); } }
+</style>
+
+<script>
+  for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-strip-toggle]')) {
+    btn.addEventListener('click', () => {
+      btn.setAttribute('aria-pressed', String(btn.getAttribute('aria-pressed') !== 'true'));
+    });
+  }
+</script>
