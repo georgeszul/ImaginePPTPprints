@@ -30,6 +30,8 @@ const num = String(n).padStart(2, '0');
   figcaption { margin-top: 0.6rem; color: var(--ink-soft); }
   /* Printer's crop marks just outside the frame corners. */
   .crop .frame { overflow: visible; }
+  /* The bottom crop marks reach 14px below the frame; keep the caption clear of them. */
+  .crop figcaption { margin-top: 1.25rem; }
   .crop .frame::after {
     --m: var(--ink); content: ''; position: absolute; inset: -14px; pointer-events: none;
     background:

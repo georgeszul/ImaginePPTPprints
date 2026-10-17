@@ -27,6 +27,13 @@ export default async function ({ open, fail }) {
     if (n < 5) fail(`no-JS: only ${n} menu links visible on a phone`);
     await ctx.close();
   }
+  // The header bar stays one row (its height drives scroll padding and sticky offsets).
+  for (const [path, w] of [['/es/', 320], ['/es/', 1024], ['/es/', 1101], ['/', 320]]) {
+    const { page, ctx } = await open(path, { width: w, height: 800 });
+    const r = await page.evaluate(() => ({ h: document.querySelector('[data-header]').getBoundingClientRect().height, token: parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) }));
+    if (r.h > r.token + 1) fail(`header wraps at ${w}px on ${path}: ${Math.round(r.h)}px tall, --header-h is ${r.token}px`);
+    await ctx.close();
+  }
   for (const [w, h] of [[320, 568], [1280, 800]]) {
     const { page, ctx } = await open('/contact/', { width: w, height: h });
     const hidden = [];

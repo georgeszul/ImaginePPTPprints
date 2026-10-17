@@ -113,8 +113,6 @@ const contact: { label: string; text?: string; links: Link[]; note?: string }[] 
   .intro { color: var(--ink); }
   .text p:last-child { margin-bottom: 0; }
   .story :global(.photo) { grid-area: photo; }
-  /* Clear the bottom crop marks, which reach 14px below the frame. */
-  .story :global(.photo figcaption) { margin-top: 1.25rem; }
   @media (min-width: 860px) {
     .story {
       grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-rows: auto 1fr;

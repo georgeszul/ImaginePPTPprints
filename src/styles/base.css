@@ -2,7 +2,8 @@
 *, *::before, *::after { box-sizing: border-box; }
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-padding: calc(var(--header-h) + 1rem) 0 6rem;
+  /* Bottom: clears the desktop Call/WhatsApp stack (about 120px) when focus scrolls an element into view. */
+  scroll-padding: calc(var(--header-h) + 1rem) 0 8rem;
 }
 body {
   margin: 0; background: var(--paper); color: var(--ink);

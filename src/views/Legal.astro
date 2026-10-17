@@ -19,8 +19,8 @@ const b = (key: string) => t(lang, `privacy.business.${key}`);
 const business = [
   { label: b('name'), value: site.name },
   { label: b('address'), value: `${site.street}, ${site.locality}, ${site.region} ${site.postalCode}` },
-  { label: b('phone'), value: site.phone },
-  { label: b('email'), value: site.email },
+  { label: b('phone'), value: site.phone, href: site.phoneHref },
+  { label: b('email'), value: site.email, href: `mailto:${site.email}` },
 ];
 const contents = [...sections, { id: 'business', title: businessTitle }];
 const num = (i: number) => String(i + 1).padStart(2, '0');
