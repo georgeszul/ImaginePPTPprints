@@ -28,24 +28,13 @@
       { "key": "stickers", "title": "Calcomanías y stickers", "body": "De vinil, para tu marca, tus vehículos y tus promociones." }
     ]
   },
-  "how": {
-    "title": "Así funciona un pedido",
-    "step": "Paso",
-    "steps": [
-      { "title": "Mándanos tu idea", "body": "Sube un archivo, mándanos una foto o descríbenos lo que quieres. Aceptamos JPG, PNG, PDF, AI, EPS, PSD y SVG." },
-      { "title": "Revisa la prueba", "body": "Te mandamos una prueba digital. No imprimimos nada hasta que nos digas que sí." },
-      { "title": "Recoge o recibe tu pedido", "body": "La mayoría de los pedidos están listos de 24 a 48 horas después de aprobar la prueba. Recógelo en Elgin, pide entrega local o te lo mandamos a cualquier parte del país." }
-    ]
-  },
+  "how": { "title": "Así funciona un pedido" },
   "proof": {
     "title": "Con lo que puedes contar",
-    "items": [
-      "Una prueba digital antes de imprimir",
-      "Sin pedido mínimo",
-      "Ayuda con el diseño gratis",
-      "Servicio urgente el mismo día, con costo extra",
-      "Reimpresión o reembolso si la calidad de impresión no sale bien",
-      "Atención en español o en inglés"
+    "rows": [
+      { "label": "Urgentes", "value": "El mismo día, con costo extra" },
+      { "label": "Calidad", "value": "Reimpresión o reembolso si la calidad de impresión no sale bien", "page": "refunds" },
+      { "label": "Entrega", "value": "Recógelo en Elgin, pide entrega local o te lo mandamos a cualquier parte del país" }
     ],
     "reviews": "Lee nuestras reseñas en Facebook"
   },
