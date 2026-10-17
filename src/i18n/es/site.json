@@ -13,5 +13,15 @@
   "categories": { "shirts": "Camisetas personalizadas", "hoodies": "Sudaderas", "hats": "Gorras", "banners": "Lonas y letreros", "cards": "Tarjetas de presentación", "stickers": "Calcomanías y stickers" },
   "coupon": { "kicker": "Primer pedido", "title": "10% de descuento", "body": "Clientes nuevos ahorran 10% con el código", "cut": "Recorta por la línea" },
   "footer": { "about": "Camisetas, sudaderas, gorras, lonas, tarjetas de presentación y stickers personalizados, impresos en Elgin, Illinois.", "pages": "Páginas", "contact": "Contacto", "follow": "Síguenos", "shop": "Tienda en línea", "rights": "Todos los derechos reservados.", "privacy": "Privacidad", "cookies": "Cookies", "terms": "Términos", "refunds": "Reembolsos" },
+  "newTab": "(se abre en otra pestaña)",
+  "process": {
+    "no": "N.º",
+    "steps": [
+      { "title": "Mándanos tu idea", "body": "Sube un archivo, mándanos una foto o descríbenos lo que quieres. Aceptamos JPG, PNG, PDF, AI, EPS, PSD y SVG." },
+      { "title": "Revisa la prueba", "body": "Te mandamos una prueba digital. No imprimimos nada hasta que nos digas que sí." },
+      { "title": "Imprimimos y revisamos", "body": "Imprimimos tu pedido y revisamos la calidad antes de que salga del taller." },
+      { "title": "Recoge o recibe tu pedido", "body": "La mayoría de los pedidos están listos de 24 a 48 horas después de aprobar la prueba. Recógelo en Elgin, pide entrega local o te lo mandamos a cualquier parte del país." }
+    ]
+  },
   "legal": { "business": "Datos del negocio", "contents": "En esta página" }
 }

@@ -1,11 +1,12 @@
 ---
 import RegMark from './RegMark.astro';
-interface Props { n: number; id: string; title: string; lead?: string; level?: 1 | 2 }
+// `n` is optional: single-section pages (Work, Thanks, 404) get no section number.
+interface Props { n?: number; id: string; title: string; lead?: string; level?: 1 | 2 }
 const { n, id, title, lead, level = 2 } = Astro.props;
 const Tag = level === 1 ? 'h1' : 'h2';
 ---
 <header class="sec-head">
-  <p class="kicker" aria-hidden="true"><RegMark /> {String(n).padStart(2, '0')}</p>
+  {n !== undefined && <p class="kicker" aria-hidden="true"><RegMark /> {String(n).padStart(2, '0')}</p>}
   <Tag id={id}>{title}</Tag>
   {lead && <p class="lead">{lead}</p>}
 </header>

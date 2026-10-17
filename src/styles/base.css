@@ -10,13 +10,17 @@ body {
   font: 400 var(--text)/1.6 var(--font-body);
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
-h1, h2, h3 { font-family: var(--font-display); font-weight: 700; margin: 0 0 0.4em; text-wrap: balance; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; margin: 0 0 0.4em; text-wrap: balance; overflow-wrap: break-word; hyphens: auto; }
 h1 { font-size: var(--h1); line-height: 0.95; letter-spacing: -0.035em; font-stretch: 85%; }
 h2 { font-size: var(--h2); line-height: 1; letter-spacing: -0.025em; font-stretch: 88%; }
 h3 { font-size: var(--h3); line-height: 1.15; letter-spacing: -0.01em; }
 p { margin: 0 0 1em; text-wrap: pretty; }
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
-a, button, summary, label, select, input, textarea { touch-action: manipulation; }
+a, button, summary, label, select, input, textarea { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+button, input, select, textarea { font: inherit; }
+@media (hover: hover) and (pointer: fine) { a:hover { text-decoration-thickness: 2px; } }
+/* Phone numbers never break across lines. */
+a[href^='tel:'] { white-space: nowrap; }
 img { display: block; max-width: 100%; height: auto; }
 :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 ::selection { background: var(--yellow); color: var(--on-color); }
@@ -25,6 +29,8 @@ main:focus { outline: none; }
 .wrap { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; }
 .sec { padding-block: var(--sec); border-top: 1px solid var(--rule); }
 .sec--tint { background: var(--paper-2); }
+/* Short sections (a table, a list) get less air than full chapters. */
+.sec--tight { padding-block: clamp(3rem, 6vw, 5rem); }
 .lead { font-size: calc(var(--text) * 1.15); color: var(--ink-soft); max-width: 58ch; }
 .mono, .kicker { font: 500 var(--small)/1.4 var(--font-mono); letter-spacing: 0.02em; }
 .kicker { display: inline-flex; align-items: center; gap: 0.5rem; margin: 0 0 1.25rem; text-transform: uppercase; }
@@ -56,6 +62,8 @@ main:focus { outline: none; }
   background: var(--paper-2); color: var(--ink); font: inherit;
 }
 .input:focus-visible { outline-offset: 0; }
+/* After the visitor has interacted: ink border plus a magenta bar (the error text beside the field carries the meaning). */
+.input:user-invalid { border-color: var(--ink); box-shadow: inset 4px 0 var(--magenta); }
 ::placeholder { color: var(--ink-soft); opacity: 1; }
 
 table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
@@ -74,10 +82,14 @@ thead th { font: 500 var(--small)/1.4 var(--font-mono); text-transform: uppercas
 
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 50%; }
+    .reveal { animation: rise both var(--ease-out); animation-timeline: view(); animation-range: entry 0% entry 200px; }
   }
 }
-@keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } }
+/* Reduced motion means no movement, not no change: colour and opacity fades stay, travel goes. */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  *, *::before, *::after, ::backdrop, ::file-selector-button {
+    animation: none !important; scroll-behavior: auto !important;
+    transition-property: opacity, color, background-color, border-color !important;
+  }
 }

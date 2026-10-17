@@ -54,7 +54,8 @@ for (const [width, theme] of [[1280, 'light'], [1280, 'dark'], [375, 'light'], [
       broken: [...document.images].filter((im) => im.complete && im.naturalWidth === 0 && im.getAttribute('src')).map((im) => im.src),
       unfilled: [...document.querySelectorAll('figure.fig img')].filter((im) => {
         const a = im.getBoundingClientRect(), b = im.closest('.frame').getBoundingClientRect();
-        return getComputedStyle(im).objectFit !== 'cover' || Math.abs(a.width - b.width) > 1 || Math.abs(a.height - b.height) > 1;
+        // cover crops and contain letterboxes; both keep the photo's proportions (never stretched).
+        return !['cover', 'contain'].includes(getComputedStyle(im).objectFit) || Math.abs(a.width - b.width) > 1 || Math.abs(a.height - b.height) > 1;
       }).length,
       small: [...document.querySelectorAll('a, button, select, input:not([type=hidden]), summary')].filter((e) => {
         const b = e.getBoundingClientRect();

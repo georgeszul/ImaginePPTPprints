@@ -13,5 +13,15 @@
   "categories": { "shirts": "Custom shirts", "hoodies": "Hoodies", "hats": "Hats", "banners": "Banners and signs", "cards": "Business cards", "stickers": "Stickers and decals" },
   "coupon": { "kicker": "First order", "title": "10% off", "body": "First-time customers save 10% with code", "cut": "Cut along the line" },
   "footer": { "about": "Custom shirts, hoodies, hats, banners, business cards and stickers, printed in Elgin, Illinois.", "pages": "Pages", "contact": "Contact", "follow": "Follow", "shop": "Online store", "rights": "All rights reserved.", "privacy": "Privacy", "cookies": "Cookies", "terms": "Terms", "refunds": "Refunds" },
+  "newTab": "(opens in a new tab)",
+  "process": {
+    "no": "No.",
+    "steps": [
+      { "title": "Send your idea", "body": "Upload a file, send a photo or describe it. We take JPG, PNG, PDF, AI, EPS, PSD and SVG." },
+      { "title": "Approve the proof", "body": "We send a digital proof. Nothing prints until you say yes." },
+      { "title": "We print and check it", "body": "We print your order and check its quality before it leaves the shop." },
+      { "title": "Pick up or ship", "body": "Most orders are ready 24–48 hours after approval. Pick up in Elgin, get local delivery or ship nationwide." }
+    ]
+  },
   "legal": { "business": "Business details", "contents": "On this page" }
 }

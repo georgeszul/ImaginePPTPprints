@@ -9,7 +9,9 @@ const { rows, class: className } = Astro.props;
 
 <style>
   .ticket { margin: 0; border-top: 1px solid var(--rule); }
-  .ticket div { display: grid; grid-template-columns: minmax(7rem, 38%) 1fr; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--rule); }
+  .ticket div { display: grid; grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr); gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--rule); }
   dt { color: var(--ink-soft); text-transform: uppercase; }
-  dd { margin: 0; font-weight: 600; }
+  /* minmax(0, 1fr) + anywhere: long values such as an email address wrap instead of overflowing. */
+  dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+  dd a { display: inline-flex; align-items: center; min-height: 44px; }
 </style>
